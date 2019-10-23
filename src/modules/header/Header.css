@@ -1,0 +1,15 @@
+.header-wrapper {
+    position: relative;
+    height: 100vh;
+    background-image: url('./src/roof.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+}
+
+.about {
+    height: 100px;
+    height: 250px;
+    background: red;
+}

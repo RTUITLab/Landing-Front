@@ -1,0 +1,100 @@
+@font-face {
+    font-family: "Sansation Regular";
+    src: url("../../../fonts/sansation-regular.ttf");
+}
+
+.navbar-wrapper {
+    background: rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+    font-family: 'Sansation Regular', sans-serif;
+    font-size: 21px;
+}
+
+.nav {
+    transition: all ease 0.5s;
+}
+
+.nav-item > .nav-link {
+    color: white;
+}
+
+.nav-item > .nav-link:hover {
+    color: #e2001c;
+}
+
+.login {
+    margin: auto 0;
+    color: #e2001c;
+    text-shadow: 0 4px 5px #e40025;
+}
+
+.burger-menu__btn {
+    margin: 5px 0 5px 5px;
+    display: block;
+    height: 45px;
+    width: 50px;
+    border: 1px solid #e2001c;
+    position: relative;
+    z-index: 3;
+}
+
+.burger-menu__btn span,
+.burger-menu__btn span:before,
+.burger-menu__btn span:after  {
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 3px;
+    background: #e2001c;
+}
+
+.burger-menu__btn span {
+    left: 20%;
+    margin-left: -1px;
+    margin-top: -2px;
+}
+
+.burger-menu__btn span:before,
+.burger-menu__btn span:after {
+    content: '';
+    transition: 0.5s;
+}
+
+.burger-menu__btn span:before {
+    transform: translateY(-10px);
+}
+
+.burger-menu__btn span:after {
+    transform: translateY(7px);
+}
+
+.burger-menu__btn_active span{
+    height: 0;
+}
+
+.burger-menu__btn_active span:before {
+    transform: rotate(45deg);
+}
+
+.burger-menu__btn_active span:after {
+    transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 991px) {
+    .nav {
+        display: block;
+        position: fixed;
+        margin-left: -200px;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.7);
+        height: 100vh;
+        width: 200px;
+        padding-top: 10vh;
+        z-index: 2;
+    }
+
+    .nav_active {
+        margin-left: 0px;
+    }
+}
