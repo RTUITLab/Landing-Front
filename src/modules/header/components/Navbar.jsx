@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 import './Navbar.css';
+import { Link } from 'react-scroll';
 
 const Navbar = () => {
 
     const [state, stateHandler] = useState({
         isActive: false,
     });
+
+    const scrollHadler = () => {
+        stateHandler({ isActive: false });
+    }
 
     return (
         <nav className="navbar-wrapper d-flex justify-content-between">
@@ -19,7 +24,7 @@ const Navbar = () => {
 
                 <ul className={state.isActive ? "nav nav_active d-lg-flex" : "nav d-lg-flex"}>
                     <li className="nav-item">
-                        <span className="nav-link active">О нас</span>
+                        <Link to="about" spy={true} smooth={true} duration={1000} className="nav-link active" onClick={scrollHadler}>О нас</Link>
                     </li>
                     <li className="nav-item">
                         <span className="nav-link">Новости</span>

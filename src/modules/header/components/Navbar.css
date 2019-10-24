@@ -15,11 +15,12 @@
 }
 
 .nav-item > .nav-link {
-    color: white;
+    cursor: pointer;
+    color: white !important;
 }
 
 .nav-item > .nav-link:hover {
-    color: #e2001c;
+    color: #e2001c !important;
 }
 
 .login {
@@ -29,6 +30,7 @@
 }
 
 .burger-menu__btn {
+    cursor: pointer;
     margin: 5px 0 5px 5px;
     display: block;
     height: 45px;

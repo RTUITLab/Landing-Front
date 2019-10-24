@@ -1,8 +1,10 @@
 import React from 'react';
 import './About.css'
+import { Element } from 'react-scroll';
 
 const About = () => {
     return (
+        <Element name="about">
         <div className="about-wrapper">
             <div className="row">
                 <div className="col-12 about__title">
@@ -23,6 +25,7 @@ const About = () => {
                 </div>
             </div>
         </div>
+        </Element>
     );
 }
 
