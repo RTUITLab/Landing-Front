@@ -1,0 +1,65 @@
+@font-face {
+    font-family: "Sansation Regular";
+    src: url("../../fonts/sansation-regular.ttf");
+}
+
+.about-wrapper {
+	padding: 70px 0;
+}
+
+.about__title {
+    margin-left: 2vw;
+}
+
+.about__title h3 {
+    text-transform: uppercase;
+    font-size: 5vh;
+    font-family: 'Sansation Regular', sans-serif;
+    border-left: 2px solid #e2001c;
+    padding-left: 10px; 
+}
+
+.about__title h3:before {
+	content: '';
+
+	/* делаем линию строчно-блочной */
+	display: inline-block;
+
+	/* выравниваем вертикально по середине */
+	vertical-align: middle;
+
+	/* не позволяем ширине превысить 100% (будет добавлен бордюр) */
+	box-sizing: border-box;
+
+	/* установка ширины в 100% делает линию равной ширине тега заголовка
+	** благодаря этому линия заполнит все свободное пространство
+	** слева от текста
+	*/
+	width: 100%;
+	height: 2px;
+	background: #cecece;
+
+	/* добавляем к линии левый и правый бордюр цветом основного фона заголовка
+	** благодаря этому создается нужный отступ между линиями и текстом
+	*/
+	border: solid #FFF;
+	border-width: 0 10px;
+}
+.about__title h3:before {
+	/* смещаем левую линию влево отрицательным отступом, равным 100% ширины
+	** благодаря этому линия встает слева от текста
+	*/
+    margin-left: -100%;
+
+}
+
+.about__text {
+    color: rgba(0, 0, 0, 0.54);
+    font-size: 1.7vh;
+	font-family: 'Sansation Regular', sans-serif;
+	padding-bottom: 20px;
+}
+
+.about-wrapper {
+    margin: 0 10vw;
+}

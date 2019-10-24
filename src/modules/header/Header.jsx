@@ -10,10 +10,6 @@ const Header = () => {
                 <Navbar/>
                 <HeaderTitle/>
             </div>
-            
-            <div className="about">
-                dc
-        </div>
         </div>
     );
 }
