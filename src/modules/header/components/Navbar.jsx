@@ -30,7 +30,7 @@ const Navbar = () => {
                         <span className="nav-link">Новости</span>
                     </li>
                     <li className="nav-item">
-                        <span className="nav-link">Проекты</span>
+                    <Link to="projects" spy={true} smooth={true} duration={1000} className="nav-link active" onClick={scrollHadler}>Проекты</Link>
                     </li>
                     <li className="nav-item">
                         <span className="nav-link active">Устройства</span>
