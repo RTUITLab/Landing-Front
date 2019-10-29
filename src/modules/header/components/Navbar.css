@@ -10,7 +10,7 @@
     font-size: 21px;
 }
 
-.nav {
+.navigation {
     transition: all ease 0.5s;
 }
 
@@ -83,7 +83,7 @@
 }
 
 @media screen and (max-width: 991px) {
-    .nav {
+    .navigation {
         display: block;
         position: fixed;
         margin-left: -200px;
