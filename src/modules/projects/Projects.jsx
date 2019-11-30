@@ -13,7 +13,7 @@ const Projects = () => {
         dots: true,
         arrows: false,
         infinite: false,
-        centerPadding: "60px",
+        //centerPadding: "60px",
         slidesToShow: 3,
         rows: 2,
         slidesToScroll: 3,
@@ -36,7 +36,6 @@ const Projects = () => {
     }, [])
 
     const selectProjects = (selector, index) => {
-        console.log(index);
         if(selector==='All'){
             projectsFetch(projectsData);
             settingsHandler({

@@ -1,0 +1,17 @@
+.news-wrapper {
+    position: relative;
+    height: 100vh;
+}
+
+.news__background {
+    right: 0;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 70%;
+    background: url(./src/background.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: 100% 100%;
+}

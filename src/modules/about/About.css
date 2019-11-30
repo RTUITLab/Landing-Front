@@ -37,6 +37,10 @@
 	padding-bottom: 20px;
 }
 
+.about__video {
+	margin: 0 auto;
+}
+
 .about-wrapper {
     margin: 0 10vw;
 }

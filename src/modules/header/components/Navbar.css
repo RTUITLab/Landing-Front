@@ -4,6 +4,7 @@
 }
 
 .navbar-wrapper {
+    z-index: 9;
     background: rgba(0, 0, 0, 0.7);
     text-transform: uppercase;
     font-family: 'Sansation Regular', sans-serif;

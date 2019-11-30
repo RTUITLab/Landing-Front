@@ -34,8 +34,8 @@ const Footer = () => {
                         <ul className="footer__navigation__item footer__right">
                             <li>Войти в систему</li>
                             <br/>
-                            <li>РТУ МИРЭА</li>
-                            <li>Институт Информационных Технологий</li>
+                            <li><span className="contacts">РТУ МИРЭА</span></li>
+                            <li><span className="contacts">Институт Информационных Технологий</span></li>
                         </ul>
                     </div>
                     <div className="col-12 copyright-wrapper">

@@ -25,7 +25,7 @@
 }
 
 .contacts__textarea {
-    height: 25vh;
+    height: 30vh;
     margin: 5px 0;
     resize: none;
 }
@@ -69,4 +69,8 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
   color: white;
   font-size: 5vh;
   text-align: center;
+}
+
+.contacts__address {
+  color: #df585e;
 }

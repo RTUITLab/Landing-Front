@@ -18,7 +18,7 @@ const About = () => {
 
                 </div>
                
-                <div className="col-12 col-lg-10 col-xl-6">
+                <div className="col-12 col-lg-10 col-xl-6 about__video">
                     <div className="embed-responsive embed-responsive-16by9">
                         <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/o3jGgXlmcLc" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen title="about"></iframe>
                     </div>
