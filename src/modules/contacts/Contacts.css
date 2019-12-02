@@ -25,7 +25,7 @@
 }
 
 .contacts__textarea {
-    height: 30vh;
+    height: 250px;
     margin: 5px 0;
     resize: none;
 }
@@ -35,7 +35,9 @@
 }
 
 .contacts__map {
-  margin-top: 25px;
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 .contacts__item {
@@ -73,4 +75,9 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
 
 .contacts__address {
   color: #df585e;
+}
+
+.yandex__map {
+  width: 90%;
+  margin: auto;
 }

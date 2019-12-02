@@ -26,7 +26,7 @@ const Footer = () => {
                         <ul className="footer__navigation__item">
                             <li><span className="contacts">Контакты</span></li>
                             <li><a href="https://vk.com/rtuitlab">vk.com/rtuitlab</a></li>
-                            <li><a href="https://telegram.me/rtuitlab">telegram.me/rtuitlab</a></li>
+                            <li><a href="https://github.com/RTUITLab">github.com/RTUITLab</a></li>
                             <li><a href="https://youtube.com/rtuitlab">youtube.com/rtuitlab</a></li>
                         </ul>
                     </div>
