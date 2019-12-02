@@ -19,8 +19,27 @@
     font-family: "LucidaGrande", sans-serif;
 }
 
+@media screen and (max-width: 900px){
+    .footer__navigation {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .footer__navigation {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .footer__navigation {
+        font-size: 10px;
+    }
+}
+
 .footer__navigation ul {
     list-style: none;
+    padding: 0;
 }
 
 .footer__navigation ul li {
