@@ -11,15 +11,26 @@ steps:
   displayName: 'Install Node.js'
 
 - task: Npm@1
+  displayName: npm ci
   inputs:
     command: 'ci'
+
 - task: Npm@1
+  displayName: npm run build
   inputs:
     command: 'custom'
     customCommand: 'run build'
 
 - task: PublishBuildArtifacts@1
+  displayName: publish build artifact
   inputs:
     PathtoPublish: 'build'
     ArtifactName: 'itlab-landing-build'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  displayName: publish deploy artifact
+  inputs:
+    PathtoPublish: 'deploy'
+    ArtifactName: 'itlab-landing-deploy'
     publishLocation: 'Container'
