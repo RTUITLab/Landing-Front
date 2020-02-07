@@ -26,12 +26,12 @@ steps:
   displayName: publish build artifact
   inputs:
     PathtoPublish: 'build'
-    ArtifactName: 'itlab-landing-build'
+    ArtifactName: 'landing-build'
     publishLocation: 'Container'
 
 - task: PublishBuildArtifacts@1
   displayName: publish deploy artifact
   inputs:
     PathtoPublish: 'deploy'
-    ArtifactName: 'itlab-landing-deploy'
+    ArtifactName: 'landing-deploy'
     publishLocation: 'Container'
