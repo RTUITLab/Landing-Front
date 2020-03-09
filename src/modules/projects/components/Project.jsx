@@ -31,6 +31,7 @@ const Project = (props) => {
                             )
                         })}
                     </Slider>
+                    <button className="project__button_back" onClick={props.onClick}>Вернуться к проектам</button>
                 </div>
             </Fade>
             <Fade right>

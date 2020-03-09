@@ -126,7 +126,7 @@ const Projects = () => {
                             })}
                         </Slider>
                     </div>
-                    : <Project data={project}></Project>}
+                    : <Project data={project} onClick={()=>selectProjects("All", 0)}></Project>}
                 </div>
             </div>
         </Element>

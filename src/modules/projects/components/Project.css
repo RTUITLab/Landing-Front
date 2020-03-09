@@ -9,6 +9,25 @@
     margin: 20px 0;
 }
 
+.project__button_back {
+    background: rgba(0, 0, 0, 0.41);
+    color: #FFF;
+    text-align: center;
+    padding: 0.3em 0;
+    font-size: 3vh;
+    font-family: 'Sansation Regular', sans-serif;
+    width: 100%;
+    border-style: none;
+}
+
+.project__button_back:hover {
+    color: #e2001c;
+}
+
+.project__description {
+    text-align: justify;
+}
+
 .project p,
 .project a {
     color: rgba(255, 255, 255, 0.54);
