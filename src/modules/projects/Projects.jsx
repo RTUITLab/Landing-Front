@@ -3,9 +3,17 @@ import './Projects.css'
 import projectsData from './src/projectsData'
 import Slider from 'react-slick';
 import { Element } from 'react-scroll';
+import Project from './components/Project';
 
 const Projects = () => {
-
+    const [project, projectView] = useState({
+        id: 0,
+        title: '',
+        image: [],
+        tags: [],
+        date: '',
+        isShown: false,
+    });
     const [projects, projectsFetch] = useState([]);
     const [links] = useState([true, false, false, false, false, false, false]);
     const [settings, settingsHandler] = useState({
@@ -20,13 +28,21 @@ const Projects = () => {
         speed: 500,
         responsive: [
             {
-                breakpoint: 600,
+                breakpoint: 990,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
                     initialSlide: 2,
                 }
-            }
+            },
+            {
+                breakpoint: 440,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    initialSlide: 1,
+                }
+            },
         ],
         dotsClass: "button__bar",
     });
@@ -36,13 +52,13 @@ const Projects = () => {
     }, [])
 
     const selectProjects = (selector, index) => {
-        if(selector==='All'){
+        if (selector === 'All') {
             projectsFetch(projectsData);
             settingsHandler({
                 ...settings,
                 rows: 2,
             })
-        }else{
+        } else {
             const selectedProjects = projectsData.filter((project) => {
                 return project.tags.includes(selector);
             })
@@ -54,6 +70,18 @@ const Projects = () => {
         }
         links.fill(false, 0);
         links[index] = true;
+        projectView({
+            ...project,
+            isShown: false,
+        });
+    }
+
+    const setProject = (project) => {
+        links.fill(false, 0);
+        projectView({
+            ...project,
+            isShown: true,
+        });
     }
 
     return (
@@ -63,36 +91,42 @@ const Projects = () => {
                     <div className="row">
                         <div className="col-12 projects__title">
                             <div className="title-wrapper">
-                                <h3 className={links[0]? "nav-link active" : "nav-link"} onClick={() => selectProjects('All', 0)}>Проекты</h3>
+                                <h3 className={links[0] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('All', 0)}>Проекты</h3>
                                 <div className="title-wrapper_line"></div>
                             </div>
                         </div>
-                        <div className="col-12">
-                        <nav className="nav justify-content-around">
-                            <span className={links[1]? "nav-link active" : "nav-link"} onClick={() => selectProjects('VR/AR', 1)}>VR/AR</span>
-                            <span className={links[2]? "nav-link active" : "nav-link"} onClick={() => selectProjects('Frontend', 2)}>Frontend</span>
-                            <span className={links[3]? "nav-link active" : "nav-link"} onClick={() => selectProjects('Backend', 3)}>Backend</span>
-                            <span className={links[4]? "nav-link active" : "nav-link"} onClick={() => selectProjects('Desktop', 4)}>Desktop</span>
-                            <span className={links[5]? "nav-link active" : "nav-link"} onClick={() => selectProjects('Computer Vision', 5)}>Computer Vision</span>
-                            <span className={links[6]? "nav-link active" : "nav-link"} onClick={() => selectProjects('Cloud Computing', 6)}>Cloud Computing</span>
-                        </nav>
-                        </div>
+                        {!project.isShown ?
+                            <div className="col-12">
+                                <nav className="nav justify-content-around">
+                                    <span className={links[1] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('VR', 1)}>VR/AR</span>
+                                    <span className={links[2] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Frontend', 2)}>Frontend</span>
+                                    <span className={links[3] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Backend', 3)}>Backend</span>
+                                    <span className={links[4] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('AR', 4)}>AR</span>
+                                    <span className={links[5] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Unity', 5)}>Unity</span>
+                                    <span className={links[6] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Machine Learning', 6)}>Machine Learning</span>
+                                </nav>
+                            </div>
+                            : <div></div>}
                     </div>
-                    <Slider {...settings}>
-                        {projects.map((project, index) => {
-                            return (
-                                <div key={index} className="project__item">
-                                    <h1 className="project__item_date">Release date: {project.date}</h1>
-                                    <div className="project__item_image">
-                                        <img src={project.image} alt="" width="100%" />
-                                        <div className="project__item_title">
-                                            <h4>{project.title}</h4>
+                    {!project.isShown ?
+                    <div className="projects__slider">
+                        <Slider {...settings}>
+                            {projects.map((project, index) => {
+                                return (
+                                    <div key={index} className="project__item" >
+                                        <h1 className="project__item_date">Release date: {project.date}</h1>
+                                        <div className="project__item_image">
+                                            <img src={project.image[0]} alt={project.title} width="100%"/>
+                                            <div className="project__item_title">
+                                                <h4 onClick={() => setProject(project)}>{project.title}</h4>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            );
-                        })}
-                    </Slider>
+                                );
+                            })}
+                        </Slider>
+                    </div>
+                    : <Project data={project} onClick={()=>selectProjects("All", 0)}></Project>}
                 </div>
             </div>
         </Element>

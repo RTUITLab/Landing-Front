@@ -44,7 +44,7 @@ const Navbar = () => {
                 </ul>
 
             <div className="login">
-                <span className="nav-link">Вход</span>
+                <span className="nav-link"><a href="https://identity.rtuitlab.ru/" target="_blank" rel="noopener noreferrer">Вход</a></span>
             </div>
 
         </nav>
