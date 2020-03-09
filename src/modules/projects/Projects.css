@@ -128,8 +128,10 @@
 }
 
 .project__item_title {
-  position: absolute;
-  top: 40%;
+  transform: translate(-50%, -50%);
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
   background: rgba(0, 0, 0, 0.75);
   width: 100%;
   text-align: center;
@@ -154,6 +156,10 @@
 
 @media screen and (max-width: 767px) {
   .project__item_title h4 {
+    font-size: 14px;
+  }
+  .project__item_date {
+    white-space: nowrap;
     font-size: 14px;
   }
 }
