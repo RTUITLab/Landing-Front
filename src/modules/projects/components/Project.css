@@ -18,10 +18,12 @@
     font-family: 'Sansation Regular', sans-serif;
     width: 100%;
     border-style: none;
+    transition: all ease 0.5s;
 }
 
 .project__button_back:hover {
     color: #e2001c;
+    border: 1px solid #e2001c;
 }
 
 .project__description {
