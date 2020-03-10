@@ -63,7 +63,7 @@ const Contacts = () => {
                                     autoComplete="off" 
                                     className="contacts__item contacts__textarea"/>
                                 <br/>
-                                <input type="submit" placeholder="Отправить" className="contacts__item"/>
+                                <input type="submit" value="Отправить" className="contacts__item"/>
                             </form>
                         </div>
                     </Fade>
