@@ -2,6 +2,9 @@ import React from 'react';
 import './Footer.css';
 import title from './src/title.png'
 import logo from './src/logo.svg'
+import github from './src/github.png'
+import vk from './src/vk.png'
+import youtube from './src/youtube.png'
 import { Link } from "react-scroll";
 
 const Footer = () => {
@@ -25,9 +28,9 @@ const Footer = () => {
                     <div className="col-3">
                         <ul className="footer__navigation__item">
                             <li><span className="contacts">Контакты</span></li>
-                            <li><a href="https://vk.com/rtuitlab">vk.com/rtuitlab</a></li>
-                            <li><a href="https://github.com/RTUITLab">github.com/RTUITLab</a></li>
-                            <li><a href="https://youtube.com/rtuitlab">youtube.com/rtuitlab</a></li>
+                            <a href="https://github.com/RTUITLab"><img src={github} alt="github_logo" className="github footer_logo"/></a>
+                            <a href="https://vk.com/rtuitlab"><img src={vk} alt="vk_logo" className="vk footer_logo"/></a>
+                            <a href="https://www.youtube.com/channel/UC3nHF99l4aYHUvOqXkrKsaQ"><img src={youtube} alt="youtube_logo" className="youtube footer_logo"/></a>
                         </ul>
                     </div>
                     <div className="col-6">

@@ -58,7 +58,7 @@ input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { color: #
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 90vh;
+  height: 40vh;
   background: url(./src/back_slogan.png);
   background-position: center center;
   background-repeat: no-repeat;
