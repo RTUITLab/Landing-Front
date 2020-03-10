@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Slider from "react-slick";
 import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
+import github from './src/github.png'
 import './Project.css';
 
 const Project = (props) => {
@@ -39,7 +40,19 @@ const Project = (props) => {
                     <div className="project__description"><p>{project.description}</p></div>
                     <div className="project__developers"><p><span>Разработчики: </span>{project.developers}</p></div> 
                     {project.site? <div className="project__site"><p><span>Сайт: </span><a href={'https://' + project.site}>{project.site}</a></p></div> : <div></div> }
-                    <div className="project__source"><p><span>Исходный код проекта: </span>{project.source_code}</p></div>
+                    {project.source_code? 
+                        <div className="project__source"><span>Исходный код: </span>{
+                                Array.isArray(project.source_code) ?
+                                    project.source_code.map((source, index)=> {
+                                        console.log(source)
+                                        return (
+                                        <div key={index}><a href={source.value}><img src={github} alt="" className="project__source_logo"/><span className="source__name">{source.name}</span></a></div>
+                                        )
+                                    }
+                                )
+                                : project.source_code.includes('http') ? <a href={project.source_code}><img src={github} alt="" className="project__source_logo"/></a> : <span className="project__nosource">{project.source_code}</span>
+                            }</div>
+                    : <div></div>}
                     <div className="project__date"><p><span>Текущая версия от: </span>{project.date}</p></div>    
                 </div>
             </Fade>

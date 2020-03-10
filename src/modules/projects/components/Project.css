@@ -40,3 +40,15 @@
     color: rgba(255, 255, 255, 0.95);
     font-family: 'Sansation Regular', sans-serif;
 }
+
+.project__source_logo {
+    height: 2rem;
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    margin: 0.5rem;
+}
+
+.source__name,
+.project__nosource {
+    color: rgba(255, 255, 255, 0.54) !important;
+}

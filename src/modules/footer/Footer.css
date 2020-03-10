@@ -12,7 +12,7 @@
     margin-left: 15px;
 }
 
-.contacts {
+.contacts__footer {
     margin-bottom: 20px;
 }
 
@@ -102,4 +102,9 @@
     .footer__navigation {
         font-size: 10px;
     }
+}
+
+.footer__navigation__item_contact {
+    color: #6f6f6f !important;
+    text-shadow: none;
 }

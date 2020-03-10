@@ -5,26 +5,20 @@
 
 .projects-wrapper {
     overflow: hidden;
-    padding: 150px 0;
-    background: url(./src/back.png);
+    background: #191c4d;
     background-position: center center;
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    background-position: top center;
+    background-size: 100% ;
 }
 
-@media screen and (max-width: 1100px){
-  .projects-wrapper {
-    background-size: auto 100%;
-  }
+.projects-wrapper img {
+  pointer-events: none;
+  user-select: none;
 }
 
-@media screen and (max-width: 767px){
-  .projects-wrapper {
-    background:#191c4d;
-    padding: 25px 0;
-    margin: 25px 0;
-  }
+.projects-wrapper .container {
+  margin-top: -5vh;
 }
 
 .projects__title {

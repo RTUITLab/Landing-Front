@@ -4,12 +4,12 @@ const projects = [
         title: 'Виртуальный ситуационный центр',
         description: '\tВиртуальный ситуационный центр позволяет множеству людей в любой точке планеты взаимодействовать между собой в единой среде виртуальной реальности. При этом возможно использование любого доступного на данный момент шлема виртуальной реальности. Также сервисом можно пользоваться без шлема, используя клавиатуру и мышь. \n\tВ сервисе реализована концепция комнат, к которым подключаются люди, и их общение происходит только внутри данного пространства. Разговоры и обмен файлами не выйдут за пределы выделенного пространства, что обеспечивает конфиденциальность приватного общения. \n\tВнутри выделенного виртуального пространства люди могут общаться при помощи голосового чата, могут обмениваться документами из облачных хранилищ (OneDrive, Google drive…), просматривать их, комментировать и обсуждать. \n\tВ данный момент сервис находится на стадии открытого тестирования. ',
         image: ['https://files.rtuitlab.ru/landing_src/situation_center/1.png',
-                'https://files.rtuitlab.ru/landing_src/situation_center/1.png'],
+                'https://files.rtuitlab.ru/landing_src/situation_center/2.png'],
         date: '10/10/2019 ',
         tags: ['VR', 'Backend', 'Frontend'],
         developers: 'Макущенко М.А. Иванов И.Е.',
         site: 'dev.sc.rtuitlab.ru',
-        source_code: 'доступ есть у сотрудников лаборатории.'
+        source_code: ''
     },
     {
         id: 2,
@@ -21,7 +21,10 @@ const projects = [
         tags: ['Frontend', 'Backend'],
         developers: 'Макущенко М.А. Романов Д.Е. Комар Б.Г. Кузнецов А.А.',
         site: 'https://rtuitlab.ru. ',
-        source_code: '\nФронтенд: https://github.com/RTUITLab/ITLab-Front \nСистема событий/оборудования: https://github.com/RTUITLab/ITLab-Back \nСистема записей о работе: https://github.com/RTUITLab/ITLab-Reports \nСистема учета зарплат: https://github.com/RTUITLab/ITLab-Salary '
+        source_code: [{name: 'Фронтенд', value: 'https://github.com/RTUITLab/ITLab-Front'},
+                      {name: 'Система событий/оборудования', value: 'https://github.com/RTUITLab/ITLab-Back'},
+                      {name: 'Система записей о работе', value: 'https://github.com/RTUITLab/ITLab-Reports'},
+                      {name: 'Система учета зарплат', value: 'https://github.com/RTUITLab/ITLab-Salary'}]
     },
     {
         id: 3,
@@ -87,7 +90,7 @@ const projects = [
         tags: ['Frontend', 'Unity'],
         developers: 'Дергунов А.А. Нечипоренко А.Ю.',
         site: '',
-        source_code: 'Frontend – https://github.com/enselerizer/RTUPlayer \nМини-игры – исходный код закрыт',
+        source_code: [{name: 'Фронтенд', value: 'https://github.com/enselerizer/RTUPlayer'}],
     },
     {
         id: 8,
@@ -101,7 +104,7 @@ const projects = [
         tags: ['VR'],
         developers: 'Смирнов Михаил, Меркулов Егор, Шорин Иван, Матчин Артемий, Александр Левандовский',
         site: '',
-        source_code: 'https://onedrive.live.com/?authkey=%21AF%2DTAb%5FlLE7H6sE&id=D5AC793411A26275%21521891&cid=D5AC793411A26275',
+        source_code: '',
     },
     {
         id: 9,
@@ -128,7 +131,8 @@ const projects = [
         tags: ['Frontend', 'Backend'],
         developers: 'Китанин С.C. Южаков В.Е.',
         site: '',
-        source_code: 'Фронтенд: https://github.com/RTUITLab/GameCenter-Front \nБэкенд: https://github.com/RTUITLab/GameCenter-Backend ',
+        source_code: [{name: 'Фронтенд', value: 'https://github.com/RTUITLab/GameCenter-Front',},
+                      {name: 'Бэкенд', value: 'https://github.com/RTUITLab/GameCenter-Backend'}]
     },
     {
         id: 11,
@@ -216,7 +220,8 @@ const projects = [
         tags: ['Frontend', 'Backend'],
         developers: 'Дергунов А.А.',
         site: '',
-        source_code: 'Frontend – https://github.com/enselerizer/RTUassistant \nИнформационный Backend – https://github.com/enselerizer/RTUAssistantBackend \nBackend распознавания речи – исходный код закрыт ',
+        source_code: [{name: 'Фронтенд', value: 'https://github.com/enselerizer/RTUassistant'},
+                      {name: 'Информационный бэкенд', value: 'https://github.com/enselerizer/RTUAssistantBackend'}]
     },
 ]
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Fade from 'react-reveal/Fade';
+import { Element } from 'react-scroll';
 import './Contacts.css';
 
 const Contacts = () => {
@@ -25,7 +26,7 @@ const Contacts = () => {
     }
 
     return (
-        <div>
+        <Element name="contact">
         <div className="contacts-wrapper">
                 <div className="row">
                     <div className="col-12 about__title contacts__title">
@@ -86,7 +87,7 @@ const Contacts = () => {
                 <h3>Нормально делай, нормально будет!</h3>
             </div>
         </div>
-        </div>
+        </Element>
     );
 }
 

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Projects.css'
 import projectsData from './src/projectsData'
+import back from './src/back.png'
+import back_down from './src/back_down.png'
 import Slider from 'react-slick';
 import { Element } from 'react-scroll';
 import Project from './components/Project';
@@ -87,6 +89,7 @@ const Projects = () => {
     return (
         <Element name="projects">
             <div className="projects-wrapper">
+                <img src={back} alt="" width="100%"/>
                 <div className="container">
                     <div className="row">
                         <div className="col-12 projects__title">
@@ -128,6 +131,7 @@ const Projects = () => {
                     </div>
                     : <Project data={project} onClick={()=>selectProjects("All", 0)}></Project>}
                 </div>
+                <img src={back_down} alt="" width="100%"/>
             </div>
         </Element>
     );
