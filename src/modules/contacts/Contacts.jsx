@@ -28,7 +28,7 @@ const Contacts = () => {
                     'Content-Type': 'application/json'
                 },
                 method: 'POST',
-                body: JSON.stringify({...form})
+                body: JSON.stringify({Name: form.name, Email: form.email, Message: form.info})
             }
         )
         .then((res)=> {
