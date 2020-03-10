@@ -7,7 +7,7 @@ const Contacts = () => {
 
     const [form, handleChange] = useState({
         name: '',
-        theme: '',
+        email: '',
         info: '',
     })
 
@@ -20,9 +20,23 @@ const Contacts = () => {
         )
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(form);
+        await fetch('https://dev.landing.rtuitlab.ru/api/contactus', 
+            {
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
+                body: JSON.stringify({...form})
+            }
+        )
+        .then((res)=> {
+            console.log(res);
+        })
+        .catch((err)=>{
+            console.error(err);
+        })
     }
 
     return (
@@ -45,13 +59,12 @@ const Contacts = () => {
                                     className="contacts__item"/>
                                 <br/>
                                 <input 
-                                    name="theme" 
-                                    type="text" 
-                                    placeholder="Тема" 
-                                    value={form.theme} 
+                                    name="email" 
+                                    type="email" 
+                                    placeholder="E-Mail" 
+                                    value={form.email} 
                                     onChange={onChange} 
                                     required 
-                                    autoComplete="off" 
                                     className="contacts__item"/>
                                 <br/>
                                 <textarea 
