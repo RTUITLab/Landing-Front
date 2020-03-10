@@ -178,15 +178,17 @@
   }
   
   .button__bar li button {
+    box-sizing: content-box;
     border: 2px solid #ff0000;
     background: inherit;
     color: transparent;
     cursor: pointer;
     display: block;
-    height: 16px !important;
+    height: 12px !important;
     width: 12px !important;
     border-radius: 50%;
     margin: 0 18px;
+    padding: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
