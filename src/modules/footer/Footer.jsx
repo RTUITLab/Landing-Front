@@ -43,7 +43,7 @@ const Footer = () => {
                     </div>
                     <div className="col-12 copyright-wrapper">
                         <div className="copyright__circle"></div>
-                        <h6 className="copyright">Москва</h6>
+                        <h6 className="copyright">&copy; 2020 RTU IT Lab</h6>
                     </div>
                 </div>
             </div>
