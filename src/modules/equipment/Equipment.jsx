@@ -1,62 +1,81 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Slider from 'react-slick';
-import oculus from './src/oculus.png';
+import equipmentData from './src/equipmentData.js'
 import './Equipment.css';
 
 export default class Equipment extends React.Component {
 
-    state = {
-        slideIndex: 0,
-        updateCount: 0
-      };
+    equipment = equipmentData;
 
-    render(){
+    render() {
         const settings = {
+            
             dots: false,
             infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            speed: 300,
-            afterChange: () =>
-                this.setState(state => ({ updateCount: state.updateCount + 1 })),
-            beforeChange: (current, next) => this.setState({ slideIndex: next })
+            slidesToShow: 5,
+            speed: 500,
+            swipe: false,
+            useCSS: false,
+            responsive: [
+                {
+                    breakpoint: 1600,
+                    settings: {
+                        slidesToShow: 4,
+                    }
+                },
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 800,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        swipe: true,
+                        useCSS: true,
+                    }
+                },
+                {
+                    breakpoint: 500,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        swipe: true,
+                        useCSS: true,
+                    }
+                },
+            ]
         };
     
         return (
             <div className="equipment-wrapper">
-                Устройства
+                <div className="row">
+                    <div className="col-12 about__title equipment__title">
+                            <h3>Устройства</h3>
+                    </div>
+                </div>
                 <Slider ref={slider => (this.slider = slider)} {...settings}>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
-                    <div>
-                        <img src={oculus} alt="" width="300px" />
-                    </div>
+                    {this.equipment.map((equipmentItem, index) => {
+                        return (
+                            <div key={index} className="equipment__item">
+                                <div className="equipment__item_title">
+                                    <h5 >{equipmentItem.title}</h5>
+                                </div>
+                                <img src={equipmentItem.image} alt="" width="100%"/>
+                            </div>
+                        )
+                    })}
                 </Slider>
                 <input
-                    onChange={e => this.slider.slickGoTo(e.target.value)}
-                    value={this.state.slideIndex}
+                    className="slider__control"
+                    onChange={e => this.slider.slickGoTo(e.target.value / 100)}
+                    defaultValue={0}
                     type="range"
                     min={0}
-                    max={8}
+                    max={800}
                     step={1}
                 />
             </div>

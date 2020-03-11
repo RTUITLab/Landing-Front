@@ -76,7 +76,7 @@ const Contacts = () => {
                                     onChange={onChange}
                                     required
                                     maxLength="50"
-                                    className="contacts__item" />s
+                                    className="contacts__item" />
                                 <br />
                                 <input
                                     name="email"
