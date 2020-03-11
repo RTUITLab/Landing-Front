@@ -14,7 +14,7 @@ const HeaderTitle = () => {
             </Fade>
             <br />
             <Fade right>
-                <div className="title">
+                <div className="header__title">
                     <img src={title} alt="title" />
                 </div>
             </Fade>
