@@ -122,6 +122,7 @@ const projects = [
         description: '\tИгровое приложение для шлема виртуальной реальности Oculus Rift и контроллера захвата движения рук leap motion. В игре реализована возможность хлопать комаров при их приближении и стрелять, при складывании пальцев определенным образом. Присутствуют различные виды противников, включая босса, разные уровни сложности ведение игрового счета. ',
         image: ['https://files.rtuitlab.ru/landing_src/komari/1.png',
                 'https://files.rtuitlab.ru/landing_src/komari/2.png',],
+        videos: ['https://www.youtube.com/embed/eQh7gIjKSPE'],
         date: '18/02/2019',
         tags: ['VR', 'Unity'],
         tech: ['Unity'],
@@ -140,7 +141,7 @@ const projects = [
 
         date: '12/03/2019',
         tags: ['Frontend', 'Backend'],
-        tech: ['Angular, ASP'],
+        tech: ['Angular', 'ASP'],
         developers: 'Китанин С.C. Южаков В.Е.',
         site: '',
         source_code: [{name: 'Фронтенд', value: 'https://github.com/RTUITLab/GameCenter-Front',},
