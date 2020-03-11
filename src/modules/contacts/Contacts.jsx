@@ -10,6 +10,7 @@ const Contacts = () => {
         name: '',
         email: '',
         info: '',
+        check: false
     }
 
     const [form, handleChange] = useState(initialForm)
@@ -99,6 +100,15 @@ const Contacts = () => {
                                     autoComplete="off"
                                     className="contacts__item contacts__textarea" />
                                 <br />
+                                <input 
+                                    type="checkbox" 
+                                    name="accept" 
+                                    id="accept"
+                                    className="checkbox"
+                                    value={form.check}
+                                    onChange={onChange}
+                                    required/>
+                                    <label htmlFor="accept" className="accept__label">Даю согласие на обработку и хранение моих персональных данных</label>
                                 <input type="submit" value="Отправить" className="contacts__item" />
                             </form>
                         </div>
