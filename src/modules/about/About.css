@@ -14,7 +14,7 @@
 
 .about__title h3 {
     text-transform: uppercase;
-    font-size: 5vh;
+    font-size: 4vh;
     font-family: 'Sansation Regular', sans-serif;
     border-left: 2px solid #e2001c;
     padding-left: 10px; 
@@ -32,9 +32,11 @@
 
 .about__text {
     color: rgba(0, 0, 0, 0.54);
-    font-size: 2vh;
+    font-size: 2.5vh;
 	font-family: 'Sansation Regular', sans-serif;
 	padding-bottom: 20px;
+	text-align: justify;
+	word-spacing: 2px;
 }
 
 .about__video {

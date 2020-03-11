@@ -5,18 +5,16 @@
 
 .projects-wrapper {
     overflow: hidden;
-    padding: 150px 0;
-    background: url(./src/back.png);
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100% 100%;
+    background: #191c4d;
 }
 
-@media screen and (max-width: 1000px){
-  .projects-wrapper {
-    background-size: auto 100%;
-  }
+.projects-wrapper img {
+  pointer-events: none;
+  user-select: none;
+}
+
+.projects-wrapper .container {
+  margin-top: -5vh;
 }
 
 .projects__title {
@@ -72,12 +70,12 @@
   text-shadow: 0 4px 5px #e40025;
 }
 
-.slick-slider {
+.projects__slider {
   position: relative;
 }
 
-.projects-wrapper .slick-slider:before,
-.projects-wrapper .slick-slider:after {
+.projects__slider:before,
+.projects__slider:after {
   position: absolute;
   display: block;
   content: '';
@@ -89,17 +87,18 @@
   box-shadow: 0px 2px 4px 1px rgba(255,164,164,0.5);
 }
 
-.slick-slider:before {
+.projects__slider:before {
   left: -12%;
 }
 
-.slick-slider:after {
+.projects__slider:after {
   right: -12%;
 }
 
 .project__item {
   padding: 0 5%;
   margin: 1.5vh 0;
+  height: 100%;
 }
 
 .project__item_date {
@@ -119,8 +118,10 @@
 }
 
 .project__item_title {
-  position: absolute;
-  top: 40%;
+  transform: translate(-50%, -50%);
+  position: absolute; 
+  top: 50%; 
+  left: 50%;
   background: rgba(0, 0, 0, 0.75);
   width: 100%;
   text-align: center;
@@ -132,6 +133,11 @@
   color: white;
 }
 
+.project__item_title h4:hover{
+  color: #e2001c;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 992px) {
   .project__item_title h4 {
     font-size: 18px;
@@ -140,6 +146,10 @@
 
 @media screen and (max-width: 767px) {
   .project__item_title h4 {
+    font-size: 14px;
+  }
+  .project__item_date {
+    white-space: nowrap;
     font-size: 14px;
   }
 }
@@ -158,15 +168,20 @@
   }
   
   .button__bar li button {
+    box-sizing: content-box;
     border: 2px solid #ff0000;
     background: inherit;
     color: transparent;
     cursor: pointer;
     display: block;
-    height: 16px;
-    width: 12px;
+    height: 12px !important;
+    width: 12px !important;
     border-radius: 50%;
     margin: 0 18px;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
   
   .button__bar li.slick-active button {

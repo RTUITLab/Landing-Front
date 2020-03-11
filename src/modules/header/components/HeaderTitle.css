@@ -4,10 +4,10 @@
     margin-top: 25vh;
 }
 
-.logo, .title{
+.logo, .header__title{
     background: rgba(0, 0, 0, 0.7);
 }
 
-.logo img, .title img {
+.logo img, .header__title img {
     width: 25vh;
 }

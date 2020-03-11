@@ -1,8 +1,9 @@
 import React from 'react';
 import Header from './modules/header/Header';
 import About from './modules/about/About';
+import News from './modules/news/News';
+import Equipment from './modules/equipment/Equipment';
 import Projects from './modules/projects/Projects';
-//import News from './modules/news/News';
 import Contacts from './modules/contacts/Contacts';
 import Footer from './modules/footer/Footer';
 import './App.css';
@@ -14,6 +15,7 @@ function App() {
       <About/>
       {/* <News/> */}
       <Projects/>
+      <Equipment/>
       <Contacts/>
       <Footer/>
     </div>

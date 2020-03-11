@@ -26,7 +26,6 @@
 
 .login {
     margin: auto 0;
-    color: #e2001c;
     text-shadow: 0 4px 5px #e40025;
 }
 
@@ -100,4 +99,9 @@
     .nav_active {
         margin-left: 0px;
     }
+}
+
+.nav-link a {
+    color: #e2001c;
+    text-decoration: none;
 }

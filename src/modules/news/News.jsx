@@ -15,8 +15,7 @@ const News = () => {
 
     return (
         <div className="news-wrapper">
-            <div className="news__background"></div>
-            <div className="row">
+            <div className="row no-gutters">
                 <div className="col-6">
                     <Slider {...settings}>
                         <div>
@@ -30,7 +29,7 @@ const News = () => {
                         </div>
                     </Slider>
                 </div>
-                <div className="col-6">
+                <div className="col-6 news__content">
                     hello
                 </div>
             </div>

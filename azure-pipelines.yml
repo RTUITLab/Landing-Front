@@ -5,21 +5,33 @@ name: $(BuildID)-$(Build.SourceBranchName)
 pool:
   vmImage: 'ubuntu-latest'
 steps:
+- checkout: self
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
   displayName: 'Install Node.js'
 
 - task: Npm@1
+  displayName: npm ci
   inputs:
     command: 'ci'
+
 - task: Npm@1
+  displayName: npm run build
   inputs:
     command: 'custom'
     customCommand: 'run build'
 
 - task: PublishBuildArtifacts@1
+  displayName: publish build artifact
   inputs:
     PathtoPublish: 'build'
-    ArtifactName: 'itlab-landing-build'
+    ArtifactName: 'landing-build'
+    publishLocation: 'Container'
+
+- task: PublishBuildArtifacts@1
+  displayName: publish deploy artifact
+  inputs:
+    PathtoPublish: 'deploy'
+    ArtifactName: 'landing-deploy'
     publishLocation: 'Container'

@@ -6,7 +6,9 @@
     "bootstrap": "^4.3.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0",
+    "react-notifications": "^1.5.0-beta.0",
+    "react-reveal": "^1.2.2",
+    "react-scripts": "^3.4.0",
     "react-scroll": "^1.7.14",
     "react-slick": "^0.25.2",
     "slick-carousel": "^1.8.1"

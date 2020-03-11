@@ -26,26 +26,26 @@ const Navbar = () => {
                     <li className="nav-item">
                         <Link to="about" spy={true} smooth={true} duration={1000} className="nav-link" onClick={scrollHadler}>О нас</Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <span className="nav-link">Новости</span>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                         <Link to="projects" spy={true} smooth={true} duration={1000} offset={75} className="nav-link" onClick={scrollHadler}>Проекты</Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <span className="nav-link">Устройства</span>
-                    </li>
-                    <li className="nav-item">
+                    </li> */}
+                    {/* <li className="nav-item">
                         <span className="nav-link">Сотрудники</span>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
-                        <span className="nav-link">Контакты</span>
+                        <Link to="contact" spy={true} smooth={true} duration={1000} className="nav-link" onClick={scrollHadler}>Контакты</Link>
                     </li>
                 </ul>
 
-            <div className="login">
-                <span className="nav-link">Вход</span>
-            </div>
+            {/* <div className="login">
+                <span className="nav-link"><a href="https://identity.rtuitlab.ru/" target="_blank" rel="noopener noreferrer">Вход</a></span>
+            </div> */}
 
         </nav>
     );

@@ -16,7 +16,7 @@
     top: 4vh
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1024px) {
     .header__canvas {
         display: none;
     }
