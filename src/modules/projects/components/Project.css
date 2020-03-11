@@ -34,6 +34,7 @@
     color: rgba(255, 255, 255, 0.54);
     font-family: 'Sansation Regular', sans-serif;
     white-space: pre-line;
+    word-spacing: 1px !important;
 }
 
 .project span {
@@ -51,4 +52,14 @@
 .source__name,
 .project__nosource {
     color: rgba(255, 255, 255, 0.54) !important;
+}
+
+.project__logos {
+    display: inline-block;
+    height: 75px;
+    padding: 10px;
+}
+
+.project__logos img {
+    height: 100%;
 }

@@ -17,7 +17,7 @@ const Projects = () => {
         isShown: false,
     });
     const [projects, projectsFetch] = useState([]);
-    const [links] = useState([true, false, false, false, false, false, false]);
+    const [links] = useState([true, false, false, false, false, false]);
     const [settings, settingsHandler] = useState({
         //className: "center",
         dots: true,
@@ -105,8 +105,7 @@ const Projects = () => {
                                     <span className={links[2] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Frontend', 2)}>Frontend</span>
                                     <span className={links[3] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Backend', 3)}>Backend</span>
                                     <span className={links[4] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('AR', 4)}>AR</span>
-                                    <span className={links[5] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Unity', 5)}>Unity</span>
-                                    <span className={links[6] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Machine Learning', 6)}>Machine Learning</span>
+                                    <span className={links[5] ? "nav-link active" : "nav-link"} onClick={() => selectProjects('Machine Learning', 5)}>Machine Learning</span>
                                 </nav>
                             </div>
                             : <div></div>}

@@ -1,6 +1,8 @@
-import img from './oculus.png';
-
 const equipmentData = [
+    {
+        title: 'Microsoft HoloLens',
+        image: 'https://files.rtuitlab.ru/landing_src/equipment/hololens1.png',
+    },
     {
         title: 'Microsoft HoloLens 2',
         image: 'https://files.rtuitlab.ru/landing_src/equipment/hololens2.png',
@@ -49,13 +51,5 @@ const equipmentData = [
         title: 'ODG R-7',
         image: 'https://files.rtuitlab.ru/landing_src/equipment/odg_r7.png',
     },
-    // {
-    //     title:'',
-    //     image:''
-    // },
-    {
-        title: 'Microsoft HoloLens',
-        image: 'https://files.rtuitlab.ru/landing_src/equipment/hololens1.png',
-    }
 ]
 export default equipmentData;

@@ -2,8 +2,20 @@ import React, {useState} from 'react';
 import Slider from "react-slick";
 import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
-import github from './src/github.png'
+import github from './src/github.png';
+import logos from './src/logosData'
 import './Project.css';
+
+
+const tagsMap = {
+    Angular: logos.angular,
+    Node: logos.node,
+    ASP: logos.asp,
+    Vue: logos.vue,
+    UE: logos.ue,
+    Electron: logos.electron,
+    Unity: logos.unity
+}
 
 const Project = (props) => {
     const [project] = useState({...props.data});
@@ -38,6 +50,11 @@ const Project = (props) => {
             <Fade right>
                 <div className="col-12 col-md-6">
                     <div className="project__description"><p>{project.description.replace(/\t/g,"\u00A0\u00A0\u00A0\u00A0")}</p></div>
+                    {project.tech.map((tech, index) => {
+                        return ( 
+                            <div key={index} className="project__logos"><img src={tagsMap[tech]} alt='logo'></img></div> 
+                        )
+                    })}
                     <div className="project__developers"><p><span>Разработчики: </span>{project.developers}</p></div> 
                     {project.site? <div className="project__site"><p><span>Сайт: </span><a href={'https://' + project.site}>{project.site}</a></p></div> : <div></div> }
                     {project.source_code? 
