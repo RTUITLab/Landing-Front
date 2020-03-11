@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import Slider from 'react-slick';
 import equipmentData from './src/equipmentData.js'
 import './Equipment.css';
@@ -51,7 +51,7 @@ export default class Equipment extends React.Component {
         };
     
         return (
-            <div className="equipment-wrapper">
+            <div className="equipment-wrapper" id="equipment">
                 <div className="row">
                     <div className="col-12 about__title equipment__title">
                             <h3>Устройства</h3>
