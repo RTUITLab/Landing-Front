@@ -6,10 +6,6 @@
 .projects-wrapper {
     overflow: hidden;
     background: #191c4d;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: 100% ;
 }
 
 .projects-wrapper img {
