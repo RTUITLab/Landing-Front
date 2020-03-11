@@ -37,7 +37,7 @@ const Project = (props) => {
             </Fade>
             <Fade right>
                 <div className="col-12 col-md-6">
-                    <div className="project__description"><p>{project.description}</p></div>
+                    <div className="project__description"><p>{project.description.replace(/\t/g,"\u00A0\u00A0\u00A0\u00A0")}</p></div>
                     <div className="project__developers"><p><span>Разработчики: </span>{project.developers}</p></div> 
                     {project.site? <div className="project__site"><p><span>Сайт: </span><a href={'https://' + project.site}>{project.site}</a></p></div> : <div></div> }
                     {project.source_code? 

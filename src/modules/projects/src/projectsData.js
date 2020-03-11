@@ -8,7 +8,8 @@ const projects = [
         date: '10/10/2019 ',
         tags: ['VR', 'Backend', 'Frontend'],
         developers: 'Макущенко М.А. Иванов И.Е.',
-        site: 'dev.sc.rtuitlab.ru',
+        // site: 'dev.sc.rtuitlab.ru',
+        site: '',
         source_code: ''
     },
     {
