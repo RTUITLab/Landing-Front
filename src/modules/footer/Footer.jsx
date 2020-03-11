@@ -20,7 +20,7 @@ const Footer = () => {
                         <ul className="footer__navigation__item">
                             <li><Link to="about" spy={true} smooth={true} duration={1000}>О нас</Link></li>
                             {/* <li>Новости</li> */}
-                            {/* <li>Устройства</li> */}
+                            <li><Link to="equipment" spy={true} smooth={true} duration={1000}>Устройства</Link></li>
                             <li><Link to="projects" spy={true} smooth={true} duration={1000}>Проекты</Link></li>
                             <li><Link to="contact" className="footer__navigation__item_contact"spy={true} smooth={true} duration={1000}>Контакты</Link></li>
                             {/* <li>Сотрудники</li> */}
