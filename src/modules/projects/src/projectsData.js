@@ -71,7 +71,7 @@ const projects = [
         image: ['https://files.rtuitlab.ru/landing_src/holotd/1.png',
                 'https://files.rtuitlab.ru/landing_src/holotd/2.png',
                 'https://files.rtuitlab.ru/landing_src/holotd/3.png',],
-        videos: ["https://www.youtube.com/embed/euNSvKj7yEs"],
+        videos: ["https://www.youtube.com/embed/N09CstmJpTo"],
         date: '3/03/2020',
         tags: ['AR', 'Unity'],
         tech: ['Unity'],
