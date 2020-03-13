@@ -140,7 +140,7 @@ const projects = [
 
         date: '12/03/2019',
         tags: ['Frontend', 'Backend'],
-        tech: ['Angular, ASP'],
+        tech: ['Angular', 'ASP'],
         developers: 'Китанин С.C. Южаков В.Е.',
         site: '',
         source_code: [{name: 'Фронтенд', value: 'https://github.com/RTUITLab/GameCenter-Front',},
