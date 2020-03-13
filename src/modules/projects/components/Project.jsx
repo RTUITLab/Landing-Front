@@ -46,7 +46,7 @@ const Project = (props) => {
                         {project.videos.map((video, index) => {
                             return (
                                 <div key={index} className="embed-responsive embed-responsive-16by9">
-                                    <iframe className="embed-responsive-item" src={video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="video"></iframe>
+                                    <iframe className="embed-responsive-item" src={video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" title="video"></iframe>
                                 </div>
                             )
                         })}
