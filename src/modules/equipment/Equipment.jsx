@@ -6,49 +6,55 @@ import './Equipment.css';
 export default class Equipment extends React.Component {
 
     equipment = equipmentData;
+    currentWidth = window.innerWidth;
+
+    settings = {
+            
+        dots: false,
+        infinite: true,
+        slidesToShow: 5,
+        speed: 500,
+        swipe: false,
+        useCSS: false,
+        responsive: [
+            {
+                breakpoint: 1600,
+                settings: {
+                    slidesToShow: 4,
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 800,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    swipe: true,
+                    useCSS: true,
+                }
+            },
+            {
+                breakpoint: 500,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    swipe: true,
+                    useCSS: true,
+                }
+            },
+        ]
+    };
+
+    breakpoints = this.settings.responsive.filter((i) => { 
+        return this.currentWidth < i.breakpoint;
+    })
 
     render() {
-        const settings = {
-            
-            dots: false,
-            infinite: true,
-            slidesToShow: 5,
-            speed: 500,
-            swipe: false,
-            useCSS: false,
-            responsive: [
-                {
-                    breakpoint: 1600,
-                    settings: {
-                        slidesToShow: 4,
-                    }
-                },
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        slidesToShow: 3,
-                    }
-                },
-                {
-                    breakpoint: 800,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        swipe: true,
-                        useCSS: true,
-                    }
-                },
-                {
-                    breakpoint: 500,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        swipe: true,
-                        useCSS: true,
-                    }
-                },
-            ]
-        };
     
         return (
             <div className="equipment-wrapper" id="equipment">
@@ -57,7 +63,7 @@ export default class Equipment extends React.Component {
                             <h3>Устройства</h3>
                     </div>
                 </div>
-                <Slider ref={slider => (this.slider = slider)} {...settings}>
+                <Slider ref={slider => (this.slider = slider)} {...this.settings}>
                     {this.equipment.map((equipmentItem, index) => {
                         return (
                             <div key={index} className="equipment__item">
@@ -75,7 +81,7 @@ export default class Equipment extends React.Component {
                     defaultValue={0}
                     type="range"
                     min={0}
-                    max={800}
+                    max={this.currentWidth > 1600 ? ((this.equipment.length - this.settings.slidesToShow) * 100) : ((this.equipment.length - this.breakpoints[this.breakpoints.length - 1].settings.slidesToShow) * 100)}
                     step={1}
                 />
             </div>
