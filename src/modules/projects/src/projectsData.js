@@ -23,7 +23,7 @@ const projects = [
         videos: [],
         date: '28/03/2020',
         tags: ['Frontend', 'Backend'],
-        tech: ['Vue', 'ASP'], // TODO add Ktor
+        tech: ['Vue', 'ASP', 'Ktor'],
         developers: 'Макущенко М.А. Романов Д.Е. Комар Б.Г. Кузнецов А.А.',
         site: 'https://rtuitlab.ru',
         source_code: [{name: 'Фронтенд', value: 'https://github.com/RTUITLab/ITLab-Front'},

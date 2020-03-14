@@ -14,7 +14,8 @@ const tagsMap = {
     Vue: logos.vue,
     UE: logos.ue,
     Electron: logos.electron,
-    Unity: logos.unity
+    Unity: logos.unity,
+    Ktor: logos.ktor,
 }
 
 const Project = (props) => {
