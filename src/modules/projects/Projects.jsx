@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Projects.css'
 import projectsData from './src/projectsData'
 import back from './src/back.png'
@@ -8,6 +8,7 @@ import { Element } from 'react-scroll';
 import Project from './components/Project';
 
 const Projects = () => {
+    const slider = useRef();
     const [project, projectView] = useState({
         id: 0,
         title: '',
@@ -45,7 +46,7 @@ const Projects = () => {
             },
         ],
         dotsClass: "button__bar",
-        beforeChange: (current, next) => {changeCurrentSlide(next)},
+        afterChange: (current) => {changeCurrentSlide(current)},
     });
 
     useEffect(() => {
@@ -54,20 +55,21 @@ const Projects = () => {
 
     const selectProjects = (selector, index) => {
         if (selector === 'All') {
-            projectsFetch(projectsData);
             settingsHandler({
                 ...settings,
                 rows: 2,
             })
+            projectsFetch(projectsData);
         } else {
-            const selectedProjects = projectsData.filter((project) => {
-                return project.tags.includes(selector);
-            })
-            projectsFetch(selectedProjects);
+            slider.current.slickGoTo(0);
             settingsHandler({
                 ...settings,
                 rows: 1,
             })
+            const selectedProjects = projectsData.filter((project) => {
+                return project.tags.includes(selector);
+            })
+            projectsFetch(selectedProjects);
         }
         links.fill(false, 0);
         links[index] = true;
@@ -75,6 +77,8 @@ const Projects = () => {
             ...project,
             isShown: false,
         });
+        
+        
     }
 
     const setProject = (project) => {
@@ -115,7 +119,7 @@ const Projects = () => {
                     </div>
                     {!project.isShown ?
                     <div className="projects__slider">
-                        <Slider {...settings}>
+                        <Slider ref={slider} {...settings}>
                             {projects.map((project, index) => {
                                 return (
                                     <div key={index} className="project__item" >
