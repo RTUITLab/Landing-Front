@@ -46,7 +46,7 @@ const Project = (props) => {
                         {project.videos.map((video, index) => {
                             return (
                                 <div key={index} className="embed-responsive embed-responsive-16by9">
-                                    <iframe className="embed-responsive-item" src={video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" title="video"></iframe>
+                                    <iframe className="embed-responsive-item" src={video} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen="allowfullscreen" title="video"></iframe>
                                 </div>
                             )
                         })}
@@ -68,7 +68,6 @@ const Project = (props) => {
                         <div className="project__source"><span>Исходный код: </span>{
                             Array.isArray(project.source_code) ?
                                 project.source_code.map((source, index) => {
-                                    console.log(source)
                                     return (
                                         <div key={index}><a href={source.value}><img src={github} alt="" className="project__source_logo" /><span className="source__name">{source.name}</span></a></div>
                                     )

@@ -18,23 +18,22 @@ const Projects = () => {
     });
     const [projects, projectsFetch] = useState([]);
     const [links] = useState([true, false, false, false, false, false]);
+    const [currentSlide, changeCurrentSlide] = useState(0);
     const [settings, settingsHandler] = useState({
-        //className: "center",
         dots: true,
         arrows: false,
         infinite: false,
-        //centerPadding: "60px",
         slidesToShow: 3,
         rows: 2,
         slidesToScroll: 3,
         speed: 500,
+        initialSlide: currentSlide,
         responsive: [
             {
                 breakpoint: 990,
                 settings: {
                     slidesToShow: 2,
                     slidesToScroll: 2,
-                    initialSlide: 2,
                 }
             },
             {
@@ -42,11 +41,11 @@ const Projects = () => {
                 settings: {
                     slidesToShow: 1,
                     slidesToScroll: 1,
-                    initialSlide: 1,
                 }
             },
         ],
         dotsClass: "button__bar",
+        beforeChange: (current, next) => {changeCurrentSlide(next)},
     });
 
     useEffect(() => {
@@ -83,6 +82,10 @@ const Projects = () => {
         projectView({
             ...project,
             isShown: true,
+        });
+        settingsHandler({
+            ...settings,
+            initialSlide: currentSlide,
         });
     }
 
