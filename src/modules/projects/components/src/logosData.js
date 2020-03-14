@@ -5,6 +5,7 @@ import unity from './logos/unity.png';
 import electron from './logos/electron.svg'; 
 import angular from './logos/angular.png'; 
 import node from './logos/node.png'; 
+import ktor from './logos/ktor.svg'; 
 
 const logos = {
     asp: asp,
@@ -13,7 +14,8 @@ const logos = {
     unity: unity,
     electron: electron,
     angular: angular,
-    node: node
+    node: node,
+    ktor: ktor,
 }
 
 export default logos;
