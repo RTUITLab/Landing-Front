@@ -25,7 +25,7 @@ const projects = [
         tags: ['Frontend', 'Backend'],
         tech: ['Vue', 'ASP', 'Ktor'],
         developers: 'Макущенко М.А. Романов Д.Е. Комар Б.Г. Кузнецов А.А.',
-        site: 'https://rtuitlab.ru',
+        site: 'rtuitlab.ru',
         source_code: [{name: 'Фронтенд', value: 'https://github.com/RTUITLab/ITLab-Front'},
                       {name: 'Система событий/оборудования', value: 'https://github.com/RTUITLab/ITLab-Back'},
                       {name: 'Система уведомлений', value: 'https://github.com/RTUITLab/ITLab-Notify'},
