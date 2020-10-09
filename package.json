@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "cpr": "^3.0.1",
+    "rimraf": "^3.0.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-notifications": "^1.5.0-beta.0",
     "react-reveal": "^1.2.2",
-    "react-scripts": "^3.4.0",
+    "react-scripts": "^3.4.3",
     "react-scroll": "^1.7.14",
     "react-slick": "^0.25.2",
     "slick-carousel": "^1.8.1"
@@ -17,7 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "buildToDeploy": "rimraf ./deploy/landing-build && npm run build && cpr build ./deploy/landing-build"
   },
   "eslintConfig": {
     "extends": "react-app"

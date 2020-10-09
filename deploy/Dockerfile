@@ -1,2 +1,2 @@
-FROM nginx:1.17.6-alpine
-COPY Landing/landing-build /usr/share/nginx/html/
+FROM nginx:1.19.3-alpine
+COPY landing-build /usr/share/nginx/html/
