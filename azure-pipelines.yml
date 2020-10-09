@@ -26,3 +26,21 @@ stages:
 
     - publish: ./deploy
       artifact: landing-build
+- stage: dockerImage
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+  - job: dockerBuild
+    steps:
+    - download: current
+      artifact: landing-build
+      displayName: Download landing-build
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'rtuitlab connection by admin'
+        repository: 'rtuitlab/landing-front'
+        command: 'buildAndPush'
+        Dockerfile: '$(Pipeline.Workspace)/landing-build/Dockerfile'
+        buildContext: '$(Pipeline.Workspace)/landing-build'
+        tags: |
+          $(Build.BuildId)
+          latest
