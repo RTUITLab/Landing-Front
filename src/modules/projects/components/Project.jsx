@@ -59,11 +59,16 @@ const Project = (props) => {
                 <div className="col-12 col-md-6">
                     <div className="project__description"><p>{project.description.replace(/\t/g, "\u00A0\u00A0\u00A0\u00A0")}</p></div>
                     {project.tech.map((tech, index) => {
-                        return (
-                            <div key={index} className="project__logos"><img src={tagsMap[tech]} alt='logo'></img></div>
-                        )
+                        if (tagsMap[tech]) {
+                            return (
+                                <div key={index} className="project__logos"><img src={tagsMap[tech]} alt='logo'></img></div>
+                            )
+                        }
+                        else {
+                            return (<></>)
+                        }
                     })}
-                    <div className="project__developers"><p><span>Разработчики: </span>{project.developers}</p></div>
+                    <div className="project__developers"><p><span>Разработчики: </span>{(project.developers.join(' '))}</p></div>
                     {project.site ? <div className="project__site"><p><span>Сайт: </span><a href={'https://' + project.site}>{project.site}</a></p></div> : <div></div>}
                     {project.source_code ?
                         <div className="project__source"><span>Исходный код: </span>{
