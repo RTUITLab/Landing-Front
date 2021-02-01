@@ -2,7 +2,23 @@ name: $(BuildID)-$(Build.SourceBranchName)
 
 pool:
   vmImage: 'ubuntu-latest'
-
+variables:
+  ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
+    buildImage: true
+    deployService: true
+    deployEnvironment: development
+    imageTags: |
+      $(Build.BuildId)
+      develop
+    serviceName: landing-develop_front
+  ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
+    buildImage: true
+    deployService: true
+    deployEnvironment: development
+    imageTags: |
+      $(Build.BuildId)
+      develop
+    serviceName: landing-develop_front
 stages:
 - stage: build
   jobs:
@@ -26,8 +42,8 @@ stages:
 
     - publish: ./deploy
       artifact: landing-build
-- stage: dockerMasterImage
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+- stage: dockerImage
+  condition: ${{variables.buildImage}}
   jobs:
   - job: dockerBuild
     steps:
@@ -41,36 +57,15 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '$(Pipeline.Workspace)/landing-build/Dockerfile'
         buildContext: '$(Pipeline.Workspace)/landing-build'
-        tags: |
-          $(Build.BuildId)
-          latest
-
-- stage: dockerDevelopImage
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
-  jobs:
-  - job: dockerBuild
-    steps:
-    - download: current
-      artifact: landing-build
-      displayName: Download landing-build
-    - task: Docker@2
-      inputs:
-        containerRegistry: 'rtuitlab connection by admin'
-        repository: 'rtuitlab/landing-front'
-        command: 'buildAndPush'
-        Dockerfile: '$(Pipeline.Workspace)/landing-build/Dockerfile'
-        buildContext: '$(Pipeline.Workspace)/landing-build'
-        tags: |
-          $(Build.BuildId)
-          develop
+        tags: ${{variables.imageTags}}
 
 - stage: UpdateService
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  condition: ${{variables.deployService}}
   jobs:
   - deployment: Deploy
     pool:
       vmImage: 'ubuntu-latest'
-    environment: 'development'
+    environment: ${{variables.deployEnvironment}}
     strategy:
       runOnce:
         deploy:
@@ -80,5 +75,5 @@ stages:
               inputs:
                 sshEndpoint: 'swarm manager'
                 runOptions: 'commands'
-                commands: 'docker service update --image rtuitlab/landing-front:$(Build.BuildId) landing-develop_front'
+                commands: 'docker service update --image rtuitlab/landing-front:$(Build.BuildId) ${{variables.serviceName}}'
                 readyTimeout: '20000'
