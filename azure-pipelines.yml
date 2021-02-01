@@ -1,37 +1,46 @@
-trigger:
-  - master
-  - develop
 name: $(BuildID)-$(Build.SourceBranchName)
+
 pool:
   vmImage: 'ubuntu-latest'
-steps:
-- checkout: self
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
 
-- task: Npm@1
-  displayName: npm ci
-  inputs:
-    command: 'ci'
+stages:
+- stage: build
+  jobs:
+  - job: buildFront
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '10.x'
+      displayName: 'Install Node.js'
 
-- task: Npm@1
-  displayName: npm run build
-  inputs:
-    command: 'custom'
-    customCommand: 'run build'
+    - task: Npm@1
+      displayName: npm ci
+      inputs:
+        command: 'ci'
 
-- task: PublishBuildArtifacts@1
-  displayName: publish build artifact
-  inputs:
-    PathtoPublish: 'build'
-    ArtifactName: 'landing-build'
-    publishLocation: 'Container'
+    - task: Npm@1
+      displayName: build front
+      inputs:
+        command: 'custom'
+        customCommand: 'run buildToDeploy'
 
-- task: PublishBuildArtifacts@1
-  displayName: publish deploy artifact
-  inputs:
-    PathtoPublish: 'deploy'
-    ArtifactName: 'landing-deploy'
-    publishLocation: 'Container'
+    - publish: ./deploy
+      artifact: landing-build
+- stage: dockerImage
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  jobs:
+  - job: dockerBuild
+    steps:
+    - download: current
+      artifact: landing-build
+      displayName: Download landing-build
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'rtuitlab connection by admin'
+        repository: 'rtuitlab/landing-front'
+        command: 'buildAndPush'
+        Dockerfile: '$(Pipeline.Workspace)/landing-build/Dockerfile'
+        buildContext: '$(Pipeline.Workspace)/landing-build'
+        tags: |
+          $(Build.BuildId)
+          latest
