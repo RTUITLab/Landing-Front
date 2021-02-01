@@ -37,7 +37,7 @@ const Project = (props) => {
             <Fade left>
                 <div className="col-12 col-md-6">
                     <Slider {...settings}>
-                        {project.image.map((image, index) => {
+                        {project.images.map((image, index) => {
                             return (
                                 <div key={index}>
                                     <img src={image} alt='rtuitlab' width="100%" />

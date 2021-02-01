@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Projects.css'
-import projectsData from './src/projectsData'
-import back from './src/back.png'
-import back_down from './src/back_down.png'
+import './Projects.css';
+import back from './src/back.png';
+import back_down from './src/back_down.png';
 import Slider from 'react-slick';
 import { Element } from 'react-scroll';
 import Project from './components/Project';
+import axios from 'axios';
 
 const Projects = () => {
     const slider = useRef();
     const [project, projectView] = useState({
         id: 0,
         title: '',
-        image: [],
+        images: [],
         tags: [],
         date: '',
         isShown: false,
@@ -50,8 +50,30 @@ const Projects = () => {
     });
 
     useEffect(() => {
-        projectsFetch(projectsData);
-    }, [])
+        async function fetchData() {
+            let data = [];
+
+            try {
+                data = await axios.get(process.env.API || 'api/projects');
+            } catch {
+                console.log(data);
+            }
+
+            if (!data) {
+                // data = [{"id":0,"title":"ITLab (система управления лабораторией)","description":"    Для организации работы людей в лаборатории создана система, учитывающая активность людей, участие в мероприятиях, оплату работы сотрудников. Система позволяет распределять нагрузку, обеспечивать прозрачность выполняемых действий и мероприятий. Сайт создан для внутреннего использования и доступ к имеют только сотрудники лаборатории.\n    Проект состоит из нескольких бекендов, написанный на разных языках программирования, таких как C#, GO, Kotlin. Фронтенд реализован на фреймворке Vue.JS.\n    Так же система имеет возможность уведомлять людей о изменениях, при помощи бота вконтакте или почты.","images":["https://files.rtuitlab.ru/landing_src/rtuitlab/1.png","https://files.rtuitlab.ru/landing_src/rtuitlab/2.png"],"videos":[],"date":"28/57/2021","tags":["Frontend","Backend"],"tech":["Vue","ASP","Ktor"],"developers":["Макущенко М.А.","Романов Д.Е.","Комар Б.Г.","Кузнецов А.А."],"site":null,"sourceCode":[{"name":"Фронтенд","link":"https://github.com/RTUITLab/ITLab-Front"},{"name":"Система событий/оборудования","link":"https://github.com/RTUITLab/ITLab-Back"},{"name":"Система уведомлений","link":"https://github.com/RTUITLab/ITLab-Notify"},{"name":"Система записей о работе","link":"https://github.com/RTUITLab/ITLab-Reports"},{"name":"Система учета зарплат","link":"https://github.com/RTUITLab/ITLab-Salary"}]},{"id":1,"title":"MicroFileServer (файловый сервер для небольших файлов)","description":"    Данный сервис был разработан для добавления к отчетам сотрудников лаборатории \n    дополнительных файлов (референсных картинок, видеодемонстраций и т.д.)","images":[],"videos":[],"date":"28/29/2021","tags":["Backend"],"tech":["Go","MongoDB"],"developers":["Комар Б.Г."],"site":null,"sourceCode":[]},{"id":2,"title":"MicroFileServer (файловый сервер для небольших файлов)","description":"    Данный сервис был разработан для добавления к отчетам сотрудников лаборатории \n    дополнительных файлов (референсных картинок, видеодемонстраций и т.д.)","images":[],"videos":[],"date":"28/29/2021","tags":["Backend"],"tech":["Go","MongoDB"],"developers":["Комар Б.Г."],"site":null,"sourceCode":[]}];
+                data = localStorage.getItem('projectsData') || [];
+            }
+
+            localStorage.setItem('projectsData', JSON.stringify(data));
+            projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
+        }
+        
+        if (localStorage.getItem('projectsData')) {
+            projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
+        }
+
+        fetchData()
+    }, []);
 
     const selectProjects = (selector, index) => {
         if (selector === 'All') {
@@ -59,14 +81,14 @@ const Projects = () => {
                 ...settings,
                 rows: 2,
             })
-            projectsFetch(projectsData);
+            projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
         } else {
             slider.current.slickGoTo(0);
             settingsHandler({
                 ...settings,
                 rows: 1,
             })
-            const selectedProjects = projectsData.filter((project) => {
+            const selectedProjects = JSON.parse(localStorage.getItem('projectsData')).filter((project) => {
                 return project.tags.includes(selector);
             })
             projectsFetch(selectedProjects);
@@ -125,7 +147,7 @@ const Projects = () => {
                                     <div key={index} className="project__item" >
                                         <h1 className="project__item_date">Release date: {project.date}</h1>
                                         <div className="project__item_image">
-                                            <img src={project.image[0]} alt={project.title} width="100%"/>
+                                            <img src={project.images[0]} alt={project.title} width="100%"/>
                                             <div className="project__item_title">
                                                 <h4 onClick={() => setProject(project)}>{project.title}</h4>
                                             </div>
