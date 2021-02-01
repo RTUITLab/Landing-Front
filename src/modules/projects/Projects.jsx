@@ -54,7 +54,7 @@ const Projects = () => {
             let data = [];
 
             try {
-                data = await axios.get(process.env.API || 'api/projects');
+                data = (await axios.get(process.env.API || 'api/projects')).data;
             } catch {
                 console.log(data);
             }
