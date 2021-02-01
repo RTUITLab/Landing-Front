@@ -26,7 +26,7 @@ stages:
 
     - publish: ./deploy
       artifact: landing-build
-- stage: dockerImage
+- stage: dockerMasterImage
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   jobs:
   - job: dockerBuild
@@ -44,3 +44,41 @@ stages:
         tags: |
           $(Build.BuildId)
           latest
+
+- stage: dockerDevelopImage
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  jobs:
+  - job: dockerBuild
+    steps:
+    - download: current
+      artifact: landing-build
+      displayName: Download landing-build
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'rtuitlab connection by admin'
+        repository: 'rtuitlab/landing-front'
+        command: 'buildAndPush'
+        Dockerfile: '$(Pipeline.Workspace)/landing-build/Dockerfile'
+        buildContext: '$(Pipeline.Workspace)/landing-build'
+        tags: |
+          $(Build.BuildId)
+          develop
+
+- stage: UpdateService
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/develop'))
+  jobs:
+  - deployment: Deploy
+    pool:
+      vmImage: 'ubuntu-latest'
+    environment: 'development'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - download: none
+            - task: SSH@0
+              inputs:
+                sshEndpoint: 'swarm manager'
+                runOptions: 'commands'
+                commands: 'docker service update --image rtuitlab/landing-front:$(Build.BuildId) landing-develop_front'
+                readyTimeout: '20000'
