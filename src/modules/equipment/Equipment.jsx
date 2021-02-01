@@ -9,7 +9,6 @@ export default class Equipment extends React.Component {
     currentWidth = window.innerWidth;
 
     settings = {
-            
         dots: false,
         infinite: true,
         slidesToShow: 5,
@@ -66,11 +65,13 @@ export default class Equipment extends React.Component {
                 <Slider ref={slider => (this.slider = slider)} {...this.settings}>
                     {this.equipment.map((equipmentItem, index) => {
                         return (
-                            <div key={index} className="equipment__item">
-                                <div className="equipment__item_title">
-                                    <h5 >{equipmentItem.title}</h5>
+                            <div key={index}>
+                                <div className="equipment__item">
+                                    <div className="equipment__item_title">
+                                        <h5 >{equipmentItem.title}</h5>
+                                    </div>
+                                    <img src={equipmentItem.image} alt="" width="100%"/>
                                 </div>
-                                <img src={equipmentItem.image} alt="" width="100%"/>
                             </div>
                         )
                     })}

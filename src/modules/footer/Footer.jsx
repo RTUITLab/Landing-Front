@@ -16,7 +16,7 @@ const Footer = () => {
             </div>
             <div className="footer__navigation">
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-4">
                         <ul className="footer__navigation__item">
                             <li><Link to="about" spy={true} smooth={true} duration={1000}>О нас</Link></li>
                             {/* <li>Новости</li> */}
@@ -26,14 +26,14 @@ const Footer = () => {
                             {/* <li>Сотрудники</li> */}
                         </ul>
                     </div>
-                    <div className="col-3">
-                        <ul className="footer__navigation__item">
+                    <div className="col-4">
+                        <ul className="footer__navigation__item" style={{ textAlign: 'center' }}>
                             <a href="https://github.com/RTUITLab"><img src={github} alt="github_logo" className="github footer_logo"/></a>
                             <a href="https://vk.com/rtuitlab"><img src={vk} alt="vk_logo" className="vk footer_logo"/></a>
                             <a href="https://www.youtube.com/channel/UC3nHF99l4aYHUvOqXkrKsaQ"><img src={youtube} alt="youtube_logo" className="youtube footer_logo"/></a>
                         </ul>
                     </div>
-                    <div className="col-6">
+                    <div className="col-4">
                         <ul className="footer__navigation__item footer__right">
                             <li><span className="contacts">РТУ МИРЭА</span></li>
                             <li><span className="contacts">Институт Информационных Технологий</span></li>

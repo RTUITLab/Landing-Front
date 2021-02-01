@@ -13,6 +13,7 @@
 
 .equipment__item {
   border: 1px solid #efefef;
+  margin: auto 5px;
 }
 
 .equipment__item img {
