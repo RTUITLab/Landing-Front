@@ -16,6 +16,7 @@ const tagsMap = {
     Electron: logos.electron,
     Unity: logos.unity,
     Ktor: logos.ktor,
+    Swift: logos.swift
 }
 
 const Project = (props) => {
