@@ -70,16 +70,16 @@ const Project = (props) => {
                     })}
                     <div className="project__developers"><p><span>Разработчики: </span>{(project.developers.join(' '))}</p></div>
                     {project.site ? <div className="project__site"><p><span>Сайт: </span><a href={'https://' + project.site}>{project.site}</a></p></div> : <div></div>}
-                    {project.source_code ?
+                    {project.sourceCode.length > 0 ?
                         <div className="project__source"><span>Исходный код: </span>{
-                            Array.isArray(project.source_code) ?
-                                project.source_code.map((source, index) => {
+                            project.sourceCode.length > 1 ?
+                                project.sourceCode.map((source, index) => {
                                     return (
-                                        <div key={index}><a href={source.value}><img src={github} alt="" className="project__source_logo" /><span className="source__name">{source.name}</span></a></div>
+                                        <div key={index}><a href={source.link}><img src={github} alt="" className="project__source_logo" /><span className="source__name">{source.name}</span></a></div>
                                     )
                                 }
                                 )
-                                : project.source_code.includes('http') ? <a href={project.source_code}><img src={github} alt="" className="project__source_logo" /></a> : <span className="project__nosource">{project.source_code}</span>
+                                : <a href={project.sourceCode[0].link}><img src={github} alt="" className="project__source_logo" /></a>
                         }</div>
                         : <div></div>}
                     <div className="project__date"><p><span>Текущая версия от: </span>{project.date}</p></div>
