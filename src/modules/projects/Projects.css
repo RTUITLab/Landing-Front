@@ -4,8 +4,8 @@
 }
 
 .projects-wrapper {
-    overflow: hidden;
-    background: #191c4d;
+  overflow: hidden;
+  background: #191c4d;
 }
 
 .projects-wrapper img {
@@ -102,19 +102,26 @@
 }
 
 .project__item_date {
-    padding: 7px;
-    background: rgba(0, 0, 0, 0.66);
-    text-align: left !important;
-    margin: 0;
-    text-align: center;
-    color: #7b7b7b;
-    font-size: 18px;
-    font-family: 'Sansation Regular', sans-serif;
+  padding: 7px;
+  background: rgba(0, 0, 0, 0.66);
+  text-align: left !important;
+  margin: 0;
+  text-align: center;
+  color: #7b7b7b;
+  font-size: 18px;
+  font-family: 'Sansation Regular', sans-serif;
 }
 
 .project__item_image {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.project__item_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .project__item_title {
@@ -154,45 +161,44 @@
   }
 }
 
-
 .button__bar {
-    margin-top: 1vh;
-    text-align: center;
-    padding: 0;
-  }
-  
-  .button__bar li {
-    list-style: none;
-    display: inline-block;
-    padding: 0;
-  }
-  
-  .button__bar li button {
-    box-sizing: content-box;
-    border: 2px solid #ff0000;
-    background: inherit;
-    color: transparent;
-    cursor: pointer;
-    display: block;
-    height: 12px !important;
-    width: 12px !important;
-    border-radius: 50%;
-    margin: 0 18px;
-    padding: 0;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-  }
-  
-  .button__bar li.slick-active button {
-    background-color: rgba(255, 0, 0, 0.62);
-  }
-  
-  .button__bar li button:hover {
-    background: rgba(255, 0, 0, 0.62);
-    outline: 0;
-  }
+  margin-top: 1vh;
+  text-align: center;
+  padding: 0;
+}
 
-  .button__bar li button:focus{
-      outline: none;
-  }
+.button__bar li {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+}
+
+.button__bar li button {
+  box-sizing: content-box;
+  border: 2px solid #ff0000;
+  background: inherit;
+  color: transparent;
+  cursor: pointer;
+  display: block;
+  height: 12px !important;
+  width: 12px !important;
+  border-radius: 50%;
+  margin: 0 18px;
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.button__bar li.slick-active button {
+  background-color: rgba(255, 0, 0, 0.62);
+}
+
+.button__bar li button:hover {
+  background: rgba(255, 0, 0, 0.62);
+  outline: 0;
+}
+
+.button__bar li button:focus{
+    outline: none;
+}
