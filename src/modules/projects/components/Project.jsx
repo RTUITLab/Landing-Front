@@ -40,8 +40,10 @@ const Project = (props) => {
                     <Slider {...settings}>
                         {project.images.map((image, index) => {
                             return (
-                                <div key={index}>
-                                    <img src={image} alt='rtuitlab' width="100%" />
+                                <div key={index} className="preview">
+                                    <div style={{backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(${image})`}}>
+                                        <img src={image} alt={`preview_${index}`} className="image" />
+                                    </div>
                                 </div>
                             )
                         })}
