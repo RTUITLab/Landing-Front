@@ -2,6 +2,7 @@ name: $(BuildID)-$(Build.SourceBranchName)
 
 pool:
   vmImage: 'ubuntu-latest'
+
 variables:
   ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
     buildImage: true
@@ -10,15 +11,16 @@ variables:
     imageTags: |
       $(Build.BuildId)
       develop
-    serviceName: landing-develop_front
+    frontServiceName: landing-develop_front
   ${{ if eq(variables['Build.SourceBranchName'], 'master') }}:
     buildImage: true
     deployService: true
-    deployEnvironment: development
+    deployEnvironment: production
     imageTags: |
       $(Build.BuildId)
-      develop
-    serviceName: landing-develop_front
+      latest
+    frontServiceName: landing_front
+
 stages:
 - stage: build
   jobs:
@@ -58,11 +60,10 @@ stages:
         Dockerfile: '$(Pipeline.Workspace)/landing-build/Dockerfile'
         buildContext: '$(Pipeline.Workspace)/landing-build'
         tags: ${{variables.imageTags}}
-
-- stage: UpdateService
+- stage: UpdateFront
   condition: ${{variables.deployService}}
   jobs:
-  - deployment: Deploy
+  - deployment: DeployFront
     pool:
       vmImage: 'ubuntu-latest'
     environment: ${{variables.deployEnvironment}}
@@ -75,5 +76,5 @@ stages:
               inputs:
                 sshEndpoint: 'swarm manager'
                 runOptions: 'commands'
-                commands: 'docker service update --image rtuitlab/landing-front:$(Build.BuildId) ${{variables.serviceName}}'
+                commands: 'docker service update --image rtuitlab/landing-front:$(Build.BuildId) ${{variables.frontServiceName}}'
                 readyTimeout: '20000'
