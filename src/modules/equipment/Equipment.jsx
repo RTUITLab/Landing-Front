@@ -9,10 +9,11 @@ export default class Equipment extends React.Component {
     currentWidth = window.innerWidth;
 
     settings = {
-            
         dots: false,
+        className: "center",
+        centerMode: true,
         infinite: true,
-        slidesToShow: 5,
+        slidesToShow: 4,
         speed: 500,
         swipe: false,
         useCSS: false,
@@ -20,20 +21,28 @@ export default class Equipment extends React.Component {
             {
                 breakpoint: 1600,
                 settings: {
-                    slidesToShow: 4,
+                    slidesToShow: 3,
                 }
             },
             {
-                breakpoint: 1200,
+                breakpoint: 1100,
                 settings: {
-                    slidesToShow: 3,
+                    slidesToShow: 2,
                 }
             },
             {
                 breakpoint: 800,
                 settings: {
                     slidesToShow: 2,
-                    slidesToScroll: 2,
+                    swipe: true,
+                    useCSS: true,
+                }
+            },
+            {
+                breakpoint: 700,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                     swipe: true,
                     useCSS: true,
                 }
@@ -54,8 +63,11 @@ export default class Equipment extends React.Component {
         return this.currentWidth < i.breakpoint;
     })
 
+    componentDidMount() {
+        this.slider.slickGoTo(10 / 100);
+    }
+
     render() {
-    
         return (
             <div className="equipment-wrapper" id="equipment">
                 <div className="row">
@@ -66,11 +78,13 @@ export default class Equipment extends React.Component {
                 <Slider ref={slider => (this.slider = slider)} {...this.settings}>
                     {this.equipment.map((equipmentItem, index) => {
                         return (
-                            <div key={index} className="equipment__item">
-                                <div className="equipment__item_title">
-                                    <h5 >{equipmentItem.title}</h5>
+                            <div key={index}>
+                                <div className="equipment__item">
+                                    <div className="equipment__item_title">
+                                        <h5 >{equipmentItem.title}</h5>
+                                    </div>
+                                    <img src={equipmentItem.image} alt="" width="100%"/>
                                 </div>
-                                <img src={equipmentItem.image} alt="" width="100%"/>
                             </div>
                         )
                     })}
@@ -78,10 +92,10 @@ export default class Equipment extends React.Component {
                 <input
                     className="slider__control"
                     onChange={e => this.slider.slickGoTo(e.target.value / 100)}
-                    defaultValue={0}
+                    defaultValue={10}
                     type="range"
-                    min={0}
-                    max={this.currentWidth > 1600 ? ((this.equipment.length - this.settings.slidesToShow) * 100) : ((this.equipment.length - this.breakpoints[this.breakpoints.length - 1].settings.slidesToShow) * 100)}
+                    min={10}
+                    max={this.currentWidth > 1600 ? ((this.equipment.length - this.settings.slidesToShow) * 100 - 10) : ((this.equipment.length - this.breakpoints[this.breakpoints.length - 1].settings.slidesToShow) * 100 - 10)}
                     step={1}
                 />
             </div>

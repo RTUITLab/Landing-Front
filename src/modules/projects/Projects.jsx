@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './Projects.css'
-import projectsData from './src/projectsData'
-import back from './src/back.png'
-import back_down from './src/back_down.png'
+import './Projects.css';
+import back from './src/back.png';
+import back_down from './src/back_down.png';
 import Slider from 'react-slick';
 import { Element } from 'react-scroll';
 import Project from './components/Project';
+import axios from 'axios';
 
 const Projects = () => {
     const slider = useRef();
     const [project, projectView] = useState({
         id: 0,
         title: '',
-        image: [],
+        images: [],
         tags: [],
         date: '',
         isShown: false,
@@ -50,8 +50,31 @@ const Projects = () => {
     });
 
     useEffect(() => {
-        projectsFetch(projectsData);
-    }, [])
+        async function fetchData() {
+            let data = [];
+
+            try {
+                data = (await axios.get((process.env.REACT_APP_API || '') + 'api/projects')).data;
+            } catch {
+                data = JSON.parse(localStorage.getItem('projectsData')) || [];
+            } finally {
+                data = data.sort((a, b) => {
+                    let dateA = new Date(`${a.date.split('/')[2]}.${a.date.split('/')[1]}.${a.date.split('/')[0]}`);
+                    let dateB = new Date(`${b.date.split('/')[2]}.${b.date.split('/')[1]}.${b.date.split('/')[0]}`);
+                    return (new Date(dateA)) > (new Date(dateB)) ? -1 : 1;
+                })
+            }
+
+            localStorage.setItem('projectsData', JSON.stringify(data));
+            projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
+        }
+        
+        if (localStorage.getItem('projectsData')) {
+            projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
+        }
+
+        fetchData()
+    }, []);
 
     const selectProjects = (selector, index) => {
         if (selector === 'All') {
@@ -59,15 +82,15 @@ const Projects = () => {
                 ...settings,
                 rows: 2,
             })
-            projectsFetch(projectsData);
+            projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
         } else {
             slider.current.slickGoTo(0);
             settingsHandler({
                 ...settings,
                 rows: 1,
             })
-            const selectedProjects = projectsData.filter((project) => {
-                return project.tags.includes(selector);
+            const selectedProjects = JSON.parse(localStorage.getItem('projectsData')).filter((project) => {
+                return project.tags.find((tag) => tag.toLowerCase() === selector.toLowerCase());
             })
             projectsFetch(selectedProjects);
         }
@@ -77,8 +100,6 @@ const Projects = () => {
             ...project,
             isShown: false,
         });
-        
-        
     }
 
     const setProject = (project) => {
@@ -125,7 +146,11 @@ const Projects = () => {
                                     <div key={index} className="project__item" >
                                         <h1 className="project__item_date">Release date: {project.date}</h1>
                                         <div className="project__item_image">
-                                            <img src={project.image[0]} alt={project.title} width="100%"/>
+                                            {!project.images[0] ?
+                                                <div style={{aspectRatio: "16 / 9", backgroundColor: "#090a1a"}}></div> :
+                                                <img src={project.images[0]} alt={project.title} />
+                                            }
+                                            
                                             <div className="project__item_title">
                                                 <h4 onClick={() => setProject(project)}>{project.title}</h4>
                                             </div>

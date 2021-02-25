@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 
 deploy/landing-build
+
+# JSON server)
+SERVER.json

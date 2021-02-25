@@ -13,6 +13,7 @@
 
 .equipment__item {
   border: 1px solid #efefef;
+  margin: auto 20px;
 }
 
 .equipment__item img {
@@ -32,8 +33,8 @@
 
 input[type=range] {
     -webkit-appearance: none;
-    margin: 5vh 0;
-    width: 100%;
+    margin: 5vh 33.5%;
+    width: 33%;
   }
   input[type=range]:focus {
     outline: none;
@@ -104,6 +105,10 @@ input[type=range] {
     border-radius: 3px;
     background: #ffffff;
     cursor: pointer;
+  }
+
+  .slider__control {
+    width: 33%;
   }
 
   @media screen and (max-width: 800px) {

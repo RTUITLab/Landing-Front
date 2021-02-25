@@ -4,6 +4,12 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
+  ${{ if notIn(variables['Build.SourceBranchName'], 'master', 'develop') }}:
+    buildImage: false
+    deployService: false
+    deployEnvironment: 'no'
+    imageTags: 'no'
+    frontServiceName: 'no'
   ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
     buildImage: true
     deployService: true
