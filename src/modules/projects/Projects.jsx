@@ -74,6 +74,24 @@ const Projects = () => {
         }
 
         fetchData()
+
+        let timer = setInterval(() => {
+            let elem = document.getElementsByClassName('project__item_image');
+            if (elem) {
+                clearInterval(timer);
+                document.documentElement.style.setProperty('--preview-img-height', elem.item(0).clientWidth * 0.5625 + 'px');
+            }
+        }, 100);
+
+        window.onresize = (e) => {
+            timer = setInterval(() => {
+                let elem = document.getElementsByClassName('project__item_image');
+                if (elem) {
+                    clearInterval(timer);
+                    document.documentElement.style.setProperty('--preview-img-height', elem.item(0).clientWidth * 0.5625 + 'px');
+                }
+            }, 100);
+        }
     }, []);
 
     const selectProjects = (selector, index) => {
@@ -147,7 +165,7 @@ const Projects = () => {
                                         <h1 className="project__item_date">Release date: {project.date}</h1>
                                         <div className="project__item_image">
                                             {!project.images[0] ?
-                                                <div style={{aspectRatio: "16 / 9", backgroundColor: "#090a1a"}}></div> :
+                                                <div style={{height: "var(--preview-img-height)", backgroundColor: "#090a1a"}}></div> :
                                                 <img src={project.images[0]} alt={project.title} />
                                             }
                                             

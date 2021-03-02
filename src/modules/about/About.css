@@ -39,6 +39,11 @@
 	word-spacing: 2px;
 }
 
+.about__text > p {
+	margin-bottom: 0;
+	text-indent: 36px;
+}
+
 .about__video {
 	margin: 0 auto;
 }

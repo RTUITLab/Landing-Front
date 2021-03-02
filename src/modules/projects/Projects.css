@@ -3,6 +3,10 @@
   src: url("../../fonts/sansation-regular.ttf");
 }
 
+:root {
+  --preview-img-height: 100px;
+}
+
 .projects-wrapper {
   overflow: hidden;
   background: #191c4d;
@@ -115,7 +119,7 @@
 .project__item_image {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: var(--preview-img-height);
 }
 
 .project__item_image img {

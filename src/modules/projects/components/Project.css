@@ -1,3 +1,7 @@
+:root {
+  --screen-img-height: 100px;
+}
+
 .project__title {
   background: rgba(0, 0, 0, 0.41);
   color: #e2001c;
@@ -71,7 +75,7 @@
 }
 
 .preview {
-  aspect-ratio: 16 / 9;
+  height: var(--screen-img-height);
 }
 
 .preview div .image {
