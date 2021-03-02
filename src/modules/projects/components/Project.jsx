@@ -60,7 +60,11 @@ const Project = (props) => {
             </Fade>
             <Fade right>
                 <div className="col-12 col-md-6">
-                    <div className="project__description"><p>{project.description.replace(/(    |\t)/g, "\u00A0\u00A0\u00A0\u00A0")}</p></div>
+                    <div className="project__description">
+                        {project.description.split('\n').map((paragraph, index) => {
+                            return (<p key={index} className="project__p">{paragraph}</p>)
+                        })}
+                    </div>
                     {project.tech.map((tech, index) => {
                         if (tagsMap[tech]) {
                             return (
