@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from "react-slick";
 import Fade from 'react-reveal/Fade';
 import Flip from 'react-reveal/Flip';
@@ -30,6 +30,27 @@ const Project = (props) => {
         slidesToScroll: 1,
         dotsClass: "button__bar",
     };
+
+    useEffect(() => {
+        let timer = setInterval(() => {
+            let elem = document.getElementsByClassName('preview');
+            if (elem) {
+                clearInterval(timer);
+                document.documentElement.style.setProperty('--screen-img-height', elem.item(0).clientWidth * 0.5625 + 'px');
+            }
+        }, 100);
+
+        window.onresize = (e) => {
+            timer = setInterval(() => {
+                let elem = document.getElementsByClassName('preview');
+                if (elem) {
+                    clearInterval(timer);
+                    document.documentElement.style.setProperty('--screen-img-height', elem.item(0).clientWidth * 0.5625 + 'px');
+                }
+            }, 100);
+        }
+    })
+
     return (
         <div className="row project">
             <div className="col-12">
