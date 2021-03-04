@@ -6,9 +6,10 @@ import Equipment from './modules/equipment/Equipment';
 import Projects from './modules/projects/Projects';
 import Contacts from './modules/contacts/Contacts';
 import Footer from './modules/footer/Footer';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 
-function App() {
+function FullApp() {
   return (
     <div className="App">
       <Header/>
@@ -19,6 +20,25 @@ function App() {
       <Contacts/>
       <Footer/>
     </div>
+  );
+}
+
+function ExampleApp() {
+  return (
+    <div className="App">
+      <Projects/>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route path="/example"><ExampleApp></ExampleApp></Route>
+        <Route path="/"><FullApp></FullApp></Route>
+      </Switch>
+    </Router>
   );
 }
 

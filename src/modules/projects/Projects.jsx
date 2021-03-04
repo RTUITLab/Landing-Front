@@ -68,16 +68,25 @@ const Projects = () => {
             localStorage.setItem('projectsData', JSON.stringify(data));
             projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
         }
-        
-        if (localStorage.getItem('projectsData')) {
-            projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
-        }
 
-        fetchData()
+        if (window.location.pathname !== '/example') {
+            if (localStorage.getItem('projectsData')) {
+                projectsFetch(JSON.parse(localStorage.getItem('projectsData')));
+            }
+
+            fetchData();
+        } else {
+            window.addEventListener('message', (e) => {
+                console.log([e.data]);
+                let date = new Date();
+                e.data.date = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
+                projectsFetch([e.data]);
+            });
+        }
 
         let timer = setInterval(() => {
             let elem = document.getElementsByClassName('project__item_image');
-            if (elem) {
+            if (elem && elem.item(0)) {
                 clearInterval(timer);
                 document.documentElement.style.setProperty('--preview-img-height', elem.item(0).clientWidth * 0.5625 + 'px');
             }
@@ -86,9 +95,10 @@ const Projects = () => {
         window.onresize = (e) => {
             timer = setInterval(() => {
                 let elem = document.getElementsByClassName('project__item_image');
-                if (elem) {
+                if (elem && elem.item(0)) {
                     clearInterval(timer);
                     document.documentElement.style.setProperty('--preview-img-height', elem.item(0).clientWidth * 0.5625 + 'px');
+                    
                 }
             }, 100);
         }
