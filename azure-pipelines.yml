@@ -38,8 +38,7 @@ stages:
       displayName: 'Install Node.js'
 
     - script: |
-        npm i -g jake
-        jake
+        npx jake
       displayName: 'Jake'
 
     - publish: ./deploy
@@ -69,6 +68,16 @@ stages:
     environment: ${{variables.deployEnvironment}}
     strategy:
       runOnce:
+        on:
+          failure:
+            steps:
+              - download: none
+              - task: SSH@0
+                inputs:
+                  sshEndpoint: 'swarm manager'
+                  runOptions: 'commands'
+                  commands: 'docker service rollback ${{variables.frontServiceName}}'
+                  readyTimeout: '20000'
         deploy:
           steps:
             - download: none
