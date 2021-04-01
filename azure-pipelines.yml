@@ -37,16 +37,10 @@ stages:
         versionSpec: '10.x'
       displayName: 'Install Node.js'
 
-    - task: Npm@1
-      displayName: npm ci
-      inputs:
-        command: 'ci'
-
-    - task: Npm@1
-      displayName: build front
-      inputs:
-        command: 'custom'
-        customCommand: 'run buildToDeploy'
+    - script: |
+        npm i -g jake
+        jake
+      displayName: 'Jake'
 
     - publish: ./deploy
       artifact: landing-build

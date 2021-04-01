@@ -40,7 +40,7 @@ const Footer = () => {
                         </ul>
                     </div>
                     <div className="col-12 copyright-wrapper">
-                        <h6 className="copyright">&copy; 2020 RTU IT Lab</h6>
+                        <h6 className="copyright">&copy; {process.env.REACT_APP_BUILD_YEAR} RTU IT Lab</h6>
                     </div>
                 </div>
             </div>
