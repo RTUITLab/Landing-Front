@@ -37,16 +37,9 @@ stages:
         versionSpec: '10.x'
       displayName: 'Install Node.js'
 
-    - task: Npm@1
-      displayName: npm ci
-      inputs:
-        command: 'ci'
-
-    - task: Npm@1
-      displayName: build front
-      inputs:
-        command: 'custom'
-        customCommand: 'run buildToDeploy'
+    - script: |
+        npx jake
+      displayName: 'Jake'
 
     - publish: ./deploy
       artifact: landing-build
@@ -75,6 +68,16 @@ stages:
     environment: ${{variables.deployEnvironment}}
     strategy:
       runOnce:
+        on:
+          failure:
+            steps:
+              - download: none
+              - task: SSH@0
+                inputs:
+                  sshEndpoint: 'swarm manager'
+                  runOptions: 'commands'
+                  commands: 'docker service rollback ${{variables.frontServiceName}}'
+                  readyTimeout: '20000'
         deploy:
           steps:
             - download: none
