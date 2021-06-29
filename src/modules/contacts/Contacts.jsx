@@ -39,16 +39,16 @@ const Contacts = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await fetch('/api/contactus',
+        await fetch('https://dev.manage.rtuitlab.dev/api/feedback/ContractUs/',
             {
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 method: 'POST',
-                body: JSON.stringify({ Name: form.name, Email: form.email, Message: form.info })
+                body: JSON.stringify({ name: form.name, email: form.email, message: form.info })
             }
         )
-            .then(() => {
+            .then((a) => {
                 createNotification('success');
                 handleChange(initialForm);
             })
