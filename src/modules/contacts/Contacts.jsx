@@ -39,7 +39,7 @@ const Contacts = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await fetch('https://dev.manage.rtuitlab.dev/api/feedback/ContractUs/',
+        await fetch(process.env.REACT_APP_DEV_API+'/api/feedback/ContractUs/',
             {
                 headers: {
                     'Content-Type': 'application/json'
@@ -100,9 +100,9 @@ const Contacts = () => {
                                     autoComplete="off"
                                     className="contacts__item contacts__textarea" />
                                 <br />
-                                <input 
-                                    type="checkbox" 
-                                    name="accept" 
+                                <input
+                                    type="checkbox"
+                                    name="accept"
                                     id="accept"
                                     className="checkbox"
                                     value={form.check}
