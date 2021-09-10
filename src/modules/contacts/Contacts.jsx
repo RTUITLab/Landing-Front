@@ -39,16 +39,16 @@ const Contacts = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        await fetch('/api/contactus',
+        await fetch(process.env.REACT_APP_DEV_API+'/api/feedback/ContractUs/',
             {
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 method: 'POST',
-                body: JSON.stringify({ Name: form.name, Email: form.email, Message: form.info })
+                body: JSON.stringify({ name: form.name, email: form.email, message: form.info })
             }
         )
-            .then(() => {
+            .then((a) => {
                 createNotification('success');
                 handleChange(initialForm);
             })
@@ -100,9 +100,9 @@ const Contacts = () => {
                                     autoComplete="off"
                                     className="contacts__item contacts__textarea" />
                                 <br />
-                                <input 
-                                    type="checkbox" 
-                                    name="accept" 
+                                <input
+                                    type="checkbox"
+                                    name="accept"
                                     id="accept"
                                     className="checkbox"
                                     value={form.check}
