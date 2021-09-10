@@ -36,7 +36,13 @@ stages:
       inputs:
         versionSpec: '10.x'
       displayName: 'Install Node.js'
-
+    - task: file-creator@6
+      inputs:
+        filepath: '.env'
+        filecontent: |
+          NODE_ENV=production
+          REACT_APP_DEV_API=https://dev.manage.rtuitlab.dev
+        endWithNewLine: true
     - script: |
         npx jake
       displayName: 'Jake'
