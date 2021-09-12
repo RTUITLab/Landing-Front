@@ -43,8 +43,8 @@ stages:
       inputs:
         filepath: '.env'
         filecontent: |
-          NODE_ENV=${{deployEnvironment}}
-          REACT_APP_DEV_API=${{feedbackUrl}}
+          NODE_ENV=${{variables.deployEnvironment}}
+          REACT_APP_DEV_API=${{variables.AddfeedbackUrl}}
         endWithNewLine: true
     - script: |
         npx jake
