@@ -7,12 +7,14 @@ variables:
   ${{ if notIn(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/tags/develop') }}:
     buildImage: false
     deployService: false
+    feedbackUrl: ""
     deployEnvironment: 'no'
     imageTags: 'no'
     frontServiceName: 'no'
   ${{ if eq(variables['Build.SourceBranch'], 'refs/tags/develop') }}:
     buildImage: true
     deployService: true
+    feedbackUrl: "https://dev.manage.rtuitlab.dev"
     deployEnvironment: development
     imageTags: |
       $(Build.BuildId)
@@ -21,6 +23,7 @@ variables:
   ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
     buildImage: true
     deployService: true
+    feedbackUrl: "https://manage.rtuitlab.dev"
     deployEnvironment: production
     imageTags: |
       $(Build.BuildId)
@@ -36,7 +39,13 @@ stages:
       inputs:
         versionSpec: '10.x'
       displayName: 'Install Node.js'
-
+    - task: file-creator@6
+      inputs:
+        filepath: '.env'
+        filecontent: |
+          NODE_ENV=${{variables.deployEnvironment}}
+          REACT_APP_DEV_API=${{variables.feedbackUrl}}
+        endWithNewLine: true
     - script: |
         npx jake
       displayName: 'Jake'
