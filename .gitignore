@@ -27,3 +27,10 @@ deploy/landing-build
 
 # JSON server)
 SERVER.json
+
+
+# Python virtual environment
+venv/
+env/
+.env/
+.venv/
