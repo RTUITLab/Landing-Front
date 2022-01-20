@@ -91,7 +91,7 @@ def create_dir(repo_full_name: str, from_path: str, to_path: str, data: dict):
     project_dir = os.path.join(to_path, project_name)
     if os.path.exists(project_dir):
         shutil.rmtree(project_dir, ignore_errors=True)
-    os.mkdir(project_dir)
+    os.makedirs(project_dir)
     info_file_path = os.path.join(project_dir, "info.json")
     with open(info_file_path, "w", encoding="utf-8") as f:
         _ = json.dump(data, f, ensure_ascii=False, indent=4)
@@ -102,31 +102,37 @@ def create_dir(repo_full_name: str, from_path: str, to_path: str, data: dict):
 def create_json(blocks: dict, repo: str, branch: str):
     try:
         blocks["description"] = parse_description(blocks["description"])
+        print('::notice ::Read block "Description"')
     except KeyError:
         print('::error ::Provide block "Description"')
 
     try:
         blocks["images"] = parse_images(blocks["images"], repo, branch)
+        print('::notice ::Read block "Images"')
     except KeyError:
         print('::error ::Provide block "Images"')
 
     try:
         blocks["videos"] = parse_videos(blocks["videos"])
+        print('::notice ::Read block "Videos"')
     except KeyError:
         print('::error ::Provide block "Videos"')
 
     try:
         blocks["tags"] = parse_list(blocks["tags"])
+        print('::notice ::Read block "Tags"')
     except KeyError:
         print('::error ::Provide block "Tags"')
 
     try:
         blocks["tech"] = parse_list(blocks["tech"])
+        print('::notice ::Read block "Tech"')
     except KeyError:
         print('::error ::Provide block "Tech"')
 
     try:
         blocks["developers"] = parse_list(blocks["developers"])
+        print('::notice ::Read block "Developers"')
     except KeyError:
         print('::error ::Provide block "Developers"')
 
@@ -134,11 +140,13 @@ def create_json(blocks: dict, repo: str, branch: str):
         blocks["site"] = parse_description(blocks["site"])
         if not blocks["site"]:
             blocks["site"] = None
+        print('::notice ::Read block "Site"')
     except KeyError:
         print('::error ::Provide block "Site"')
 
     try:
         blocks["sourceCode"] = parse_source_code(blocks["sourceCode"])
+        print('::notice ::Read block "SourceCode"')
     except KeyError:
         print('::error ::Provide block "SourceCode"')
 
