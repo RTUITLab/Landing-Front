@@ -3,11 +3,6 @@ name: Tests for LANDING.md parser
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ master ]
-    paths:
-      - 'parser/**'
-      - '!parser/PARSER.md'
   pull_request:
     branches: [ master ]
     paths:
