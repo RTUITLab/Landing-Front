@@ -95,6 +95,7 @@ def create_dir(repo_full_name: str, from_path: str, to_path: str, data: dict):
     info_file_path = os.path.join(project_dir, "info.json")
     with open(info_file_path, "w", encoding="utf-8") as f:
         _ = json.dump(data, f, ensure_ascii=False, indent=4)
+        f.write("\n")
     save_images(data["images"], project_dir)
     return
 
