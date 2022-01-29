@@ -21,3 +21,5 @@
 + Install [jake](https://jakejs.com/) `npm i -g jake`.
 
 + Run jake to build project `jake`.
+
+### SEO

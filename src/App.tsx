@@ -1,0 +1,40 @@
+import React from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
+import Index from "./pages/Index/Index";
+import ProjectPageTemplate from "./modules/ProjectPageTemplate/ProjectPageTemplate";
+import AchievementPageTemplate from "./modules/AchievementPageTemplate/AchievementPageTemplate";
+
+declare module 'react' {
+  interface HTMLAttributes<T> {
+    active?: any
+  }
+}
+
+function App() {
+
+
+  return (
+    <div className="App" >
+      <BrowserRouter>
+        <Routes>
+            <Route index element={<Index />} />
+            <Route path="/project/test" element={<ProjectPageTemplate title={"title"} coverLink={"f"} desc={"Описание"}/>}/>
+            <Route path="/achievement/test" element={<AchievementPageTemplate title={"title"} coverLink={"f"} desc={"Описание"}/>}/>
+
+            {/**
+                  Errors
+            **/}
+            <Route path="/project/*" element={<div>project 404</div>}/>
+            <Route path="/achievement/*" element={<div>achievement 404</div>}/>
+            <Route path='*' element={<div>404</div>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;

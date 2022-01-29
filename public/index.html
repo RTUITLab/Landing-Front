@@ -1,71 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160294645-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-160294645-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
 
-    gtag('config', 'UA-160294645-1');
-  </script>
+      function gtag() {
+        dataLayer.push(arguments);
+      }
 
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta name="description" content="Web site created using create-react-app" />
-  <link rel="apple-touch-icon" href="logo192.png" />
-  <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+      gtag('js', new Date());
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-  <title>RTU IT Lab</title>
+      gtag('config', 'UA-160294645-1');
+    </script>
+
+    <meta charset="utf-8"/>
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="theme-color" content="#000000"/>
+
+    <!--  START SEO BLOCK  -->
+    <meta name="keywords"
+          content="МИРЭА, РТУ МИРЭА, RTUITLab, ртуитлаб, Институт Информационных Технологий, Институт ИТ, ИИТ"/>
+    <meta name="description" content="RTUITLab – это более 30 IT-специалистов, среди которых backend, frontend-разработчики, ML, VR/AR, DevOps – специалисты, дизайнеры и системные архитекторы,
+на счету которых множество реализованных проектов. Материальная база Института Информационных Технологий позволяет сотрудникам работать с порой эксклюзивным оборудованием,
+собирать под него проекты, демонстрировать их на выставках и конференциях."/>
+
+    <!--  Facebook  -->
+    <meta property="og:title" content="RTUITLab"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://rtuitlab.dev"/>
+    <meta property="og:image" content="/images/logo.png"/>
+    <meta name="og:description" content="RTUITLab – это более 30 IT-специалистов, среди которых backend, frontend-разработчики, ML, VR/AR, DevOps – специалисты, дизайнеры и системные архитекторы,
+на счету которых множество реализованных проектов. Материальная база Института Информационных Технологий позволяет сотрудникам работать с порой эксклюзивным оборудованием,
+собирать под него проекты, демонстрировать их на выставках и конференциях."/>
+    <!--  Facebook  -->
+
+    <!--  Twitter   -->
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="https://rtuitlab.dev"/>
+    <!--  Twitter   -->
+
+    <!--  Google  -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "url": "https://rtuitlab.dev",
+            "logo": "https://rtuitlab.dev/images/logo.png",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Москва, Россия",
+                "postalCode": "F-75002",
+                "streetAddress": "пр. Вернадского 78"
+            },
+            "email": "contact@rtuitlab.dev",
+            "name": "RTUITLab"
+        }
+    </script>
+    <!--  Google  -->
+
+
+    <!--  END SEO BLOCK  -->
+
+
+    <link rel="apple-touch-icon" href="logo192.png"/>
+    <!--
+        manifest.json provides metadata used when your web app is installed on a
+        user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+      -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+    <!--
+        Notice the use of %PUBLIC_URL% in the tags above.
+        It will be replaced with the URL of the `public` folder during the build.
+        Only files inside the `public` folder can be referenced from the HTML.
+
+        Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+        work correctly both with client-side routing and a non-root public URL.
+        Learn how to configure a non-root public URL by running `npm run build`.
+      -->
+    <title>RTUITLab</title>
 </head>
 
 <body>
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function (m, e, t, r, i, k, a) {
-      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-      m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-      (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+  (function (m, e, t, r, i, k, a) {
+    m[i] = m[i] || function () {
+      (m[i].a = m[i].a || []).push(arguments)
+    };
+    m[i].l = 1 * new Date();
+    k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+  })
+  (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(60750679, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true
-    });
-  </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/60750679" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
-  <!-- /Yandex.Metrika counter -->
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
-  <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  ym(60750679, "init", {
+    clickmap: true,
+    trackLinks: true,
+    accurateTrackBounce: true
+  });
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/60750679" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<!--
+    This HTML file is a template.
+    If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    You can add webfonts, meta tags, or analytics to this file.
+    The build step will place the bundled scripts into the <body> tag.
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    To begin the development, run `npm start` or `yarn start`.
+    To create a production bundle, use `npm run build` or `yarn build`.
+  -->
 </body>
 
 </html>
