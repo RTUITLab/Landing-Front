@@ -1,0 +1,67 @@
+.achievementsParent {
+  min-height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0px 15px;
+
+
+  .content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+    h1{
+      font-weight: bold;
+      font-size: 56px;
+      line-height: 66px;
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+    }
+    .logo{
+      width: 50vw;
+      max-width: 300px;
+
+    }
+    .text{
+      max-width: 950px;
+      font-family: Raleway;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+      color: #666666;
+
+      @media(max-width: 600px) {
+        font-size: 18px;
+      }
+    }
+
+    .swiper{
+      width: 90vw;
+      height: 200px;
+      overflow: hidden;
+      cursor: grab;
+
+      & div:nth-child(1){
+        display: flex;
+        width: fit-content;
+        justify-content: space-between;
+        & div:nth-child(n){
+          background-color: black;
+          color:white;
+          height: 400px;
+          //width: 400px !important;
+        }
+      }
+    }
+
+
+
+  }
+}

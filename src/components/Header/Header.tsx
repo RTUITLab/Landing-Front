@@ -1,5 +1,13 @@
 import styles from './Header.module.scss'
 import React, {useEffect, useRef, useState} from "react";
+
+declare module 'react'{
+  interface HTMLAttributes<T> {
+    scroll?:any,
+    show?:any
+  }
+}
+
 export default function Header() {
 
   const pages = [
@@ -17,6 +25,8 @@ export default function Header() {
   const line: React.RefObject<any> = useRef<HTMLDivElement>()
   const parentContainer: React.RefObject<any> = useRef<HTMLDivElement>()
   const [isMobile, setIsMobile] = useState(false)
+  const [scroll, setScroll] = useState(false)
+  const [show, setShow] = useState(false)
 
   function setLineProperties(i?: number) {
     let obj = elemsParent.current.children[active]
@@ -37,7 +47,7 @@ export default function Header() {
 
   function onElementsParentClick(e:any) {
     if (isMobile) {
-      elemsParent.current.setAttribute("show", "false")
+      setShow(false)
     }
   }
 
@@ -53,14 +63,15 @@ export default function Header() {
         setIsMobile(true)
       }else{
         setIsMobile(false)
+        setShow(false)
         setLineProperties(activeRef.current)
       }
     })
     window.addEventListener("scroll",()=>{
       if(window.scrollY>50){
-        parentContainer.current.setAttribute("scroll","true")
+        setScroll(true)
       }else{
-        parentContainer.current.setAttribute("scroll","false")
+        setScroll(false)
       }
     })
   }, [])
@@ -72,15 +83,14 @@ export default function Header() {
 
 
   return (
-    <div className={styles.headerParent} ref={parentContainer}>
+    <div className={styles.headerParent} scroll={scroll.toString()} ref={parentContainer}>
       <div onClick={() => {
-        let obj = elemsParent.current
-        obj.setAttribute("show", (!(obj.getAttribute("show") === "true")).toString())
+        setShow(!show)
       }}>
         <img src="/images/logo.png" alt=""/>
       </div>
       <div>
-        <div className={styles.elementsParent}
+        <div show={show.toString()} className={styles.elementsParent}
              ref={elemsParent} onMouseLeave={onMouseElemLeave}>
           {pages.map((e, i) => {
             return (

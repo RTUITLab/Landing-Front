@@ -1,0 +1,45 @@
+.projectsParent {
+  min-height: 60vh;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  margin-top: 100px;
+
+  padding: 0px 15px;
+
+  .content{
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    h1{
+      font-weight: bold;
+      font-size: 56px;
+      line-height: 66px;
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+    }
+    .logo{
+      width: 50vw;
+      max-width: 300px;
+
+    }
+    .text{
+      max-width: 950px;
+      font-family: Raleway;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+      color: #666666;
+
+      @media(max-width: 600px) {
+        font-size: 18px;
+      }
+    }
+  }
+}

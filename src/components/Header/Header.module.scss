@@ -2,34 +2,48 @@
 
 .headerParent {
   transition: all 250ms ease;
-  padding: 30px 50px;
+  padding: 50px 50px;
   position: fixed;
   top: 0px;
   display: flex;
   column-gap: 20px;
   align-items: center;
   width: 100vw;
+  z-index: 50;
+  color: white;
+
 
   -moz-user-select: none;
-  -o-user-select:none;
+  -o-user-select: none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
 
-  &[scroll=true]{
+  &[scroll=true] {
     background-color: white;
     padding: 15px 30px;
+    color: black;
+
     -webkit-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+
+    .line{
+      background-color: black;
+    }
+    img{
+      width: 50px;
+    }
   }
 
-  img{
-    transition: all 50ms ease-in;
-    width: 50px;
+  img {
+    transition: all 250ms ease;
+    width: 0px;
     height: fit-content;
-    &:active{
+    cursor: pointer;
+
+    &:active {
       transform: scale(0.8);
     }
   }
@@ -40,7 +54,6 @@
     column-gap: 20px;
 
 
-
     .element {
       transition: all 100ms ease;
       font-weight: bold;
@@ -48,7 +61,7 @@
       line-height: 21px;
       cursor: pointer;
 
-      &:active{
+      &:active {
         padding-top: 2px;
         margin-bottom: -2px;
       }
@@ -61,12 +74,12 @@
     height: 5px;
     margin-top: 2px;
     border-radius: 100px;
-    background-color: $black;
+    background-color: white;
   }
 
   @media(max-width: 1000px) {
     padding: 20px 20px;
-    .elementsParent{
+    .elementsParent {
       column-gap: 15px;
     }
   }
@@ -78,20 +91,24 @@
     -webkit-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
     box-shadow: 0px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    img{
+      width: 50px;
+    }
 
-    &[scroll=true]{
+    &[scroll=true] {
       padding: 10px 20px;
     }
 
-    .elementsParent[show=true]{
-      left:0px;
+    .elementsParent[show=true] {
+      left: 0px;
       visibility: visible;
+      color: black;
     }
-    .elementsParent{
+    .elementsParent {
       transition: all 250ms ease;
       position: absolute;
       width: 100vw;
-      top:70px;
+      top: 70px;
       left: -100vw;
       visibility: hidden;
       flex-direction: column;
@@ -101,14 +118,14 @@
 
       height: calc(100vh - 70px);
       background-color: rgba(255, 255, 255, 0.64);
-      backdrop-filter: blur(1px);
+      backdrop-filter: blur(10px) brightness(1.1);
 
 
-      .element{
+      .element {
         text-align: center;
       }
     }
-    .line{
+    .line {
       display: none;
     }
   }

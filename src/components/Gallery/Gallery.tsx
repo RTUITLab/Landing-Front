@@ -52,7 +52,7 @@ export default function Gallery({children, active = 0,onMouseDown=(e)=>{},onMous
   }
 
   const clearStyles=(i:number)=>{
-    let childrens=document.querySelectorAll("."+styles.parent+" > *")
+    let childrens=elem.current.querySelectorAll("."+styles.parent+" > *")
     childrens.forEach((e:any, index:number)=>{
       e.style.opacity="0"
       if(index<i){
@@ -78,7 +78,7 @@ export default function Gallery({children, active = 0,onMouseDown=(e)=>{},onMous
   }
 
   const setOpacity=(i:number)=>{
-    let childrens=document.querySelectorAll("."+styles.parent+" > *")
+    let childrens=elem.current.querySelectorAll("."+styles.parent+" > *")
     childrens.forEach((e:any, index:number)=>{
       e.style.opacity="0"
     })
