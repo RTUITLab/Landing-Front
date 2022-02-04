@@ -1,4 +1,4 @@
-export interface AchievementPageTemplate {
+export interface AchievementPageTemplateProps {
   title: string,
   coverLink: string,
   desc: string,

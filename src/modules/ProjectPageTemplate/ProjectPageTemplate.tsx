@@ -1,8 +1,8 @@
 import {Helmet} from "react-helmet";
-import {ProjectPageTemplate} from './types'
+import {ProjectPageTemplateProps} from './types'
 
 
-export default function ProjectPageTemplate({title, coverLink, desc}: ProjectPageTemplate) {
+export default function ProjectPageTemplate({title, coverLink, desc}: ProjectPageTemplateProps) {
   return (
     <div>
       <Helmet

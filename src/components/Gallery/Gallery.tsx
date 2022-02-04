@@ -1,10 +1,9 @@
 import styles from './Gallery.module.scss'
 import {useEffect, useRef, useState} from "react";
 import {isMobile} from "../other";
+import {GalleryItemProps, GalleryProps} from "./types";
 
-interface GalleryItemProps{
-  children:any
-}
+
 
 export function GalleryItem({children}:GalleryItemProps){
 
@@ -16,13 +15,7 @@ export function GalleryItem({children}:GalleryItemProps){
 }
 
 
-interface GalleryProps {
-  children: any,
-  active?: number,
-  onMouseDown?:(e:any)=>void,
-  onMouseUp?:(e:any)=>void,
-  onChange?:(e:number)=>void
-}
+
 
 var localActiveView=0
 var ratio=200

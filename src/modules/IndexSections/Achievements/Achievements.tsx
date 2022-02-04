@@ -24,7 +24,7 @@ export default function Achievements() {
         <Swiper
           slidesPerView={3}
           spaceBetween={30}
-          onSlideChange={(i)=>{console.log(i.realIndex)}}
+          onSlideChange={(i:any)=>{console.log(i.realIndex)}}
           className={styles.swiper}
         >
           <SwiperSlide><div>fds</div></SwiperSlide>

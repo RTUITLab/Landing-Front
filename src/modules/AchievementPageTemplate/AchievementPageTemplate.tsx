@@ -1,7 +1,7 @@
 import {Helmet} from "react-helmet";
-import {AchievementPageTemplate} from "./types";
+import {AchievementPageTemplateProps} from "./types";
 
-export default function AchievementPageTemplate({title, coverLink, desc}: AchievementPageTemplate) {
+export default function AchievementPageTemplate({title, coverLink, desc}: AchievementPageTemplateProps) {
   return (
     <div>
       <Helmet
