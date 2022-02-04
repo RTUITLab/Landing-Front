@@ -1,11 +1,5 @@
 import {Helmet} from "react-helmet";
-
-
-interface AchievementPageTemplate {
-  title: string,
-  coverLink: string,
-  desc: string,
-}
+import {AchievementPageTemplate} from "./types";
 
 export default function AchievementPageTemplate({title, coverLink, desc}: AchievementPageTemplate) {
   return (

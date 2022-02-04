@@ -1,11 +1,6 @@
 import {Helmet} from "react-helmet";
+import {ProjectPageTemplate} from './types'
 
-
-interface ProjectPageTemplate {
-  title: string,
-  coverLink: string,
-  desc: string,
-}
 
 export default function ProjectPageTemplate({title, coverLink, desc}: ProjectPageTemplate) {
   return (

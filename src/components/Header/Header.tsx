@@ -1,12 +1,6 @@
 import styles from './Header.module.scss'
 import React, {useEffect, useRef, useState} from "react";
 
-declare module 'react'{
-  interface HTMLAttributes<T> {
-    scroll?:any,
-    show?:any
-  }
-}
 
 export default function Header() {
 
