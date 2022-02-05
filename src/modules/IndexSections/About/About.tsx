@@ -8,14 +8,17 @@ export default function About() {
     var parallaxInstance = new Parallax(document.getElementById("scene"));
 
     if(window.innerWidth<850){
-      parallaxInstance.disable()
+      parallaxInstance.destroy()
+      lastEnable=false
     }else{
-      parallaxInstance.enable()
+      lastEnable=true
+      parallaxInstance = new Parallax(document.getElementById("scene"));
     }
     window.addEventListener("resize",()=>{
       if(window.innerWidth<850){
         if(lastEnable){
           parallaxInstance.destroy()
+
         }
         lastEnable=false
 
@@ -24,7 +27,6 @@ export default function About() {
           parallaxInstance = new Parallax(document.getElementById("scene"));
         }
         lastEnable=true
-
       }
     })
   }, [])
@@ -46,9 +48,9 @@ export default function About() {
         </div>
       </div>
       <div data-relative-input={"true"} id="scene" className={styles.backgroundParallax}>
-        <img data-depth="0.6" src="/images/htc_vive.png" alt=""/>
-        <img data-depth="0.8" src="/images/hololens.png" alt=""/>
-        <img src="/images/background.png" alt="" data-depth="0.3" className={styles.background}/>
+        <img data-depth="0.6" src="/images/htc_vive.webp" alt="Очки виртуальной реальности Htc Vive"/>
+        <img data-depth="0.8" src="/images/hololens.webp" alt="Очки дополненной реальности Hololens"/>
+        <img src="/images/background.webp" alt="" data-depth="0.3" className={styles.background}/>
       </div>
 
       {/*<div data-relative-input="true" id="scene">*/}

@@ -1,13 +1,11 @@
 .achievementsParent {
-  min-height: 100vh;
   overflow: hidden;
-
+  background: #F3F3F3;
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 0px 15px;
-
+  padding: 10vh 0px;
 
   .content{
     display: flex;
@@ -21,6 +19,10 @@
       text-align: center;
       padding: 0px;
       margin: 0px;
+
+      @media(max-width: 400px) {
+        font-size: 40px;
+      }
     }
     .logo{
       width: 50vw;
@@ -44,18 +46,18 @@
 
     .swiper{
       width: 90vw;
-      height: 200px;
+      height: 500px;
       overflow: hidden;
       cursor: grab;
 
-      & div:nth-child(1){
+      & div:nth-child(n){
         display: flex;
         width: fit-content;
-        justify-content: space-between;
+        justify-content: center;
         & div:nth-child(n){
-          background-color: black;
-          color:white;
-          height: 400px;
+          //background-color: black;
+          //color:white;
+          height: fit-content;
           //width: 400px !important;
         }
       }

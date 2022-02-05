@@ -6,3 +6,7 @@ declare module 'react'{
     show?:any
   }
 }
+
+export interface HeaderProps{
+  appContainer:React.RefObject<any>
+}

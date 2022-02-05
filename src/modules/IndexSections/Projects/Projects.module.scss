@@ -1,14 +1,10 @@
 .projectsParent {
-  min-height: 60vh;
   overflow: hidden;
-
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
-  margin-top: 100px;
-
-  padding: 0px 15px;
+  padding: 10vh 15px;
 
   .content{
     display: flex;
