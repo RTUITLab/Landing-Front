@@ -34,7 +34,6 @@ export default function About() {
   return (
     <div id={"ff"} className={styles.aboutParent}>
       <div className={styles.content}>
-        <h1>О нас</h1>
         <section className={styles.logoAndName}>
           <img className={styles.logo} src="/images/logo.svg" alt="Логотип лаборатории"/>
           <div>
@@ -52,11 +51,6 @@ export default function About() {
         <img data-depth="0.8" src="/images/hololens.webp" alt="Очки дополненной реальности Hololens"/>
         <img src="/images/background.webp" alt="" data-depth="0.3" className={styles.background}/>
       </div>
-
-      {/*<div data-relative-input="true" id="scene">*/}
-      {/*  <div data-depth="0.3">My first Layer!</div>*/}
-      {/*  <div data-depth="0.6">My first Layer!</div>*/}
-      {/*</div>*/}
     </div>
   )
 }

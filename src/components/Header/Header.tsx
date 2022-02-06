@@ -73,7 +73,7 @@ export default function Header({appContainer}: HeaderProps) {
     } else {
       let elem = appContainer.current.children[i + 1]
       window.scrollTo({
-        top: elem.offsetTop - (isMobile ? parentContainer.current.offsetHeight : 84),
+        top: elem.offsetTop - (isMobile ? parentContainer.current.offsetHeight-5 : 84),
         behavior: 'smooth',
       })
     }
@@ -122,7 +122,7 @@ export default function Header({appContainer}: HeaderProps) {
         }
         setActive(lastActive)
       }
-    })
+    }, {passive: true})
   }, [])
   useEffect(() => {
     setLineProperties(active)

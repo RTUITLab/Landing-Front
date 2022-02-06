@@ -100,19 +100,17 @@
     }
 
     .elementsParent[show=true] {
+      transition: left 250ms ease;
       left: 0px;
-      visibility: visible;
       color: black;
-      opacity: 1;
 
     }
     .elementsParent {
-      transition: all 250ms ease;
+      transition: left 250ms ease;
       position: fixed;
       width: 100vw;
       top: 70px;
-      left: -100vw;
-      visibility: hidden;
+      left: -105vw;
       flex-direction: column;
       align-items: center;
       row-gap: 10px;
@@ -121,7 +119,6 @@
       height: calc(100vh - 70px);
       background-color: rgba(255, 255, 255, 0.64);
       backdrop-filter: blur(10px) brightness(1.1);
-      opacity: 0;
 
 
       .element {

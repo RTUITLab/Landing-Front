@@ -1,7 +1,23 @@
 import styles from './Projects.module.scss'
 import Gallery, {GalleryItem} from "../../../components/Gallery/Gallery";
+import {useEffect, useState} from "react";
 
 export default function Projects() {
+  const [activeTab, setActiveTab] = useState(0)
+  const [viewGallery, setViewGallery] = useState(false)
+  const Tabs=["Backend", "Frontend", "VR", "AR", "Machine Learning"]
+  const [activeView, setActiveView] = useState(0)
+  const [galleryBuff, setGalleryBuff] = useState(0)
+
+  const elements=[1,2,3,4]
+
+
+  useEffect(()=>{
+    setViewGallery(false)
+    setTimeout(()=>{
+      setViewGallery(true)
+    },300)
+  },[activeTab])
 
   return (
     <div className={styles.projectsParent}>
@@ -14,28 +30,48 @@ export default function Projects() {
           ИТ проводит в сотрудничестве с компаниями Яндекс, Samsung и другими, а также преподают на внутренних кафедрах
           Института.
         </div>
-        <Gallery>
-          <GalleryItem>
-            <div style={{backgroundColor:"black"}}>
+        <div className={styles.tags}>
+          {Tabs.map((e,i)=>{
+            return <div key={i} active={(activeTab===i).toString()} onClick={()=>setActiveTab(i)}>{e}</div>
+          })}
+        </div>
+        <div className={styles.galleryParent} hide={(!viewGallery).toString()}>
+          <Gallery active={galleryBuff} onChange={(i)=>{
+              setActiveView(i)
+          }}>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.argoinvestigazioni.com/wp-content/uploads/2019/05/img-test8-bg.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://gemakjruntul.files.wordpress.com/2016/02/mkfscramfs.png" alt=""/>
+            </GalleryItem>
+          </Gallery>
+          <div className={styles.statusBar}>
+            {elements.map((e,i)=>{
+              return(
+                <div key={i} onClick={()=> {
+                  setActiveView(i)
+                  if(galleryBuff===i){
+                    setGalleryBuff(activeView)
+                    setTimeout(()=>{
+                      setGalleryBuff(i)
+                    },15)
+                  }else{
+                    setGalleryBuff(i)
+                  }
+                }} active={(i===activeView).toString()}>
+                </div>
+              )
+            })}
+          </div>
+        </div>
 
-            </div>
-          </GalleryItem>
-          <GalleryItem>
-            <div style={{backgroundColor:"black"}}>
-
-            </div>
-          </GalleryItem>
-          <GalleryItem>
-            <div style={{backgroundColor:"black"}}>
-
-            </div>
-          </GalleryItem>
-          <GalleryItem>
-            <div style={{backgroundColor:"red"}}>
-
-            </div>
-          </GalleryItem>
-        </Gallery>
       </div>
     </div>
   )

@@ -9,6 +9,8 @@
   .content{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     row-gap: 40px;
     h1{
       font-weight: bold;
@@ -35,6 +37,71 @@
 
       @media(max-width: 600px) {
         font-size: 18px;
+      }
+    }
+
+    .tags{
+      display: flex;
+      justify-content: space-between;
+      max-width: 450px;
+      width:100%;
+      flex-wrap: wrap;
+      row-gap: 20px;
+      padding-bottom: 5px;
+      margin-bottom: -25px;
+      border-bottom: 1px #666666 solid;
+
+      font-family: Raleway;
+      font-style: normal;
+      font-weight: normal;
+      color: #666666;
+
+      @media(max-width: 500px) {
+        flex-wrap: wrap;
+        border-bottom: none;
+        justify-content: center;
+        column-gap: 25px;
+      }
+
+      & div:nth-child(n){
+        cursor: pointer;
+      }
+      & div:nth-child(n)[active=true]{
+        border-bottom: 1px black solid;
+        padding-bottom: 6px;
+        margin-bottom: -6px;
+        font-weight: bold;
+        color: black;
+      }
+    }
+    .galleryParent{
+      transition: all 250ms ease;
+
+      &[hide=true]{
+        transition: all 250ms ease;
+        transform: translateY(10px);
+        opacity: 0;
+      }
+
+      .statusBar{
+        display: flex;
+        justify-content: center;
+        width: fit-content;
+        column-gap: 20px;
+        margin-top: 20px;
+
+        & div:nth-child(n){
+          transition: all 250ms ease;
+          cursor: pointer;
+          width: 15px;
+          height: 15px;
+          border-radius: 100%;
+          border: 5px #0066CC solid;
+
+          &[active=true]{
+            background-color: #0066CC;
+          }
+        }
       }
     }
   }

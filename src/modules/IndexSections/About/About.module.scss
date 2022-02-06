@@ -21,9 +21,7 @@
   }
 
 
-
-
-    .background {
+  .background {
     position: absolute;
     object-fit: cover;
     width: 120vw;
@@ -31,10 +29,9 @@
     height: 120vh;
     margin-top: -10vh;
     z-index: 1;
-
+    filter: brightness(0.6);
 
     @media(max-height: 720px) and (max-width: 600px) {
-      filter: blur(5px);
       width: 120vw;
       margin-left: -10vw;
       height: 120vh;

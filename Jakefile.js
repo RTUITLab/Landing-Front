@@ -1,29 +1,72 @@
 const exec = require("child_process").exec;
 const fs = require("fs");
+const {readdir} = require("fs/promises")
 const ENV_PATH = "./.env";
 const ENV_REACT_APP_BUILD_YEAR_ROW = `REACT_APP_BUILD_YEAR=${new Date().getFullYear()}`;
 const ENV_REACT_APP_BUILD_YEAR_REGEX = /^REACT_APP_BUILD_YEAR=.*$/m;
 
 
 desc("Build Landing Front for production");
-task("default", ["createEnv", "buildFrontProd"], function () {
+task("default", ["createEnv","buildFrontProd","create service-worker"], function () {
 });
 
 
-// task("test", function () {
-//   return new Promise((resolve, reject) => {
-//     let list = new jake.FileList();
-//     list.include('./*.md');
-//     for (let i of list.toArray()) {
-//       let data = fs.readFileSync(i, "utf8")
-//       let regexp = new RegExp(/[\n\r]{1,2}Last build: \d{2}\.\d{2}\.\d{4}\,\s\d{2}\:\d{2}\:\d{2}/gm)
-//       data = data.replace(regexp, "")
-//       data += "Last build: " + (new Date()).toLocaleString("ru")
-//       fs.writeFileSync(i, data)
-//       resolve(true)
-//     }
-//   })
-// })
+let count = 0
+
+async function ParseDirectory(resolve, list, dirPath) {
+  try {
+    const files = await readdir("./" + dirPath);
+    for (const i of files) {
+      let buff = ""
+      if (fs.lstatSync("./" + dirPath + "/" + i).isDirectory()) {
+        buff = ""
+        count++
+        await ParseDirectory(resolve, list, dirPath + "/" + i).then(() => count--)
+      } else {
+        buff = ("/" + dirPath + "/" + i)
+      }
+      buff = buff.replace(/\/build/gm, "")
+      if(buff){
+        list.push(buff)
+      }
+    }
+    if (count === 0) {
+      resolve()
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+desc("Create new service-worker.js file from serviceWorkerSample.js with new cache version and new caching links")
+task("create service-worker", function () {
+  return new Promise((resolve, reject) => {
+    let list = []
+
+    ParseDirectory(() => {
+      list.splice(list.indexOf("/service-worker.js"),1)
+      list.splice(list.indexOf("/robots.txt"),1)
+      list.splice(list.indexOf("/index.html"),1)
+      list.push("/")
+
+      let data = fs.readFileSync("./serviceWorkerSample.js", "utf-8")
+      let dataSample = fs.readFileSync("./serviceWorkerSample.js", "utf-8")
+      let version = data.matchAll(/(var CACHE_NAME = )\'v(\d*)\';/gm)
+      let versionParse=version.next().value
+      let newVersion = versionParse[0].replace("v"+versionParse[2].toString(),"v"+(Number(versionParse[2])+1).toString())
+      data = data.replace("// THIS MESSAGE FOR PARSER #urls", JSON.stringify(list)
+        .replace(/(\[|\])/gm, "")
+        .replaceAll(",", ",\n\t\t\t\t\t\t\t"))
+        .replace(versionParse[0],newVersion)
+
+      fs.writeFileSync("./build/service-worker.js", data, "utf-8")
+      fs.writeFileSync("./serviceWorkerSample.js", dataSample.replace(versionParse[0],newVersion), "utf-8")
+      resolve()
+    }, list, "build")
+
+
+  })
+})
 
 desc("Create .env file with year of build");
 task("createEnv", function () {
@@ -41,7 +84,6 @@ task("createEnv", function () {
       } else {
         data = ENV_REACT_APP_BUILD_YEAR_ROW;
       }
-      console.info(data);
       fs.writeFileSync(ENV_PATH, data);
     } catch (error) {
       console.error(error);

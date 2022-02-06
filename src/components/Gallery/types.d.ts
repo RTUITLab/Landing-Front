@@ -1,3 +1,9 @@
+export declare module 'react'{
+  export interface HTMLAttributes<T> {
+    hide?:string
+  }
+}
+
 export interface GalleryProps {
   children: any,
   active?: number,
@@ -7,5 +13,8 @@ export interface GalleryProps {
 }
 
 export interface GalleryItemProps {
-  children: any
+  children: any,
+  hide?:boolean
 }
+
+
