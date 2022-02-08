@@ -1,6 +1,7 @@
 import styles from './Projects.module.scss'
 import Gallery, {GalleryItem} from "../../../components/Gallery/Gallery";
 import {useEffect, useState} from "react";
+import StatusBar from "../../../components/StatusBar/StatusBar";
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState(0)
@@ -51,25 +52,54 @@ export default function Projects() {
             <GalleryItem>
               <img draggable={false} src="https://gemakjruntul.files.wordpress.com/2016/02/mkfscramfs.png" alt=""/>
             </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.argoinvestigazioni.com/wp-content/uploads/2019/05/img-test8-bg.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://gemakjruntul.files.wordpress.com/2016/02/mkfscramfs.png" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.argoinvestigazioni.com/wp-content/uploads/2019/05/img-test8-bg.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://gemakjruntul.files.wordpress.com/2016/02/mkfscramfs.png" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.argoinvestigazioni.com/wp-content/uploads/2019/05/img-test8-bg.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://www.sideline.com/wp-content/uploads/2017/03/img-test600x400.jpg" alt=""/>
+            </GalleryItem>
+            <GalleryItem>
+              <img draggable={false} src="https://gemakjruntul.files.wordpress.com/2016/02/mkfscramfs.png" alt=""/>
+            </GalleryItem>
           </Gallery>
-          <div className={styles.statusBar}>
-            {elements.map((e,i)=>{
-              return(
-                <div key={i} onClick={()=> {
-                  setActiveView(i)
-                  if(galleryBuff===i){
-                    setGalleryBuff(activeView)
-                    setTimeout(()=>{
-                      setGalleryBuff(i)
-                    },15)
-                  }else{
-                    setGalleryBuff(i)
-                  }
-                }} active={(i===activeView).toString()}>
-                </div>
-              )
-            })}
-          </div>
+          <StatusBar count={16} onChange={(i)=>{
+            setActiveView(i)
+            if(galleryBuff===i){
+              setGalleryBuff(activeView)
+              setTimeout(()=>{
+                setGalleryBuff(i)
+              },15)
+            }else{
+              setGalleryBuff(i)
+            }
+          }} active={activeView}/>
         </div>
 
       </div>

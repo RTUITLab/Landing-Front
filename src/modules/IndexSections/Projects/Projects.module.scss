@@ -56,6 +56,10 @@
       font-weight: normal;
       color: #666666;
 
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+
       @media(max-width: 500px) {
         flex-wrap: wrap;
         border-bottom: none;
@@ -93,10 +97,10 @@
         & div:nth-child(n){
           transition: all 250ms ease;
           cursor: pointer;
-          width: 15px;
-          height: 15px;
+          width: 12px;
+          height: 12px;
           border-radius: 100%;
-          border: 5px #0066CC solid;
+          border: 3px #0066CC solid;
 
           &[active=true]{
             background-color: #0066CC;

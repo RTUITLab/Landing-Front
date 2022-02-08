@@ -56,6 +56,7 @@ export default function Header({appContainer}: HeaderProps) {
   }
 
   function onElementsParentClick(e: any) {
+    // e.stopPropagation()
     if (isMobile) {
       setShow(false)
     }
@@ -155,6 +156,8 @@ export default function Header({appContainer}: HeaderProps) {
         </div>
         <div className={styles.line} ref={line}></div>
       </div>
+      <div onClick={()=>setShow(false)}  show={show.toString()} className={styles.backgroundElement}></div>
+
     </div>
   )
 }

@@ -99,13 +99,9 @@
       padding: 10px 20px;
     }
 
-    .elementsParent[show=true] {
-      transition: left 250ms ease;
-      left: 0px;
-      color: black;
 
-    }
     .elementsParent {
+      z-index: 5;
       transition: left 250ms ease;
       position: fixed;
       width: 100vw;
@@ -116,18 +112,38 @@
       row-gap: 10px;
       padding-top: 20%;
 
-      height: calc(100vh - 70px);
-      background-color: rgba(255, 255, 255, 0.64);
-      backdrop-filter: blur(10px) brightness(1.1);
 
 
       .element {
         text-align: center;
       }
     }
+    .elementsParent[show=true] {
+      transition: left 250ms ease;
+      left: 0px;
+      color: black;
+    }
     .line {
       display: none;
     }
+  }
+
+  .backgroundElement{
+    transition: all 250ms ease;
+    height: calc(100vh - 72px);
+    left: 0px;
+    top:72px;
+    visibility: hidden;
+    z-index: 2;
+    width: 100vw;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.64);
+    backdrop-filter: blur(10px) brightness(1.1);
+    opacity: 0;
+  }
+  .backgroundElement[show=true]{
+    opacity: 1;
+    visibility: visible;
   }
 }
 

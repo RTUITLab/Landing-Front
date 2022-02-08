@@ -32,7 +32,7 @@ export default function About() {
   }, [])
 
   return (
-    <div id={"ff"} className={styles.aboutParent}>
+    <div className={styles.aboutParent}>
       <div className={styles.content}>
         <section className={styles.logoAndName}>
           <img className={styles.logo} src="/images/logo.svg" alt="Логотип лаборатории"/>

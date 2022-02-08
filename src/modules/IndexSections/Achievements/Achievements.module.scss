@@ -7,12 +7,13 @@
   padding: 0px 15px;
   padding: 10vh 0px;
 
-  .content{
+  .content {
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 40px;
-    h1{
+
+    h1 {
       font-weight: bold;
       font-size: 56px;
       line-height: 66px;
@@ -24,12 +25,14 @@
         font-size: 40px;
       }
     }
-    .logo{
+
+    .logo {
       width: 50vw;
       max-width: 300px;
 
     }
-    .text{
+
+    .text {
       max-width: 950px;
       font-family: Raleway;
       font-style: normal;
@@ -44,17 +47,46 @@
       }
     }
 
-    .swiper{
+    .swiper {
       width: 90vw;
       height: 500px;
       overflow: hidden;
       cursor: grab;
 
-      & div:nth-child(n){
+      // For statusBar in swiper, other in index.css --> .swiper-pagination
+      & div:nth-child(1) {
+        --swiper-theme-color: #0066CC;
+        --swiper-pagination-bullet-inactive-color: white;
+        display: flex;
+        justify-content: center;
+        column-gap: 10px;
+
+        & span {
+          transition: all 250ms ease;
+          cursor: pointer;
+          width: 12px;
+          height: 12px;
+          border-radius: 100%;
+          opacity: 1;
+          border: 3px #0066CC solid;
+        }
+
+        @media(max-width: 700px) {
+          column-gap: 0px;
+          & span{
+            width: 5px;
+            height: 5px;
+          }
+        }
+      }
+
+      // for swiper elements
+      & div:nth-child(n) {
         display: flex;
         width: fit-content;
         justify-content: center;
-        & div:nth-child(n){
+
+        & div:nth-child(n) {
           //background-color: black;
           //color:white;
           height: fit-content;
@@ -62,8 +94,6 @@
         }
       }
     }
-
-
 
   }
 }

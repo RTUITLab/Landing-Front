@@ -1,6 +1,6 @@
 const exec = require("child_process").exec;
 const fs = require("fs");
-const {readdir} = require("fs/promises")
+const {readdir} = require("fs").promises
 const ENV_PATH = "./.env";
 const ENV_REACT_APP_BUILD_YEAR_ROW = `REACT_APP_BUILD_YEAR=${new Date().getFullYear()}`;
 const ENV_REACT_APP_BUILD_YEAR_REGEX = /^REACT_APP_BUILD_YEAR=.*$/m;

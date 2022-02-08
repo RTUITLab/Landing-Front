@@ -1,32 +1,24 @@
 import styles from './Achievements.module.scss'
+import statusBarStyles from '../../../components/StatusBar/StatusBar.module.scss'
 
 import {Swiper, SwiperSlide} from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "../../../index.css"
-import {Pagination} from "swiper";
+import {Controller, Pagination} from "swiper";
 import AchievementCard from "../../../components/AchievementCard/AchievementCard";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import ReactDOM from "react-dom";
 
 export default function Achievements() {
-  const [count, setCount] = useState(getCount())
 
-
-  function getCount(){
-    const size = window.innerWidth
-    if(size<=600) return 1
-      else if(size>1030 && size<=1200) return 2
-    else return 3
-  }
-
-
-  useEffect(()=>{
-    window.addEventListener("resize",()=>{
-
-    })
-  },[])
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index:any, className:any) {
+      return '<span class="'+className+'"></span>';
+    },
+  };
 
   return (
     <div className={styles.achievementsParent}>
@@ -39,28 +31,33 @@ export default function Achievements() {
           конференциях.
         </div>
 
-        <Swiper
-          slidesPerView={"auto"}
-          spaceBetween={15}
-          onSlideChange={(i:any)=>{console.log(i.realIndex)}}
-          className={styles.swiper}
-        >
-          <SwiperSlide>
-            <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"f"} cover={"/images/background.webp"} link={"f"}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
-          </SwiperSlide>
-          <SwiperSlide>
-            <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойffff ffffffffffffff fffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
-          </SwiperSlide>
-        </Swiper>
+        <div id={"swiperParent"}>
+          <Swiper
+            pagination={pagination}
+            modules={[Pagination]}
+            slidesPerView={"auto"}
+            spaceBetween={15}
+
+            className={styles.swiper}
+          >
+            <SwiperSlide>
+              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"f"} cover={"/images/background.webp"} link={"f"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
+            </SwiperSlide>
+            <SwiperSlide>
+              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойffff ffffffffffffff fffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+
       </div>
     </div>
   )
