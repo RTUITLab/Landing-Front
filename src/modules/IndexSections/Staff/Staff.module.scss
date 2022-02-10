@@ -1,0 +1,46 @@
+.parent {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #F3F3F3;
+  padding: 10vh 15px;
+
+
+
+  .content {
+    max-width: 100%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 40px;
+
+    h1 {
+      font-weight: bold;
+      font-size: 56px;
+      line-height: 66px;
+      text-align: center;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    .cards{
+      column-gap: 15px;
+      overflow: auto;
+      display: flex;
+    }
+
+    .swiper {
+      width: 90vw;
+      height: fit-content;
+      overflow: hidden;
+      cursor: grab;
+
+      & div:nth-child(n) {
+        width: fit-content;
+      }
+    }
+  }
+}

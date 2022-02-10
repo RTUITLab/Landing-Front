@@ -7,12 +7,49 @@ const ENV_REACT_APP_BUILD_YEAR_REGEX = /^REACT_APP_BUILD_YEAR=.*$/m;
 
 
 desc("Build Landing Front for production");
-task("default", ["createEnv","buildFrontProd","create service-worker"], function () {
+task("default", ["parse staff.md","createEnv","buildFrontProd","create service-worker"], function () {
 });
 
 
-let count = 0
+desc("Creating staff.json file from /other/staff.md")
+task("parse staff.md",function (){
 
+  return new Promise((resolve, reject)=>{
+
+    function parseMD(str){
+      const regex = /((\#\s[^\n]*))*\n*\-\s([^\:]*)\:\s(.*)/gm;
+
+      let m;
+
+      let list=[]
+      let index=-1
+
+      while ((m = regex.exec(str)) !== null) {
+        // This is necessary to avoid infinite loops with zero-width matches
+        if (m.index === regex.lastIndex) {
+          regex.lastIndex++;
+        }
+        if(m[2]!==undefined){
+          index++
+          list[index]={fio:m[2].replace(/^\#\s/gmi,"").replaceAll("\r","")}
+        }
+        for(let i=3; i<m.length;i++){
+          list[index][m[i]]=m[i+1]
+          i++
+        }
+      }
+
+      return list
+    }
+
+    let data = fs.readFileSync("./other/staff.md","utf-8")
+    let list = parseMD(data)
+    fs.writeFileSync("./public/staff.json",JSON.stringify(list),"utf-8")
+    resolve()
+  })
+})
+
+let count = 0
 async function ParseDirectory(resolve, list, dirPath) {
   try {
     const files = await readdir("./" + dirPath);
@@ -49,8 +86,8 @@ task("create service-worker", function () {
       list.splice(list.indexOf("/index.html"),1)
       list.push("/")
 
-      let data = fs.readFileSync("./serviceWorkerSample.js", "utf-8")
-      let dataSample = fs.readFileSync("./serviceWorkerSample.js", "utf-8")
+      let data = fs.readFileSync("./other/serviceWorkerSample.js", "utf-8")
+      let dataSample = data
       let version = data.matchAll(/(var CACHE_NAME = )\'v(\d*)\';/gm)
       let versionParse=version.next().value
       let newVersion = versionParse[0].replace("v"+versionParse[2].toString(),"v"+(Number(versionParse[2])+1).toString())
@@ -60,7 +97,7 @@ task("create service-worker", function () {
         .replace(versionParse[0],newVersion)
 
       fs.writeFileSync("./build/service-worker.js", data, "utf-8")
-      fs.writeFileSync("./serviceWorkerSample.js", dataSample.replace(versionParse[0],newVersion), "utf-8")
+      fs.writeFileSync("./other/serviceWorkerSample.js", dataSample.replace(versionParse[0],newVersion), "utf-8")
       resolve()
     }, list, "build")
 
