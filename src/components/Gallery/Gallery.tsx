@@ -12,10 +12,6 @@ export function GalleryItem({children, hide = false}: GalleryItemProps) {
   )
 }
 
-var localActiveView = 0
-var ratio = 200
-var lastX = 0;
-var newX = 0;
 
 export default function Gallery({
                                   children, active = 0, onMouseDown = (e) => {
@@ -24,6 +20,11 @@ export default function Gallery({
   }
                                 }: GalleryProps) {
 
+
+  let localActiveView = 0
+  let ratio:number = 200
+  let lastX = 0;
+  let newX = 0;
 
   const elem: any = useRef<any>()
 
@@ -136,7 +137,7 @@ export default function Gallery({
     while (t) {
       l++
       if (l > 2 && false) {
-        t.style.transform = `translate(${0}px,0px) scale(${0})`
+        t.style.transform = "translate(0px,0px) scale(0)"
       } else {
         t.style.transform = `translate(${calculateX(newX - lastX + ratio * l, l)}px,0px) scale(${calculateScale(newX - lastX + ratio * l, l)})`
 
@@ -192,40 +193,26 @@ export default function Gallery({
 
   function calculateRatio() {
     if (window.innerWidth < 1150) {
-      ratio = 150
       setTransform(localActiveView)
-      if (window.innerWidth < 1020) {
-        ratio = 130
-        setTransform(localActiveView)
-        if (window.innerWidth < 820) {
-          ratio = 100
-          setTransform(localActiveView)
-          if (window.innerWidth < 640) {
-            ratio = 80
-            setTransform(localActiveView)
-            if (window.innerWidth < 520) {
-              ratio = 60
-              setTransform(localActiveView)
-              if (window.innerWidth < 410) {
-                ratio = 40
-                setTransform(localActiveView)
-              } else {
-                ratio = 60
-              }
-            } else {
-              ratio = 80
-            }
-          } else {
-            ratio = 100
-          }
-        } else {
-          ratio = 130
-        }
-      } else {
-        ratio = 150
-      }
-    } else {
-      ratio = 200
+      return 150
+    }else if (window.innerWidth < 1020) {
+      setTransform(localActiveView)
+      return 130
+    }else if (window.innerWidth < 820) {
+      setTransform(localActiveView)
+      return 100
+    }else if (window.innerWidth < 640) {
+      setTransform(localActiveView)
+      return 80
+    }else if (window.innerWidth < 520) {
+      setTransform(localActiveView)
+      return 60
+    }else if (window.innerWidth < 410) {
+      setTransform(localActiveView)
+      return 40
+    }else{
+      setTransform(localActiveView)
+      return 40
     }
   }
 
@@ -233,12 +220,11 @@ export default function Gallery({
     elem.current.classList.add(styles.anim)
 
     setCurrentActivePanel(active)
-    calculateRatio()
+    ratio = calculateRatio()
 
-    window.addEventListener("resize", () => {
-      calculateRatio()
+    window.addEventListener("resize", function () {
+      ratio = calculateRatio()
       setCurrentActivePanel(localActiveView)
-
     })
     if (isMobile()) {
       elem.current.ontouchstart = (e: any) => {
@@ -281,7 +267,7 @@ export default function Gallery({
   }, [active])
 
   return (
-    <div style={{position:"relative", zIndex:"5"}}>
+    <div style={{position: "relative", zIndex: "5"}}>
       <div draggable={false} className={styles.parent} ref={elem}>
         {children}
       </div>

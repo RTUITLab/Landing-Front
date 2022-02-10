@@ -40,7 +40,7 @@ export default function Achievements() {
 
             className={styles.swiper}
           >
-            <SwiperSlide><div style={{width:"10vw"}}></div></SwiperSlide>
+            <SwiperSlide><div style={{width:"5vw"}}></div></SwiperSlide>
             <SwiperSlide>
               <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
             </SwiperSlide>
@@ -56,7 +56,7 @@ export default function Achievements() {
             <SwiperSlide>
               <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"Тесfffffffт какойffff ffffffffffffff fffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"} cover={"/images/background.webp"} link={"f"}/>
             </SwiperSlide>
-            <SwiperSlide><div style={{width:"10vw"}}></div></SwiperSlide>
+            <SwiperSlide><div style={{width:"5vw"}}></div></SwiperSlide>
 
           </Swiper>
         </div>

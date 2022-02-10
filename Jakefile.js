@@ -25,7 +25,6 @@ task("parse staff.md",function (){
       let index=-1
 
       while ((m = regex.exec(str)) !== null) {
-        // This is necessary to avoid infinite loops with zero-width matches
         if (m.index === regex.lastIndex) {
           regex.lastIndex++;
         }
@@ -81,25 +80,25 @@ task("create service-worker", function () {
     let list = []
 
     ParseDirectory(() => {
-      list.splice(list.indexOf("/service-worker.js"),1)
-      list.splice(list.indexOf("/robots.txt"),1)
-      list.splice(list.indexOf("/index.html"),1)
+      list.splice(list.indexOf("/service-worker.js"), 1)
+      list.splice(list.indexOf("/robots.txt"), 1)
+      list.splice(list.indexOf("/index.html"), 1)
       list.push("/")
 
       let data = fs.readFileSync("./other/serviceWorkerSample.js", "utf-8")
       let dataSample = data
       let version = data.matchAll(/(var CACHE_NAME = )\'v(\d*)\';/gm)
-      let versionParse=version.next().value
-      let newVersion = versionParse[0].replace("v"+versionParse[2].toString(),"v"+(Number(versionParse[2])+1).toString())
+      let versionParse = version.next().value
+      let newVersion = versionParse[0].replace("v" + versionParse[2].toString(), "v" + (Number(versionParse[2]) + 1).toString())
       data = data.replace("// THIS MESSAGE FOR PARSER #urls", JSON.stringify(list)
         .replace(/(\[|\])/gm, "")
         .replaceAll(",", ",\n\t\t\t\t\t\t\t"))
-        .replace(versionParse[0],newVersion)
+        .replace(versionParse[0], newVersion)
 
       fs.writeFileSync("./build/service-worker.js", data, "utf-8")
-      fs.writeFileSync("./other/serviceWorkerSample.js", dataSample.replace(versionParse[0],newVersion), "utf-8")
+      fs.writeFileSync("./other/serviceWorkerSample.js", dataSample.replace(versionParse[0], newVersion), "utf-8")
       resolve()
-    }, list, "build")
+    }, list, "bui ld")
 
 
   })

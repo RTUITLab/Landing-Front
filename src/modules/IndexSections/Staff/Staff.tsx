@@ -8,7 +8,7 @@ export default function Staff() {
   const [staff, setStaff] = useState([])
 
 
-  function shuffle(array:[]) {
+  function shuffle(array: []) {
     let currentIndex = array.length, randomIndex;
 
     while (currentIndex != 0) {
@@ -48,13 +48,17 @@ export default function Staff() {
           }}
           modules={[Autoplay]}
         >
-          <SwiperSlide><div style={{width:"10vw"}}></div></SwiperSlide>
-          {staff.map((e:any,i) => {
+          <SwiperSlide>
+            <div style={{width: "5vw"}}></div>
+          </SwiperSlide>
+          {staff.map((e: any, i) => {
             return (
               <SwiperSlide key={i}><UsersCard fio={e.fio} tags={e.tags.split(", ")} img={e.img}/></SwiperSlide>
             )
           })}
-          <SwiperSlide><div style={{width:"10vw"}}></div></SwiperSlide>
+          <SwiperSlide>
+            <div style={{width: "5vw"}}></div>
+          </SwiperSlide>
         </Swiper>
       </div>
     </div>
