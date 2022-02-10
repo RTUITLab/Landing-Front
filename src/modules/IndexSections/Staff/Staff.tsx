@@ -48,11 +48,13 @@ export default function Staff() {
           }}
           modules={[Autoplay]}
         >
+          <SwiperSlide><div style={{width:"10vw"}}></div></SwiperSlide>
           {staff.map((e:any,i) => {
             return (
               <SwiperSlide key={i}><UsersCard fio={e.fio} tags={e.tags.split(", ")} img={e.img}/></SwiperSlide>
             )
           })}
+          <SwiperSlide><div style={{width:"10vw"}}></div></SwiperSlide>
         </Swiper>
       </div>
     </div>
