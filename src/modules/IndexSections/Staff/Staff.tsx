@@ -53,7 +53,7 @@ export default function Staff() {
           </SwiperSlide>
           {staff.map((e: any, i) => {
             return (
-              <SwiperSlide key={i}><UsersCard fio={e.fio} tags={e.tags.split(", ")} img={e.img}/></SwiperSlide>
+              <SwiperSlide key={i}><UsersCard fio={e.name} tags={e.tags.split(", ")} img={e.img}/></SwiperSlide>
             )
           })}
           <SwiperSlide>

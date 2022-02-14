@@ -8,6 +8,7 @@ import Index from "./pages/Index/Index";
 import ProjectPageTemplate from "./modules/ProjectPageTemplate/ProjectPageTemplate";
 import AchievementPageTemplate from "./modules/AchievementPageTemplate/AchievementPageTemplate";
 import {ParallaxProvider} from "react-scroll-parallax";
+import CP from "./pages/archievements/CP";
 
 declare module 'react' {
   interface HTMLAttributes<T> {
@@ -25,7 +26,7 @@ function App() {
           <Routes>
             <Route index element={<Index />} />
             <Route path="/project/test" element={<ProjectPageTemplate title={"title"} coverLink={"f"} desc={"Описание"}/>}/>
-            <Route path="/achievement/test" element={<AchievementPageTemplate title={"title"} coverLink={"f"} desc={"Описание"}/>}/>
+            <Route path="/achievement/test" element={<CP/>}/>
 
             {/**
              Errors

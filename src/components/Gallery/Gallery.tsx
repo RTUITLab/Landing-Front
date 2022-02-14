@@ -21,33 +21,33 @@ export default function Gallery({
                                 }: GalleryProps) {
 
 
-  let localActiveView = 0
-  let ratio:number = 200
+  const localActiveView = useRef(0)
+  let ratio: number = 200
   let lastX = 0;
   let newX = 0;
 
   const elem: any = useRef<any>()
 
 
-  const calculateScale = (x: number, n?: number) => {
-    if (localActiveView == 0 && (newX - lastX) > 0 && n !== undefined) {
+  const calculateScale = function (x: number, n?: number) {
+    if (localActiveView.current == 0 && (newX - lastX) > 0 && n !== undefined) {
       return 1 - 0.2 * n
-    } else if (localActiveView == elem.current.children.length - 1 && (newX - lastX) < 0 && n !== undefined) {
+    } else if (localActiveView.current == elem.current.children.length - 1 && (newX - lastX) < 0 && n !== undefined) {
       return 1 - 0.2 * n
     }
     return 1 - 0.2 * Math.abs(x) / ratio
   }
-  const calculateX = (x: number, n?: number) => {
-    if (localActiveView == 0 && (newX - lastX) > 0 && n !== undefined) {
+  const calculateX = function (x: number, n?: number) {
+    if (localActiveView.current == 0 && (newX - lastX) > 0 && n !== undefined) {
       return ((Math.pow(x / 1.2, 2 / 3)) + (ratio * n - Math.pow(ratio * n, 2 / 3)) / 1.2)
-    } else if (localActiveView == elem.current.children.length - 1 && (newX - lastX) < 0 && n !== undefined) {
+    } else if (localActiveView.current == elem.current.children.length - 1 && (newX - lastX) < 0 && n !== undefined) {
       return (-(Math.pow(-x / 1.2, 2 / 3)) - (ratio * n - Math.pow(ratio * n, 2 / 3)) / 1.2)
     }
 
     return x / 1.2
   }
 
-  const clearStyles = (i: number) => {
+  const clearStyles = function (i: number) {
     let childrens = elem.current.querySelectorAll("." + styles.parent + " > *")
     childrens.forEach((e: any, index: number) => {
       e.style.opacity = "0"
@@ -58,7 +58,7 @@ export default function Gallery({
       }
     })
   }
-  const setZ = (i: number) => {
+  const setZ = function (i: number) {
     let current: any = elem.current.children[i]
     current.style.zIndex = 5
     if (current.previousSibling) {
@@ -73,7 +73,7 @@ export default function Gallery({
     }
   }
 
-  const setOpacity = (i: number) => {
+  const setOpacity = function (i: number) {
     let childrens = elem.current.querySelectorAll("." + styles.parent + " > *")
     childrens.forEach((e: any, index: number) => {
       e.style.opacity = "0"
@@ -91,9 +91,9 @@ export default function Gallery({
         current.nextSibling.nextSibling.style.opacity = 1
     }
   }
-  const setCurrentActivePanel = (i: number) => {
+  const setCurrentActivePanel = function (i: number){
     let current: any = elem.current.children[i]
-    localActiveView = i
+    localActiveView.current = i
     clearStyles(i)
     setZ(i)
     setOpacity(i)
@@ -117,7 +117,7 @@ export default function Gallery({
     }
   }
 
-  const setTransform = (i: number) => {
+  const setTransform = function (i: number) {
     let current: any = elem.current.children[i]
 
     let l = 0
@@ -146,21 +146,21 @@ export default function Gallery({
     }
   }
 
-  const onTouchMove = () => {
-    let buff = localActiveView + Math.round(((lastX - newX) / ratio))
+  const onTouchMove = function () {
+    let buff = localActiveView.current + Math.round(((lastX - newX) / ratio))
     if (buff >= 0 && elem.current.children.length > buff) {
       setZ(buff)
       setOpacity(buff)
       onChange(buff)
     }
-    let current: any = elem.current.children[localActiveView]
+    let current: any = elem.current.children[localActiveView.current]
     current.style.transform = `translate(${calculateX(newX - lastX, 0)}px,0px) scale(${calculateScale(newX - lastX, 0)})`
-    setTransform(localActiveView)
+    setTransform(localActiveView.current)
   }
-  const onTouchEnd = () => {
+  const onTouchEnd = function () {
     elem.current.ontouchmove = null
     elem.current.classList.add(styles.anim)
-    let buff = localActiveView + Math.round(((lastX - newX) / ratio))
+    let buff = localActiveView.current + Math.round(((lastX - newX) / ratio))
     if (buff >= 0 && elem.current.children.length > buff) {
       setCurrentActivePanel(buff)
       onChange(buff)
@@ -192,58 +192,53 @@ export default function Gallery({
   }
 
   function calculateRatio() {
-    if (window.innerWidth < 1150) {
-      setTransform(localActiveView)
+    const wd = window.innerWidth;
+
+    if(wd>1150)
+      return 200
+    else if(wd>1020)
       return 150
-    }else if (window.innerWidth < 1020) {
-      setTransform(localActiveView)
+    else if(wd>820)
       return 130
-    }else if (window.innerWidth < 820) {
-      setTransform(localActiveView)
+    else if(wd>640)
       return 100
-    }else if (window.innerWidth < 640) {
-      setTransform(localActiveView)
+    else if(wd>520)
       return 80
-    }else if (window.innerWidth < 520) {
-      setTransform(localActiveView)
+    else if(wd>410)
       return 60
-    }else if (window.innerWidth < 410) {
-      setTransform(localActiveView)
+    else
       return 40
-    }else{
-      setTransform(localActiveView)
-      return 40
-    }
   }
 
-  useEffect(() => {
+  useEffect(function () {
     elem.current.classList.add(styles.anim)
 
     setCurrentActivePanel(active)
     ratio = calculateRatio()
-
+    setTransform(localActiveView.current)
     window.addEventListener("resize", function () {
       ratio = calculateRatio()
-      setCurrentActivePanel(localActiveView)
+      setTransform(localActiveView.current)
+      setCurrentActivePanel(localActiveView.current)
     })
     if (isMobile()) {
-      elem.current.ontouchstart = (e: any) => {
+      elem.current.ontouchstart = function (e: any) {
         elem.current.classList.remove(styles.anim)
         window.addEventListener("touchend", deleteEventListener, {passive: true})
         lastX = e.touches[0].clientX
         onMouseDown(e)
-        elem.current.ontouchmove = (e: any) => {
+        elem.current.ontouchmove = function (e: any) {
           newX = e.touches[0].clientX
           onTouchMove()
         }
       }
     } else {
-      elem.current.onmousedown = (e: any) => {
+      elem.current.onmousedown = function (e: any) {
         elem.current.classList.remove(styles.anim)
         window.addEventListener("mouseup", deleteEventListener, {passive: true})
         lastX = e.clientX
         onMouseDown(e)
-        elem.current.onmousemove = (e: any) => {
+        elem.current.onmousemove = function (e: any) {
           newX = e.clientX
           onTouchMove()
         }
@@ -251,15 +246,15 @@ export default function Gallery({
     }
   }, [])
 
-  useEffect(() => {
-    if (active === localActiveView) return;
+  useEffect(function(){
+    if (active === localActiveView.current) return;
 
     elem.current.classList.add(styles.anim)
     if (active >= 0 && elem.current.children.length > active) {
       setCurrentActivePanel(active)
-      localActiveView = active
+      localActiveView.current = active
     } else {
-      setCurrentActivePanel(localActiveView)
+      setCurrentActivePanel(localActiveView.current)
     }
     setTimeout(() => {
       elem.current.classList.remove(styles.anim)

@@ -3,17 +3,14 @@ import React, {useEffect, useRef, useState} from "react";
 import {HeaderProps} from "./types";
 
 
-/*
-    Переменная, блокирующая изменение положения линии, которая
-    подчеркивает активную вкладку.
 
-    Зачем здесь и почему var а не let?
-    Чтобы было видео во всех eventListener-ах
- */
-var blockScrollChange = false
 
 export default function Header({appContainer}: HeaderProps) {
-
+  /*
+      Переменная, блокирующая изменение положения линии, которая
+      подчеркивает активную вкладку.
+   */
+  const blockScrollChange = useRef(false)
   const pages = [
     {title: "О НАС"},
     {title: "ПРОЕКТЫ"},
@@ -56,14 +53,13 @@ export default function Header({appContainer}: HeaderProps) {
   }
 
   function onElementsParentClick(e: any) {
-    // e.stopPropagation()
     if (isMobile) {
       setShow(false)
     }
   }
 
   function onElementClick(i: number, e: any) {
-    blockScrollChange = true
+    blockScrollChange.current = true
     setActive(i)
     onElementsParentClick(null)
     if (i === 0) {
@@ -84,12 +80,28 @@ export default function Header({appContainer}: HeaderProps) {
         Блокируем изменение положения линии подчеркивания
      */
     setTimeout(() => {
-      blockScrollChange = false
+      blockScrollChange.current = false
     }, 500)
   }
 
   useEffect(() => {
+
+    function findActiveView(){
+      let lastActive: any = 0
+      for (let i = 0; i < appContainer.current.children.length - 1; i++) {
+        let array = appContainer.current.children
+        if (window.scrollY + window.innerHeight / 2 >= array[i + 1].offsetTop) {
+          lastActive = i
+        }
+      }
+      return lastActive
+    }
+
     setLineProperties(active)
+    if(window.scrollY>50)
+      setScroll(true)
+    setActive(findActiveView())
+
     window.addEventListener("resize", () => {
       if (window.innerWidth < 850) {
         setIsMobile(true)
@@ -113,15 +125,8 @@ export default function Header({appContainer}: HeaderProps) {
           ... в общем надо определить положение линии подчеркивания
           и все ето здесь
        */
-      if (!blockScrollChange) {
-        let lastActive: any = 0
-        for (let i = 0; i < appContainer.current.children.length - 1; i++) {
-          let array = appContainer.current.children
-          if (window.scrollY + window.innerHeight / 2 >= array[i + 1].offsetTop) {
-            lastActive = i
-          }
-        }
-        setActive(lastActive)
+      if (!blockScrollChange.current) {
+        setActive(findActiveView())
       }
     }, {passive: true})
   }, [])
@@ -134,7 +139,8 @@ export default function Header({appContainer}: HeaderProps) {
   return (
     <div className={styles.headerParent} scroll={scroll.toString()} ref={parentContainer}>
       <div onClick={() => {
-        setShow(!show)
+        if(window.innerWidth < 850)
+          setShow(!show)
       }}>
         <img src="/images/logo.webp" alt=""/>
       </div>

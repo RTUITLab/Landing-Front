@@ -7,47 +7,72 @@ const ENV_REACT_APP_BUILD_YEAR_REGEX = /^REACT_APP_BUILD_YEAR=.*$/m;
 
 
 desc("Build Landing Front for production");
-task("default", ["parse staff.md","createEnv","buildFrontProd","create service-worker"], function () {
+task("default", ["parse staff.md","parse equipment.md","createEnv","buildFrontProd","create service-worker"], function () {
 });
 
+function parseMD(str){
+  const regex = /((\#\s[^\n]*))*\n*\-\s([^\:]*)\:\s(.*)/gm;
+  let m;
+  let list=[]
+  let index=-1
+  while ((m = regex.exec(str)) !== null) {
+    if (m.index === regex.lastIndex) {
+      regex.lastIndex++;
+    }
+    if(m[2]!==undefined){
+      index++
+      list[index]={name:m[2].replace(/^\#\s/gmi,"").replaceAll("\r","")}
+    }
+    for(let i=3; i<m.length;i++){
+      list[index][m[i]]=m[i+1]
+      i++
+    }
+  }
+  return list
+}
 
+/**
+ *  equipment
+ */
+desc("Creating equipment.json file from /other/equipment.md")
+task("parse equipment.md",function (){
+
+  return new Promise((resolve, reject)=>{
+    let data = fs.readFileSync("./other/equipment.md","utf-8")
+    let list = parseMD(data)
+    fs.writeFileSync("./public/equipment.json",JSON.stringify(list),"utf-8")
+    resolve()
+  })
+})
+/**
+ *  ------------------------
+ */
+
+
+
+/**
+ *  STAFF.MD
+ */
 desc("Creating staff.json file from /other/staff.md")
 task("parse staff.md",function (){
 
   return new Promise((resolve, reject)=>{
-
-    function parseMD(str){
-      const regex = /((\#\s[^\n]*))*\n*\-\s([^\:]*)\:\s(.*)/gm;
-
-      let m;
-
-      let list=[]
-      let index=-1
-
-      while ((m = regex.exec(str)) !== null) {
-        if (m.index === regex.lastIndex) {
-          regex.lastIndex++;
-        }
-        if(m[2]!==undefined){
-          index++
-          list[index]={fio:m[2].replace(/^\#\s/gmi,"").replaceAll("\r","")}
-        }
-        for(let i=3; i<m.length;i++){
-          list[index][m[i]]=m[i+1]
-          i++
-        }
-      }
-
-      return list
-    }
-
     let data = fs.readFileSync("./other/staff.md","utf-8")
     let list = parseMD(data)
     fs.writeFileSync("./public/staff.json",JSON.stringify(list),"utf-8")
     resolve()
   })
 })
+/**
+ *  ------------------------
+ */
 
+
+
+
+/**
+ *  service-worker
+ */
 let count = 0
 async function ParseDirectory(resolve, list, dirPath) {
   try {
@@ -103,7 +128,16 @@ task("create service-worker", function () {
 
   })
 })
+/**
+ *  --------------------------
+ */
 
+
+
+
+/**
+ *  .env file
+ */
 desc("Create .env file with year of build");
 task("createEnv", function () {
   return new Promise((resolve) => {
@@ -127,6 +161,9 @@ task("createEnv", function () {
     resolve(true);
   });
 });
+/**
+ *  ------------------------
+ */
 
 desc("Build Landing Front prod")
 task("buildFrontProd", function () {

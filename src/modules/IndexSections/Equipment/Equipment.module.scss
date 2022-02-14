@@ -1,11 +1,20 @@
 .parent {
   overflow: hidden;
   display: flex;
+  flex-direction: column;
+  row-gap: 50px;
   justify-content: center;
   align-items: center;
   background-color: white;
   padding: 10vh 15px;
 
+  button{
+    background: none;
+    border: none;
+    color: #0066CC;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
   .content {
     display: flex;
@@ -13,6 +22,8 @@
     justify-content: center;
     align-items: center;
     row-gap: 40px;
+    width: 100%;
+
 
     h1 {
       font-weight: bold;
@@ -21,6 +32,150 @@
       text-align: center;
       padding: 0px;
       margin: 0px;
+
+      @media (max-width: 450px) {
+        font-size: 40px;
+      }
+      @media (max-width: 300px) {
+        font-size: 30px;
+      }
     }
+
+    .elements[lastelem=false] {
+      display: grid;
+      width: calc(100% - 30px);
+      max-width: 1200px;
+      margin-bottom: -30px;
+
+      grid-template-areas:
+        "A A B B B B C C C C"
+        "A A B B B B C C C C"
+        "D D D D D E E E E E"
+        "D D D D D E E E E E"
+        "D D D D D E E E E E"
+        "F F F F H H H H H H"
+        "F F F F H H H H H H"
+        "G G G G H H H H H H"
+        "G G G G H H H H H H";
+
+      &[invert=true] {
+        grid-template-areas:
+        "C C C C B B B B A A"
+        "C C C C B B B B A A"
+        "D D D D D E E E E E"
+        "D D D D D E E E E E"
+        "D D D D D E E E E E"
+        "H H H H H H F F F F"
+        "H H H H H H F F F F"
+        "H H H H H H G G G G"
+        "H H H H H H G G G G";
+      }
+
+      gap: 10px;
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(9, 150px);
+
+      @media (max-width: 1000px) {
+        grid-template-rows: repeat(9, 100px);
+      }
+
+      @media (max-width: 850px) {
+        grid-template-rows: repeat(10, 150px);
+        grid-template-areas:
+            "A A A A B B B B B B"
+            "A A A A B B B B B B"
+            "C C C C C C C C C C"
+            "C C C C C C C C C C"
+            "D D D D D D E E E E"
+            "D D D D D D E E E E"
+            "F F F F H H H H H H"
+            "F F F F H H H H H H"
+            "G G G G H H H H H H"
+            "G G G G H H H H H H";
+
+        &[invert=true]{
+          grid-template-areas:
+            "B B B B B B A A A A"
+            "B B B B B B A A A A"
+            "C C C C C C C C C C"
+            "C C C C C C C C C C"
+            "D D D D D D E E E E"
+            "D D D D D D E E E E"
+            "H H H H H H F F F F"
+            "H H H H H H F F F F"
+            "H H H H H H G G G G"
+            "H H H H H H G G G G";
+        }
+      }
+      @media (max-width: 550px) {
+        grid-template-rows: repeat(8, 150px);
+        grid-template-areas:
+            "A A A A A B B B B B"
+            "A A A A A B B B B B"
+            "C C C C C D D D D D"
+            "C C C C C D D D D D"
+            "E E E E E F F F F F"
+            "E E E E E F F F F F"
+            "G G G G G H H H H H"
+            "G G G G G H H H H H";
+
+        &[invert=true]{
+          grid-template-areas:
+            "A A A A A B B B B B"
+            "A A A A A B B B B B"
+            "C C C C C D D D D D"
+            "C C C C C D D D D D"
+            "E E E E E F F F F F"
+            "E E E E E F F F F F"
+            "G G G G G H H H H H"
+            "G G G G G H H H H H";
+        }
+      }
+      @media (max-width: 450px) {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+
+
+    }
+  }
+}
+.elements[lastelem=true]{
+  display: flex;
+  justify-content: stretch;
+  gap: 10px;
+  width: calc(100% - 30px);
+  max-width: 1200px;
+  flex-wrap: wrap;
+
+  & > *{
+    flex: 1 1 30%;
+    height: 250px;
+    min-width: 200px;
+  }
+}
+
+
+.element{
+  animation: show 500ms;
+  animation-fill-mode: forwards;
+  background-color: rgba(111, 41, 97, .4);
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 250px;
+}
+
+@keyframes show {
+  from{
+    opacity: 0;
+    margin-top:50px;
+    margin-bottom: -50px;
+  }
+  to{
+    opacity: 1;
+    margin-top:0px;
+    margin-bottom: 0px;
+
   }
 }

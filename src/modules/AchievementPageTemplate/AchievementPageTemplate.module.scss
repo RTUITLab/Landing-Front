@@ -1,0 +1,140 @@
+.parent{
+  background: #F3F3F3;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  .content{
+    padding: 0px 15px;
+    max-width: 1200px;
+    width: 100%;
+    display: block;
+    position: relative;
+
+    .HeadProp{
+      width: 100%;
+      margin-bottom: 20px;
+      h1{
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 42px;
+        text-align: center;
+        color: #121212;
+        margin: 10px 0px;
+
+      }
+      p{
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 28px;
+        text-align: center;
+        color: #666666;
+        margin: 0px;
+      }
+    }
+    .ContentProp{
+      width: 100%;
+      display: flex;
+      column-gap: 20px;
+      justify-content: center;
+      @media (max-width: 850px) {
+        flex-wrap: wrap;
+        row-gap: 30px;
+      }
+
+      p{
+        text-align: left;
+        font-size: 16px;
+        line-height: 1.5em;
+      }
+
+      h2{
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 28px;
+        margin: 0px;
+        color: #121212;
+      }
+
+    }
+  }
+}
+
+
+
+.swiper {
+  width: 100%;
+  max-width: 500px;
+  height: fit-content;
+  overflow: hidden;
+  cursor: grab;
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media(max-width: 1100px) {
+    max-width: 400px;
+  }
+
+  @media (max-width: 850px) {
+    max-width: calc(100vw - 30px);
+  }
+
+  // For statusBar in swiper, other in index.css --> .swiper-pagination
+  & div:nth-child(1) {
+    --swiper-theme-color: #0066CC;
+    --swiper-pagination-bullet-inactive-color: white;
+    display: flex;
+    justify-content: center;
+    column-gap: 10px;
+
+    & span {
+      margin-top: 15px;
+      transition: all 250ms ease;
+      cursor: pointer;
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      opacity: 1;
+      border: 3px #0066CC solid;
+    }
+
+    @media(max-width: 700px) {
+      column-gap: 5px;
+      & span{
+        width: 5px;
+        height: 5px;
+      }
+    }
+  }
+
+  // for swiper elements
+  & div:nth-child(n) {
+    display: flex;
+
+    width: fit-content;
+    justify-content: center;
+
+    img{
+      width: 500px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      @media(max-width: 1100px) {
+        max-width: 400px;
+        height: 250px;
+      }
+      @media (max-width: 850px) {
+        max-width: calc(100vw - 60px);
+      }
+    }
+
+    & div:nth-child(n) {
+      height: fit-content;
+    }
+  }
+}

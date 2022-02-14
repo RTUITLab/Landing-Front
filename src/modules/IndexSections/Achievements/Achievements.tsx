@@ -8,8 +8,6 @@ import "swiper/css/pagination";
 import "../../../index.css"
 import {Controller, Pagination} from "swiper";
 import AchievementCard from "../../../components/AchievementCard/AchievementCard";
-import React, {useEffect, useState} from "react";
-import ReactDOM from "react-dom";
 
 export default function Achievements() {
 
