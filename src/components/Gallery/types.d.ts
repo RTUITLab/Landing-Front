@@ -1,6 +1,9 @@
 export declare module 'react'{
   export interface HTMLAttributes<T> {
-    hide?:string
+    hide?:string,
+    invert?:string,
+    lastelem?:string,
+    name?:string,
   }
 }
 

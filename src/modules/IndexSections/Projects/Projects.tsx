@@ -10,9 +10,6 @@ export default function Projects() {
   const [activeView, setActiveView] = useState(0)
   const [galleryBuff, setGalleryBuff] = useState(0)
 
-  const elements=[1,2,3,4]
-
-
   useEffect(()=>{
     setViewGallery(false)
     setTimeout(()=>{
@@ -24,13 +21,13 @@ export default function Projects() {
     <div className={styles.projectsParent}>
       <div className={styles.content}>
         <h1>Проекты</h1>
-        <div className={styles.text}>
+        <article className={styles.text}>
           Чем мы занимаемся? Мы создаем программные продукты, которые используются в различных сферах деятельности и
           выводят образовательный процесс на новый уровень. Команды Reality из RTUITLab многократные победители
           хакатонов и конференций. Многие сотрудники являются преподавателями образовательных программ, которые Институт
           ИТ проводит в сотрудничестве с компаниями Яндекс, Samsung и другими, а также преподают на внутренних кафедрах
           Института.
-        </div>
+        </article>
         <div className={styles.tags}>
           {Tabs.map((e,i)=>{
             return <div key={i} active={(activeTab===i).toString()} onClick={()=>setActiveTab(i)}>{e}</div>
@@ -90,10 +87,25 @@ export default function Projects() {
             </GalleryItem>
           </Gallery>
           <StatusBar count={16} onChange={(i)=>{
+
+            /*
+                Функция отлавливает изменения в статус баре и устанавливает их в переменную galleryBuff
+                При изменении этой переменной, галерея изменяет слайд. Но сам galleryBuff не изменяется
+                при скролле галереи.
+             */
+
             setActiveView(i)
             if(galleryBuff===i){
               setGalleryBuff(activeView)
               setTimeout(()=>{
+                /*
+
+                Этот таймаут необходим для синхронизации состояния галереи и состояния статус бара.
+                Изменить слайд галереи можно только через galleryBuff. Но сам при скролле он не изменяется
+                Поэтому, если galleryBuff будет равен i, и мы захотим изменить его на этот же i,
+                то изменений не произойдет и галерея не откроет нужный слайд.
+
+                 */
                 setGalleryBuff(i)
               },15)
             }else{

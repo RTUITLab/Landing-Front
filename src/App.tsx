@@ -10,11 +10,7 @@ import AchievementPageTemplate from "./modules/AchievementPageTemplate/Achieveme
 import {ParallaxProvider} from "react-scroll-parallax";
 import CP from "./pages/archievements/CP";
 
-declare module 'react' {
-  interface HTMLAttributes<T> {
-    active?: any
-  }
-}
+
 
 function App() {
 

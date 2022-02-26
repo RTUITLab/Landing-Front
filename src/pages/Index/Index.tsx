@@ -1,4 +1,4 @@
-import React, {Suspense, useEffect, useRef, useState} from "react";
+import React, {Suspense, useRef } from "react";
 import Header from "../../components/Header/Header";
 import About from "../../modules/IndexSections/About/About";
 
@@ -20,8 +20,6 @@ export default function Index(props: any) {
     )
   }
 
-  useEffect(() => {
-  }, [])
   return (
     <div ref={appContainer}>
       <Header appContainer={appContainer}/>

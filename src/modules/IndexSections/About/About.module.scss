@@ -82,7 +82,7 @@
     .text {
       color: white;
       max-width: 700px;
-      font-family: Raleway;
+      font-family: Raleway, sans-serif;
       font-style: normal;
       font-weight: normal;
       font-size: 24px;
@@ -107,7 +107,7 @@
       row-gap: 15px;
       color: white;
 
-      & div:nth-child(n) {
+      & h1:nth-child(n) {
         font-family: 'Aldrich', sans-serif;
         font-style: normal;
         font-weight: normal;

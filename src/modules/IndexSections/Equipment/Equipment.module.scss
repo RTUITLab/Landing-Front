@@ -76,10 +76,6 @@
       grid-template-rows: repeat(9, 150px);
 
       @media (max-width: 1000px) {
-        grid-template-rows: repeat(9, 100px);
-      }
-
-      @media (max-width: 850px) {
         grid-template-rows: repeat(10, 150px);
         grid-template-areas:
             "A A A A B B B B B B"

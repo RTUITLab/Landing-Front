@@ -29,28 +29,11 @@ export default function Header({appContainer}: HeaderProps) {
   const [active, setActive] = useState(0)
   const activeRef = useRef(active)
   const elemsParent: React.RefObject<any> = useRef<HTMLDivElement>()
-  const line: React.RefObject<any> = useRef<HTMLDivElement>()
   const parentContainer: React.RefObject<any> = useRef<HTMLDivElement>()
   const [isMobile, setIsMobile] = useState(window.innerWidth < 850)
   const [scroll, setScroll] = useState(false)
   const [show, setShow] = useState(false)
 
-  function setLineProperties(i?: number) {
-    let obj = elemsParent.current.children[active]
-    if (i !== undefined) {
-      obj = elemsParent.current.children[i]
-    }
-    line.current.style.marginLeft = obj.offsetLeft + "px"
-    line.current.style.width = obj.offsetWidth + "px"
-  }
-
-  function onMouseElemEnter(i: number) {
-    setLineProperties(i)
-  }
-
-  function onMouseElemLeave() {
-    setLineProperties(active)
-  }
 
   function onElementsParentClick(e: any) {
     if (isMobile) {
@@ -97,7 +80,6 @@ export default function Header({appContainer}: HeaderProps) {
       return lastActive
     }
 
-    setLineProperties(active)
     if(window.scrollY>50)
       setScroll(true)
     setActive(findActiveView())
@@ -108,7 +90,6 @@ export default function Header({appContainer}: HeaderProps) {
       } else {
         setIsMobile(false)
         setShow(false)
-        setLineProperties(activeRef.current)
       }
     })
     window.addEventListener("scroll", () => {
@@ -131,13 +112,12 @@ export default function Header({appContainer}: HeaderProps) {
     }, {passive: true})
   }, [])
   useEffect(() => {
-    setLineProperties(active)
     activeRef.current = active
   }, [active])
 
 
   return (
-    <div className={styles.headerParent} scroll={scroll.toString()} ref={parentContainer}>
+    <div className={styles.headerParent+" noselect"} scroll={scroll.toString()} ref={parentContainer}>
       <div onClick={() => {
         if(window.innerWidth < 850)
           setShow(!show)
@@ -146,10 +126,10 @@ export default function Header({appContainer}: HeaderProps) {
       </div>
       <div>
         <div show={show.toString()} className={styles.elementsParent}
-             ref={elemsParent} onMouseLeave={onMouseElemLeave}>
+             ref={elemsParent}>
           {pages.map((e, i) => {
             return (
-              <div key={"headerElem" + i.toString()} className={styles.element} onMouseEnter={() => onMouseElemEnter(i)}
+              <div active={(i===active).toString()} key={"headerElem" + i.toString()} className={styles.element}
                    onClick={(e) => onElementClick(i, e)}>
                 {e.title}
               </div>
@@ -160,7 +140,6 @@ export default function Header({appContainer}: HeaderProps) {
                  onClick={onElementsParentClick}></div>
           ) : null}
         </div>
-        <div className={styles.line} ref={line}></div>
       </div>
       <div onClick={()=>setShow(false)}  show={show.toString()} className={styles.backgroundElement}></div>
 

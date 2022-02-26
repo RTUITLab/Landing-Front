@@ -1,17 +1,16 @@
 import styles from './AchievementCard.module.scss'
 import {AchievementCardProps} from './types'
-import React, {useRef} from "react";
+import React from "react";
 
-export default function AchievementCard({title, desc, cover, link}:AchievementCardProps){
+export default function AchievementCard({title, desc, cover, link}: AchievementCardProps) {
 
 
-
-  return(
+  return (
     <div className={styles.parent}>
       <h1>{title}</h1>
-      <div className={styles.desc}>
-        <div>{desc}</div>
-      </div>
+      <article className={styles.desc}>
+        <p>{desc}</p>
+      </article>
       <a href={link}>Подробнее</a>
       <img src={cover} alt="Обложка достижения"/>
     </div>

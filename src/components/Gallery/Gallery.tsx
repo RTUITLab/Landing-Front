@@ -1,12 +1,12 @@
 import styles from './Gallery.module.scss'
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef} from "react";
 import {isMobile} from "../other";
 import {GalleryItemProps, GalleryProps,} from "./types";
 
 export function GalleryItem({children, hide = false}: GalleryItemProps) {
 
   return (
-    <div className={styles.galleryItem} hide={hide.toString()} draggable={false}>
+    <div className={styles.galleryItem + " noselect"} hide={hide.toString()} draggable={false}>
       {children}
     </div>
   )
@@ -48,8 +48,8 @@ export default function Gallery({
   }
 
   const clearStyles = function (i: number) {
-    let childrens = elem.current.querySelectorAll("." + styles.parent + " > *")
-    childrens.forEach((e: any, index: number) => {
+    let children = elem.current.querySelectorAll("." + styles.parent + " > *")
+    children.forEach((e: any, index: number) => {
       e.style.opacity = "0"
       if (index < i) {
         e.style.transform = `translate(${calculateX(-ratio * 2 - 20)}px,0px) scale(${calculateScale(-2 * ratio - 20)})`
@@ -74,8 +74,8 @@ export default function Gallery({
   }
 
   const setOpacity = function (i: number) {
-    let childrens = elem.current.querySelectorAll("." + styles.parent + " > *")
-    childrens.forEach((e: any, index: number) => {
+    let children = elem.current.querySelectorAll("." + styles.parent + " > *")
+    children.forEach((e: any, index: number) => {
       e.style.opacity = "0"
     })
     let current: any = elem.current.children[i]
@@ -91,7 +91,7 @@ export default function Gallery({
         current.nextSibling.nextSibling.style.opacity = 1
     }
   }
-  const setCurrentActivePanel = function (i: number){
+  const setCurrentActivePanel = function (i: number) {
     let current: any = elem.current.children[i]
     localActiveView.current = i
     clearStyles(i)
@@ -194,17 +194,17 @@ export default function Gallery({
   function calculateRatio() {
     const wd = window.innerWidth;
 
-    if(wd>1150)
+    if (wd > 1150)
       return 200
-    else if(wd>1020)
+    else if (wd > 1020)
       return 150
-    else if(wd>820)
+    else if (wd > 820)
       return 130
-    else if(wd>640)
+    else if (wd > 640)
       return 100
-    else if(wd>520)
+    else if (wd > 520)
       return 80
-    else if(wd>410)
+    else if (wd > 410)
       return 60
     else
       return 40
@@ -246,7 +246,7 @@ export default function Gallery({
     }
   }, [])
 
-  useEffect(function(){
+  useEffect(function () {
     if (active === localActiveView.current) return;
 
     elem.current.classList.add(styles.anim)

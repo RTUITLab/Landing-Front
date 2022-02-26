@@ -5,10 +5,11 @@
   max-height: 400px;
   justify-content: center;
   cursor: grab;
-  max-width: 100vw;
+  width: calc(100vw - 10px);
   overflow: hidden;
   & *:nth-child(n){
     transition: opacity 100ms;
+    pointer-events: none;
   }
 }
 
@@ -25,21 +26,12 @@
   height: 40vw;
   position: absolute;
   outline: none;
-  -moz-user-select: none;
-  -o-user-select:none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+
   overflow: hidden;
   display: block;
 
   img{
     border-radius: 15px;
-    //filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.25));
-    //-webkit-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
-    //-moz-box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
-    //box-shadow: 0px 0px 8px 0px rgba(34, 60, 80, 0.2);
   }
 
   & *:nth-child(n){
@@ -50,12 +42,7 @@
     max-height: 400px;
     outline: none;
 
-    -moz-user-select: none;
-    -o-user-select:none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+
   }
 }
 
