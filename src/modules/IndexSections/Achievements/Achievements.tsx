@@ -1,77 +1,180 @@
-import styles from './Achievements.module.scss'
-
-import {Swiper, SwiperSlide} from "swiper/react";
+import { Pagination } from "swiper";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import "../../../index.css"
-import {Pagination} from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import AchievementCard from "../../../components/AchievementCard/AchievementCard";
+import "../../../index.css";
+import styles from "./Achievements.module.scss";
 
 export default function Achievements() {
-
   const pagination = {
     clickable: true,
-    renderBullet: function (index: any, className: any) {
+    renderBullet: function (_index: any, className: any) {
       return '<span class="' + className + '"></span>';
     },
   };
 
+  let data = [
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+    {
+      title: "Тест какой-то длинной надписи",
+      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
+      cover: "http://placeimg.com/640/480/abstract",
+      link: "/test/test/test",
+    },
+  ];
+
   return (
-    <div className={styles.achievementsParent}>
-      <div className={styles.content}>
+    <article className={styles.achievementsParent} id={"achievemtns"}>
+      <section className={styles.content}>
         <h1>Достижения</h1>
-        <article className={styles.text}>Сегодня RTUITLab – это более 30 IT-специалистов, среди которых backend,
-          frontend-разработчики, ML, VR/AR, DevOps – специалисты, дизайнеры и системные архитекторы, на счету которых
-          множество реализованных проектов. Материальная база Института Информационных Технологий позволяет сотрудникам
-          работать с порой эксклюзивным оборудованием, собирать под него проекты, демонстрировать их на выставках и
-          конференциях.
+        <article className={styles.text}>
+          Сегодня RTUITLab – это более 30 IT-специалистов, среди которых
+          backend, frontend-разработчики, ML, VR/AR, DevOps – специалисты,
+          дизайнеры и системные архитекторы, на счету которых множество
+          реализованных проектов. Материальная база Института Информационных
+          Технологий позволяет сотрудникам работать с порой эксклюзивным
+          оборудованием, собирать под него проекты, демонстрировать их на
+          выставках и конференциях.
         </article>
 
-        <div id={"swiperParent"}>
+        <section id={"swiperParent"}>
           <Swiper
             pagination={pagination}
             modules={[Pagination]}
             slidesPerView={"auto"}
             spaceBetween={15}
-
             className={styles.swiper}
           >
             <SwiperSlide>
-              <div style={{width: "5vw"}}></div>
+              <div style={{ width: "5vw" }}></div>
             </SwiperSlide>
+            {data.map((e) => {
+              return (
+                <SwiperSlide>
+                  <AchievementCard
+                    title={e.title}
+                    desc={e.desc}
+                    cover={e.cover}
+                    link={e.link}
+                  />
+                </SwiperSlide>
+              );
+            })}
             <SwiperSlide>
-              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"}
-                               desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"}
-                               cover={"/images/background.webp"} link={"f"}/>
+              <div style={{ width: "5vw" }}></div>
             </SwiperSlide>
-            <SwiperSlide>
-              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"} desc={"f"}
-                               cover={"/images/background.webp"} link={"f"}/>
-            </SwiperSlide>
-            <SwiperSlide>
-              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"}
-                               desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"}
-                               cover={"/images/background.webp"} link={"f"}/>
-            </SwiperSlide>
-            <SwiperSlide>
-              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"}
-                               desc={"Тесfffffffт какойfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"}
-                               cover={"/images/background.webp"} link={"f"}/>
-            </SwiperSlide>
-            <SwiperSlide>
-              <AchievementCard title={"Тест какой то длинной надписи супер пупер надписи"}
-                               desc={"Тесfffffffт какойffff ffffffffffffff fffffffffffffffffffffffffffffffffffffffffffffffffffffffff то fffffffffffffffffffffдлинной надписи супер пупер надписи"}
-                               cover={"/images/background.webp"} link={"f"}/>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div style={{width: "5vw"}}></div>
-            </SwiperSlide>
-
           </Swiper>
-        </div>
-
-      </div>
-    </div>
-  )
+        </section>
+      </section>
+    </article>
+  );
 }

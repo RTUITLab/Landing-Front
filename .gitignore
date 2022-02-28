@@ -35,6 +35,7 @@ env/
 .env/
 .venv/
 .idea
+.vs
 
 
 __pycache__
