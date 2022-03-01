@@ -1,9 +1,14 @@
+import { useEffect, useState } from "react";
 import styles from "./StatusBar.module.scss";
 import { StatusbarProps } from "./statusbarprops";
-import { useEffect, useState } from "react";
 
 export default function StatusBar({ count, onChange, active }: StatusbarProps) {
   const [elements, setElements] = useState([]);
+
+  const context = {
+    elements,
+    setElements,
+  };
 
   function initCount() {
     let buff: any = [];
@@ -18,13 +23,11 @@ export default function StatusBar({ count, onChange, active }: StatusbarProps) {
 
   return (
     <div className={styles.statusBar}>
-      {elements.map((e, i) => {
+      {elements.map((_e, i) => {
         return (
           <div
             key={i}
-            onClick={() => {
-              onChange(i);
-            }}
+            onClick={onChange.bind(context, i)}
             active={(i === active).toString()}
           ></div>
         );
