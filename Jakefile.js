@@ -1,139 +1,130 @@
 const exec = require("child_process").exec;
 const fs = require("fs");
-const {readdir} = require("fs").promises
 const ENV_PATH = "./.env";
 const ENV_REACT_APP_BUILD_YEAR_ROW = `REACT_APP_BUILD_YEAR=${new Date().getFullYear()}`;
 const ENV_REACT_APP_BUILD_YEAR_REGEX = /^REACT_APP_BUILD_YEAR=.*$/m;
-
+var parseMD = require("./jakeFunctions").parseMD;
+var ParseDirectory = require("./jakeFunctions").ParseDirectory;
+var GenerateProjectsFile = require("./jakeFunctions").generateProjectsFile;
 
 desc("Build Landing Front for production");
-task("default", ["parse staff.md","parse equipment.md","createEnv","buildFrontProd","create service-worker"], function () {
-});
+task(
+  "default",
+  [
+    "generate projects file",
+    "parse achievements.md",
+    "parse staff.md",
+    "parse equipment.md",
+    "createEnv",
+    "buildFrontProd",
+    "create service-worker",
+  ],
+  function () {}
+);
 
-function parseMD(str){
-  const regex = /((\#\s[^\n]*))*\n*\-\s([^\:]*)\:\s(.*)/gm;
-  let m;
-  let list=[]
-  let index=-1
-  while ((m = regex.exec(str)) !== null) {
-    if (m.index === regex.lastIndex) {
-      regex.lastIndex++;
-    }
-    if(m[2]!==undefined){
-      index++
-      list[index]={name:m[2].replace(/^\#\s/gmi,"").replaceAll("\r","")}
-    }
-    for(let i=3; i<m.length;i++){
-      list[index][m[i]]=m[i+1]
-      i++
-    }
-  }
-  return list
-}
+desc("Generate projects file from files.rtuitlab.dev");
+task("generate projects file", GenerateProjectsFile);
+
+desc("Creating achievements.json file from /public/info/achievements.md");
+task("parse achievements.md", function () {
+  return new Promise((resolve, reject) => {
+    let data = fs.readFileSync("./public/info/achievements.md", "utf-8");
+    let list = parseMD(data);
+    fs.writeFileSync(
+      "./public/achievements.json",
+      JSON.stringify(list),
+      "utf-8"
+    );
+    resolve();
+  });
+});
 
 /**
  *  equipment
  */
-desc("Creating equipment.json file from /other/equipment.md")
-task("parse equipment.md",function (){
-
-  return new Promise((resolve, reject)=>{
-    let data = fs.readFileSync("./other/equipment.md","utf-8")
-    let list = parseMD(data)
-    fs.writeFileSync("./public/equipment.json",JSON.stringify(list),"utf-8")
-    resolve()
-  })
-})
+desc("Creating equipment.json file from /public/info/equipment.md");
+task("parse equipment.md", function () {
+  return new Promise((resolve, reject) => {
+    let data = fs.readFileSync("./public/info/equipment.md", "utf-8");
+    let list = parseMD(data);
+    fs.writeFileSync("./public/equipment.json", JSON.stringify(list), "utf-8");
+    resolve();
+  });
+});
 /**
  *  ------------------------
  */
-
-
 
 /**
  *  STAFF.MD
  */
-desc("Creating staff.json file from /other/staff.md")
-task("parse staff.md",function (){
-
-  return new Promise((resolve, reject)=>{
-    let data = fs.readFileSync("./other/staff.md","utf-8")
-    let list = parseMD(data)
-    fs.writeFileSync("./public/staff.json",JSON.stringify(list),"utf-8")
-    resolve()
-  })
-})
+desc("Creating staff.json file from /public/info/staff.md");
+task("parse staff.md", function () {
+  return new Promise((resolve, reject) => {
+    let data = fs.readFileSync("./public/info/staff.md", "utf-8");
+    let list = parseMD(data);
+    fs.writeFileSync("./public/staff.json", JSON.stringify(list), "utf-8");
+    resolve();
+  });
+});
 /**
  *  ------------------------
  */
 
-
-
-
 /**
  *  service-worker
  */
-let count = 0
-async function ParseDirectory(resolve, list, dirPath) {
-  try {
-    const files = await readdir("./" + dirPath);
-    for (const i of files) {
-      let buff = ""
-      if (fs.lstatSync("./" + dirPath + "/" + i).isDirectory()) {
-        buff = ""
-        count++
-        await ParseDirectory(resolve, list, dirPath + "/" + i).then(() => count--)
-      } else {
-        buff = ("/" + dirPath + "/" + i)
-      }
-      buff = buff.replace(/\/build/gm, "")
-      if(buff){
-        list.push(buff)
-      }
-    }
-    if (count === 0) {
-      resolve()
-    }
-  } catch (err) {
-    console.error(err);
-  }
-}
 
-desc("Create new service-worker.js file from serviceWorkerSample.js with new cache version and new caching links")
+desc(
+  "Create new service-worker.js file from serviceWorkerSample.js with new cache version and new caching links"
+);
 task("create service-worker", function () {
   return new Promise((resolve, reject) => {
-    let list = []
+    let list = [];
 
-    ParseDirectory(() => {
-      list.splice(list.indexOf("/service-worker.js"), 1)
-      list.splice(list.indexOf("/robots.txt"), 1)
-      list.splice(list.indexOf("/index.html"), 1)
-      list.push("/")
+    ParseDirectory(
+      () => {
+        list.splice(list.indexOf("/service-worker.js"), 1);
+        list.splice(list.indexOf("/robots.txt"), 1);
+        list.splice(list.indexOf("/index.html"), 1);
+        list.push("/");
 
-      let data = fs.readFileSync("./other/serviceWorkerSample.js", "utf-8")
-      let dataSample = data
-      let version = data.matchAll(/(var CACHE_NAME = )\'v(\d*)\';/gm)
-      let versionParse = version.next().value
-      let newVersion = versionParse[0].replace("v" + versionParse[2].toString(), "v" + (Number(versionParse[2]) + 1).toString())
-      data = data.replace("// THIS MESSAGE FOR PARSER #urls", JSON.stringify(list)
-        .replace(/(\[|\])/gm, "")
-        .replaceAll(",", ",\n\t\t\t\t\t\t\t"))
-        .replace(versionParse[0], newVersion)
+        let data = fs.readFileSync(
+          "./public/info/serviceWorkerSample.js",
+          "utf-8"
+        );
+        let dataSample = data;
+        let version = data.matchAll(/(var CACHE_NAME = )\'v(\d*)\';/gm);
+        let versionParse = version.next().value;
+        let newVersion = versionParse[0].replace(
+          "v" + versionParse[2].toString(),
+          "v" + (Number(versionParse[2]) + 1).toString()
+        );
+        data = data
+          .replace(
+            "// THIS MESSAGE FOR PARSER #urls",
+            JSON.stringify(list)
+              .replace(/(\[|\])/gm, "")
+              .replaceAll(",", ",\n\t\t\t\t\t\t\t")
+          )
+          .replace(versionParse[0], newVersion);
 
-      fs.writeFileSync("./build/service-worker.js", data, "utf-8")
-      fs.writeFileSync("./other/serviceWorkerSample.js", dataSample.replace(versionParse[0], newVersion), "utf-8")
-      resolve()
-    }, list, "bui ld")
-
-
-  })
-})
+        fs.writeFileSync("./build/service-worker.js", data, "utf-8");
+        fs.writeFileSync(
+          "./public/info/serviceWorkerSample.js",
+          dataSample.replace(versionParse[0], newVersion),
+          "utf-8"
+        );
+        resolve();
+      },
+      list,
+      "build"
+    );
+  });
+});
 /**
  *  --------------------------
  */
-
-
-
 
 /**
  *  .env file
@@ -148,7 +139,7 @@ task("createEnv", function () {
         data = data
           .replace(/\r/g, "")
           .split("\n")
-          .filter(val => !val.match(ENV_REACT_APP_BUILD_YEAR_REGEX))
+          .filter((val) => !val.match(ENV_REACT_APP_BUILD_YEAR_REGEX))
           .join("\n");
         data = `${ENV_REACT_APP_BUILD_YEAR_ROW}\n${data}`;
       } else {
@@ -165,7 +156,7 @@ task("createEnv", function () {
  *  ------------------------
  */
 
-desc("Build Landing Front prod")
+desc("Build Landing Front prod");
 task("buildFrontProd", function () {
   return new Promise((resolve, reject) => {
     exec("npm ci && npm run build", (err, stdout, stderr) => {
@@ -174,7 +165,6 @@ task("buildFrontProd", function () {
         reject(stderr);
       }
 
-      console.log(stdout);
       resolve(true);
     });
   });

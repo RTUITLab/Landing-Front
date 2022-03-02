@@ -64,7 +64,11 @@ export default function About() {
           src="/images/hololens.webp"
           alt="Очки дополненной реальности Hololens"
         />
+
         <img
+          srcSet="
+          /images/backgroundCompressed.webp 2000w
+          "
           src="/images/background.webp"
           alt=""
           data-depth="0.3"

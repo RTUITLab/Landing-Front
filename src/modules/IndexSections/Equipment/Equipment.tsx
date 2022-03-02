@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Equipment.module.scss";
+import { EquipmentData } from "./EquipmentData";
 
 export default function Equipment() {
-  const [data, setData] = useState([[]]);
+  let initData: EquipmentData[][] = [[]];
+  const [data, setData] = useState(initData);
   const [showMore, setShowMore] = useState(true);
 
   useEffect(function () {
@@ -82,7 +84,7 @@ function DataMap(props: any) {
   ];
   return (
     <React.Fragment>
-      {mapData.map((e: object[], i: number) => {
+      {mapData.map((e: EquipmentData[], i: number) => {
         let lastelem = "false";
         if (e.length < 8) lastelem = "true";
         return (
@@ -92,14 +94,19 @@ function DataMap(props: any) {
             invert={((i + 1) % 2 === 0).toString()}
             lastelem={lastelem}
           >
-            {e.map((_k, j) => {
+            {e.map((_k: EquipmentData, j) => {
               return (
                 <div
                   className={styles.element}
                   key={j}
-                  style={{ gridArea: arr_EN[j] }}
+                  style={{
+                    gridArea: arr_EN[j],
+                    background: `url("${_k.img}"), black`,
+                  }}
                 >
-                  f
+                  <span>{_k.name}</span>
+                  <br />
+                  <span className={styles.count}>{_k.count}</span>
                 </div>
               );
             })}

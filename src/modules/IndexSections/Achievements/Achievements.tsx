@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { Pagination } from "swiper";
 // Import Swiper styles
 import "swiper/css";
@@ -6,8 +7,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import AchievementCard from "../../../components/AchievementCard/AchievementCard";
 import "../../../index.css";
 import styles from "./Achievements.module.scss";
+import { AchievementsData } from "./achievementsData";
 
 export default function Achievements() {
+  let initData: AchievementsData[] = [];
+  const [data, setData] = useState(initData);
+
   const pagination = {
     clickable: true,
     renderBullet: function (_index: any, className: any) {
@@ -15,122 +20,13 @@ export default function Achievements() {
     },
   };
 
-  let data = [
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-    {
-      title: "Тест какой-то длинной надписи",
-      desc: "Odio rerum aut officia eos. Sit beatae recusandae minima natus consequatur.",
-      cover: "http://placeimg.com/640/480/abstract",
-      link: "/test/test/test",
-    },
-  ];
+  useEffect(() => {
+    fetch("/achievements.json")
+      .then((data) => data.json())
+      .then((response) => {
+        setData(response);
+      });
+  }, []);
 
   return (
     <article className={styles.achievementsParent} id={"achievemtns"}>
@@ -157,16 +53,18 @@ export default function Achievements() {
             <SwiperSlide>
               <div style={{ width: "5vw" }}></div>
             </SwiperSlide>
-            {data.map((e) => {
+            {data.map((e: AchievementsData, i: number) => {
               return (
-                <SwiperSlide>
-                  <AchievementCard
-                    title={e.title}
-                    desc={e.desc}
-                    cover={e.cover}
-                    link={e.link}
-                  />
-                </SwiperSlide>
+                <React.Fragment key={i}>
+                  <SwiperSlide key={i + "SwiperSlide"}>
+                    <AchievementCard
+                      title={e.name}
+                      desc={e.desc}
+                      cover={e.cover}
+                      link={e.link}
+                    />
+                  </SwiperSlide>
+                </React.Fragment>
               );
             })}
             <SwiperSlide>

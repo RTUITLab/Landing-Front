@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Gallery, { GalleryItem } from "../../../components/Gallery/Gallery";
 import StatusBar from "../../../components/StatusBar/StatusBar";
 import styles from "./Projects.module.scss";
+import { ProjectsData } from "./ProjectsData";
 
 export default function Projects() {
   const [activeTab, setActiveTab] = useState(0);
@@ -9,49 +10,21 @@ export default function Projects() {
   const Tabs = ["Backend", "Frontend", "VR", "AR", "Machine Learning"];
   const [activeView, setActiveView] = useState(0);
   const [galleryBuff, setGalleryBuff] = useState(0);
-
-  let data = [
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/fashion",
-    "http://placeimg.com/640/480/cats",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/food",
-    "http://placeimg.com/640/480/sports",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/fashion",
-    "http://placeimg.com/640/480/cats",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/food",
-    "http://placeimg.com/640/480/sports",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/fashion",
-    "http://placeimg.com/640/480/cats",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/food",
-    "http://placeimg.com/640/480/sports",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/fashion",
-    "http://placeimg.com/640/480/cats",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/food",
-    "http://placeimg.com/640/480/sports",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/animals",
-    "http://placeimg.com/640/480/fashion",
-    "http://placeimg.com/640/480/cats",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/nightlife",
-    "http://placeimg.com/640/480/food",
-    "http://placeimg.com/640/480/sports",
+  let initData: ProjectsData[] = [
+    {
+      title: "TITLE",
+      description: "DESC",
+      images: ["/images/background.webp"],
+      videos: [],
+      tags: ["FrontEnd"],
+      tech: ["FrontEnd"],
+      developers: ["FIO"],
+      site: "fdfdsf",
+      sourceCode: [{ name: "NAME", link: "fdfd" }],
+      date: "02.03.2002",
+    },
   ];
+  const [data, setData] = useState(initData);
 
   useEffect(() => {
     setViewGallery(false);
@@ -59,6 +32,16 @@ export default function Projects() {
       setViewGallery(true);
     }, 300);
   }, [activeTab]);
+
+  useEffect(() => {
+    /*
+fetch("https://files.rtuitlab.dev/landing_src/projects_data/").then(
+      (result) => {
+        console.log(result);
+      }
+    );
+    */
+  }, []);
 
   return (
     <article className={styles.projectsParent} id={"projects"}>
@@ -96,11 +79,13 @@ export default function Projects() {
               setActiveView(i);
             }}
           >
-            {data.map((e) => {
+            {data.map((e: ProjectsData, i: number) => {
               return (
-                <GalleryItem>
-                  <img draggable={false} src={e} alt="" />
-                </GalleryItem>
+                <React.Fragment key={i}>
+                  <GalleryItem>
+                    <img draggable={false} src={e.images[0]} alt="" />
+                  </GalleryItem>
+                </React.Fragment>
               );
             })}
           </Gallery>

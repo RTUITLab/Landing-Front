@@ -2,7 +2,7 @@
 var doCache = true;
 
 // THIS MESSAGE FOR PARSER #name
-var CACHE_NAME = 'v22';
+var CACHE_NAME = 'v34';
 
 // Delete old caches that are not our current one!
 self.addEventListener("activate", event => {
