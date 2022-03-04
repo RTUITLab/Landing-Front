@@ -1,26 +1,19 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Equipment.module.scss";
 import { EquipmentData } from "./EquipmentData";
+import dataList from "../../../data/equipment";
 
 export default function Equipment() {
-  let initData: EquipmentData[][] = [[]];
-  const [data, setData] = useState(initData);
+  let buff = [[]];
+  JSON.parse(dataList).forEach((e: never, i: number) => {
+    if (i % 8 === 0) {
+      buff.push([]);
+    }
+    buff[Math.floor(i / 8)].push(e);
+  });
+  let initData: EquipmentData[][] = buff;
+  const [data] = useState(initData);
   const [showMore, setShowMore] = useState(true);
-
-  useEffect(function () {
-    fetch("/equipment.json")
-      .then((data) => data.json())
-      .then((result) => {
-        let buff = [[]];
-        result.forEach((e: never, i: number) => {
-          if (i % 8 === 0) {
-            buff.push([]);
-          }
-          buff[Math.floor(i / 8)].push(e);
-        });
-        setData(buff);
-      });
-  }, []);
 
   return (
     <div className={styles.parent} id={"equipment"}>
@@ -54,34 +47,6 @@ function DataMap(props: any) {
     else setMapData(data);
   }, [showMore]);
 
-  const arr_EN = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
   return (
     <React.Fragment>
       {mapData.map((e: EquipmentData[], i: number) => {
@@ -100,12 +65,10 @@ function DataMap(props: any) {
                   className={styles.element}
                   key={j}
                   style={{
-                    gridArea: arr_EN[j],
                     background: `url("${_k.img}"), black`,
                   }}
                 >
                   <span>{_k.name}</span>
-                  <br />
                   <span className={styles.count}>{_k.count}</span>
                 </div>
               );

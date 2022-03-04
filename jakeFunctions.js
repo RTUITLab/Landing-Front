@@ -131,27 +131,5 @@ module.exports.generateProjectsFile = function () {
         }
       }
     }
-    const download = function (uri, filename, callback) {
-      var fs = require("fs"),
-        request = require("request");
-      request.head(uri, function (err, res, body) {
-        console.log("content-type:", res.headers["content-type"]);
-        console.log("content-length:", res.headers["content-length"]);
-
-        request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
-      });
-    };
-    function downloadImages(data, projectName) {
-      let newData = JSON.parse(data);
-      for (let i in newData.images) {
-        download(
-          newData.images[i],
-          `/public/images/projects/${i}.webp`,
-          function () {
-            console.log("done");
-          }
-        );
-      }
-    }
   });
 };

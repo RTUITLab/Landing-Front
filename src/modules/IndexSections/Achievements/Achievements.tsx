@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Pagination } from "swiper";
 // Import Swiper styles
 import "swiper/css";
@@ -8,9 +8,10 @@ import AchievementCard from "../../../components/AchievementCard/AchievementCard
 import "../../../index.css";
 import styles from "./Achievements.module.scss";
 import { AchievementsData } from "./achievementsData";
+import dataList from "../../../data/achievements";
 
 export default function Achievements() {
-  let initData: AchievementsData[] = [];
+  let initData: AchievementsData[] = JSON.parse(dataList);
   const [data, setData] = useState(initData);
 
   const pagination = {
@@ -19,14 +20,6 @@ export default function Achievements() {
       return '<span class="' + className + '"></span>';
     },
   };
-
-  useEffect(() => {
-    fetch("/achievements.json")
-      .then((data) => data.json())
-      .then((response) => {
-        setData(response);
-      });
-  }, []);
 
   return (
     <article className={styles.achievementsParent} id={"achievemtns"}>

@@ -25,16 +25,16 @@ task(
 desc("Generate projects file from files.rtuitlab.dev");
 task("generate projects file", GenerateProjectsFile);
 
-desc("Creating achievements.json file from /public/info/achievements.md");
+desc("Creating achievements.json file from /info/achievements.md");
 task("parse achievements.md", function () {
   return new Promise((resolve, reject) => {
-    let data = fs.readFileSync("./public/info/achievements.md", "utf-8");
+    let data = fs.readFileSync("./info/achievements.md", "utf-8");
     let list = parseMD(data);
-    fs.writeFileSync(
-      "./public/achievements.json",
-      JSON.stringify(list),
-      "utf-8"
-    );
+    let file = `
+    const data = '${JSON.stringify(list)}';
+    export default data;
+    `;
+    fs.writeFileSync("./src/data/achievements.js", file, "utf-8");
     resolve();
   });
 });
@@ -42,12 +42,16 @@ task("parse achievements.md", function () {
 /**
  *  equipment
  */
-desc("Creating equipment.json file from /public/info/equipment.md");
+desc("Creating equipment.json file from /info/equipment.md");
 task("parse equipment.md", function () {
   return new Promise((resolve, reject) => {
-    let data = fs.readFileSync("./public/info/equipment.md", "utf-8");
+    let data = fs.readFileSync("./info/equipment.md", "utf-8");
     let list = parseMD(data);
-    fs.writeFileSync("./public/equipment.json", JSON.stringify(list), "utf-8");
+    let file = `
+    const data = '${JSON.stringify(list)}';
+    export default data;
+    `;
+    fs.writeFileSync("./src/data/equipment.js", file, "utf-8");
     resolve();
   });
 });
@@ -58,12 +62,16 @@ task("parse equipment.md", function () {
 /**
  *  STAFF.MD
  */
-desc("Creating staff.json file from /public/info/staff.md");
+desc("Creating staff.json file from /info/staff.md");
 task("parse staff.md", function () {
   return new Promise((resolve, reject) => {
-    let data = fs.readFileSync("./public/info/staff.md", "utf-8");
+    let data = fs.readFileSync("./info/staff.md", "utf-8");
     let list = parseMD(data);
-    fs.writeFileSync("./public/staff.json", JSON.stringify(list), "utf-8");
+    let file = `
+    const data = '${JSON.stringify(list)}';
+    export default data;
+    `;
+    fs.writeFileSync("./src/data/staff.js", file, "utf-8");
     resolve();
   });
 });
@@ -90,7 +98,7 @@ task("create service-worker", function () {
         list.push("/");
 
         let data = fs.readFileSync(
-          "./public/info/serviceWorkerSample.js",
+          "./info/serviceWorkerSample.js",
           "utf-8"
         );
         let dataSample = data;
@@ -111,7 +119,7 @@ task("create service-worker", function () {
 
         fs.writeFileSync("./build/service-worker.js", data, "utf-8");
         fs.writeFileSync(
-          "./public/info/serviceWorkerSample.js",
+          "./info/serviceWorkerSample.js",
           dataSample.replace(versionParse[0], newVersion),
           "utf-8"
         );

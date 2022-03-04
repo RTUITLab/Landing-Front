@@ -4,6 +4,19 @@ import StatusBar from "../../../components/StatusBar/StatusBar";
 import styles from "./Projects.module.scss";
 import { ProjectsData } from "./ProjectsData";
 
+export function isMobile() {
+  if (
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    ) ||
+    window.innerWidth <= 850
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export default function Projects() {
   const [activeTab, setActiveTab] = useState(0);
   const [viewGallery, setViewGallery] = useState(false);

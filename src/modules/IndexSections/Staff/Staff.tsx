@@ -1,11 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import UsersCard from "../../../components/UsersCard/UsersCard";
+import data from "../../../data/staff";
 import styles from "./Staff.module.scss";
 
 export default function Staff() {
-  const [staff, setStaff] = useState([]);
+  const [staff, setStaff] = useState(shuffle(JSON.parse(data)));
 
   function shuffle(array: []) {
     let currentIndex = array.length,
@@ -23,14 +24,6 @@ export default function Staff() {
 
     return array;
   }
-
-  useEffect(() => {
-    fetch("/staff.json")
-      .then((data) => data.json())
-      .then((response) => {
-        setStaff(shuffle(response));
-      });
-  }, []);
 
   return (
     <article className={styles.parent} id={"staff"}>
