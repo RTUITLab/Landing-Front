@@ -15,7 +15,6 @@ task(
     "parse achievements.md",
     "parse staff.md",
     "parse equipment.md",
-    "createEnv",
     "buildFrontProd",
     "create service-worker",
   ],
@@ -34,7 +33,7 @@ task("parse achievements.md", function () {
     const data = '${JSON.stringify(list)}';
     export default data;
     `;
-    fs.writeFileSync("./src/data/achievements.js", file, "utf-8");
+    fs.writeFileSync("./src/js/data/achievements.js", file, "utf-8");
     resolve();
   });
 });
@@ -51,7 +50,7 @@ task("parse equipment.md", function () {
     const data = '${JSON.stringify(list)}';
     export default data;
     `;
-    fs.writeFileSync("./src/data/equipment.js", file, "utf-8");
+    fs.writeFileSync("./src/js/data/equipment.js", file, "utf-8");
     resolve();
   });
 });
@@ -71,7 +70,7 @@ task("parse staff.md", function () {
     const data = '${JSON.stringify(list)}';
     export default data;
     `;
-    fs.writeFileSync("./src/data/staff.js", file, "utf-8");
+    fs.writeFileSync("./src/js/data/staff.js", file, "utf-8");
     resolve();
   });
 });
@@ -97,10 +96,7 @@ task("create service-worker", function () {
         list.splice(list.indexOf("/index.html"), 1);
         list.push("/");
 
-        let data = fs.readFileSync(
-          "./info/serviceWorkerSample.js",
-          "utf-8"
-        );
+        let data = fs.readFileSync("./info/serviceWorkerSample.js", "utf-8");
         let dataSample = data;
         let version = data.matchAll(/(var CACHE_NAME = )\'v(\d*)\';/gm);
         let versionParse = version.next().value;
@@ -172,7 +168,6 @@ task("buildFrontProd", function () {
         console.error(stderr);
         reject(stderr);
       }
-
       resolve(true);
     });
   });

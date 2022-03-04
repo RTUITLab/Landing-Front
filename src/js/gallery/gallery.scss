@@ -1,0 +1,46 @@
+.gallery__parent {
+  display: flex;
+  align-items: center;
+  height: 40vw;
+  max-height: 400px;
+  justify-content: center;
+
+  cursor: grab;
+  width: calc(100vw - 10px);
+  overflow: hidden;
+  & *:nth-child(n) {
+    transition: opacity 100ms;
+    pointer-events: none;
+  }
+}
+
+.gallery__anim {
+  & *:nth-child(n) {
+    transition: all 250ms;
+  }
+}
+
+.gallery__galleryItem {
+  width: 70vw;
+  max-width: 700px;
+  max-height: 400px;
+  height: 40vw;
+  position: absolute;
+  outline: none;
+
+  overflow: hidden;
+  display: block;
+
+  img {
+    border-radius: 15px;
+  }
+
+  & *:nth-child(n) {
+    height: 40vw;
+    width: 100%;
+
+    max-width: 700px;
+    max-height: 400px;
+    outline: none;
+  }
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/index.pug --open -p 3000 --out-dir build",
-    "build": "parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache"
+    "build": "parcel build ./src/index.pug --out-dir build --public-url ./ --no-cache"
   },
   "author": "",
   "license": "ISC",

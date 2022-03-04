@@ -119,14 +119,19 @@ module.exports.generateProjectsFile = function () {
         console.log(`Ошибка ${xhr.status}: ${xhr.statusText}`);
         reject(xhr.status);
       } else {
-        //downloadImages(xhr2.response, projectName)
         result.push(JSON.parse(xhr2.response));
+        let outputPug = "-\n\tconst data = " + JSON.stringify(result) + ";";
+        let outputJs = `
+        const data = ${JSON.stringify(result)};
+        export default data;
+        `;
         if (linksArr.length === result.length) {
           fs.writeFileSync(
-            "./public/projects.json",
-            JSON.stringify(result),
+            "./src/js/data/projectsData.pug",
+            outputPug,
             "utf-8"
           );
+          fs.writeFileSync("./src/js/data/projectsData.js", outputJs, "utf-8");
           resolve();
         }
       }
