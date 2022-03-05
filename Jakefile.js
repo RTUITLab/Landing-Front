@@ -29,11 +29,8 @@ task("parse achievements.md", function () {
   return new Promise((resolve, reject) => {
     let data = fs.readFileSync("./info/achievements.md", "utf-8");
     let list = parseMD(data);
-    let file = `
-    const data = '${JSON.stringify(list)}';
-    export default data;
-    `;
-    fs.writeFileSync("./src/js/data/achievements.js", file, "utf-8");
+    let file = "-\n\tconst achievementsData = " + JSON.stringify(list) + ";";
+    fs.writeFileSync("./src/js/data/achievementsData.pug", file, "utf-8");
     resolve();
   });
 });

@@ -1,3 +1,5 @@
+include ../../js/data/achievementsData.pug
+
 article#achievemtns.achievements__achievementsParent
   section.achievements__content
     h1 Достижения
@@ -15,54 +17,16 @@ article#achievemtns.achievements__achievementsParent
         .swiper-wrapper
           .swiper-slide
             div(style="width:5vw;")
-          div.swiper-slide
-            div(class='achievementCard__parent')
-              h1 {title}
-              article(class='achievementCard__desc')
-                p {desc}
-              a(href='{link}') Подробнее
-              img(src='/images/background.webp' alt='Обложка достижения')
-
-          div.swiper-slide
-            div(class='achievementCard__parent')
-              h1 {title}
-              article(class='achievementCard__desc')
-                p {desc}
-              a(href='{link}') Подробнее
-              img(src='/images/background.webp' alt='Обложка достижения')
-
-          div.swiper-slide
-            div(class='achievementCard__parent')
-              h1 {title}
-              article(class='achievementCard__desc')
-                p {desc}
-              a(href='{link}') Подробнее
-              img(src='/images/background.webp' alt='Обложка достижения')
-
-          div.swiper-slide
-            div(class='achievementCard__parent')
-              h1 {title}
-              article(class='achievementCard__desc')
-                p {desc}
-              a(href='{link}') Подробнее
-              img(src='/images/background.webp' alt='Обложка достижения')
-
-          div.swiper-slide
-            div(class='achievementCard__parent')
-              h1 {title}
-              article(class='achievementCard__desc')
-                p {desc}
-              a(href='{link}') Подробнее
-              img(src='/images/background.webp' alt='Обложка достижения')
-
-          div.swiper-slide
-            div(class='achievementCard__parent')
-              h1 {title}
-              article(class='achievementCard__desc')
-                p {desc}
-              a(href='{link}') Подробнее
-              img(src='/images/background.webp' alt='Обложка достижения')
-
+          each obj in achievementsData 
+            .swiper-slide
+              .achievementCard__parent
+                h1
+                  =obj.name
+                article.achievementCard__desc
+                  p 
+                    =obj.desc
+                a(href='{link}') Подробнее
+                img(src='/images/background.webp' alt='Обложка достижения')
           .swiper-slide
             div(style="width:5vw;")
 
