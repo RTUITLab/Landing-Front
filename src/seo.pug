@@ -1,0 +1,77 @@
+script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-160294645-1')
+script.
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+  dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "UA-160294645-1");
+script.
+  if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+  navigator.serviceWorker
+  .register("service-worker.js")
+  .then(
+  function (registration) {
+  console.log(
+  "ServiceWorker registration successful with scope: ",
+  registration.scope
+  );
+  },
+  function (err) {
+  console.log("ServiceWorker registration failed: ", err);
+  }
+  )
+  .catch(function (err) {
+  console.log(err);
+  });
+  });
+  } else {
+  console.log("Service worker is not supported");
+  }
+meta(charset='utf-8')
+link(rel='icon' href='./images/favicon.ico')
+link(rel='shortcut icon' href='./images/favicon.ico')
+meta(name='viewport' content='width=device-width, initial-scale=1')
+meta(name='theme-color' content='#000000')
+// START SEO BLOCK
+meta(name='keywords' content='МИРЭА, РТУ МИРЭА, RTUITLab, ртуитлаб, Институт Информационных Технологий, Институт ИТ, ИИТ, mirea')
+meta(name='description', content='RTUITLab – это более 30 IT-специалистов, среди которых backend, frontend-разработчики, ML, VR/AR, DevOps – специалисты, дизайнеры и системные архитекторы,\
+на счету которых множество реализованных проектов. Материальная база Института Информационных Технологий позволяет сотрудникам работать с порой эксклюзивным оборудованием,\
+собирать под него проекты, демонстрировать их на выставках и конференциях.')
+// Facebook
+meta(property='og:title' content='RTUITLab')
+meta(property='og:type' content='website')
+meta(property='og:url' content='https://rtuitlab.dev')
+meta(property='og:image' content='./images/logo.png')
+meta(name='og:description', content='RTUITLab – это более 30 IT-специалистов, среди которых backend, frontend-разработчики, ML, VR/AR, DevOps – специалисты, дизайнеры и системные архитекторы,\
+на счету которых множество реализованных проектов. Материальная база Института Информационных Технологий позволяет сотрудникам работать с порой эксклюзивным оборудованием,\
+собирать под него проекты, демонстрировать их на выставках и конференциях.')
+// Facebook
+// Twitter
+meta(name='twitter:card' content='summary')
+meta(name='twitter:site' content='https://rtuitlab.dev')
+// Twitter
+// Google
+script(type='application/ld+json').
+  {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "url": "https://rtuitlab.dev",
+  "logo": "https://rtuitlab.dev/images/logo.png",
+  "address": {
+  "@type": "PostalAddress",
+  "addressLocality": "Москва, Россия",
+  "postalCode": "119454",
+  "streetAddress": "пр. Вернадского 78"
+  },
+  "email": "contact@rtuitlab.dev",
+  "name": "RTUITLab"
+  }
+// Google
+// END SEO BLOCK
+link(rel='apple-touch-icon' href='images/logo.png')
+link(rel='manifest' href='../manifest.json')
+meta(name='mobile-web-app-capable' content='yes')
+meta(name='apple-mobile-web-app-capable' content='yes')
+title RTUITLab

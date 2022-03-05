@@ -33,7 +33,9 @@
         font-size: 18px;
       }
     }
-
+    .tagElement {
+      display: none;
+    }
     .projects__tags {
       display: flex;
       justify-content: space-between;

@@ -11,7 +11,7 @@
   input#showMenu.header__menuCheckBox(type='checkbox')
   label(for='showMenu')
     img(src='/images/logo.webp' alt='')
-  div.header__elementsParent
+  div.header__elementsParent#headerElements
     each obj in pages
       if(obj.secName==="about")
         a(href=`#${obj.secName}` class="header__element" onclick="window.scrollTo(0,0);")

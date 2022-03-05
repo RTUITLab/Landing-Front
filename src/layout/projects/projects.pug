@@ -1,7 +1,7 @@
 include ../../js/data/projectsData.pug
 
 -
-  let tags = ["Все","Backend", "Frontend", "VR", "AR", "Machine Learning"]
+  let tags = ["Все","Backend", "Frontend", "VR", "AR", "ML"]
 
 article#projects.projects__projectsParent
   div.projects__content
@@ -17,12 +17,12 @@ article#projects.projects__projectsParent
     section.projects__tags
       each obj in tags
         if(obj==="Все")
-          input(name="projects__tags" type="radio", id=`projects__tags__${obj}`, checked) 
-          label(for=`projects__tags__${obj}`)
+          input(name="projects__tags" type="radio", id=`projects__tags__all`, checked) 
+          label(for=`projects__tags__all` onclick=`generateProjects("all")`)
             =obj
         else 
           input(name="projects__tags" type="radio", id=`projects__tags__${obj}`) 
-          label(for=`projects__tags__${obj}`)
+          label(for=`projects__tags__${obj}` onclick=`generateProjects("${obj}")`)
             =obj
     section#GalleryParent.gallery__parent
       each obj in data

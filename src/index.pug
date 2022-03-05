@@ -2,19 +2,25 @@ DOCTYPE html
 html(lang="ru")
   head
     meta(charset="UTF-8")
-    meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js") 
-    title Document
+    link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
+    script(src="https://unpkg.com/swiper/swiper-bundle.min.js", defer) 
+
+    include ./seo.pug
     script(src="./styles.js", async) 
     script(src="./js/about/about.js", defer) 
     script(src="./js/header/header.js", defer) 
     script(src="./js/projects/projects.js", defer) 
+    script(src="./js/achievements/achievements.js", defer) 
+
   body 
-    main 
+    header 
       include ./layout/header/header.pug
+    main#pageContentParent
       include ./layout/about/about.html
       include ./layout/projects/projects.pug
+      include ./layout/achievements/achievements.pug
+
 
 
 

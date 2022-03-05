@@ -79,6 +79,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
   const setZ = function (x) {
     const i = Number(x);
     let current = elem.children[i];
+    if (!current) return;
     current.style.zIndex = 5;
     let childrenArr = Array.from(elem.children);
 
@@ -119,7 +120,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
       e.style.opacity = "0";
     });
     let current = elem.children[i];
-    current.style.opacity = 1;
+    if (current) current.style.opacity = 1;
     if (i - 1 >= 0) {
       childrenArr[i - 1].style.opacity = 1;
       if (i - 2 >= 0) childrenArr[i - 2].style.opacity = 1;
@@ -132,6 +133,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
   const setCurrentActivePanel = function (x) {
     const i = Number(x);
     let current = elem.children;
+    if (current.length === 0) return;
     localActiveView = i;
     clearStyles(i);
     setZ(i);
@@ -262,6 +264,15 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
       setTimeout(() => {
         elem.classList.remove("gallery__anim");
       }, 250);
+    },
+    galleryDestroy: () => {
+      elem.onmousedown = null;
+      elem.onmouseup = null;
+      elem.ontouchstart = null;
+      elem.ontouchmove = null;
+      elem.ontouchend = null;
+      elem.onmousemove = null;
+      deleteEventListener();
     },
   };
 }
