@@ -1,14 +1,7 @@
-import gallery from "../gallery/gallery";
 import projectsData from "../data/projectsData";
+import { GalleryConstrucor } from "../gallery/gallery";
 
 let currentActiveTab = 0;
-
-let { setActiveView, galleryDestroy } = gallery(
-  document.getElementById("GalleryParent"),
-  onMouseDown,
-  onMouseUp,
-  onChange
-);
 
 const statusBar = document.getElementById("projectsStatusBar");
 const projectsInfo = document.getElementById("projectInfoContent");
@@ -42,7 +35,7 @@ function setActiveStatusBarPoint(e) {
 }
 
 const generateProjects = (e) => {
-  galleryDestroy();
+  gallery.destroy();
   let projects = projectsData;
   if (e !== "all") {
     projects = projectsData.filter((k) => {
@@ -75,17 +68,14 @@ const generateProjects = (e) => {
     currentActiveTab = Math.floor(projects.length / 2);
     setActiveStatusBarPoint(currentActiveTab);
 
-    let newGallery = gallery(
+    gallery.init(
       document.getElementById("GalleryParent"),
       onMouseDown,
       onMouseUp,
       onChange
     );
-    newGallery.setActiveView(currentActiveTab);
+    gallery.setActiveView(currentActiveTab);
     updateProjectsInfo();
-
-    setActiveView = newGallery.setActiveView;
-    galleryDestroy = newGallery.galleryDestroy;
   }
 };
 
@@ -99,13 +89,20 @@ function generateStatusBar(count) {
 
 for (let i in Array.from(statusBar.children)) {
   statusBar.children[i].onclick = () => {
-    setActiveView(i);
+    gallery.setActiveView(i);
     setActiveStatusBarPoint(i);
     updateProjectsInfo();
   };
 }
 
+let gallery = new GalleryConstrucor().init(
+  document.getElementById("GalleryParent"),
+  onMouseDown,
+  onMouseUp,
+  onChange
+);
+
 setActiveStatusBarPoint(Math.floor(projectsData.length / 2));
-setActiveView(Math.floor(projectsData.length / 2));
+gallery.setActiveView(Math.floor(projectsData.length / 2));
 updateProjectsInfo();
 document.getElementById("projects__tags__all").checked = true;

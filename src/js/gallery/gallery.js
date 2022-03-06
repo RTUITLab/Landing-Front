@@ -276,3 +276,28 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
     },
   };
 }
+
+export function GalleryConstrucor() {}
+
+GalleryConstrucor.prototype.init = function (
+  elem,
+  onMouseDown,
+  onMouseUp,
+  onChange
+) {
+  let { setActiveView, galleryDestroy } = gallery(
+    elem,
+    onMouseDown,
+    onMouseUp,
+    onChange
+  );
+
+  this.setActiveView = setActiveView;
+  this.galleryDestroy = galleryDestroy;
+
+  return this;
+};
+GalleryConstrucor.prototype.destroy = function () {
+  this.galleryDestroy();
+  return this;
+};
