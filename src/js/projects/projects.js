@@ -87,6 +87,7 @@ function generateStatusBar(count) {
     statusBar.appendChild(document.createElement("div"));
 }
 
+
 for (let i in Array.from(statusBar.children)) {
   statusBar.children[i].onclick = () => {
     gallery.setActiveView(i);

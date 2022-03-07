@@ -43,11 +43,19 @@ task("parse equipment.md", function () {
   return new Promise((resolve, reject) => {
     let data = fs.readFileSync("./info/equipment.md", "utf-8");
     let list = parseMD(data);
-    let file = `
-    const data = '${JSON.stringify(list)}';
-    export default data;
-    `;
-    fs.writeFileSync("./src/js/data/equipment.js", file, "utf-8");
+    let result = [];
+    let buff = [];
+    for (let i of list) {
+      buff.push(i);
+      if (buff.length === 8) {
+        result.push(buff);
+        buff = [];
+      }
+    }
+    result.push(buff);
+    buff = [];
+    let file = "-\n\tconst equipmentData = " + JSON.stringify(result);
+    fs.writeFileSync("./src/js/data/equipment.pug", file, "utf-8");
     resolve();
   });
 });
@@ -63,11 +71,8 @@ task("parse staff.md", function () {
   return new Promise((resolve, reject) => {
     let data = fs.readFileSync("./info/staff.md", "utf-8");
     let list = parseMD(data);
-    let file = `
-    const data = '${JSON.stringify(list)}';
-    export default data;
-    `;
-    fs.writeFileSync("./src/js/data/staff.js", file, "utf-8");
+    let file = "-\n\tconst staffData = " + JSON.stringify(list);
+    fs.writeFileSync("./src/js/data/staff.pug", file, "utf-8");
     resolve();
   });
 });

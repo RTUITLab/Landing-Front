@@ -14,6 +14,10 @@
     transition: opacity 100ms;
     pointer-events: none;
   }
+  @media (max-width: 550px) {
+    max-height: 500px;
+    height: 500px;
+  }
 }
 
 .gallery__anim {
@@ -41,8 +45,18 @@
     height: 40vw;
     width: 100%;
 
+    object-fit: cover;
     max-width: 700px;
     max-height: 400px;
     outline: none;
+  }
+
+  @media (max-width: 550px) {
+    width: 80vw;
+    max-height: 500px;
+    height: fit-content;
+    & *:nth-child(n) {
+      height: 500px;
+    }
   }
 }
