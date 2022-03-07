@@ -2,8 +2,8 @@
     "title": "BunnyHuntVR - Web VR шутер",
     "description": "VR игра, обороняйте грядки от проворных и назойливых зайцев. Узнайте сколько морковки вы сможете сохранить. ",
     "images": [
-        "https://github.com/RTUITLab/WebVRShoot/raw/master/LANDING/BunnyHuntVR.png",
-        "https://github.com/RTUITLab/WebVRShoot/raw/master/LANDING/BunnyHuntVR2.png"
+        "BunnyHuntVR.png",
+        "BunnyHuntVR2.png"
     ],
     "videos": [],
     "tags": [

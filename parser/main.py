@@ -8,6 +8,9 @@ import shutil
 from datetime import date
 
 
+IMG_URLS = list()
+
+
 def read_markdown_blocks(path: str):
     with open(path, "r", encoding="utf-8") as f:
         rawdata = f.read()
@@ -37,7 +40,8 @@ def parse_images(content: str, repo_full_name: str, default_branch: str):
         if not url.startswith("http"):
             url = f"https://github.com/{repo_full_name}/raw/" +\
                 f"{default_branch}/{url.strip('/')}"
-        images.append(url)
+        images.append(url.split('/')[-1])
+        IMG_URLS.append(url)
     return images
 
 
@@ -74,8 +78,8 @@ def parse_source_code(content: str):
     return data
 
 
-def save_images(images: list, save_dir: str):
-    for image_url in images:
+def save_images(save_dir: str):
+    for image_url in IMG_URLS:
         response = requests.get(image_url)
         if response.status_code == 404:
             print(f"::error ::Access denied for image by {image_url}")
@@ -86,7 +90,7 @@ def save_images(images: list, save_dir: str):
                 f.write(response.content)
 
 
-def create_dir(repo_full_name: str, from_path: str, to_path: str, data: dict):
+def create_dir(repo_full_name: str, to_path: str, data: dict):
     project_name = repo_full_name.split("/")[1]
     project_dir = os.path.join(to_path, project_name)
     if os.path.exists(project_dir):
@@ -96,7 +100,7 @@ def create_dir(repo_full_name: str, from_path: str, to_path: str, data: dict):
     with open(info_file_path, "w", encoding="utf-8") as f:
         _ = json.dump(data, f, ensure_ascii=False, indent=4)
         f.write("\n")
-    save_images(data["images"], project_dir)
+    save_images(project_dir)
     return
 
 
@@ -157,7 +161,7 @@ def run(source: str, target: str, repo: str, branch: str,
     blocks = read_markdown_blocks(os.path.join(source, f_name))
     create_json(blocks, repo, branch)
     blocks["date"] = date.today().strftime("%d/%m/%Y")
-    create_dir(repo, source, target, blocks)
+    create_dir(repo, target, blocks)
 
 
 if __name__ == "__main__":
