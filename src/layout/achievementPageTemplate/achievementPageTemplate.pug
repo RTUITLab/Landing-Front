@@ -1,0 +1,65 @@
+block variables
+
+doctype html
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		title RTUITLab — #{title}
+		script(src="../js/achievementPageTemplate/achievementPageTemplate.js")
+		link(rel="stylesheet" href="../indexStyles.scss")
+		script(type='application/ld+json').
+			{
+			"@context": "https://schema.org",
+			"@type": "BlogPosting",
+			"mainEntityOfPage": {
+			"@type": "WebPage",
+			"@id": "https://rtuitlab.dev"
+			},
+			"headline": "#{title}",
+			"image": "#{cover}",
+			"author": {
+			"@type": "Organization",
+			"name": "RTUITLab",
+			"url": "https://rtuitlab.dev"
+			},
+			"publisher": {
+			"@type": "Organization",
+			"name": "RTUITLab",
+			"logo": {
+			"@type": "ImageObject",
+			"url": ""
+			}
+			},
+			"datePublished": ""
+			}
+
+	body.achievementsPageTemplate
+		header
+			section.buttonContainer
+				button(onclick="window.history.back();")
+					img(src="/images/icons/buttonArrow.svg" alt="")
+					| Назад
+
+				h1 #{title}
+
+			section.desc #{shortdesc}
+
+		main
+			section.content
+				img(src=cover, alt="")
+				article.info
+					h3 О событии
+					block fulldesc
+
+			section.otherInfo
+				block otherInfo
+
+			section.members
+				h2 Участники
+				section.itemsParent
+					each obj in members
+						.item
+							img(src=obj.img, alt="")
+							p #{obj.fio}

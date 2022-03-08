@@ -166,7 +166,9 @@ task("createEnv", function () {
 desc("Build Landing Front prod");
 task("buildFrontProd", function () {
   return new Promise((resolve, reject) => {
-    exec("npm ci && npm run build", (err, stdout, stderr) => {
+    let command = "npm ci && npm run build";
+    if (process.platform === "win32") command = "npm ci && npm run buildWin";
+    exec(command, (err, stdout, stderr) => {
       if (err) {
         console.error(stderr);
         reject(stderr);

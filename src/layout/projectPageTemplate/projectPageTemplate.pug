@@ -1,0 +1,94 @@
+block variables
+
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title RTUITLab — #{obj.title}
+    link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
+    script(src="https://unpkg.com/swiper/swiper-bundle.min.js", defer)
+    link(rel="stylesheet" href="../layout/projectPageTemplate/projectPageTemplate.scss")
+    link(rel="stylesheet" href="../indexStyles.scss")
+    script(src="../js/projectPageTemplate/projectPageTemplate.js", defer) 
+    script(type='application/ld+json').
+      {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rtuitlab.dev"
+      },
+      "headline": "#{title}",
+      "image": "#{cover}",
+      "author": {
+      "@type": "Organization",
+      "name": "RTUITLab",
+      "url": "https://rtuitlab.dev"
+      },
+      "publisher": {
+      "@type": "Organization",
+      "name": "RTUITLab",
+      "logo": {
+      "@type": "ImageObject",
+      "url": ""
+      }
+      },
+      "datePublished": ""
+      }
+
+  body.projectPageTemplate
+    header
+      section.buttonContainer
+        button(onclick="window.history.back();")
+          img(src="/images/icons/buttonArrow.svg" alt="")
+          | Назад
+
+        h1 #{obj.title}
+
+      section.cover 
+        img(src=obj.images[0], alt="")
+
+
+    main 
+      section.content
+        .galleryParent
+          .swiper.projectsSwiperParent
+            .swiper-wrapper
+              each object in obj.images.splice(1,obj.images.length) 
+                .swiper-slide
+                  img(src=object, alt="")
+          .swiper-pagination.projectsSwiperPagination
+
+        section.info
+          article 
+            h3 Описание
+            div 
+              p
+                =obj.description
+            .infoBlock 
+              h3 Технологии
+              section.itemsParent
+                each object in obj.tech 
+                  .item
+                    p #{object}
+
+            .infoBlock 
+              h3 Разработчики
+              section.itemsParent
+                each object in obj.developers 
+                  .item
+                    p #{object}
+
+            .infoBlock 
+              h3 Исходный код
+              section.itemsParent
+                each object in obj.sourceCode 
+                  .item
+                    a(href=object.link target="_blank")
+                      =object.name
+
+      section.otherInfo 
+        block otherInfo
+

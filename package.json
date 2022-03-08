@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel ./src/index.pug --open -p 3000 --out-dir build",
-    "build": "parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache"
+    "start": "parcel ./src/index.pug --open -p 3000 --out-dir build --no-cache",
+    "buildWin": "rmdir /s /q \"build\" 2> nul & parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache && parcel build ./src/achievements/*.pug ./src/projects/*.pug --out-dir build --public-url ../ --no-minify --no-cache",
+    "build": "rm -rf build && parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache && parcel build ./src/achievements/*.pug ./src/projects/*.pug --out-dir build --public-url ../ --no-minify --no-cache"
   },
   "author": "",
   "license": "ISC",
@@ -20,12 +21,9 @@
     "cssnano": "^5.1.0",
     "parcel-plugin-clean-easy": "^1.0.2",
     "postcss": "^8.4.7",
+    "prettier": "2.5.1",
     "sass": "^1.49.9",
     "typescript": "^4.6.2",
     "xhr2": "^0.2.1"
-  },
-  "parcelCleanPaths": [
-    "build",
-    ".cache"
-  ]
+  }
 }

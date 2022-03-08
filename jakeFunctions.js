@@ -1,4 +1,5 @@
 const { readdir } = require("fs").promises;
+const { exec } = require("child_process");
 const fs = require("fs");
 const { resolve } = require("path/posix");
 
@@ -120,21 +121,50 @@ module.exports.generateProjectsFile = function () {
         reject(xhr.status);
       } else {
         result.push(JSON.parse(xhr2.response));
-        let outputPug = "-\n\tconst data = " + JSON.stringify(result) + ";";
-        let outputJs = `
+
+        if (linksArr.length === result.length) {
+          let outputPug = "-\n\tconst data = " + JSON.stringify(result) + ";";
+          let outputJs = `
         const data = ${JSON.stringify(result)};
         export default data;
         `;
-        if (linksArr.length === result.length) {
           fs.writeFileSync(
             "./src/js/data/projectsData.pug",
             outputPug,
             "utf-8"
           );
           fs.writeFileSync("./src/js/data/projectsData.js", outputJs, "utf-8");
-          resolve();
+          if (process.platform === "win32") {
+            generateProjectsTemplates(
+              'rmdir /s /q "./src/projects" & mkdir "./src/projects"',
+              resolve
+            );
+          } else {
+            generateProjectsTemplates(
+              'rm -rf "./src/projects" & mkdir "./src/projects"',
+              resolve
+            );
+          }
         }
       }
     }
+
+    function generateProjectsTemplates(cmd, resolve) {
+      exec(cmd, () => {
+        for (let i of result) {
+          fs.writeFileSync(
+            `./src/projects/${generateProjectFileName(i.title)}.pug`,
+            "extends ../layout/projectPageTemplate/projectPageTemplate.pug\n\nblock variables\n\t-\n\t\tlet obj = " +
+              JSON.stringify(i),
+            "utf-8"
+          );
+        }
+        resolve();
+      });
+    }
   });
 };
+
+function generateProjectFileName(name) {
+  return name.trim().toLowerCase().replaceAll(" ", "_");
+}

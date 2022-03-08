@@ -1,0 +1,150 @@
+.achievementsPageTemplate {
+  background-color: #f3f3f3;
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 50px;
+  header {
+    max-width: 1300px;
+    width: 90vw;
+    margin: 0 auto;
+
+    .buttonContainer {
+      display: flex;
+
+      button {
+        display: flex;
+        column-gap: 15px;
+        align-items: center;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        width: 110px;
+        line-height: 28px;
+        text-align: center;
+        color: #0066cc;
+
+        img {
+          width: 30px;
+        }
+      }
+
+      h1 {
+        justify-self: center;
+        text-align: center;
+        width: 100%;
+        margin-right: 110px;
+
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 42px;
+        text-align: center;
+        color: #121212;
+      }
+    }
+    .desc {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 28px;
+      text-align: center;
+      color: #666666;
+      max-width: 550px;
+      margin: 0 auto;
+    }
+  }
+
+  main {
+    .content {
+      padding: 0px 15px;
+      padding-top: 50px;
+      column-gap: 15px;
+      flex-wrap: wrap;
+      display: flex;
+      max-width: 1000px;
+      margin: 0 auto;
+      img {
+        flex: 0 0 40%;
+        border-radius: 15px;
+        height: 300px;
+      }
+      .info {
+        flex: 0 0 50%;
+        h3 {
+          margin: 0;
+        }
+        p {
+          font-style: normal;
+          font-weight: normal;
+          color: #666666;
+        }
+      }
+      @media (max-width: 980px) {
+        img {
+          flex: 1 1 auto;
+          width: 100%;
+        }
+        .info {
+          flex: 1 1 auto;
+          padding-top: 20px;
+        }
+      }
+    }
+    .otherInfo {
+      margin: 0 auto;
+      padding-top: 20px;
+      max-width: 1000px;
+    }
+    .members {
+      padding-top: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+
+      h2 {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+      }
+      .itemsParent {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 10px;
+        column-gap: 10px;
+        margin: 0 auto;
+        width: fit-content;
+        padding-top: 20px;
+        .item {
+          padding: 10px 15px;
+          border-radius: 15px;
+          background-color: white;
+          display: flex;
+          column-gap: 15px;
+          align-items: center;
+          img {
+            width: 36px;
+            height: 36px;
+            border-radius: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+          p {
+            margin: 0;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 18px;
+            color: #666666;
+          }
+          @media (max-width: 980px) {
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
