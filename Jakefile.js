@@ -1,8 +1,8 @@
 const exec = require("child_process").exec;
 const fs = require("fs");
 const ENV_PATH = "./.env";
-const ENV_REACT_APP_BUILD_YEAR_ROW = `REACT_APP_BUILD_YEAR=${new Date().getFullYear()}`;
-const ENV_REACT_APP_BUILD_YEAR_REGEX = /^REACT_APP_BUILD_YEAR=.*$/m;
+const ENV_BUILD_YEAR_ROW = `BUILD_YEAR=${new Date().getFullYear()}`;
+const ENV_BUILD_YEAR_REGEX = /^BUILD_YEAR=.*$/m;
 var parseMD = require("./jakeFunctions").parseMD;
 var ParseDirectory = require("./jakeFunctions").ParseDirectory;
 var GenerateProjectsFile = require("./jakeFunctions").generateProjectsFile;
@@ -15,6 +15,7 @@ task(
     "parse achievements.md",
     "parse staff.md",
     "parse equipment.md",
+    "createEnv",
     "buildFrontProd",
     "create service-worker",
   ],
@@ -145,11 +146,11 @@ task("createEnv", function () {
         data = data
           .replace(/\r/g, "")
           .split("\n")
-          .filter((val) => !val.match(ENV_REACT_APP_BUILD_YEAR_REGEX))
+          .filter((val) => !val.match(ENV_BUILD_YEAR_REGEX))
           .join("\n");
-        data = `${ENV_REACT_APP_BUILD_YEAR_ROW}\n${data}`;
+        data = `${ENV_BUILD_YEAR_ROW}\n${data}`;
       } else {
-        data = ENV_REACT_APP_BUILD_YEAR_ROW;
+        data = ENV_BUILD_YEAR_ROW;
       }
       fs.writeFileSync(ENV_PATH, data);
     } catch (error) {

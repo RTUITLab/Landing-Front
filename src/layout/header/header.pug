@@ -14,10 +14,10 @@
   div.header__elementsParent#headerElements
     each obj in pages
       if(obj.secName==="about")
-        a(href=`#${obj.secName}` class="header__element" onclick="window.scrollTo(0,0);")
+        a(href=`#${obj.secName}` class="header__element" onclick="window.scrollTo(0,0); document.getElementById(\"showMenu\").checked=false;")
           =obj.title
       else 
-        a(href=`#${obj.secName}` class="header__element")
+        a(href=`#${obj.secName}` class="header__element" onclick="document.getElementById(\"showMenu\").checked=false;")
           =obj.title
 
   label(for='showMenu')
