@@ -11,6 +11,8 @@ def parse(source: str, repo: str, branch: str):
         "LANDING.md")
     )
     create_json(blocks, repo, branch)
+    for i, url in enumerate(blocks["images"]):
+        blocks["images"][i] = url.split('/')[-1]
     target_path = os.path.join(os.path.dirname(__file__), source,
                                "LANDING.json")
     with open(target_path, "r", encoding="utf-8") as f:

@@ -38,7 +38,7 @@ LANDING.md file parser
 optional arguments:
   -h, --help            show this help message and exit
   -s SOURCE, --source SOURCE
-                        path to read README.md (default: '.')
+                        path to read LANDING.md (default: '.')
   -t TARGET, --target TARGET
                         path to save json file (default: '.')
   -r REPO, --repo REPO  repo full name [required]

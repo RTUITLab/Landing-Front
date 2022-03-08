@@ -2,10 +2,10 @@
     "title": "GeoHelper",
     "description": "    Проект для реализации AR-слоя мира, в котором отображаются объекты дополненной реальности в зависимости от заданного географического положения.\n    Проект состоит из сайта и приложений для платформ Android и IOS.\n    Сайт предназначен для менеджмента данными, представляемых в AR-слое.\n    Мобильное приложение служит для отображения AR-слоя мира на экране используемого устройства.",
     "images": [
-        "https://github.com/RTUITLab/GeoHelperUnity/raw/master/landing/1.png",
-        "https://github.com/RTUITLab/GeoHelperUnity/raw/master/landing/2.png",
-        "https://github.com/RTUITLab/GeoHelperUnity/raw/master/landing/3.png",
-        "https://github.com/RTUITLab/GeoHelperUnity/raw/master/landing/4.png"
+        "1.png",
+        "2.png",
+        "3.png",
+        "4.png"
     ],
     "videos": [],
     "tags": [
