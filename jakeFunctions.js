@@ -136,12 +136,12 @@ module.exports.generateProjectsFile = function () {
           fs.writeFileSync("./src/js/data/projectsData.js", outputJs, "utf-8");
           if (process.platform === "win32") {
             generateProjectsTemplates(
-              'rmdir /s /q "./src/projects" & mkdir "./src/projects"',
+              "rmdir /s /q ./src/projects & mkdir ./src/projects",
               resolve
             );
           } else {
             generateProjectsTemplates(
-              'rm -rf "./src/projects" & mkdir "./src/projects"',
+              "rm -rf ./src/projects && mkdir ./src/projects",
               resolve
             );
           }
