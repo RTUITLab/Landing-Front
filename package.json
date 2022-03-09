@@ -1,5 +1,5 @@
 {
-  "homepage": "http://rtuitlab.github.io/landing",
+  "homepage": "http://rtuitlab.github.io/landingTestBuild",
   "name": "RTUITLab",
   "version": "2.0.0",
   "description": "",
@@ -8,7 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel ./src/index.pug --open -p 3000 --out-dir build --no-cache",
     "buildWin": "rmdir /s /q \"build\" 2> nul & parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache && parcel build ./src/achievements/*.pug ./src/projects/*.pug --out-dir build --public-url ../ --no-minify --no-cache",
-    "predeploy": "rm -rf build && parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache && parcel build ./src/achievements/*.pug ./src/projects/*.pug --out-dir build --public-url ../ --no-minify --no-cache",
+    "build": "rm -rf build && parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache && parcel build ./src/achievements/*.pug ./src/projects/*.pug --out-dir build --public-url ../ --no-minify --no-cache",
+    "predeploy": "jake",
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
