@@ -44,6 +44,13 @@
         text-align: center;
         color: #121212;
       }
+      @media (max-width: 550px) {
+        flex-direction: column;
+        padding-top: 30px;
+        h1 {
+          margin: 10px 0px;
+        }
+      }
     }
     .desc {
       font-style: normal;
