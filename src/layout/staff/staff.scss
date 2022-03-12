@@ -73,9 +73,10 @@
   }
 
   .userscard__info {
-    transition: all 250ms ease;
+    transition: opacity 250ms ease;
     opacity: 0;
     padding-top: 20px;
+    min-width: 300px;
     .userscard__fio {
       font-style: normal;
       font-weight: bold;
@@ -88,6 +89,7 @@
       display: flex;
       row-gap: 5px;
       column-gap: 5px;
+      flex-wrap: wrap;
 
       & div:nth-child(n) {
         background-color: white;
