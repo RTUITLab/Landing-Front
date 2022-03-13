@@ -21,10 +21,10 @@ article#achievemtns.achievements__achievementsParent
             .swiper-slide
               .achievementCard__parent
                 h1
-                  =obj.title
+                  =obj.name
                 article.achievementCard__desc
                   p 
-                    =obj.shortdescription
+                    =obj.desc
                 a(href='{link}') Подробнее
                 img(src='/images/background.webp' alt='Обложка достижения')
           .swiper-slide

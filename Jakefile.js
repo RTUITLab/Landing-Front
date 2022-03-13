@@ -1,9 +1,11 @@
 const exec = require("child_process").exec;
 const fs = require("fs");
+const { parseMD2 } = require("./MDParser");
+const { readdir } = require("fs").promises;
 const ENV_PATH = "./.env";
 const ENV_BUILD_YEAR_ROW = `BUILD_YEAR=${new Date().getFullYear()}`;
 const ENV_BUILD_YEAR_REGEX = /^BUILD_YEAR=.*$/m;
-var parseMD = require("./jakeFunctions").parseMD;
+var parseMD = require("./MDParser").parseMD;
 var ParseDirectory = require("./jakeFunctions").ParseDirectory;
 var GenerateProjectsFile = require("./jakeFunctions").generateProjectsFile;
 
@@ -15,21 +17,29 @@ task(
     "parse achievements.md",
     "parse staff.md",
     "parse equipment.md",
-    "createEnv",
+    // "createEnv",
     "buildFrontProd",
-    "create service-worker",
+    // "create service-worker",
   ],
   function () {}
 );
 
-desc("Generate projects file from files.rtuitlab.dev");
+desc("Generate projects file");
 task("generate projects file", GenerateProjectsFile);
 
 desc("Creating achievements.json file from /info/achievements.md");
 task("parse achievements.md", function () {
-  return new Promise((resolve, reject) => {
-    let data = fs.readFileSync("./info/achievements.md", "utf-8");
-    let list = parseMD(data);
+  return new Promise(async (resolve, reject) => {
+    let list = [];
+    const files = await readdir("./data/achievements");
+    for (let i of files) {
+      let buff = parseMD2(
+        fs.readFileSync(`./data/achievements/${i}/info.md`, "utf-8")
+      );
+      buff.link = i;
+      list.push(buff);
+    }
+
     let file = "-\n\tconst achievementsData = " + JSON.stringify(list) + ";";
     fs.writeFileSync("./src/js/data/achievementsData.pug", file, "utf-8");
     resolve();
@@ -42,7 +52,7 @@ task("parse achievements.md", function () {
 desc("Creating equipment.json file from /info/equipment.md");
 task("parse equipment.md", function () {
   return new Promise((resolve, reject) => {
-    let data = fs.readFileSync("./info/equipment.md", "utf-8");
+    let data = fs.readFileSync("./data/equipment/equipment.md", "utf-8");
     let list = parseMD(data);
     let result = [];
     let buff = [];
@@ -70,7 +80,7 @@ task("parse equipment.md", function () {
 desc("Creating staff.json file from /info/staff.md");
 task("parse staff.md", function () {
   return new Promise((resolve, reject) => {
-    let data = fs.readFileSync("./info/staff.md", "utf-8");
+    let data = fs.readFileSync("./data/staff/staff.md", "utf-8");
     let list = parseMD(data);
     let file = "-\n\tconst staffData = " + JSON.stringify(list);
     fs.writeFileSync("./src/js/data/staff.pug", file, "utf-8");
@@ -166,8 +176,20 @@ task("createEnv", function () {
 desc("Build Landing Front prod");
 task("buildFrontProd", function () {
   return new Promise((resolve, reject) => {
-    let command = "npm run build";
-    if (process.platform === "win32") command = "npm run buildWin";
+    let command =
+      "rm -rf build " +
+      "&& parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache " +
+      "&& parcel build ./src/achievements/*.pug ./src/projects/*.pug --out-dir build --public-url ../ --no-minify --no-cache " +
+      "&& cp -a ./src/images ./build/images " +
+      "&& exit 0";
+    if (process.platform === "win32")
+      command =
+        'rmdir /s /q "build" 2> nul ' +
+        "& parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache " +
+        "&& parcel build ./src/achievements/*.pug ./src/projects/*.pug --out-dir build --public-url ../ --no-minify --no-cache " +
+        "&& mkdir .\\build\\images " +
+        "&& xcopy /E .\\src\\images .\\build\\images\\ " +
+        "&& exit 0";
     exec(command, (err, stdout, stderr) => {
       if (err) {
         console.error(stderr);

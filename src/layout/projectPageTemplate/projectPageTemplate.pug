@@ -56,9 +56,9 @@ html(lang="ru")
         .galleryParent
           .swiper.projectsSwiperParent
             .swiper-wrapper
-              each object in obj.images.splice(1,obj.images.length) 
+              each object in obj.images.splice(1,obj.images.length)
                 .swiper-slide
-                  img(src=object, alt="")
+                  img(src="../../src"+object, alt="")
           .swiper-pagination.projectsSwiperPagination
 
         section.info
@@ -84,7 +84,7 @@ html(lang="ru")
             .infoBlock 
               h3 Исходный код
               section.itemsParent
-                each object in obj.sourceCode 
+                each object in obj.sourcecode
                   .item
                     a(href=object.link target="_blank")
                       =object.name

@@ -56,10 +56,10 @@ const generateProjects = (e) => {
       newChild.className = "gallery__galleryItem noselect";
       let newImg = document.createElement("img", {
         draggable: "false",
-        src: e.images[0],
+        src: "." + e.images[0],
       });
       newImg.draggable = "false";
-      newImg.src = e.images[0];
+      newImg.src = "." + e.images[0];
       newChild.appendChild(newImg);
       galleryParent.appendChild(newChild);
     });
@@ -77,6 +77,7 @@ const generateProjects = (e) => {
     gallery.setActiveView(currentActiveTab);
     updateProjectsInfo();
   }
+  setPointsAction();
 };
 
 window.generateProjects = generateProjects;
@@ -87,14 +88,17 @@ function generateStatusBar(count) {
     statusBar.appendChild(document.createElement("div"));
 }
 
-
-for (let i in Array.from(statusBar.children)) {
-  statusBar.children[i].onclick = () => {
-    gallery.setActiveView(i);
-    setActiveStatusBarPoint(i);
-    updateProjectsInfo();
-  };
+function setPointsAction() {
+  for (let i in Array.from(statusBar.children)) {
+    statusBar.children[i].onclick = () => {
+      gallery.setActiveView(i);
+      setActiveStatusBarPoint(i);
+      updateProjectsInfo();
+    };
+  }
 }
+
+setPointsAction();
 
 let gallery = new GalleryConstrucor().init(
   document.getElementById("GalleryParent"),
