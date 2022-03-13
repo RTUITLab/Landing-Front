@@ -30,7 +30,6 @@ deploy/landing-build
 # JSON server)
 SERVER.json
 
-
 venv/
 env/
 .env/
@@ -39,6 +38,10 @@ env/
 .vs
 .vscode
 .cache
+/src/projects/
+/src/js/data/
+/src/images/projects
+/src/images/achievements
 
 
 __pycache__
