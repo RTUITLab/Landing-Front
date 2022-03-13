@@ -74,6 +74,7 @@ module.exports.generateProjectsFile = function () {
   }
 
   return new Promise(async (resolve, reject) => {
+    if (!process.env.token) reject("No token specified");
     const dir = await readdir("./data/projects");
     fs.rmSync("./src/images/projects", { recursive: true, force: true });
     fs.mkdirSync("./src/images/projects");

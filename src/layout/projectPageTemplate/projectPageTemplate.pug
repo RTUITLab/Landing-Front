@@ -42,13 +42,13 @@ html(lang="ru")
     header
       section.buttonContainer
         button(onclick="window.history.back();")
-          img(src="/images/icons/buttonArrow.svg" alt="")
+          img(src="../images/icons/buttonArrow.svg" alt="")
           | Назад
 
         h1 #{obj.title}
 
       section.cover 
-        img(src=obj.images[0], alt="")
+        img(src="../"+obj.images[0], alt="")
 
 
     main 
