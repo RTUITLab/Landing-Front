@@ -37,42 +37,76 @@ module.exports.ParseDirectory = async function ParseDirectory(
   }
 };
 
-module.exports.generateProjectsFile = function () {
-  function secondDownloadMethod(i, j) {
-    execSync(
-      `curl -H \"Authorization: token ${
-        process.env.token
-      }\" -o ./src/images/projects/${i}/${
-        j.match(/([^\/]*)$/gim)[0]
-      } --ssl-no-revoke https://raw.githubusercontent.com/RTUITLab/${i}/master/${j}`,
-      (error) => {}
-    );
-  }
-
-  function downloadImages(i, j) {
-    let res = execSync(
-      `curl -H "Authorization: token ${
-        process.env.token
-      }" --ssl-no-revoke --header 'Accept: application/vnd.github.v3.raw' -o ./src/images/projects/${i}/${
-        j.match(/([^\/]*)$/gim)[0]
-      } --location https://api.github.com/repos/rtuitlab/${i}/contents/${j}?ref=master`
-    );
-    try {
-      let buff = JSON.parse(res);
-      if (buff.download_url) {
-        download(
-          buff.download_url,
-          `./src/images/projects/${i}/${j.match(/([^\/]*)$/gim)[0]}`,
-          () => {}
+async function downloadImagesMain(buff, i, type = "projects") {
+  if (buff.images) {
+    let newImages = [];
+    for (let j of buff.images) {
+      if (j.match(/^(https?\:\/\/)/gim)) {
+        newImages.push(
+          `/images/${type}/` + i + "/" + j.match(/([^\/]*)$/gim)[0]
+        );
+        await download(
+          j,
+          `./src/images/${type}/` + i + "/" + j.match(/([^\/]*)$/gim)[0]
         );
       } else {
-        secondDownloadMethod(i, j);
+        await downloadImages(i, j);
+        newImages.push(
+          `/images/${type}/` + i + "/" + j.match(/([^\/]*)$/gim)[0]
+        );
       }
-    } catch (e) {
-      secondDownloadMethod(i, j);
     }
+    buff.images = newImages;
   }
+}
 
+module.exports.generateAchievementsFile = function () {
+  return new Promise(async (resolve, reject) => {
+    if (!process.env.token) reject("No token specified");
+    const dir = await readdir("./data/achievements");
+    fs.rmSync("./src/images/achievements", { recursive: true, force: true });
+    fs.mkdirSync("./src/images/achievements");
+    let result = [];
+    for (let i of dir) {
+      fs.mkdirSync("./src/images/achievements/" + i);
+      let buff = parseMD2(
+        fs.readFileSync(`./data/achievements/${i}/info.md`, "utf-8")
+      );
+      buff.link = i;
+      await downloadImagesMain(buff, i, "achievements");
+      result.push(buff);
+    }
+    let file = "-\n\tconst achievementsData = " + JSON.stringify(result) + ";";
+    fs.writeFileSync("./src/js/data/achievementsData.pug", file, "utf-8");
+    if (process.platform === "win32") {
+      generateAchievementTemplates(
+        "rmdir /s /q .\\src\\achievements & mkdir .\\src\\achievements",
+        resolve
+      );
+    } else {
+      generateAchievementTemplates(
+        "rm -rf ./src/achievements && mkdir ./src/achievements",
+        resolve
+      );
+    }
+
+    function generateAchievementTemplates(cmd, resolve) {
+      exec(cmd, () => {
+        for (let i in result) {
+          fs.writeFileSync(
+            `./src/achievements/${dir[i]}.pug`,
+            "extends ../layout/achievementPageTemplate/achievementPageTemplate.pug\n\nblock variables\n\t-\n\t\tconst achievementData = " +
+              JSON.stringify(result[i]),
+            "utf-8"
+          );
+        }
+        resolve();
+      });
+    }
+  });
+};
+
+module.exports.generateProjectsFile = function () {
   return new Promise(async (resolve, reject) => {
     if (!process.env.token) reject("No token specified");
     const dir = await readdir("./data/projects");
@@ -84,27 +118,8 @@ module.exports.generateProjectsFile = function () {
       let buff = parseMD2(
         fs.readFileSync(`./data/projects/${i}/LANDING.md`, "utf-8")
       );
-      if (buff.images) {
-        let newImages = [];
-        for (let j of buff.images) {
-          if (j.match(/^(https?\:\/\/)/gim)) {
-            newImages.push(
-              "/images/projects/" + i + "/" + j.match(/([^\/]*)$/gim)[0]
-            );
-            download(
-              j,
-              "./src/images/projects/" + i + "/" + j.match(/([^\/]*)$/gim)[0],
-              () => {}
-            );
-          } else {
-            downloadImages(i, j);
-            newImages.push(
-              "/images/projects/" + i + "/" + j.match(/([^\/]*)$/gim)[0]
-            );
-          }
-        }
-        buff.images = newImages;
-      }
+      buff.link = i;
+      await downloadImagesMain(buff, i);
 
       result.push(buff);
     }
@@ -147,8 +162,44 @@ module.exports.generateProjectsFile = function () {
   });
 };
 
-const download = function (uri, filename, callback) {
-  request.head(uri, function (err, res, body) {
-    request(uri).pipe(fs.createWriteStream(filename)).on("close", callback);
+const download = function (uri, filename) {
+  return new Promise((resolve, reject) => {
+    request.head(uri, function (err, res, body) {
+      request(uri).pipe(fs.createWriteStream(filename)).on("close", resolve);
+    });
   });
 };
+
+function secondDownloadMethod(i, j) {
+  execSync(
+    `curl -H \"Authorization: token ${
+      process.env.token
+    }\" -o ./src/images/projects/${i}/${
+      j.match(/([^\/]*)$/gim)[0]
+    } --ssl-no-revoke https://raw.githubusercontent.com/RTUITLab/${i}/master/${j}`,
+    (error) => {}
+  );
+}
+
+async function downloadImages(i, j) {
+  let res = execSync(
+    `curl -H "Authorization: token ${
+      process.env.token
+    }" --ssl-no-revoke --header 'Accept: application/vnd.github.v3.raw' -o ./src/images/projects/${i}/${
+      j.match(/([^\/]*)$/gim)[0]
+    } --location https://api.github.com/repos/rtuitlab/${i}/contents/${j}?ref=master`
+  );
+  try {
+    let buff = JSON.parse(res);
+    if (buff.download_url) {
+      await download(
+        buff.download_url,
+        `./src/images/projects/${i}/${j.match(/([^\/]*)$/gim)[0]}`
+      );
+    } else {
+      secondDownloadMethod(i, j);
+    }
+  } catch (e) {
+    secondDownloadMethod(i, j);
+  }
+}

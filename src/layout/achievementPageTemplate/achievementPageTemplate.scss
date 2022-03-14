@@ -99,6 +99,45 @@
           padding-top: 20px;
         }
       }
+      .galleryParent {
+        flex: 0 0 40%;
+
+        .achievementsSwiperParent {
+          max-width: 485px;
+          cursor: pointer;
+          user-select: none;
+          -moz-user-select: none;
+          margin: 0 0;
+          border-radius: 15px;
+          height: 300px;
+          img,video {
+            object-fit: cover;
+            height: 300px;
+            width: 485px;
+            border-radius: 15px;
+          }
+        }
+        .achievementsSwiperPagination {
+        }
+      }
+      @media (max-width: 990px) {
+        .galleryParent {
+          display: block;
+          position: relative;
+          max-width: 100%;
+
+          .achievementsSwiperParent {
+            width: 100%;
+            max-width: none;
+            display: block;
+            position: relative;
+            img,video {
+              width: calc(100vw - 30px);
+            }
+          }
+        }
+      }
+
     }
     .otherInfo {
       margin: 0 auto;

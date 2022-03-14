@@ -6,8 +6,10 @@ html(lang="ru")
 		meta(charset="UTF-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		title RTUITLab — #{title}
-		script(src="../js/achievementPageTemplate/achievementPageTemplate.js")
+		title RTUITLab — #{achievementData.title}
+		link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
+		script(src="https://unpkg.com/swiper/swiper-bundle.min.js", defer)
+		script(src="../js/achievementPageTemplate/achievementPageTemplate.js",defer)
 		link(rel="stylesheet" href="../indexStyles.scss")
 		script(type='application/ld+json').
 			{
@@ -17,8 +19,8 @@ html(lang="ru")
 			"@type": "WebPage",
 			"@id": "https://rtuitlab.dev"
 			},
-			"headline": "#{title}",
-			"image": "#{cover}",
+			"headline": "#{achievementData.title}",
+			"image": "#{achievementData.images[0]}",
 			"author": {
 			"@type": "Organization",
 			"name": "RTUITLab",
@@ -42,24 +44,30 @@ html(lang="ru")
 					img(src="../images/icons/buttonArrow.svg" alt="")
 					| Назад
 
-				h1 #{title}
+				h1 #{achievementData.title}
 
-			section.desc #{shortdesc}
+			section.desc #{achievementData.shortdescription}
 
 		main
 			section.content
-				img(src=cover, alt="")
+				.galleryParent
+					.swiper.achievementsSwiperParent
+						.swiper-wrapper
+							each object in achievementData.images
+								.swiper-slide
+									img(src="../../src"+object, alt="")
+							each object in achievementData.videos
+								.swiper-slide
+									video(src=object, alt="" loop autoplay muted)
+					.swiper-pagination.achievementsSwiperPagination
+
 				article.info
 					h3 О событии
-					block fulldesc
-
-			section.otherInfo
-				block otherInfo
+					p #{achievementData.longdescription}
 
 			section.members
 				h2 Участники
 				section.itemsParent
-					each obj in members
+					each obj in achievementData.members
 						.item
-							img(src=obj.img, alt="")
-							p #{obj.fio}
+							p #{obj}

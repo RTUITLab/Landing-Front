@@ -7,6 +7,7 @@ const statusBar = document.getElementById("projectsStatusBar");
 const projectsInfo = document.getElementById("projectInfoContent");
 const galleryParent = document.getElementById("GalleryParent");
 const currentProjectTitle = document.getElementById("currentProjectTitle");
+const currentProjectLink = document.getElementById("currentProjectLink");
 let displayedProjects = projectsData;
 
 function onMouseDown(e) {
@@ -21,6 +22,8 @@ function updateProjectsInfo() {
   if (displayedProjects.length === 0) return;
   projectsInfo.classList.remove("projects__hide");
   currentProjectTitle.innerText = displayedProjects[currentActiveTab].title;
+  currentProjectLink.href =
+    "projects/" + displayedProjects[currentActiveTab].link;
 }
 
 function onChange(e) {

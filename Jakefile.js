@@ -8,6 +8,8 @@ const ENV_BUILD_YEAR_REGEX = /^BUILD_YEAR=.*$/m;
 var parseMD = require("./MDParser").parseMD;
 var ParseDirectory = require("./jakeFunctions").ParseDirectory;
 var GenerateProjectsFile = require("./jakeFunctions").generateProjectsFile;
+var generateAchievementsFile =
+  require("./jakeFunctions").generateAchievementsFile;
 
 desc("Build Landing Front for production");
 task(
@@ -28,23 +30,7 @@ desc("Generate projects file");
 task("generate projects file", GenerateProjectsFile);
 
 desc("Creating achievements.json file from /info/achievements.md");
-task("parse achievements.md", function () {
-  return new Promise(async (resolve, reject) => {
-    let list = [];
-    const files = await readdir("./data/achievements");
-    for (let i of files) {
-      let buff = parseMD2(
-        fs.readFileSync(`./data/achievements/${i}/info.md`, "utf-8")
-      );
-      buff.link = i;
-      list.push(buff);
-    }
-
-    let file = "-\n\tconst achievementsData = " + JSON.stringify(list) + ";";
-    fs.writeFileSync("./src/js/data/achievementsData.pug", file, "utf-8");
-    resolve();
-  });
-});
+task("parse achievements.md", generateAchievementsFile);
 
 /**
  *  equipment
@@ -186,6 +172,7 @@ task("buildFrontProd", function () {
     if (process.platform === "win32")
       command =
         'rmdir /s /q "build" 2> nul ' +
+        "& mkdir build " +
         "&& parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache " +
         "&& parcel build ./src/projects/*.pug --out-dir build/projects --public-url ./ --no-minify --no-cache " +
         "&& parcel build ./src/achievements/*.pug --out-dir build/achievements --public-url ./ --no-minify --no-cache " +
