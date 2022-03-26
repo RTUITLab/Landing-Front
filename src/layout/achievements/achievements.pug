@@ -1,33 +1,33 @@
 include ../../js/data/achievementsData.pug
 
 article#achievemtns.achievements__achievementsParent
-  section.achievements__content
-    h1 Достижения
-    article.achievements__text
-      |Сегодня RTUITLab – это более 30 IT-специалистов, среди которых
-      |backend, frontend-разработчики, ML, VR/AR, DevOps – специалисты,
-      |дизайнеры и системные архитекторы, на счету которых множество
-      |реализованных проектов. Материальная база Института Информационных
-      |Технологий позволяет сотрудникам работать с порой эксклюзивным
-      |оборудованием, собирать под него проекты, демонстрировать их на
-      |выставках и конференциях.
+	section.achievements__content
+		h1 Достижения
+		article.achievements__text
+			| Сегодня RTUITLab – это более 30 IT-специалистов, среди которых
+			| backend, frontend-разработчики, ML, VR/AR, DevOps – специалисты,
+			| дизайнеры и системные архитекторы, на счету которых множество
+			| реализованных проектов. Материальная база Института Информационных
+			| Технологий позволяет сотрудникам работать с порой эксклюзивным
+			| оборудованием, собирать под него проекты, демонстрировать их на
+			| выставках и конференциях.
 
-    section
-      .swiper.achievements__swiperParent
-        .swiper-wrapper
-          .swiper-slide
-            div(style="width:5vw;")
-          each obj in achievementsData 
-            .swiper-slide
-              .achievementCard__parent
-                h1
-                  =obj.title
-                article.achievementCard__desc
-                  p 
-                    =obj.shortdescription
-                a(href="achievements/"+obj.link) Подробнее
-                img(src='/images/background.webp' alt='Обложка достижения')
-          .swiper-slide
-            div(style="width:5vw;")
+		section
+			.swiper.achievements__swiperParent
+				.swiper-wrapper
+					.swiper-slide
+						div(style="width:5vw;")
+					each obj in achievementsData.sort((i,j)=>(Date.parse(i.date))<Date.parse(j.date)?1:-1)
+						.swiper-slide
+							.achievementCard__parent
+								h1
+									=obj.title.replaceAll("\\n", "")
+								article.achievementCard__desc
+									p
+										=obj.shortdescription.replaceAll("\\n", "")
+								a(href="achievements/" + obj.link) Подробнее
+								img(src=obj.images[0] alt='Обложка достижения' loading='lazy')
+					.swiper-slide
+						div(style="width:5vw;")
 
-      .swiper-pagination.achievements__swiperPagination
+			.swiper-pagination.achievements__swiperPagination

@@ -6,12 +6,14 @@ html(lang="ru")
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(name="description" content=obj.description)
     title RTUITLab — #{obj.title}
     link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
+    link(rel="canonical" href="https://rtuitlab.dev")
     script(src="https://unpkg.com/swiper/swiper-bundle.min.js", defer)
     link(rel="stylesheet" href="../layout/projectPageTemplate/projectPageTemplate.scss")
     link(rel="stylesheet" href="../indexStyles.scss")
-    script(src="../js/projectPageTemplate/projectPageTemplate.js", defer) 
+    script(src="../js/projectPageTemplate/projectPageTemplate.js", defer)
     script(type='application/ld+json').
       {
       "@context": "https://schema.org",
@@ -45,43 +47,44 @@ html(lang="ru")
           img(src="../images/icons/buttonArrow.svg" alt="")
           | Назад
 
-        h1 #{obj.title}
+        .titleContainer
+          h1 #{obj.title}
 
-      section.cover 
+      section.cover
         img(src="../"+obj.images[0], alt="")
 
 
-    main 
+    main
       section.content
         .galleryParent
           .swiper.projectsSwiperParent
             .swiper-wrapper
               each object in obj.images.splice(1,obj.images.length)
                 .swiper-slide
-                  img(src="../../src"+object, alt="")
+                  img(src="../"+object, alt="" loading='lazy')
           .swiper-pagination.projectsSwiperPagination
 
         section.info
-          article 
+          article
             h3 Описание
-            div 
+            div
               p
                 =obj.description
-            .infoBlock 
+            .infoBlock
               h3 Технологии
               section.itemsParent
-                each object in obj.tech 
+                each object in obj.tech
                   .item
                     p #{object}
 
-            .infoBlock 
+            .infoBlock
               h3 Разработчики
               section.itemsParent
-                each object in obj.developers 
+                each object in obj.developers
                   .item
                     p #{object}
 
-            .infoBlock 
+            .infoBlock
               h3 Исходный код
               section.itemsParent
                 each object in obj.sourcecode
@@ -89,6 +92,5 @@ html(lang="ru")
                     a(href=object.link target="_blank")
                       =object.name
 
-      section.otherInfo 
+      section.otherInfo
         block otherInfo
-

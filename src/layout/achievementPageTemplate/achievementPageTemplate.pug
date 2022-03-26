@@ -1,5 +1,8 @@
 block variables
 
+-
+	var time =new Date(Date.parse(achievementData.date))
+
 doctype html
 html(lang="ru")
 	head
@@ -7,10 +10,28 @@ html(lang="ru")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge")
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		title RTUITLab — #{achievementData.title}
+		meta(name="description" content=achievementData.shortdescription)
 		link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
+		link(rel="canonical" href="https://rtuitlab.dev")
+		link(rel="stylesheet" href="../layout/achievementPageTemplate/achievementPageTemplate.scss")
 		script(src="https://unpkg.com/swiper/swiper-bundle.min.js", defer)
 		script(src="../js/achievementPageTemplate/achievementPageTemplate.js",defer)
 		link(rel="stylesheet" href="../indexStyles.scss")
+		script(id="markdownId" src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.3.2/markdown-it.js" integrity="sha512-D9Tm1Ka4uHM/rVls3BMcbRImlmERZBm1893Yljz60eI3kdc2k0BWL+MWZt8zd8/Vpcjuq9hxEAAoT+Y1W4iFIw==" crossorigin="anonymous" referrerpolicy="no-referrer" async)
+		script(defer).
+			window.onload = function() {
+				var md = window.markdownit({
+					html: true,
+					xhtmlOut: true,
+					breaks: true,
+					linkify: true,
+					typographer: true,
+					quotes: '<<>>'})
+				document.getElementById("longdescription").innerHTML=md.render("#{achievementData.longdescription}")
+				console.log(md.render("#{achievementData.longdescription}"))
+			}
+
+
 		script(type='application/ld+json').
 			{
 			"@context": "https://schema.org",
@@ -44,7 +65,8 @@ html(lang="ru")
 					img(src="../images/icons/buttonArrow.svg" alt="")
 					| Назад
 
-				h1 #{achievementData.title}
+				.titleContainer
+					h1 #{achievementData.title}
 
 			section.desc #{achievementData.shortdescription}
 
@@ -55,7 +77,7 @@ html(lang="ru")
 						.swiper-wrapper
 							each object in achievementData.images
 								.swiper-slide
-									img(src="../../src"+object, alt="")
+									img(src="../"+object, alt="" loading='lazy')
 							each object in achievementData.videos
 								.swiper-slide
 									video(src=object, alt="" loop autoplay muted)
@@ -63,7 +85,10 @@ html(lang="ru")
 
 				article.info
 					h3 О событии
-					p #{achievementData.longdescription}
+					section#longdescription
+					p
+						strong
+							|Дата проведения: #{(time).toLocaleDateString("ru")}
 
 			section.members
 				h2 Участники

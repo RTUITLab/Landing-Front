@@ -22,7 +22,7 @@ module.exports.parseMD = function parseMD(str) {
 
   function parseTags(match) {
     parseName(match);
-    let tagsLines = match.replace(match.split("\n")[0], "").match(tagRegex);
+    let tagsLines = match.replace(match.split('\n')[0], '').match(tagRegex);
     tagsLines.forEach((e) => {
       let tag = /^\-\s*([^\:]*)/gim.exec(e)[1];
       let value = /\-\s*[^\:]*\:\s*([^\n\r]*)/gim.exec(e)[1];
@@ -35,78 +35,84 @@ module.exports.parseMD = function parseMD(str) {
       list.push(current);
       current = {};
     }
-    current.name = match.split("\n")[0].replace("#", "").trim();
+    current.name = match.split('\n')[0].replace('#', '').trim();
   }
 };
 
-module.exports.parseMD2 = function (str) {
-  function clearString(strData) {
-    if (!strData) return "";
-    let str = strData
-      .replaceAll(/(\\n)/gim, "")
-      .replaceAll(/(\n){1}/gim, " ")
-      .replaceAll(/\s{2,}/gim, " ")
-      .trim();
+module.exports.parseMD2 = function(str) {
+  function clearString(strData, saveBreaks) {
+    if (!strData) return '';
+    let str = strData.trim();
+    if (saveBreaks) {
+      str = str
+        .replaceAll(/(\\n)/gim, '\\n')
+        .replaceAll(/([\n\r])/gim, '\\n');
+    } else {
+      str = str
+        .replaceAll(/(\\n)/gim, ' ')
+        .replaceAll(/(\n){1}/gim, '\n')
+        .replaceAll(/\s{2,}/gim, ' ');
+    }
+
 
     if (str.match(/^(\`){1,}.*(\`){1,}$/gim)) {
       str = str
-        .replaceAll(/^(\`)*/gim, "")
-        .replaceAll(/(\`){1,}$/gim, "")
+        .replaceAll(/^(\`)*/gim, '')
+        .replaceAll(/(\`){1,}$/gim, '')
         .trim();
     }
     return str;
   }
+
   function getNameRegex(str) {
-    return new RegExp(`\\#\\s*(${str})`, "gmi");
+    return new RegExp(`\\#\\s*(${str})`, 'gmi');
   }
 
   let result = {};
-  let strArray = str.split(/^\-\-\-$/gim);
+  let strArray = str.split(/^((\-\-\-)*\n*\#)/gim);
+  strArray = strArray.filter((e) => !!e).map((e) => '#' + e).map((e) => e.replaceAll(/^(\-\-\-)/gmi, ''));
+
   let names = [];
   strArray.forEach((e) => {
     let find = /#\s*(.*)/gim.exec(e);
     if (find) {
       names.push(find[1]);
     } else {
-      names.push("");
+      names.push('');
     }
   });
   names.forEach((e, i) => {
     switch (e.toLowerCase()) {
-      case "title":
-      case "description":
-      case "shortdescription":
-      case "date":
+      case 'title':
+      case 'description':
+      case 'shortdescription':
+      case 'date':
       default:
-        result[e.toLowerCase()] = clearString(
-          clearString(strArray[i]).split(getNameRegex(e))[2]
-        );
+        if (e.toLowerCase() === 'longdescription') result[e.toLowerCase()] = clearString(clearString(strArray[i], true).split(getNameRegex(e))[2], true); else result[e.toLowerCase()] = clearString(clearString(strArray[i], false).split(getNameRegex(e))[2], false);
         break;
-      case "tags":
-      case "members":
-      case "images":
-      case "videos":
-      case "techs":
-      case "tech":
-      case "developers":
+      case 'tags':
+      case 'members':
+      case 'images':
+      case 'videos':
+      case 'techs':
+      case 'tech':
+      case 'developers':
         let regexp = /\s*\*\s{1,}/gim;
         if (!strArray[i].split(getNameRegex(e))[2].match(regexp)) {
           regexp = /\s*\-\s{1,}/gim;
         }
-        result[e.toLowerCase()] = clearString(
-          strArray[i].split(getNameRegex(e))[2]
-        )
+        result[e.toLowerCase()] = clearString(strArray[i].split(getNameRegex(e))[2])
           .split(regexp)
           .filter((e) => !!e)
           .map((e) => {
             if (e.match(/!\[.*\]\(/gim)) {
-              return e.replaceAll(/!\[.*\]\(/gim, "").replace(/\)$/gim, "");
+              return e.replaceAll(/!\[.*\]\(/gim, '').replace(/\)$/gim, '');
             } else {
               return e;
             }
           });
         break;
-      case "sourcecode":
+      case 'sourcecode':
         let m;
         let arr = [];
         const regex = /\|\s([^|]*)\|\s*([^\|]*)\|/gim;
@@ -128,67 +134,6 @@ module.exports.parseMD2 = function (str) {
         break;
     }
   });
-  delete result[""];
+  delete result[''];
   return result;
 };
-
-this.parseMD2(`
-
-# Title
-Сервис проектов RTUITLab
-
----
-# Description
-Сервис позволяет отслеживать проекты лаборатории, мониторить их прогресс
-Возможность хранить файлы, относящиеся к проекту, оставлять новости
-А также распределение ролей
-
----
-# Tags
-* Backend
-* Golang
-
----
-# Tech
-* Go
-* MongoDB
-
----
-# Developers
-* Демин Д.Д.
-* Миронов Н.М.
-* Лаптев И.А.
-* Корольков А.Д.
-* Баикин К.Е.
-
----
-
-# Images
-* ![list](landing/list.png)
-* ![show_ArtWay](landing/show_ArtWay.png)
-* ![show_ArtWay2](landing/show_ArtWay2.png)
-* ![show_VIKA](landing/show_VIKA.png)
-* ![edit_VIKA](landing/edit_VIKA.png)
-
----
-
-# Videos
-
----
-
-# Site
-https://manage.rtuitlab.dev/projects
-
----
-
-# SourceCode
-| name     | link                                             |
-| ---------| ------------------------------------------------ |
-| Бекенд   | https://github.com/RTUITLab/ITLab-Projects       |
-| Фронтенд | https://github.com/RTUITLab/ITLab-Projects-Front |
-
-
----
-
-
-`);

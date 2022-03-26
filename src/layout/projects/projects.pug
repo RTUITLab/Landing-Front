@@ -27,7 +27,7 @@ article#projects.projects__projectsParent
     section#GalleryParent.gallery__parent
       each obj in data
         .gallery__galleryItem.noselect
-          img(draggable='false' src=obj.images[0] alt='')
+          img(draggable='false' srcset=obj.images[0] alt='' loading='lazy')
 
 
     section#projectInfoContent.projects__projectsInfo

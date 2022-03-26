@@ -1,73 +1,78 @@
 .footer__parent {
-  height: 70vh;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 5vh 0px;
+	height: 70vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	background-size: cover;
+	background-position: center;
+	color: white;
+	padding: 5vh 0px;
 
-  .footer__title {
-    text-align: center;
-    h1 {
-      font-style: normal;
-      font-weight: bold;
-      font-size: 36px;
-      line-height: 42px;
-      color: #f3f3f3;
-    }
+	.footer__title {
+		text-align: center;
 
-    h2 {
-      font-style: normal;
-      font-weight: normal;
-      font-size: 36px;
-      line-height: 42px;
-      color: #f3f3f3;
-      a {
-        font-weight: normal;
-        font-size: 36px;
-        line-height: 42px;
-        color: #0066cc;
-        text-decoration: none;
-      }
-    }
+		h1 {
+			font-style: normal;
+			font-weight: bold;
+			font-size: 36px;
+			line-height: 42px;
+			color: #f3f3f3;
+		}
 
-    @media (max-width: 750px) {
-      h1 {
-        font-size: 24px;
-        line-height: 36px;
-      }
-      h2 {
-        font-size: 24px;
-        a {
-          font-size: 24px;
-        }
-      }
-    }
-  }
+		h2 {
+			font-style: normal;
+			font-weight: normal;
+			font-size: 36px;
+			line-height: 42px;
+			color: #f3f3f3;
 
-  .footer__bottomParent {
-    .footer__bottomLinks {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      column-gap: 15px;
-      img {
-        width: 48px;
-        height: auto;
-      }
-    }
-    p {
-      padding-top: 15px;
-      text-align: center;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 24px;
-      line-height: 28px;
-      color: #f3f3f3;
-    }
-  }
+			a {
+				font-weight: normal;
+				font-size: 36px;
+				line-height: 42px;
+				color: #0066cc;
+				text-decoration: none;
+			}
+		}
+
+		@media (max-width: 750px) {
+			h1 {
+				font-size: 24px;
+				line-height: 36px;
+			}
+			h2 {
+				font-size: 24px;
+
+				a {
+					font-size: 24px;
+				}
+			}
+		}
+	}
+
+	.footer__bottomParent {
+		.footer__bottomLinks {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			column-gap: 15px;
+
+			img {
+				width: 48px;
+				height: auto;
+			}
+		}
+
+		p {
+			padding-top: 15px;
+			text-align: center;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 24px;
+			line-height: 28px;
+			color: #f3f3f3;
+		}
+	}
 }
