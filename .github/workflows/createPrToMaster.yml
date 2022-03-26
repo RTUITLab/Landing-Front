@@ -1,0 +1,45 @@
+name: Update information in data branch
+
+on:
+  push:
+    branches: [data]
+  pull_request:
+    branches: [data]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: git config --global user.email "bk@finebot.site"
+      - run: git config --global user.name "baikinkirill"
+
+      - run: echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+
+      - name: checkoug Landing-Front to v2_pug
+        uses: actions/checkout@v2
+        with:
+          repository: RTUITLab/Landing-Front
+          ref: v2_pug
+          path: Landing-Front
+          lfs: true
+
+      - run: cd ./Landing-Front && git submodule update --init --recursive -j 8
+      - run: cd ./Landing-Front/data && git checkout data
+      - run: cd ./Landing-Front/data && git pull
+      - run: cd ./Landing-Front && git add .
+      - run: cd ./Landing-Front && git commit -m "Pulled down update to data"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          path: Landing-Front
+          token: ${{ secrets.GITHUB_TOKEN }}
+          committer: GitHub <noreply@github.com>
+          author: GitHub <noreply@github.com>
+          commit-message: Update information in data branch
+          title: Update information in data branch
+          branch: "sync/v2_pug"
+          delete-branch: true
+
+      - run: gh pr create --title "Update data" --base v2_pug --head sync/v2_pug --body "" -a baikinkirill,ivlaptev || true
