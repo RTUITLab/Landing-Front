@@ -61,7 +61,6 @@ jobs:
         clean: true
     
     - run: echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token 
-    - run: gh pr create --title "New landing build" --base gh-pages --head gh-pages-pr --body "" || true
-    # -a baikinkirill,ivlaptev
+    - run: gh pr create --title "New landing build" --base gh-pages --head gh-pages-pr --body "" -a baikinkirill,ivlaptev || true
           
     
