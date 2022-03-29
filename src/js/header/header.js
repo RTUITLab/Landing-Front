@@ -26,23 +26,28 @@ function findActiveTab(activeTab) {
 }
 
 function initSwiper() {
+  if(!window.Swiper)
+    return;
+
   if (!staffSwiper) {
     new Promise((_) => {
-      staffSwiper = new Swiper('.staff__swiper', {
+      new Swiper('.staff__swiper', {
         spaceBetween: 10, slidesPerView: 'auto', freeMode: true, loop: true, loopFillGroupWithBlank: true, autoplay: {
           delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true,
         }, speed: 2200,
       });
+      staffSwiper=true
       _();
     });
   }
   if (!achievementsSwiper) {
     new Promise((_) => {
-      achievementsSwiper = new Swiper('.achievements__swiperParent', {
+      new Swiper('.achievements__swiperParent', {
         slidesPerView: 'auto', spaceBetween: 15, pagination: {
           el: '.achievements__swiperPagination', clickable: true,
         },
       });
+      achievementsSwiper=true
       _();
     });
   }
