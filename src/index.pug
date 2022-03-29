@@ -3,15 +3,7 @@ doctype html
 html(lang="ru")
 	head
 		include ./seo.pug
-		script(src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js" defer)
-		link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" defer)
-		script(src="https://unpkg.com/swiper/swiper-bundle.min.js", defer)
-		script(src="./js/about/about.js", defer)
-		script(src="./js/header/header.js", defer)
-		script(src="./js/projects/projects.js", defer)
-		script(src="./js/achievements/achievements.js", defer)
-		script(src="./js/staff/staff.js", defer)
-		script(src="./js/equipment/equipment.js", defer)
+
 
 		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./indexStyles.scss')
 		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./js/gallery/gallery.scss')
@@ -26,6 +18,23 @@ html(lang="ru")
 		link(rel="preconnect" href="https://fonts.googleapis.com")
 		link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
 		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='https://fonts.googleapis.com/css2?family=Aldrich&family=Raleway:wght@400;500;600;700&display=swap')
+
+		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='https://unpkg.com/swiper@8/swiper-bundle.min.css')
+		script(src="./js/about/about.js", defer)
+		script(src="./js/header/header.js", defer)
+		script(src="./js/projects/projects.js", defer)
+
+		script(defer="defer").
+			let scripts = [
+				"https://unpkg.com/swiper/swiper-bundle.min.js",
+				"https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"
+			]
+			for (let i of scripts) {
+				var js = document.createElement('script');
+				js.src = i;
+				var head = document.getElementsByTagName('head')[0];
+				head.appendChild(js);
+			}
 
 	body
 		header

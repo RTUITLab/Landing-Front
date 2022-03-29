@@ -10,6 +10,13 @@ const currentProjectTitle = document.getElementById('currentProjectTitle');
 const currentProjectLink = document.getElementById('currentProjectLink');
 let displayedProjects = projectsData;
 
+/**
+ * !!! Attention !!!
+ * Здесь var -- нужен. Для видимости абсолютно везде.
+ * @type {null}
+ */
+var gallery = null;
+
 function onMouseDown(e) {
   projectsInfo.classList.add('projects__hide');
 }
@@ -37,7 +44,7 @@ function setActiveStatusBarPoint(e) {
   currentActiveTab = e;
 }
 
-const generateProjects = (e) => {
+function generateProjects(e) {
   gallery.destroy();
   let projects = projectsData;
   if (e !== 'all') {
@@ -76,9 +83,9 @@ const generateProjects = (e) => {
     updateProjectsInfo();
   }
   setPointsAction();
-};
+}
 
-window.generateProjects = generateProjects;
+window.generateProjects = generateProjects.bind(this);
 
 function generateStatusBar(count) {
   statusBar.innerHTML = '';
@@ -95,11 +102,14 @@ function setPointsAction() {
   }
 }
 
-setPointsAction();
-let gallery = new GalleryConstrucor().init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange);
-setActiveStatusBarPoint(Math.floor(projectsData.length / 2));
-gallery.setActiveView(Math.floor(projectsData.length / 2));
-updateProjectsInfo();
-window.addEventListener('load', function() {
+function onLoad(_) {
+  setPointsAction.call(this);
+  gallery = new GalleryConstrucor().init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange);
+  setActiveStatusBarPoint.call(this, Math.floor(projectsData.length / 2));
+  gallery.setActiveView.call(this, Math.floor(projectsData.length / 2));
+  updateProjectsInfo.call(this);
   document.getElementById('projects__tags__all').checked = true;
-},{passive:true});
+  _();
+}
+
+new Promise(onLoad);

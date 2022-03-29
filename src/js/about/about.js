@@ -2,7 +2,7 @@ let parallaxInstance;
 
 let enabled = window.innerWidth < 1000;
 
-window.addEventListener('resize', setParallax);
+window.addEventListener('resize', setParallax.bind(this));
 
 function setParallax() {
   if (window.innerWidth < 1000 && enabled) {
@@ -14,4 +14,7 @@ function setParallax() {
   }
 }
 
-setParallax();
+new Promise((_) => {
+  setParallax();
+  _();
+});
