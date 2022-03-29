@@ -54,34 +54,3 @@ link(rel='apple-touch-icon' href='images/logo.png')
 meta(name='mobile-web-app-capable' content='yes')
 meta(name='apple-mobile-web-app-capable' content='yes')
 title RTUITLab
-script(defer='' src='https://www.googletagmanager.com/gtag/js?id=UA-160294645-1')
-script.
-	window.dataLayer = window.dataLayer || [];
-	function gtag() {
-	dataLayer.push(arguments);
-	}
-	gtag("js", new Date());
-	gtag("config", "UA-160294645-1");
-script.
-	if ("serviceWorker" in navigator) {
-	window.addEventListener("load", function () {
-	navigator.serviceWorker
-	.register("service-worker.js")
-	.then(
-	function (registration) {
-	console.log(
-	"ServiceWorker registration successful with scope: ",
-	registration.scope
-	);
-	},
-	function (err) {
-	console.log("ServiceWorker registration failed: ", err);
-	}
-	)
-	.catch(function (err) {
-	console.log(err);
-	});
-	});
-	} else {
-	console.log("Service worker is not supported");
-	}

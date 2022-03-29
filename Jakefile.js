@@ -172,6 +172,7 @@ task("minify build",function(){
 		await minifyPath('./build/projects')
 		await minifyPath('./build/dist')
 		await minifyPath('./build/')
+		fs.copyFileSync("./src/images/favicon.ico","./build/favicon.ico")
 		_()
 	})
 })
