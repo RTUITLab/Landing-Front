@@ -52,7 +52,7 @@ jobs:
 
     - run: git submodule update --init --recursive -j 8
     - run: npm ci
-    - run: npx jake token=${{ secrets.RTUITLAB_LANDING_FRONT_TOKEN }}
+    - run: npx jake token=${{ secrets.RTUITLAB_LANDING_TOKEN }}
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@4.1.5
       with:
