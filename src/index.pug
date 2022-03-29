@@ -18,11 +18,22 @@ html(lang="ru")
 
 
 		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/swiper/swiper-bundle.min.css')
-		script(src="./js/swiper/swiper-bundle.min.js", defer)
-		script(src="./js/parallax/parallax.min.js", defer)
+
+		script(defer="defer").
+			let scripts = [
+				process.env.SWIPER_LINK,
+				process.env.PARALLAX_LINK
+			]
+			for (let i of scripts) {
+				var js = document.createElement('script');
+				js.src = i;
+				var head = document.getElementsByTagName('head')[0];
+				head.appendChild(js);
+			}
 
 		script(src="./js/about/about.js", defer)
 		script(src="./js/header/header.js", defer)
+		script(src="./js/projects/projects.js", defer)
 
 	body
 		header

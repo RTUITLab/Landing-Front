@@ -161,6 +161,11 @@ task("buildFrontProd", function () {
 				console.error(stderr);
 				reject(stderr);
 			}
+
+			fs.copyFileSync("./src/images/favicon.ico","./build/favicon.ico")
+			fs.copyFileSync("./src/js/swiper/swiper-bundle.min.js","./build/dist/swiper-bundle.min.js")
+			fs.copyFileSync("./src/js/parallax/parallax.min.js","./build/dist/parallax.min.js")
+
 			resolve(true);
 		});
 	});
@@ -172,7 +177,6 @@ task("minify build",function(){
 		await minifyPath('./build/projects')
 		await minifyPath('./build/dist')
 		await minifyPath('./build/')
-		fs.copyFileSync("./src/images/favicon.ico","./build/favicon.ico")
 		_()
 	})
 })
