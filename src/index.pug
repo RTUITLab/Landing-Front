@@ -3,22 +3,6 @@ doctype html
 html(lang="ru")
 	head
 		include ./seo.pug
-
-
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./indexStyles.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./js/gallery/gallery.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/header/header.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/about/about.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/projects/projects.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/achievements/achievements.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/equipment/equipment.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/staff/staff.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/footer/footer.scss')
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./fonts/fonts.css')
-
-
-		link(rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href='./layout/swiper/swiper-bundle.min.css')
-
 		script(async="async").
 			let scripts = [
 				process.env.SWIPER_LINK,
@@ -33,6 +17,7 @@ html(lang="ru")
 		script(src="./js/about/about.js", defer)
 		script(src="./js/header/header.js", defer)
 		script(src="./js/projects/projects.js", defer)
+		script(src="./styles.js", defer)
 
 	body
 		header
