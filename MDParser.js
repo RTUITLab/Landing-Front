@@ -54,10 +54,9 @@ module.exports.parseMD2 = function(str) {
         .replaceAll(/\s{2,}/gim, ' ');
     }
 
-    console.log(str);
-    if (str.match(/^(\`){1,}.*(\`){1,}$/gim)) {
+    if (str.match(/(^)|(\#\s*\w*\s)(\`){1,}[^\`]*(\`)*/gim)) {
       str = str
-        .replaceAll(/^(\`)*/gim, '')
+        .replace(/(\`){1,}/gim, '')
         .replaceAll(/(\`){1,}$/gim, '')
         .trim();
     }
