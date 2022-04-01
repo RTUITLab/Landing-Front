@@ -81,6 +81,9 @@ function generateProjects(e) {
     gallery.init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange);
     gallery.setActiveView(currentActiveTab);
     updateProjectsInfo();
+
+    globalThis.gallery.next = gallery.next;
+    globalThis.gallery.back = gallery.back;
   }
   setPointsAction();
 }
@@ -110,6 +113,10 @@ function onLoad(_) {
   updateProjectsInfo.call(this);
   document.getElementById('projects__tags__all').checked = true;
   _();
+
+  globalThis.gallery = {};
+  globalThis.gallery.next = gallery.next;
+  globalThis.gallery.back = gallery.back;
 }
 
 new Promise(onLoad);

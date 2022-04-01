@@ -231,6 +231,28 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
       elem.onmousemove = null;
       deleteEventListener();
     },
+    next: function() {
+      if (localActiveView + 1 >= elem.children.length)
+        return null;
+
+      elem.classList.add('gallery__anim');
+      setCurrentActivePanel(localActiveView + 1);
+      onChange(localActiveView)
+      setTimeout(() => {
+        elem.classList.remove('gallery__anim');
+      }, 250);
+    },
+    back: function() {
+      if (localActiveView - 1 < 0)
+        return null;
+
+      elem.classList.add('gallery__anim');
+      setCurrentActivePanel(localActiveView - 1);
+      onChange(localActiveView)
+      setTimeout(() => {
+        elem.classList.remove('gallery__anim');
+      }, 250);
+    },
   };
 }
 
@@ -238,14 +260,26 @@ export function GalleryConstrucor() {
 }
 
 GalleryConstrucor.prototype.init = function(elem, onMouseDown, onMouseUp, onChange) {
-  let { setActiveView, galleryDestroy } = gallery(elem, onMouseDown, onMouseUp, onChange);
+  let { setActiveView, galleryDestroy, next, back } = gallery(elem, onMouseDown, onMouseUp, onChange);
 
   this.setActiveView = setActiveView;
   this.galleryDestroy = galleryDestroy;
+  this.next = next.bind(this);
+  this.back = back.bind(this);
 
   return this;
 };
 GalleryConstrucor.prototype.destroy = function() {
   this.galleryDestroy();
+  return this;
+};
+
+GalleryConstrucor.prototype.next = function() {
+  this.next();
+  return this;
+};
+
+GalleryConstrucor.prototype.back = function() {
+  this.back();
   return this;
 };

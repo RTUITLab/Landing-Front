@@ -25,11 +25,13 @@ article#projects.projects__projectsParent
           label(for=`projects__tags__${obj}` onclick=`generateProjects("${obj}")`)
             =obj
 
-    article(style="display: flex; align-items: center;")
+    article.galleryContainer
+      div.leftArrow(onclick="globalThis.gallery.back();")
       section#GalleryParent.gallery__parent
         each obj in data
           .gallery__galleryItem.noselect
             img(draggable='false' srcset=obj.images[0] alt='' loading='lazy')
+      div.rightArrow(onclick="globalThis.gallery.next();")
 
     section#projectInfoContent.projects__projectsInfo
       h2
