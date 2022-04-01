@@ -75,8 +75,10 @@ function scrollFunction() {
   setScrollStatus(obj);
   let activeTab = lastActive;
   activeTab = findActiveTab(activeTab);
+
   if (activeTab !== lastActive) {
     setTab(activeTab);
+    window.history.pushState(null,null,"#"+children[activeTab].id)
   }
 }
 

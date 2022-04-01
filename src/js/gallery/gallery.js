@@ -141,6 +141,10 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
     elem.ontouchmove = null;
     elem.classList.add('gallery__anim');
     let buff = localActiveView + Math.round((lastX - newX) / ratio);
+
+    if (newX === 0)
+      buff = localActiveView;
+
     if (buff >= 0 && elem.children.length > buff) {
       setCurrentActivePanel(buff);
       onChange(buff);
@@ -193,6 +197,8 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
         passive: true,
       });
       lastX = e.touches[0].clientX;
+      newX = e.clientX;
+
       onMouseDown(e);
       elem.ontouchmove = function(e) {
         newX = e.touches[0].clientX;
@@ -206,6 +212,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
         passive: true,
       });
       lastX = e.clientX;
+      newX = e.clientX;
       onMouseDown(e);
       elem.onmousemove = function(e) {
         newX = e.clientX;
@@ -237,7 +244,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
 
       elem.classList.add('gallery__anim');
       setCurrentActivePanel(localActiveView + 1);
-      onChange(localActiveView)
+      onChange(localActiveView);
       setTimeout(() => {
         elem.classList.remove('gallery__anim');
       }, 250);
@@ -248,7 +255,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
 
       elem.classList.add('gallery__anim');
       setCurrentActivePanel(localActiveView - 1);
-      onChange(localActiveView)
+      onChange(localActiveView);
       setTimeout(() => {
         elem.classList.remove('gallery__anim');
       }, 250);

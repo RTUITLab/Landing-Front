@@ -23,11 +23,11 @@ function onMouseDown(e) {
 
 function onMouseUp(e) {
   updateProjectsInfo();
+  projectsInfo.classList.remove('projects__hide');
 }
 
 function updateProjectsInfo() {
   if (displayedProjects.length === 0) return;
-  projectsInfo.classList.remove('projects__hide');
   currentProjectTitle.innerText = displayedProjects[currentActiveTab].title;
   currentProjectLink.href = 'projects/' + displayedProjects[currentActiveTab].link;
   currentProjectLink.style.display = 'block';
@@ -35,6 +35,7 @@ function updateProjectsInfo() {
 
 function onChange(e) {
   setActiveStatusBarPoint(e);
+  updateProjectsInfo();
 }
 
 function setActiveStatusBarPoint(e) {
@@ -120,3 +121,4 @@ function onLoad(_) {
 }
 
 new Promise(onLoad);
+
