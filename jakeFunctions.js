@@ -281,7 +281,7 @@ function minifyPath(path) {
       'removeCDATASectionsFromCDATA': true,
       'collapseWhitespace': true,
       'collapseBooleanAttributes': true,
-      'removeAttributeQuotes': true,
+      'removeAttributeQuotes': false,
       'removeRedundantAttributes': true,
       'useShortDoctype': true,
       'removeEmptyAttributes': true,
