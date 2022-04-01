@@ -157,22 +157,18 @@
 
 		.rightArrow {
 			@extend .arrow;
-			right: 15%;
 			transform: rotate(-135deg);
-			@media (max-width: 1685px) {
-				right: 5%;
-			}
-			@media (max-width: 1313px) {
+			left: calc(50vw + 600px);
+			@media (max-width: 1430px) {
+				left: auto;
 				right: 25px;
 			}
 		}
 		.leftArrow {
 			@extend .arrow;
-			left: 15%;
-			@media (max-width: 1685px) {
-				left: 5%;
-			}
-			@media (max-width: 1313px) {
+			right: calc(50vw + 600px);
+			@media (max-width: 1430px) {
+				right: auto;
 				left: 25px;
 			}
 		}
