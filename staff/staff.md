@@ -53,30 +53,10 @@
 - img: ../data/staff/images/Sergeev.webp
 - tags: Python
 
-# Анастас Мисаилиди
-
-- img: ../data/staff/images/default.webp
-- tags: ML, Python
-
-# Александр Шиханов
-
-- img: ../data/staff/images/default.webp
-- tags: Python
-
 # Александр Левандровский
 
 - img: ../data/staff/images/Levandrovsky.webp
 - tags: IoT, Python
-
-# Кирилл Шутов
-
-- img: ../data/staff/images/default.webp
-- tags: GameDev, Unity
-
-# Данила Валяев
-
-- img: ../data/staff/images/default.webp
-- tags: GameDev, Unity
 
 # Дмитрий Макаров
 
@@ -87,11 +67,6 @@
 
 - img: ../data/staff/images/Shorin.webp
 - tags: 3D Modeling, Blender
-
-# Никита Егоркин
-
-- img: ../data/staff/images/default.webp
-- tags: 3D Modeling, Cinema 4D
 
 # Никита Новаков
 
@@ -117,6 +92,31 @@
 
 - img: ../data/staff/images/Kitanin.webp
 - tags: Frontend, Angular
+
+# Анастас Мисаилиди
+
+- img: ../data/staff/images/default.webp
+- tags: ML, Python
+
+# Александр Шиханов
+
+- img: ../data/staff/images/default.webp
+- tags: Python
+
+# Кирилл Шутов
+
+- img: ../data/staff/images/default.webp
+- tags: GameDev, Unity
+
+# Данила Валяев
+
+- img: ../data/staff/images/default.webp
+- tags: GameDev, Unity
+
+# Никита Егоркин
+
+- img: ../data/staff/images/default.webp
+- tags: 3D Modeling, Cinema 4D
 
 # Михаил Красовский
 
