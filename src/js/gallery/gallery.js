@@ -197,7 +197,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
         passive: true,
       });
       lastX = e.touches[0].clientX;
-      newX = e.clientX;
+      newX = e.touches[0].clientX;
 
       onMouseDown(e);
       elem.ontouchmove = function(e) {
