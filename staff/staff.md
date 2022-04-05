@@ -133,7 +133,7 @@
 - img: ../data/staff/images/default.webp
 - tags: GameDev, Unreal Engine
 
-# Саша Корольков
+# Александр Корольков
 
 - img: ../data/staff/images/default.webp
 - tags: Design, Frontend
@@ -153,7 +153,7 @@
 - img: ../data/staff/images/default.webp
 - tags: GameDev, Unity, VR
 
-# Рома Суринов
+# Роман Суринов
 
 - img: ../data/staff/images/default.webp
 - tags: Design
