@@ -4,10 +4,6 @@ const headersChildren = Array.from(document.getElementById('headerElements').chi
 let lastActive = 0;
 const obj = document.getElementById('header');
 
-var staffSwiper = undefined;
-var achievementsSwiper = undefined;
-var equipmentHidden = false;
-
 function setScrollStatus(obj) {
   if (window.scrollY > 50) {
     obj.setAttribute('scroll', 'true');
@@ -25,56 +21,8 @@ function findActiveTab(activeTab) {
   return activeTab;
 }
 
-function initSwiper() {
-  if(!window.Swiper)
-    return;
-
-  if (!staffSwiper) {
-    new Promise((_) => {
-      new Swiper('.staff__swiper', {
-        spaceBetween: 10, slidesPerView: 'auto', freeMode: true, loop: true, loopFillGroupWithBlank: true, autoplay: {
-          delay: 0, disableOnInteraction: false, pauseOnMouseEnter: true,
-        }, speed: 2200, mousewheel: {
-          releaseOnEdges: true,
-        },
-      });
-      staffSwiper=true
-      _();
-    });
-  }
-  if (!achievementsSwiper) {
-    new Promise((_) => {
-      new Swiper('.achievements__swiperParent', {
-        slidesPerView: 'auto', spaceBetween: 15, pagination: {
-          el: '.achievements__swiperPagination', clickable: true,
-        },mousewheel: {
-          releaseOnEdges: true,
-        },
-      });
-      achievementsSwiper=true
-      _();
-    });
-  }
-}
-
-function hideEquipment() {
-  if (!equipmentHidden) {
-    new Promise((_) => {
-      let elems = Array.from(document.getElementsByClassName('equipment__content')[0].children);
-
-      for (let i = 2; i < elems.length; i++) {
-        elems[i].setAttribute('hidden', 'true');
-      }
-      _();
-    });
-    equipmentHidden = true;
-  }
-}
 
 function scrollFunction() {
-
-  initSwiper();
-  hideEquipment();
 
   setScrollStatus(obj);
   let activeTab = lastActive;
