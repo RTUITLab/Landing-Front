@@ -8,6 +8,13 @@
 	background-color: white;
 	padding: 10vh 15px;
 
+	@media (max-height: 900px) {
+		padding-top: 100px;
+	}
+	@media (max-height: 850px) {
+		padding-top: 100px;
+	}
+
 	button {
 		background: none;
 		border: none;
@@ -37,6 +44,10 @@
 			}
 			@media (max-width: 300px) {
 				font-size: 30px;
+			}
+			@media (max-height: 850px) {
+				font-size: 40px;
+				line-height: 50px;
 			}
 		}
 

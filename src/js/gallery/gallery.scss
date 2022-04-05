@@ -10,6 +10,8 @@
   cursor: grab;
   width: calc(100vw - 10px);
   overflow: hidden;
+  margin-top: 10px;
+
   & *:nth-child(n) {
     transition: opacity 100ms;
     pointer-events: none;
@@ -17,6 +19,10 @@
   @media (max-width: 550px) {
     max-height: 500px;
     height: 500px;
+  }
+  @media (max-height: 850px) {
+    max-height: 350px;
+    margin-top: 0px;
   }
 }
 
@@ -29,7 +35,7 @@
 .gallery__galleryItem {
   width: 70vw;
   max-width: 700px;
-  max-height: 400px;
+  max-height: 370px;
   height: 40vw;
   position: absolute;
   outline: none;
@@ -40,6 +46,9 @@
   img {
     border-radius: 15px;
   }
+  @media (max-height: 850px) {
+    max-height: 300px;
+  }
 
   & *:nth-child(n) {
     height: 40vw;
@@ -47,8 +56,13 @@
 
     object-fit: cover;
     max-width: 700px;
-    max-height: 400px;
+    max-height: 370px;
+
     outline: none;
+
+    @media (max-height: 850px) {
+      max-height: 300px;
+    }
   }
 
   @media (max-width: 550px) {
@@ -57,6 +71,8 @@
     height: fit-content;
     & *:nth-child(n) {
       height: 500px;
+      max-height: 450px;
     }
   }
+
 }

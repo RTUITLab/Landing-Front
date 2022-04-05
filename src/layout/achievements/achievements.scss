@@ -4,14 +4,22 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 10vh 0px;
+	padding: 15vh 15px;
+	padding-top: 100px;
 	overflow: hidden;
 
 	.achievements__content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		row-gap: 40px;
+		row-gap: 20px;
+		max-height: calc(100vh - 100px);
+		@media (max-width: 545px)  {
+			max-height: none;
+		}
+		@media (max-height: 850px) {
+			max-height: none;
+		}
 
 		h1 {
 			font-weight: bold;
@@ -24,6 +32,11 @@
 			@media (max-width: 400px) {
 				font-size: 40px;
 			}
+			@media (max-height: 850px) {
+				font-size: 40px;
+				line-height: 50px;
+			}
+
 		}
 
 		.achievements__logo {
@@ -36,14 +49,19 @@
 			font-family: Raleway;
 			font-style: normal;
 			font-weight: normal;
-			font-size: 24px;
+			font-size: 20px;
 			line-height: 28px;
 			text-align: center;
 			color: #666666;
-			padding: 0 15px;
+			padding: 0 20px;
 
-			@media (max-width: 600px) {
+			@media (max-width: 700px) {
+				line-height: 20px;
+				font-size: 16px;
+			}
+			@media (max-height: 900px) {
 				font-size: 18px;
+				line-height: 20px;
 			}
 		}
 
@@ -58,7 +76,8 @@
 	}
 }
 
-.achievementCard__parent {
+.achievementCard__parent{
+	text-decoration: none;
 	color: black;
 	display: flex !important;
 	justify-content: flex-start !important;
@@ -79,6 +98,7 @@
 		width: 300px !important;
 		min-width: 300px;
 	}
+
 
 	h1 {
 		font-style: normal;
@@ -117,7 +137,7 @@
 		}
 	}
 
-	a {
+	.linkButton {
 		display: flex;
 		justify-content: center;
 		width: 90%;
@@ -135,5 +155,14 @@
 		border-bottom-left-radius: 15px;
 		height: 350px;
 		object-fit: cover;
+	}
+	@media (max-height: 850px) {
+		h1{
+			font-size: 20px !important;
+			line-height: 20px !important;
+		}
+		img{
+			height: 250px;
+		}
 	}
 }

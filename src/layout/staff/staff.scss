@@ -4,7 +4,15 @@
 	justify-content: center;
 	align-items: center;
 	background-color: #f3f3f3;
-	padding: 10vh 0px;
+	padding: 60px 0px;
+	padding-top: 100px;
+
+	@media (max-height: 900px) {
+		padding-top: 100px;
+	}
+	@media (max-height: 850px) {
+		padding-top: 100px;
+	}
 
 	.staff__content {
 		max-width: 100%;
@@ -24,6 +32,10 @@
 			margin: 0px;
 			@media (max-width: 350px) {
 				font-size: 40px;
+			}
+			@media (max-height: 850px) {
+				font-size: 40px;
+				line-height: 50px;
 			}
 		}
 
