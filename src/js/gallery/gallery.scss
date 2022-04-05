@@ -16,13 +16,14 @@
     transition: opacity 100ms;
     pointer-events: none;
   }
-  @media (max-width: 550px) {
-    max-height: 500px;
-    height: 500px;
-  }
+
   @media (max-height: 850px) {
     max-height: 350px;
     margin-top: 0px;
+  }
+  @media (max-width: 550px) {
+    max-height: 500px;
+    height: 500px;
   }
 }
 
