@@ -1,7 +1,7 @@
 # Зуев Андрей Сергеевич
 
 - img: ../data/staff/images/Zuev.webp
-- tags: CEO
+- tags: Директор Института ИТ
 
 # Максим Макущенко
 
