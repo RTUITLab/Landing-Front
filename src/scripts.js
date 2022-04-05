@@ -1,0 +1,6 @@
+import "./js/achievements/achievements.js"
+import "./js/staff/staff.js"
+import "./js/projects/projects.js"
+import "./js/header/header.js"
+import "./js/about/about.js"
+import "./js/equipment/equipment.js"
