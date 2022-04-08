@@ -82,12 +82,14 @@
 	}
 
 	main {
+		display: grid;
 		.content {
 			padding: 0px 15px;
 			padding-top: 50px;
-			column-gap: 15px;
+			column-gap: 25px;
 			flex-wrap: wrap;
-			display: flex;
+			display: grid;
+			grid-template-columns: auto auto;
 			max-width: 1000px;
 			margin: 0 auto;
 
@@ -146,20 +148,25 @@
 				}
 			}
 
-			@media (max-width: 990px) {
+			@media (max-width: 890px) {
+				grid-template-columns: auto;
 				.galleryParent {
-					display: block;
 					position: relative;
 					max-width: 100%;
 
 					.achievementsSwiperParent {
 						width: 100%;
-						max-width: none;
-						display: block;
 						position: relative;
+						max-width: 100%;
+						& *:nth-child(n){
+							width: 100% !important;
+							max-width: 100%;
 
-						img, video {
-							width: calc(100vw - 30px);
+						}
+						img {
+							object-fit: cover;
+							max-width: none;
+
 						}
 					}
 				}

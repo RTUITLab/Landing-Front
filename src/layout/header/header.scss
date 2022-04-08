@@ -3,8 +3,8 @@
 	padding: 50px 50px;
 	position: fixed;
 	top: 0px;
-	display: flex;
-	column-gap: 20px;
+	display: grid;
+	grid-template-columns: 50px auto;
 	align-items: center;
 	width: 100vw;
 	height: 54px;
@@ -34,13 +34,19 @@
 			width: 50px;
 			height: 50px;
 		}
+
+		.header__elementsParent {
+			margin-left: 20px;
+		}
+
 	}
 
 	img {
 		transition: all 250ms ease;
 		width: 0px;
-		height: fit-content;
+		height: 0px;
 		cursor: pointer;
+		margin-right: 0px;
 
 		&:active {
 			transform: scale(0.8);
@@ -48,8 +54,10 @@
 	}
 
 	.header__elementsParent {
+		transition: all 250ms ease;
 		display: block;
 		position: relative;
+		margin-left: -30px;
 
 		& a:nth-child(1):before {
 			display: none;
@@ -132,6 +140,7 @@
 		}
 
 		.header__elementsParent {
+			margin-left: 0px;
 			z-index: 5;
 			transition: left 250ms ease;
 			position: fixed;
@@ -150,7 +159,8 @@
 				display: block;
 				margin-right: 0px;
 				width: fit-content;
-				&:before{
+
+				&:before {
 					width: 0px;
 					visibility: hidden;
 				}

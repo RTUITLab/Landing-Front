@@ -54,7 +54,8 @@
 
 	.footer__bottomParent {
 		.footer__bottomLinks {
-			display: flex;
+			display: grid;
+			grid-template-columns: repeat(3, auto);
 			justify-content: center;
 			align-items: center;
 			column-gap: 15px;

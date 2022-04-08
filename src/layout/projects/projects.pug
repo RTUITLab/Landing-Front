@@ -17,11 +17,11 @@ article#projects.projects__projectsParent
     section.projects__tags
       each obj in tags
         if(obj==="Все")
-          input(name="projects__tags" type="radio", id=`projects__tags__all`, checked) 
+          input(name="projects__tags" type="radio", id=`projects__tags__all`, checked)
           label(for=`projects__tags__all` onclick=`generateProjects("all")`)
             =obj
-        else 
-          input(name="projects__tags" type="radio", id=`projects__tags__${obj}`) 
+        else
+          input(name="projects__tags" type="radio", id=`projects__tags__${obj}`)
           label(for=`projects__tags__${obj}` onclick=`generateProjects("${obj}")`)
             =obj
 

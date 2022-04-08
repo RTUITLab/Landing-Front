@@ -1,6 +1,6 @@
 .staff__parent {
 	overflow: hidden;
-	display: flex;
+	display: grid;
 	justify-content: center;
 	align-items: center;
 	background-color: #f3f3f3;
@@ -18,7 +18,7 @@
 	.staff__content {
 		max-width: 100%;
 		overflow: auto;
-		display: flex;
+		display: grid;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
@@ -120,7 +120,7 @@
 
 				display: inline-block;
 				margin-right: 5px;
-				margin-bottom: 2px;
+				margin-bottom: 5px;
 			}
 		}
 	}

@@ -5,13 +5,15 @@
 	padding-bottom: 50px;
 
 	header {
-		max-width: 1300px;
 		width: 100%;
 		margin: 0 auto;
+		max-width: 1000px;
+		position: relative;
+
 
 		.buttonContainer {
 			display: flex;
-
+			align-items: center;
 			button {
 				display: flex;
 				column-gap: 15px;
@@ -26,6 +28,8 @@
 				line-height: 28px;
 				text-align: center;
 				color: #0066cc;
+				height: fit-content;
+				background-color: white;
 
 				img {
 					padding-left: 10px;
@@ -91,9 +95,10 @@
 
 			& > img {
 				border-radius: 15px;
-				height: 400px;
 				width: 100%;
+				max-height: 400px;
 				object-fit: cover;
+				height: fit-content;
 			}
 		}
 
@@ -114,12 +119,15 @@
 	}
 
 	main {
+		max-width: 1000px;
+		margin: 0 auto;
 		.content {
 			padding: 0px 15px;
 			padding-top: 10px;
-			column-gap: 15px;
+			column-gap: 25px;
 			flex-wrap: wrap;
-			display: flex;
+			display: grid;
+			grid-template-columns: auto auto;
 			max-width: 1000px;
 			margin: 0 auto;
 
@@ -172,20 +180,20 @@
 				}
 			}
 
-			@media (max-width: 990px) {
+			@media (max-width: 890px) {
+				grid-template-columns: auto;
 				.galleryParent {
-					display: block;
 					position: relative;
 					max-width: 100%;
 
 					.projectsSwiperParent {
 						width: 100%;
-						max-width: none;
-						display: block;
 						position: relative;
+						max-width: 100%;
+
 
 						img {
-							width: calc(100vw - 30px);
+							width: 100%;
 						}
 					}
 				}

@@ -9,7 +9,8 @@
 	overflow: hidden;
 
 	.achievements__content {
-		display: flex;
+		display: grid;
+		justify-items: center;
 		flex-direction: column;
 		align-items: center;
 		row-gap: 20px;
@@ -72,7 +73,8 @@
 .achievementCard__parent {
 	text-decoration: none;
 	color: black;
-	display: flex !important;
+	display: grid !important;
+	justify-items: center;
 	justify-content: flex-start !important;
 	flex-direction: column;
 	align-items: center;

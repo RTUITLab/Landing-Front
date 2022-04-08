@@ -1,13 +1,14 @@
 .equipment__parent {
 	overflow: hidden;
-	display: flex;
+	display: grid;
+	justify-items: center;
 	flex-direction: column;
 	row-gap: 50px;
-	justify-content: center;
+	justify-content: stretch;
 	align-items: center;
 	background-color: white;
 	padding: 10vh 15px;
-
+	position: relative;
 	@media (max-height: 900px) {
 		padding-top: 100px;
 	}
@@ -18,12 +19,13 @@
 	button {
 		transition: all 250ms ease;
 		border: none;
-		color: #FFF;
-		background-color: #0066cc;
+		color: #0066cc;
 		padding: 10px 20px;
-		border-radius: 40px;
+		background-color: transparent;
+		font-weight: bold;
 		font-size: 16px;
 		cursor: pointer;
+		width: fit-content;
 
 		&:active{
 			margin-top: 2px;
@@ -35,9 +37,10 @@
 	}
 
 	.equipment__content {
-		display: flex;
+		display: grid;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: stretch;
+		justify-items: center;
 		align-items: center;
 		row-gap: 40px;
 		width: 100%;
@@ -64,7 +67,7 @@
 
 		.equipment__elements[lastelem="false"] {
 			display: grid;
-			width: calc(100% - 30px);
+			width: 100%;
 			max-width: 1200px;
 			margin-bottom: -30px;
 
@@ -148,11 +151,7 @@
             "G G G G G H H H H H";
 				}
 			}
-			@media (max-width: 500px) {
-				display: flex;
-				flex-direction: column;
-				row-gap: 10px;
-			}
+
 		}
 	}
 }
@@ -160,8 +159,7 @@
 .equipment__elements[lastelem="true"] {
 	display: flex;
 	justify-content: stretch;
-	gap: 10px;
-	width: calc(100% - 30px);
+	width: 100%;
 	max-width: 1200px;
 	flex-wrap: wrap;
 
@@ -239,6 +237,7 @@
 	&[hidden="true"] {
 		display: none !important;
 	}
+
 }
 
 .equipment__element {
@@ -292,5 +291,30 @@
 		opacity: 1;
 		margin-top: 0px;
 		margin-bottom: 0px;
+	}
+}
+
+@media (max-width: 500px) {
+	.equipment__elements{
+		& div:nth-child(n) {
+			grid-area: auto;
+		}
+	}
+	.equipment__parent{
+		.equipment__content{
+			.equipment__elements[lastelem="false"]{
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: repeat(8,1fr);
+				grid-template-areas: none !important;
+				row-gap: 10px;
+			}
+			.equipment__elements[lastelem="true"]{
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-areas: none;
+				row-gap: 10px;
+			}
+		}
 	}
 }
