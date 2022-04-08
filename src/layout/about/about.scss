@@ -150,7 +150,7 @@
 		& img:nth-child(1) {
 			display: block;
 			width: 40vw;
-			max-width: 800px;
+			max-width: 600px;
 			position: absolute;
 			top: 10vw !important;
 			right: auto;
@@ -158,7 +158,7 @@
 			z-index: 5;
 
 			@media (max-width: 2200px) {
-				left: -15% !important;
+				left: -10% !important;
 			}
 
 			@media (max-width: 1500px) {
