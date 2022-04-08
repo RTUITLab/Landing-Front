@@ -1,6 +1,6 @@
 # Title
 
-🏆 Победа на «URBAN TECHNOLOGY»
+Победа на «URBAN TECHNOLOGY»
 
 ---
 
