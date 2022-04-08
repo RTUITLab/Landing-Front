@@ -14,7 +14,7 @@ function setScrollStatus(obj) {
 
 function findActiveTab(activeTab) {
   for (let i = 0; i < children.length; i++) {
-    if (window.scrollY + (window.innerHeight / 4) * 3 >= children[i].offsetTop) {
+    if (window.scrollY + (window.innerHeight / 2) * 1 >= children[i].offsetTop) {
       activeTab = i;
     }
   }

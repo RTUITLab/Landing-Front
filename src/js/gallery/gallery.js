@@ -18,7 +18,7 @@ export function isMobile() {
   }
 }
 
-export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
+export default function gallery(elem, onMouseDown, onMouseUp, onChange, onClick) {
   let localActiveView = 0;
   let ratio = 200;
   let lastX = 0;
@@ -137,7 +137,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
     current.style.transform = `translate(${calculateX(newX - lastX, 0)}px,0px) scale(${calculateScale(newX - lastX, 0)})`;
     setTransform(localActiveView);
   };
-  const onTouchEnd = function() {
+  const onTouchEnd = function(e) {
     elem.ontouchmove = null;
     elem.classList.add('gallery__anim');
     let buff = localActiveView + Math.round((lastX - newX) / ratio);
@@ -145,148 +145,154 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange) {
     if (newX === 0)
       buff = localActiveView;
 
-    if (buff >= 0 && elem.children.length > buff) {
-      setCurrentActivePanel(buff);
-      onChange(buff);
-    } else {
-      if (buff < 0) {
-        setCurrentActivePanel(0);
-        onChange(0);
+    if (Math.abs(newX - lastX) < 5 && e) {
+      if(onClick && e.button===0) onClick.call(this)
+    }
+
+
+      if (buff >= 0 && elem.children.length > buff) {
+        setCurrentActivePanel(buff);
+        onChange(buff);
       } else {
-        setCurrentActivePanel(elem.children.length - 1);
-        onChange(elem.children.length - 1);
+        if (buff < 0) {
+          setCurrentActivePanel(0);
+          onChange(0);
+        } else {
+          setCurrentActivePanel(elem.children.length - 1);
+          onChange(elem.children.length - 1);
+        }
       }
-    }
-    setTimeout(() => {
-      elem.classList.remove('gallery__anim');
-    }, 250);
-  };
-
-  function deleteEventListener(e) {
-    elem.ontouchmove = null;
-    elem.onmousemove = null;
-    onTouchEnd();
-    if (isMobile()) {
-      window.removeEventListener('touchend', deleteEventListener);
-    } else {
-      window.removeEventListener('mouseup', deleteEventListener);
-    }
-    onMouseUp(e);
-  }
-
-  function calculateRatio() {
-    const wd = window.innerWidth;
-
-    if (wd > 1150) return 200; else if (wd > 1020) return 150; else if (wd > 820) return 130; else if (wd > 640) return 100; else if (wd > 520) return 80; else if (wd > 370) return 60; else return 50;
-  }
-
-  elem.classList.add('gallery__anim');
-
-  ratio = calculateRatio();
-  setCurrentActivePanel(0);
-
-  window.addEventListener('resize', function() {
-    ratio = calculateRatio();
-    setCurrentActivePanel(localActiveView);
-  });
-
-  if (isMobile()) {
-    elem.ontouchstart = function(e) {
-      elem.classList.remove('gallery__anim');
-      window.addEventListener('touchend', deleteEventListener, {
-        passive: true,
-      });
-      lastX = e.touches[0].clientX;
-      newX = e.touches[0].clientX;
-
-      onMouseDown(e);
-      elem.ontouchmove = function(e) {
-        newX = e.touches[0].clientX;
-        onTouchMove();
-      };
-    };
-  } else {
-    elem.onmousedown = function(e) {
-      elem.classList.remove('gallery__anim');
-      window.addEventListener('mouseup', deleteEventListener, {
-        passive: true,
-      });
-      lastX = e.clientX;
-      newX = e.clientX;
-      onMouseDown(e);
-      elem.onmousemove = function(e) {
-        newX = e.clientX;
-        onTouchMove();
-      };
-    };
-  }
-  return {
-    setActiveView: (i) => {
-      if (elem.children.length <= i) return false;
-      localActiveView = i;
-      elem.classList.add('gallery__anim');
-      setCurrentActivePanel(i);
       setTimeout(() => {
         elem.classList.remove('gallery__anim');
       }, 250);
-    }, galleryDestroy: () => {
-      elem.onmousedown = null;
-      elem.onmouseup = null;
-      elem.ontouchstart = null;
+    }
+    ;
+
+    function deleteEventListener(e) {
       elem.ontouchmove = null;
-      elem.ontouchend = null;
       elem.onmousemove = null;
-      deleteEventListener();
-    },
-    next: function() {
-      if (localActiveView + 1 >= elem.children.length)
-        return null;
+      onTouchEnd(e);
+      if (isMobile()) {
+        window.removeEventListener('touchend', deleteEventListener);
+      } else {
+        window.removeEventListener('mouseup', deleteEventListener);
+      }
+      onMouseUp(e);
+    }
 
-      elem.classList.add('gallery__anim');
-      setCurrentActivePanel(localActiveView + 1);
-      onChange(localActiveView);
-      setTimeout(() => {
-        elem.classList.remove('gallery__anim');
-      }, 250);
-    },
-    back: function() {
-      if (localActiveView - 1 < 0)
-        return null;
+    function calculateRatio() {
+      const wd = window.innerWidth;
 
-      elem.classList.add('gallery__anim');
-      setCurrentActivePanel(localActiveView - 1);
-      onChange(localActiveView);
-      setTimeout(() => {
+      if (wd > 1150) return 200; else if (wd > 1020) return 150; else if (wd > 820) return 130; else if (wd > 640) return 100; else if (wd > 520) return 80; else if (wd > 370) return 60; else return 50;
+    }
+
+    elem.classList.add('gallery__anim');
+
+    ratio = calculateRatio();
+    setCurrentActivePanel(0);
+
+    window.addEventListener('resize', function() {
+      ratio = calculateRatio();
+      setCurrentActivePanel(localActiveView);
+    });
+
+    if (isMobile()) {
+      elem.ontouchstart = function(e) {
         elem.classList.remove('gallery__anim');
-      }, 250);
-    },
+        window.addEventListener('touchend', deleteEventListener, {
+          passive: true,
+        });
+        lastX = e.touches[0].clientX;
+        newX = e.touches[0].clientX;
+
+        onMouseDown(e);
+        elem.ontouchmove = function(e) {
+          newX = e.touches[0].clientX;
+          onTouchMove();
+        };
+      };
+    } else {
+      elem.onmousedown = function(e) {
+        elem.classList.remove('gallery__anim');
+        window.addEventListener('mouseup', deleteEventListener, {
+          passive: true,
+        });
+        lastX = e.clientX;
+        newX = e.clientX;
+        onMouseDown(e);
+        elem.onmousemove = function(e) {
+          newX = e.clientX;
+          onTouchMove();
+        };
+      };
+    }
+    return {
+      setActiveView: (i) => {
+        if (elem.children.length <= i) return false;
+        localActiveView = i;
+        elem.classList.add('gallery__anim');
+        setCurrentActivePanel(i);
+        setTimeout(() => {
+          elem.classList.remove('gallery__anim');
+        }, 250);
+      }, galleryDestroy: () => {
+        elem.onmousedown = null;
+        elem.onmouseup = null;
+        elem.ontouchstart = null;
+        elem.ontouchmove = null;
+        elem.ontouchend = null;
+        elem.onmousemove = null;
+        deleteEventListener();
+      },
+      next: function() {
+        if (localActiveView + 1 >= elem.children.length)
+          return null;
+
+        elem.classList.add('gallery__anim');
+        setCurrentActivePanel(localActiveView + 1);
+        onChange(localActiveView);
+        setTimeout(() => {
+          elem.classList.remove('gallery__anim');
+        }, 250);
+      },
+      back: function() {
+        if (localActiveView - 1 < 0)
+          return null;
+
+        elem.classList.add('gallery__anim');
+        setCurrentActivePanel(localActiveView - 1);
+        onChange(localActiveView);
+        setTimeout(() => {
+          elem.classList.remove('gallery__anim');
+        }, 250);
+      },
+    };
   };
-}
 
-export function GalleryConstrucor() {
-}
+  export function GalleryConstrucor() {
+  }
 
-GalleryConstrucor.prototype.init = function(elem, onMouseDown, onMouseUp, onChange) {
-  let { setActiveView, galleryDestroy, next, back } = gallery(elem, onMouseDown, onMouseUp, onChange);
+  GalleryConstrucor.prototype.init = function(elem, onMouseDown, onMouseUp, onChange, onClick) {
+    let { setActiveView, galleryDestroy, next, back } = gallery(elem, onMouseDown, onMouseUp, onChange,onClick);
 
-  this.setActiveView = setActiveView;
-  this.galleryDestroy = galleryDestroy;
-  this.next = next.bind(this);
-  this.back = back.bind(this);
+    this.setActiveView = setActiveView;
+    this.galleryDestroy = galleryDestroy;
+    this.next = next.bind(this);
+    this.back = back.bind(this);
 
-  return this;
-};
-GalleryConstrucor.prototype.destroy = function() {
-  this.galleryDestroy();
-  return this;
-};
+    return this;
+  };
+  GalleryConstrucor.prototype.destroy = function() {
+    this.galleryDestroy();
+    return this;
+  };
 
-GalleryConstrucor.prototype.next = function() {
-  this.next();
-  return this;
-};
+  GalleryConstrucor.prototype.next = function() {
+    this.next();
+    return this;
+  };
 
-GalleryConstrucor.prototype.back = function() {
-  this.back();
-  return this;
-};
+  GalleryConstrucor.prototype.back = function() {
+    this.back();
+    return this;
+  };

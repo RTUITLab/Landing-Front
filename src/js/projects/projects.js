@@ -21,6 +21,10 @@ function onMouseDown(e) {
   projectsInfo.classList.add('projects__hide');
 }
 
+function onClick() {
+  window.location.href=currentProjectLink
+}
+
 function onMouseUp(e) {
   updateProjectsInfo();
   projectsInfo.classList.remove('projects__hide');
@@ -79,7 +83,7 @@ function generateProjects(e) {
     currentActiveTab = Math.floor(projects.length / 2);
     setActiveStatusBarPoint(currentActiveTab);
 
-    gallery.init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange);
+    gallery.init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange,onClick);
     gallery.setActiveView(currentActiveTab);
     updateProjectsInfo();
 
@@ -108,7 +112,7 @@ function setPointsAction() {
 
 function onLoad(_) {
   setPointsAction.call(this);
-  gallery = new GalleryConstrucor().init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange);
+  gallery = new GalleryConstrucor().init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange, onClick);
   setActiveStatusBarPoint.call(this, Math.floor(projectsData.length / 2));
   gallery.setActiveView.call(this, Math.floor(projectsData.length / 2));
   updateProjectsInfo.call(this);
