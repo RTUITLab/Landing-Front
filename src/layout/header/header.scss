@@ -7,6 +7,7 @@
 	column-gap: 20px;
 	align-items: center;
 	width: 100vw;
+	height: 54px;
 	z-index: 50;
 
 	a {
@@ -47,9 +48,8 @@
 	}
 
 	.header__elementsParent {
-		display: flex;
+		display: block;
 		position: relative;
-		column-gap: 20px;
 
 		& a:nth-child(1):before {
 			display: none;
@@ -63,6 +63,7 @@
 			text-decoration: none;
 			cursor: pointer;
 			position: relative;
+			margin-right: 15px;
 
 			&:hover {
 				color: #708ad4;
@@ -112,9 +113,6 @@
 
 	@media (max-width: 1000px) {
 		padding: 20px 20px;
-		.header__elementsParent {
-			column-gap: 15px;
-		}
 	}
 
 	@media (max-width: 850px) {
@@ -144,9 +142,19 @@
 			align-items: center;
 			row-gap: 10px;
 			margin-top: 70px;
+			display: grid;
+			justify-items: center;
 
 			.header__element {
 				text-align: center;
+				display: block;
+				margin-right: 0px;
+				width: fit-content;
+				&:before{
+					width: 0px;
+					visibility: hidden;
+				}
+
 			}
 		}
 	}

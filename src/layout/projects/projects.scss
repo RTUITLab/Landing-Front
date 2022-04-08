@@ -173,10 +173,6 @@
 }
 
 .statusbar__statusBar {
-	display: flex;
-	justify-content: center;
-	column-gap: 20px;
-	row-gap: 10px;
 	flex-wrap: wrap;
 	max-width: min(900px, 80vw);
 	margin: 0 auto;
@@ -188,6 +184,8 @@
 		height: 12px;
 		border-radius: 100%;
 		border: 3px #0066cc solid;
+		display: inline-block;
+		margin-right: 15px;
 
 		&[active="true"] {
 			background-color: #0066cc;
@@ -195,9 +193,8 @@
 	}
 
 	@media (max-width: 700px) {
-		column-gap: 5px;
-		row-gap: 10px;
 		& div:nth-child(n) {
+			margin-right: 5px;
 			width: 5px;
 			height: 5px;
 		}
