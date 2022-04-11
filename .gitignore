@@ -43,6 +43,7 @@ env/
 /src/images/projects
 /src/images/achievements
 /src/achievements
+/data/
 
 
 __pycache__
