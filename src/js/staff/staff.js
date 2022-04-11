@@ -17,8 +17,8 @@ function initStaffSwiper(){
       staffSwiper=true
       _();
     });
-    window.removeEventListener("load",initStaffSwiper)
+    window.removeEventListener("scroll",initStaffSwiper)
   }
 }
 
-window.addEventListener("load",initStaffSwiper)
+window.addEventListener("scroll",initStaffSwiper)

@@ -1,6 +1,8 @@
 import projectsData from '../data/projectsData';
 import { GalleryConstrucor } from '../gallery/gallery';
 
+let initProjects = false;
+
 let currentActiveTab = 0;
 
 const statusBar = document.getElementById('projectsStatusBar');
@@ -22,7 +24,7 @@ function onMouseDown(e) {
 }
 
 function onClick() {
-  window.location.href=currentProjectLink
+  window.location.href = currentProjectLink;
 }
 
 function onMouseUp(e) {
@@ -83,7 +85,7 @@ function generateProjects(e) {
     currentActiveTab = Math.floor(projects.length / 2);
     setActiveStatusBarPoint(currentActiveTab);
 
-    gallery.init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange,onClick);
+    gallery.init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange, onClick);
     gallery.setActiveView(currentActiveTab);
     updateProjectsInfo();
 
@@ -111,7 +113,11 @@ function setPointsAction() {
 }
 
 function onLoad(_) {
-  window.removeEventListener("load",onLoad)
+  if (initProjects) {
+    return false;
+  }
+  initProjects=true
+  window.removeEventListener('scroll', onLoad);
 
   setPointsAction.call(this);
   gallery = new GalleryConstrucor().init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange, onClick);
@@ -126,5 +132,5 @@ function onLoad(_) {
   globalThis.gallery.back = gallery.back;
 }
 
-window.addEventListener("load",onLoad)
+window.addEventListener('scroll', onLoad);
 
