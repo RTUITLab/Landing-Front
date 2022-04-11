@@ -11,9 +11,13 @@ function hideEquipment() {
       _();
     });
     equipmentHidden = true;
-    window.removeEventListener("scroll",hideEquipment)
+    window.removeEventListener('scroll', hideEquipment);
+    window.removeEventListener('mousemove', hideEquipment);
+    window.removeEventListener('touchstart', hideEquipment);
   }
 }
 
 window.addEventListener("scroll",hideEquipment)
+window.addEventListener("mousemove",hideEquipment)
+window.addEventListener("touchstart",hideEquipment)
 

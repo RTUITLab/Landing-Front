@@ -17,7 +17,12 @@ function initAchievements() {
       _();
     });
     window.removeEventListener('scroll', initAchievements);
+    window.removeEventListener('mousemove', initAchievements);
+    window.removeEventListener('touchstart', initAchievements);
   }
 }
 
-window.addEventListener("load",initAchievements)
+window.addEventListener("scroll",initAchievements)
+window.addEventListener("mousemove",initAchievements)
+window.addEventListener("touchstart",initAchievements)
+
