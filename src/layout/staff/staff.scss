@@ -21,8 +21,30 @@
 		display: grid;
 		flex-direction: column;
 		justify-content: center;
+		justify-items: center;
 		align-items: center;
 		row-gap: 40px;
+
+		.staff__text {
+			padding: 0px 15px;
+			max-width: 950px;
+			font-style: normal;
+			font-weight: normal;
+			font-size: 20px;
+			line-height: 28px;
+			text-align: center;
+			color: #666666;
+			margin: 0px;
+
+			@media (max-width: 900px) {
+				font-size: 18px;
+				line-height: 20px;
+			}
+			@media (max-width: 600px) {
+				font-size: 18px;
+				line-height: 20px;
+			}
+		}
 
 		h1 {
 			font-weight: bold;

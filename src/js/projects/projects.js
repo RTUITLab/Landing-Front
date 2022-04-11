@@ -112,7 +112,7 @@ function setPointsAction() {
   }
 }
 
-function onLoad(_) {
+function onLoad() {
   if (initProjects) {
     return false;
   }
@@ -125,12 +125,11 @@ function onLoad(_) {
   gallery.setActiveView.call(this, Math.floor(projectsData.length / 2));
   updateProjectsInfo.call(this);
   document.getElementById('projects__tags__all').checked = true;
-  _();
 
   globalThis.gallery = {};
   globalThis.gallery.next = gallery.next;
   globalThis.gallery.back = gallery.back;
 }
 
-window.addEventListener('load', onLoad);
+window.addEventListener('load', onLoad.bind(globalThis));
 
