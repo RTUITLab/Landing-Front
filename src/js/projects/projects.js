@@ -117,7 +117,7 @@ function onLoad(_) {
     return false;
   }
   initProjects=true
-  window.removeEventListener('scroll', onLoad);
+  window.removeEventListener('load', onLoad);
 
   setPointsAction.call(this);
   gallery = new GalleryConstrucor().init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange, onClick);
@@ -132,5 +132,5 @@ function onLoad(_) {
   globalThis.gallery.back = gallery.back;
 }
 
-window.addEventListener('scroll', onLoad);
+window.addEventListener('load', onLoad);
 

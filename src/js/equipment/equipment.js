@@ -11,9 +11,9 @@ function hideEquipment() {
       _();
     });
     equipmentHidden = true;
-    window.removeEventListener("scroll",hideEquipment)
+    window.removeEventListener("load",hideEquipment)
   }
 }
 
-window.addEventListener("scroll",hideEquipment)
+window.addEventListener("load",hideEquipment)
 
