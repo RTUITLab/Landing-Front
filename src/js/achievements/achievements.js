@@ -16,7 +16,7 @@ function initAchievements() {
       achievementsSwiper = true;
       _();
     });
-    window.removeEventListener('scroll', initAchievements);
+    window.removeEventListener('load', initAchievements);
   }
 }
 

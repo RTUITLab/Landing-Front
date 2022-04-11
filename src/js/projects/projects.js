@@ -111,6 +111,8 @@ function setPointsAction() {
 }
 
 function onLoad(_) {
+  window.removeEventListener("load",onLoad)
+
   setPointsAction.call(this);
   gallery = new GalleryConstrucor().init(document.getElementById('GalleryParent'), onMouseDown, onMouseUp, onChange, onClick);
   setActiveStatusBarPoint.call(this, Math.floor(projectsData.length / 2));
@@ -124,5 +126,5 @@ function onLoad(_) {
   globalThis.gallery.back = gallery.back;
 }
 
-new Promise(onLoad);
+window.addEventListener("load",onLoad)
 
