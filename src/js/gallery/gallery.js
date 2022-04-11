@@ -142,11 +142,13 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange, onClick)
     elem.classList.add('gallery__anim');
     let buff = localActiveView + Math.round((lastX - newX) / ratio);
 
+
     if (newX === 0)
       buff = localActiveView;
 
     if (Math.abs(newX - lastX) < 5 && e) {
       if(onClick && e.button===0) onClick.call(this)
+      if(onClick && !e.button) onClick.call(this)
     }
 
 
@@ -219,6 +221,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange, onClick)
         });
         lastX = e.clientX;
         newX = e.clientX;
+
         onMouseDown(e);
         elem.onmousemove = function(e) {
           newX = e.clientX;
