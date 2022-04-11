@@ -13,13 +13,18 @@
 
 		.buttonContainer {
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
+			padding: 40px 15px;
+
 			button {
-				display: flex;
-				column-gap: 15px;
+
+				display: grid;
+				grid-template-columns: auto auto;
+				column-gap: 5px;
 				align-items: center;
-				background: none;
 				border: none;
+				border-radius: 15px;
+				padding: 7px 10px;
 				cursor: pointer;
 				font-style: normal;
 				font-weight: bold;
@@ -30,9 +35,9 @@
 				color: #0066cc;
 				height: fit-content;
 				background-color: white;
+				padding-right: 105px;
 
 				img {
-					padding-left: 10px;
 					width: 30px;
 				}
 			}
@@ -42,6 +47,7 @@
 				display: grid;
 				justify-content: center;
 				h1 {
+					margin: 0px;
 					justify-self: center;
 					text-align: center;
 					width: fit-content;
@@ -57,9 +63,12 @@
 				}
 			}
 
-			@media (max-width: 550px) {
+			@media (max-width: 700px) {
 				flex-direction: column;
 				padding-top: 25px;
+				button{
+					align-self: flex-start;
+				}
 				.titleContainer{
 					h1 {
 						margin: 10px 0px;
@@ -72,6 +81,7 @@
 
 		.cover {
 			max-width: 1000px;
+			height: fit-content;
 			padding: 0 15px;
 			margin: 0 auto;
 			position: relative;
@@ -88,9 +98,7 @@
 				width: 80vw;
 				z-index: 1;
 
-				@media (max-width: 700px) {
-					font-size: 25px;
-				}
+
 			}
 
 			& > img {
@@ -99,6 +107,15 @@
 				max-height: 400px;
 				object-fit: cover;
 				height: fit-content;
+			}
+			@media (max-width: 700px) {
+				& > span{
+					font-size: 25px;
+				}
+				& > img{
+					object-fit: contain;
+					height: 100%;
+				}
 			}
 		}
 
@@ -112,7 +129,14 @@
 			max-width: 550px;
 			margin: 0 auto;
 
-			@media (max-width: 550px) {
+
+		}
+		@media (max-width: 550px) {
+			& > img{
+				object-fit: contain;
+				height: 100%;
+			}
+			.desc{
 				font-size: 18px;
 			}
 		}
@@ -124,6 +148,7 @@
 		.content {
 			padding: 0px 15px;
 			padding-top: 10px;
+			position: relative;
 			column-gap: 25px;
 			flex-wrap: wrap;
 			display: grid;
@@ -168,7 +193,7 @@
 					border-radius: 15px;
 					height: 300px;
 
-					img {
+					img, video {
 						object-fit: cover;
 						height: 300px;
 						width: 485px;
@@ -185,15 +210,19 @@
 				.galleryParent {
 					position: relative;
 					max-width: 100%;
-
 					.projectsSwiperParent {
 						width: 100%;
 						position: relative;
 						max-width: 100%;
+						& *:nth-child(n){
+							width: 100% !important;
+							max-width: 100%;
 
-
+						}
 						img {
-							width: 100%;
+							object-fit: cover;
+							max-width: none;
+
 						}
 					}
 				}
@@ -224,6 +253,8 @@
 				padding-top: 20px;
 
 				.item {
+					margin: 2.5px;
+
 					padding: 10px 15px;
 					border-radius: 15px;
 					background-color: white;

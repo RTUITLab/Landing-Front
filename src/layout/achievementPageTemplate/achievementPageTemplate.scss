@@ -5,19 +5,22 @@
 	padding-bottom: 50px;
 
 	header {
-		max-width: 1300px;
-		width: 90vw;
+		max-width: 1000px;
+		width: 100%;
+		padding: 40px 15px;
 		margin: 0 auto;
 
 		.buttonContainer {
 			display: flex;
 
 			button {
-				display: flex;
-				column-gap: 15px;
+				display: grid;
+				grid-template-columns: auto auto;
+				column-gap: 5px;
 				align-items: center;
-				background: none;
 				border: none;
+				border-radius: 15px;
+				padding: 7px 10px;
 				cursor: pointer;
 				font-style: normal;
 				font-weight: bold;
@@ -26,6 +29,9 @@
 				line-height: 28px;
 				text-align: center;
 				color: #0066cc;
+				height: fit-content;
+				background-color: white;
+				padding-right: 105px;
 
 				img {
 					width: 30px;
@@ -37,6 +43,7 @@
 				display: grid;
 				justify-content: center;
 				h1 {
+					margin: 0px;
 					justify-self: center;
 					text-align: center;
 					width: fit-content;
@@ -52,9 +59,8 @@
 				}
 			}
 
-			@media (max-width: 550px) {
+			@media (max-width: 700px) {
 				flex-direction: column;
-				padding-top: 25px;
 				.titleContainer{
 					h1 {
 						margin: 10px 0px;
@@ -85,7 +91,6 @@
 		display: grid;
 		.content {
 			padding: 0px 15px;
-			padding-top: 50px;
 			column-gap: 25px;
 			flex-wrap: wrap;
 			display: grid;
@@ -202,6 +207,7 @@
 				padding-top: 20px;
 
 				.item {
+					margin: 2.5px;
 					padding: 10px 15px;
 					border-radius: 15px;
 					background-color: white;
