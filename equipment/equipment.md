@@ -47,12 +47,12 @@
 - style: top: -10px; transform: scaleX(-1);
 - link: https://habr.com/ru/company/top3dshop/blog/397233/?
 
-# Unitree Aliengo
+# Unitree A1
 
-- count: 1 устройство
-- img: ../data/equipment/images/Unitree Aliengo.webp
-- style: top: 50px; transform: scale(1.4); width: 60vw; max-width: 670px;
-- link: https://www.unitree.com/products/aliengo/
+- count: 2 устройства
+- img: ../data/equipment/images/Unitree A1.webp
+- style: top: -15px; width: 60vw; max-width: 670px; object-fit: contain;
+- link: https://www.unitree.com/products/a1/
 
 # Microsoft Azure Kinect
 
@@ -103,12 +103,12 @@
 - style: top: 15px;
 - link: https://habr.com/ru/company/lenovo/blog/408975/?ysclid=l20wnwx7ym
 
-# Unitree A1
+# Unitree Aliengo
 
-- count: 2 устройства
-- img: ../data/equipment/images/Unitree A1.webp
-- style: top: -15px; width: 60vw; max-width: 670px; object-fit: contain;
-- link: https://www.unitree.com/products/a1/
+- count: 1 устройство
+- img: ../data/equipment/images/Unitree Aliengo.webp
+- style: top: 50px; transform: scale(1.4); width: 60vw; max-width: 670px;
+- link: https://www.unitree.com/products/aliengo/
 
 # Leap Motion Controller
 
