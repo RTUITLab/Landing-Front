@@ -179,7 +179,9 @@
 }
 
 .equipment__elements[lastelem="true"] {
-	display: flex;
+	display: grid;
+	gap: 10px;
+	grid-template-columns: 1fr 1fr 1fr;
 	justify-content: stretch;
 	width: 100%;
 	max-width: 1200px;
@@ -189,6 +191,7 @@
 		flex: 1 1 30%;
 		height: 250px;
 		min-width: 200px;
+		grid-area: initial !important;
 	}
 	& img:nth-child(n){
 		margin-top: 0 !important;
