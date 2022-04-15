@@ -9,8 +9,7 @@ article(class="equipment__parent" id="equipment")
     article.equipment__text
       | Работаем с передовым оборудованием. Обладаем мощной базой техники для разработки под VR, AR и MR.
       | В арсенале присутствует студия Motion Capture.<br/><br/>
-      | Под каждую единицу техники имеем успешно реализованные проекты и кейсы, которые регулярно презен-
-      | туем на выставках и конференциях.
+      | Под каждую единицу техники имеем успешно реализованные проекты и кейсы, которые регулярно презентуем на выставках и конференциях.
     while i < equipmentData.length
       .equipment__elements(invert=((i+1)%2===0).toString() lastelem=(i+1===equipmentData.length).toString())
         each obj in equipmentData[i]
