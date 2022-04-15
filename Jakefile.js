@@ -162,6 +162,7 @@ task("buildFrontProd", function () {
 				reject(stderr);
 			}
 
+			fs.mkdirSync("./build/dist")
 			fs.copyFileSync("./src/images/favicon.ico","./build/favicon.ico")
 			fs.copyFileSync("./src/js/swiper/swiper-bundle.min.js","./build/dist/swiper-bundle.min.js")
 			fs.copyFileSync("./src/js/parallax/parallax.min.js","./build/dist/parallax.min.js")

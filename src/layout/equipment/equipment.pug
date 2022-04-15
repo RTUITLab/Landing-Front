@@ -15,14 +15,14 @@ article(class="equipment__parent" id="equipment")
       .equipment__elements(invert=((i+1)%2===0).toString() lastelem=(i+1===equipmentData.length).toString())
         each obj in equipmentData[i]
           if(obj.style)
-            .equipment__element(style=`background: black;`)
+            a.equipment__element(style=`background: black;` href=obj.link target="_blank")
               img(src=obj.img style=obj.style alt=obj.name title=obj.name loading='lazy' height="100%")
               span
                 = obj.name
               span.equipment__count
                 = obj.count
           else
-            .equipment__element(style=`background: black;`)
+            a.equipment__element(style=`background: black;` href=obj.link target="_blank")
               img(src=obj.img alt=obj.name title=obj.name loading='lazy' height="100%")
               span
                 = obj.name
