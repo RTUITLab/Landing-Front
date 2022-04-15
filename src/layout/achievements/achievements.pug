@@ -4,11 +4,12 @@ article#achievemtns.achievements__achievementsParent
 	section.achievements__content
 		h1 Достижения
 		article.achievements__text
-			| Команды Reality из RTUITLab многократные победители
-			| хакатонов и конференций. Многие сотрудники являются преподавателями
-			| образовательных программ, которые Институт ИТ проводит в сотрудничестве
-			| с компаниями Яндекс, Samsung, Huawei и другими, а также преподают
-			| на внутренних кафедрах Института.
+			| За плечами команд из RTUITLab 40+ хакатонов, участие в конференциях и форумах
+			| на протяжении уже 5 лет, регулярные выставки для партнеров и абитуриентов в университете,
+			| школах и на международных мероприятиях.<br/><br/>
+			| Многие сотрудники являются преподавателями образовательных программ, которые Институт
+			| ИТ проводит в сотрудничестве с компаниями Яндекс, Samsung, Huawei и другими, а также пре-
+			| подают на внутренних кафедрах Института.
 
 		section
 			.swiper.achievements__swiperParent
@@ -20,9 +21,6 @@ article#achievemtns.achievements__achievementsParent
 							a(href="achievements/" + obj.link).achievementCard__parent
 								h1
 									=obj.title.replaceAll("\\n", "")
-								article.achievementCard__desc
-									p
-										=obj.shortdescription.replaceAll("\\n", "")
 
 								.linkButton(href="achievements/" + obj.link) Подробнее
 								img(src=obj.images[0] alt='Обложка достижения' loading='lazy')

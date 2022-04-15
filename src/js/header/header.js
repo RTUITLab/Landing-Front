@@ -18,7 +18,7 @@ function findActiveTab(activeTab) {
       activeTab = i;
     }
   }
-  return activeTab;
+  return activeTab -1;
 }
 
 
@@ -30,13 +30,13 @@ function scrollFunction() {
 
   if (activeTab !== lastActive) {
     setTab(activeTab);
-    window.history.pushState(null,null,"#"+children[activeTab].id)
+    if(activeTab>-1)window.history.pushState(null,null,"#"+children[activeTab].id)
   }
 }
 
 function setTab(activeTab) {
-  headersChildren[lastActive].setAttribute('active', 'false');
-  headersChildren[activeTab].setAttribute('active', 'true');
+  if(lastActive>=0)headersChildren[lastActive].setAttribute('active', 'false');
+  if(activeTab>=0)headersChildren[activeTab].setAttribute('active', 'true');
   lastActive = activeTab;
 }
 

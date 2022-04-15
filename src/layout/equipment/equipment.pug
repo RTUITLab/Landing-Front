@@ -7,10 +7,10 @@ article(class="equipment__parent" id="equipment")
   div(class="equipment__content")
     h1 Оборудование
     article.equipment__text
-      | Материальная база Института информационных технологий
-      | позволяет сотрудникам работать с порой эксклюзивным
-      | оборудованием, собирать под него проекты,
-      | демонстрировать их на выставках и конференциях.
+      | Работаем с передовым оборудованием. Обладаем мощной базой техники для разработки под VR, AR и MR.
+      | В арсенале присутствует студия Motion Capture.<br/><br/>
+      | Под каждую единицу техники имеем успешно реализованные проекты и кейсы, которые регулярно презен-
+      | туем на выставках и конференциях.
     while i < equipmentData.length
       .equipment__elements(invert=((i+1)%2===0).toString() lastelem=(i+1===equipmentData.length).toString())
         each obj in equipmentData[i]
@@ -32,4 +32,4 @@ article(class="equipment__parent" id="equipment")
 
       - i++
   button(onclick='for(let i of document.querySelectorAll(".equipment__elements[hidden=true]")) i.setAttribute("hidden","false"); this.style.display="none";')
-    | Показать еще
+    | Больше техники!

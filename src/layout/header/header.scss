@@ -63,10 +63,6 @@
 		position: relative;
 		margin-left: -30px;
 
-		& a:nth-child(1):before {
-			display: none;
-		}
-
 		.header__element {
 			transition: all 100ms ease;
 			font-weight: bold;

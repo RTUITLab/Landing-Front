@@ -163,14 +163,18 @@
 			.info {
 				flex: 1 1 40%;
 
-				h3 {
-					margin: 0;
+				.tags	 {
+					line-height: 20px;
+
+					font-weight: normal;
+					color: #707070;
+					font-size: 16px;
 				}
 
 				p {
 					font-style: normal;
 					font-weight: normal;
-					color: #666666;
+					color: #000;
 				}
 			}
 

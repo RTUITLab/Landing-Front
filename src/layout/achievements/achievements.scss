@@ -46,7 +46,7 @@
 			font-size: 20px;
 			line-height: 28px;
 			text-align: center;
-			color: #666666;
+			color: #000;
 			padding: 0 20px;
 
 			@media (max-width: 700px) {
@@ -107,7 +107,7 @@
 		max-width: 90%;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		white-space: nowrap;
+		min-height: 57px;
 	}
 
 	.achievementCard__desc {

@@ -66,7 +66,12 @@ html(lang="ru")
 
         section.info
           article
-            h3 Описание
+            p.tags
+              each object in obj.tags.slice(0,4)
+                if (obj.tags.indexOf(object)==obj.tags.length-1)
+                  | #{object}
+                else
+                  | #{object+" | "+object}
             div
               p
                 =obj.description
