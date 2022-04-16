@@ -191,5 +191,5 @@
 
 - count: 16 устройств
 - img: ../data/equipment/images/Vero_Features.webp
-- style: top: 5px; transform: scale(0.9);
+- style: top: 5px; transform: scale(0.8);
 - link: https://www.vicon.com/hardware/cameras/vero/
