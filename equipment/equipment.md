@@ -186,3 +186,10 @@
 - img: ../data/equipment/images/Insta360 farsight.webp
 - style: top: 10px;
 - link: https://insta360.ru/product/insta360-farsight-komplekt-distantsionnogo-upravleniya-i-monitoringa/
+
+# Vicon Vero
+
+- count: 16 устройств
+- img: ../data/equipment/images/Vero_Features.webp
+- style: top: 5px; transform: scale(0.9);
+- link: https://www.vicon.com/hardware/cameras/vero/
