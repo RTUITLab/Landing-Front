@@ -1,0 +1,92 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Create pr to data ref
+
+on:
+  workflow_call:
+    inputs:
+      username:
+        required: false
+        type: string
+    secrets:
+      envPAT:
+        required: true
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+        ref: v2_pug
+        
+    - uses: actions/checkout@v2
+    - name: checkoug Landing-Front
+      uses: actions/checkout@v2
+      with:
+        repository: RTUITLab/Landing-Front
+        ref: data
+        path: Landing-Front
+        lfs: true
+        
+    #- run: printf "protocol=https\nhost=github.com\nusername=baikinkirill\npassword=${{ secrets.PAT }}" | git credential fill
+  
+    - run: git config --global user.email "bk@finebot.site"
+    - run: git config --global user.name "baikinkirill"
+    - run: mkdir ./Landing-Front/projects/$(echo "${{ github.repository }}" | grep '[^/]*$' -o) || true
+    - run: cp ./LANDING.md ./Landing-Front/projects/$(echo "${{ github.repository }}" | grep '[^/]*$' -o)
+    - run: cd ./Landing-Front && git add .
+    - run: cd ./Landing-Front && git commit -m "Update LANDING.md"
+    
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v3
+      with:
+        path: Landing-Front
+        token: ${{ secrets.envPAT }}
+        committer: GitHub <noreply@github.com>
+        author: GitHub <noreply@github.com>
+        commit-message: update information about ${{ github.repository }}
+        title: Update information about ${{ github.repository }}
+        branch: 'sync/${{ github.repository }}'
+        delete-branch: true
+        
+    - name: Create Pull Request to sync/${{ github.repository }}
+      uses: peter-evans/create-pull-request@v3
+      with:
+        path: Landing-Front
+        token: ${{ secrets.envPAT }}
+        committer: GitHub <noreply@github.com>
+        author: GitHub <noreply@github.com>
+        commit-message: update information about ${{ github.repository }}
+        title: Update information about ${{ github.repository }}
+        branch: 'data'
+        base: 'sync/${{ github.repository }}'
+        delete-branch: false
+        
+    - name: checkoug Landing-Front to data
+      uses: actions/checkout@v2
+      with:
+        repository: RTUITLab/Landing-Front
+        ref: data
+        path: Landing-Front
+        lfs: true
+        
+    - name: Create Pull Request to data
+      uses: peter-evans/create-pull-request@v3
+      with:
+        path: Landing-Front
+        token: ${{ secrets.envPAT }}
+        committer: GitHub <noreply@github.com>
+        author: GitHub <noreply@github.com>
+        commit-message: update information about ${{ github.repository }}
+        title: Update information about ${{ github.repository }}
+        branch: 'sync/${{ github.repository }}'
+        delete-branch: true
+  
+   
+   
+    
