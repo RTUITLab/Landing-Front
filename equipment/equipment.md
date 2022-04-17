@@ -61,12 +61,12 @@
 - style: margin-left: 80px; object-fit:contain; bottom: 0px;
 - link: https://azure.microsoft.com/en-us/services/kinect-dk/
 
-# EPSON BT-300 H756A
+# Mark IV Wireless Headcam System
 
-- count: 3 устройства
-- img: ../data/equipment/images/EPSON BT-300 H756A.webp
-- style: transform: scale(1.2); right: -5%; top: 20%; object-fit: contain;
-- link: https://www.epson.eu/en_EU/products/smart-glasses/see-through-mobile-viewer/moverio-bt-300/p/20178
+- count: 2 устройства
+- img: ../data/equipment/images/hero-helmet.webp
+- style: right: 15px; bottom: 20px; object-fit: contain;
+- link: https://facewaretech.com/cameras/markiv/
 
 # ODG R7
 
@@ -192,3 +192,17 @@
 - count: 2 устройства
 - img: ../data/equipment/images/Intel RealSense sr300 VF0810.webp
 - link: https://habr.com/ru/company/intel/blog/283508/?ysclid=l20wugeblm
+
+# EPSON BT-300 H756A
+
+- count: 3 устройства
+- img: ../data/equipment/images/EPSON BT-300 H756A.webp
+- style: transform: scale(1.2); right: -5%; bottom: 0px; object-fit: contain;
+- link: https://www.epson.eu/en_EU/products/smart-glasses/see-through-mobile-viewer/moverio-bt-300/p/20178
+
+# Hollyland Mars 400s
+
+- count: 1 устройство
+- img: ../data/equipment/images/hollyland-mars-400s-001.webp
+- style: transform: scale(1.2); bottom: 20px; object-fit: contain;
+- link: https://provis.ru/catalog/146888/?
