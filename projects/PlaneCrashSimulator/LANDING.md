@@ -6,7 +6,7 @@ Plane crash simulator
 
 # Description
 
-    	Симулятор, помещающий пользователя в ситуацию, когда он находится в падающем самолете
+Симулятор, помещающий пользователя в ситуацию, когда он находится в падающем самолете.
 
 ---
 
@@ -25,6 +25,7 @@ Plane crash simulator
 # Tags
 
 - VR
+- Симулятор
 
 ---
 
@@ -49,8 +50,8 @@ Plane crash simulator
 
 # SourceCode
 
-| name        | link                                            |
-| ----------- | ----------------------------------------------- |
-| Source code | https://github.com/RTUITLab/PlainCrashSimulator |
+| name         | link                                            |
+| ------------ | ----------------------------------------------- |
+| Исходный код | https://github.com/RTUITLab/PlainCrashSimulator |
 
 ---

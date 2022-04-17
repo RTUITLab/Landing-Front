@@ -145,12 +145,12 @@
 - style: bottom: 15px; transform: scale(0.9);
 - link: https://naobzorah.ru/notebook/asus_rog_gl502vs?
 
-# Intel RealSense sr300 VF0810
+# Vicon Vero
 
-- count: 2 устройства
-- img: ../data/equipment/images/Intel RealSense sr300 VF0810.webp
-- style: bottom: -15px;
-- link: https://habr.com/ru/company/intel/blog/283508/?ysclid=l20wugeblm
+- count: 16 устройств
+- img: ../data/equipment/images/Vero_Features.webp
+- style: bottom: 0px; transform: scale(0.7);
+- link: https://www.vicon.com/hardware/cameras/vero/
 
 # ASUS ROG GL502VS-FY062T
 
@@ -187,9 +187,8 @@
 - style: top: 10px;
 - link: https://insta360.ru/product/insta360-farsight-komplekt-distantsionnogo-upravleniya-i-monitoringa/
 
-# Vicon Vero
+# Intel RealSense sr300 VF0810
 
-- count: 16 устройств
-- img: ../data/equipment/images/Vero_Features.webp
-- style: top: 5px; transform: scale(0.8);
-- link: https://www.vicon.com/hardware/cameras/vero/
+- count: 2 устройства
+- img: ../data/equipment/images/Intel RealSense sr300 VF0810.webp
+- link: https://habr.com/ru/company/intel/blog/283508/?ysclid=l20wugeblm
