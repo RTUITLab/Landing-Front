@@ -15,12 +15,17 @@
 
 - ![](https://files.rtuitlab.dev/landing_src/situation_center/1.png)
 - ![](https://files.rtuitlab.dev/landing_src/situation_center/2.png)
+- ../data/projects/SC/images/s1.png
+- ../data/projects/SC/images/s2.png
+- ../data/projects/SC/images/s3.png
+- ../data/projects/SC/images/s4.png
+
 
 ---
 
 # Videos
 
-- https://youtu.be/HRFRQa3tMcI
+- https://www.youtube.com/embed/HRFRQa3tMcI
 
 ---
 
