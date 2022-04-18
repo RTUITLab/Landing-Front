@@ -13,10 +13,10 @@ ITLab (система управления лабораторией)
 
 # Images
 
-- ../data/projects/ITLab/images/1.webp
-- ../data/projects/ITLab/images/2.webp
-- ../data/projects/ITLab/images/3.webp
-- ../data/projects/ITLab/images/4.webp
+- ../data/projects/ITLab/images/1.png
+- ../data/projects/ITLab/images/2.png
+- ../data/projects/ITLab/images/3.png
+- ../data/projects/ITLab/images/4.png
 - ![](https://files.rtuitlab.dev/landing_src/itlab/1.png)
 - ![](https://files.rtuitlab.dev/landing_src/itlab/2.png)
 

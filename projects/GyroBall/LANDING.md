@@ -14,6 +14,16 @@ GyroBall
 
 # Images
 
+- ../data/projects/GyroBall/images/21.JPG
+- ../data/projects/GyroBall/images/22.JPG
+- ../data/projects/GyroBall/images/24.JPG
+- ../data/projects/GyroBall/images/25.JPG
+- ../data/projects/GyroBall/images/Снимок.JPG
+- ../data/projects/GyroBall/images/Снимок2.JPG
+- ../data/projects/GyroBall/images/Снимок3.JPG
+- ../data/projects/GyroBall/images/Снимок4.JPG
+- ../data/projects/GyroBall/images/Снимок5.JPG
+- ../data/projects/GyroBall/images/Снимок22.JPG
 - ![](landing/23.JPG)
 - ![](landing/21.JPG)
 - ![](landing/1.png)
