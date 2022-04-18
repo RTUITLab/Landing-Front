@@ -19,8 +19,6 @@ ITLab (система управления лабораторией)
 - ../data/projects/ITLab/images/4.webp
 - ![](https://files.rtuitlab.dev/landing_src/itlab/1.png)
 - ![](https://files.rtuitlab.dev/landing_src/itlab/2.png)
-- ![](https://files.rtuitlab.dev/landing_src/itlab/ios_1.png)
-- ![](https://files.rtuitlab.dev/landing_src/itlab/ios_2.png)
 
 ---
 
