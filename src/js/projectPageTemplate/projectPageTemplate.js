@@ -1,5 +1,7 @@
-var swiper = new Swiper(".projectsSwiperParent", {
-	slidesPerView: "auto", spaceBetween: 15, pagination: {
-		el: ".projectsSwiperPagination", clickable: true,
-	},
+window.addEventListener("load",()=>{
+	var swiper = new Swiper(".projectsSwiperParent", {
+		slidesPerView: "auto", spaceBetween: 15, pagination: {
+			el: ".projectsSwiperPagination", clickable: true,
+		},
+	})
 })

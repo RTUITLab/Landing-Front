@@ -8,23 +8,27 @@ html(lang="ru")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(name="description" content=obj.description)
     title RTUITLab — #{obj.title}
+
+    script(async="async").
+      let scripts = [
+        process.env.MARKDOWN_IT, process.env.SWIPER_LINK
+      ]
+      for (let i of scripts) {
+        var js = document.createElement('script');
+        js.src = i;
+        js.async = "async"
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(js);
+      }
+
     link(rel="stylesheet" href="../layout/swiper/swiper-bundle.min.css")
     link(rel="canonical" href="https://rtuitlab.dev")
     link(rel="stylesheet" href="../layout/projectPageTemplate/projectPageTemplate.scss")
     link(rel="stylesheet" href="../indexStyles.scss")
     script(src="../js/projectPageTemplate/projectPageTemplate.js", defer)
-    script(async="async").
-      let scripts = [
-        process.env.MARKDOWN_IT,process.env.SWIPER_LINK
-      ]
-      for (let i of scripts) {
-        var js = document.createElement('script');
-        js.src = i;
-        var head = document.getElementsByTagName('head')[0];
-        head.appendChild(js);
-      }
 
-    script(defer).
+
+    script(defer="defer").
       window.onload = function() {
         var md = window.markdownit({
           html: true,
