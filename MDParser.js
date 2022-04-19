@@ -87,7 +87,7 @@ module.exports.parseMD2 = function(str) {
       case 'shortdescription':
       case 'date':
       default:
-        if (e.toLowerCase() === 'longdescription') result[e.toLowerCase()] = clearString(clearString(strArray[i], true).split(getNameRegex(e))[2], true); else result[e.toLowerCase()] = clearString(clearString(strArray[i], false).split(getNameRegex(e))[2], false);
+        if (e.toLowerCase() === 'longdescription' || e.toLowerCase() === 'description') result[e.toLowerCase()] = clearString(clearString(strArray[i], true).split(getNameRegex(e))[2], true); else result[e.toLowerCase()] = clearString(clearString(strArray[i], false).split(getNameRegex(e))[2], false);
         break;
       case 'tags':
       case 'members':
