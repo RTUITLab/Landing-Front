@@ -14,6 +14,22 @@ html(lang="ru")
     link(rel="stylesheet" href="../layout/projectPageTemplate/projectPageTemplate.scss")
     link(rel="stylesheet" href="../indexStyles.scss")
     script(src="../js/projectPageTemplate/projectPageTemplate.js", defer)
+    script(id="markdownId" src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.3.2/markdown-it.js" integrity="sha512-D9Tm1Ka4uHM/rVls3BMcbRImlmERZBm1893Yljz60eI3kdc2k0BWL+MWZt8zd8/Vpcjuq9hxEAAoT+Y1W4iFIw==" crossorigin="anonymous" referrerpolicy="no-referrer" async)
+    script(defer).
+      window.onload = function() {
+        var md = window.markdownit({
+          html: true,
+          xhtmlOut: true,
+          breaks: true,
+          linkify: true,
+          typographer: true,
+          quotes: '<<>>'
+        })
+        document.getElementById("longdescription").innerHTML = md.render(`#{obj.description}`)
+
+        console.log(md.render(`#{obj.description}`))
+      }
+
     script(type='application/ld+json').
       {
       "@context": "https://schema.org",
@@ -72,9 +88,7 @@ html(lang="ru")
                   | #{object}
                 else
                   | #{object+" | "}
-            div
-              p
-                =obj.description
+            section#longdescription
             .infoBlock
               h3 Технологии
               section.itemsParent
