@@ -142,13 +142,27 @@ task("createEnv", function () {
 desc("Build Landing Front prod");
 task("buildFrontProd", function () {
 	return new Promise((resolve, reject) => {
-		let command = "rm -rf build " + "&& parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache " + "&& parcel build ./src/projects/*.pug --out-dir build/projects --public-url ./ --no-minify --no-cache " + "&& parcel build ./src/achievements/*.pug --out-dir build/achievements --public-url ./ --no-minify --no-cache "
+		const rimraf = require("rimraf");
+		rimraf.sync("./build");
+		try {
+			fs.mkdirSync("./build")
+		}catch (e){}
+		try {
+			fs.mkdirSync("./build/dist")
+		}catch (e){}
+
+		fs.copyFileSync("./src/js/swiper/swiper-bundle.min.js","./build/dist/swiper-bundle.min.js")
+		fs.copyFileSync("./src/js/parallax/parallax.min.js","./build/dist/parallax.min.js")
+		fs.copyFileSync("./src/js/markdown-it/markdown-it.js","./build/dist/markdown-it.js")
+
+
+		let command = "parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache " + "&& parcel build ./src/projects/*.pug --out-dir build/projects --public-url ./ --no-minify --no-cache " + "&& parcel build ./src/achievements/*.pug --out-dir build/achievements --public-url ./ --no-minify --no-cache "
 			+ "&& cp -a ./src/images ./build/images "
 			+ "&& node ./postbuild.js && node ./postbuild.js projects && node ./postbuild.js achievements"
 			+ "&& cp -a ./robots.txt ./build/"
 			+ "&& exit 0";
-		if (process.platform === "win32") command = "rmdir /s /q \"build\" 2> nul "
-			+ "& mkdir build " + "&& parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache "
+		if (process.platform === "win32") command =
+			"parcel build ./src/index.pug --out-dir build --public-url ./ --no-minify --no-cache "
 			+ "&& parcel build ./src/projects/*.pug --out-dir build/projects --public-url ./ --no-minify --no-cache "
 			+ "&& parcel build ./src/achievements/*.pug --out-dir build/achievements --public-url ./ --no-minify --no-cache "
 			+ "&& mkdir .\\build\\images "
@@ -160,12 +174,10 @@ task("buildFrontProd", function () {
 			if (err) {
 				console.error(stderr);
 				reject(stderr);
+				// return;
 			}
 
 			fs.copyFileSync("./src/images/favicon.ico","./build/favicon.ico")
-			fs.copyFileSync("./src/js/swiper/swiper-bundle.min.js","./build/dist/swiper-bundle.min.js")
-			fs.copyFileSync("./src/js/parallax/parallax.min.js","./build/dist/parallax.min.js")
-			fs.copyFileSync("./src/js/markdown-it/markdown-it.js","./build/dist/markdown-it.js")
 
 			resolve(true);
 		});

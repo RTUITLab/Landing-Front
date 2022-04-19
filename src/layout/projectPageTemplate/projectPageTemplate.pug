@@ -10,11 +10,20 @@ html(lang="ru")
     title RTUITLab — #{obj.title}
     link(rel="stylesheet" href="../layout/swiper/swiper-bundle.min.css")
     link(rel="canonical" href="https://rtuitlab.dev")
-    script(src=process.env.SWIPER_LINK, defer)
     link(rel="stylesheet" href="../layout/projectPageTemplate/projectPageTemplate.scss")
     link(rel="stylesheet" href="../indexStyles.scss")
     script(src="../js/projectPageTemplate/projectPageTemplate.js", defer)
-    script(id="markdownId" src=process.env.MARKDOWN_IT defer)
+    script(async="async").
+      let scripts = [
+        process.env.MARKDOWN_IT,process.env.SWIPER_LINK
+      ]
+      for (let i of scripts) {
+        var js = document.createElement('script');
+        js.src = i;
+        var head = document.getElementsByTagName('head')[0];
+        head.appendChild(js);
+      }
+
     script(defer).
       window.onload = function() {
         var md = window.markdownit({

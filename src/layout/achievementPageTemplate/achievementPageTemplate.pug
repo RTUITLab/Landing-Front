@@ -14,10 +14,20 @@ html(lang="ru")
 		link(rel="stylesheet" href="../layout/swiper/swiper-bundle.min.css")
 		link(rel="canonical" href="https://rtuitlab.dev")
 		link(rel="stylesheet" href="../layout/achievementPageTemplate/achievementPageTemplate.scss")
-		script(src=process.env.SWIPER_LINK, defer)
 		script(src="../js/achievementPageTemplate/achievementPageTemplate.js",defer)
 		link(rel="stylesheet" href="../indexStyles.scss")
-		script(id="markdownId" src=process.env.MARKDOWN_IT defer)
+
+		script(async="async").
+			let scripts = [
+				process.env.MARKDOWN_IT,process.env.SWIPER_LINK
+			]
+			for (let i of scripts) {
+				var js = document.createElement('script');
+				js.src = i;
+				var head = document.getElementsByTagName('head')[0];
+				head.appendChild(js);
+			}
+
 		script(defer).
 			window.onload = function() {
 				var md = window.markdownit({
