@@ -8,13 +8,13 @@ html(lang="ru")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(name="description" content=obj.description)
     title RTUITLab — #{obj.title}
-    link(rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css")
+    link(rel="stylesheet" href="../layout/swiper/swiper-bundle.min.css")
     link(rel="canonical" href="https://rtuitlab.dev")
-    script(src="https://unpkg.com/swiper/swiper-bundle.min.js", defer)
+    script(src=process.env.SWIPER_LINK, defer)
     link(rel="stylesheet" href="../layout/projectPageTemplate/projectPageTemplate.scss")
     link(rel="stylesheet" href="../indexStyles.scss")
     script(src="../js/projectPageTemplate/projectPageTemplate.js", defer)
-    script(id="markdownId" src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.3.2/markdown-it.js" integrity="sha512-D9Tm1Ka4uHM/rVls3BMcbRImlmERZBm1893Yljz60eI3kdc2k0BWL+MWZt8zd8/Vpcjuq9hxEAAoT+Y1W4iFIw==" crossorigin="anonymous" referrerpolicy="no-referrer" async)
+    script(id="markdownId" src=process.env.MARKDOWN_IT defer)
     script(defer).
       window.onload = function() {
         var md = window.markdownit({

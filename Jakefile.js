@@ -165,6 +165,7 @@ task("buildFrontProd", function () {
 			fs.copyFileSync("./src/images/favicon.ico","./build/favicon.ico")
 			fs.copyFileSync("./src/js/swiper/swiper-bundle.min.js","./build/dist/swiper-bundle.min.js")
 			fs.copyFileSync("./src/js/parallax/parallax.min.js","./build/dist/parallax.min.js")
+			fs.copyFileSync("./src/js/markdown-it/markdown-it.js","./build/dist/markdown-it.js")
 
 			resolve(true);
 		});
