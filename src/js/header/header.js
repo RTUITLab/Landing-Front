@@ -30,7 +30,8 @@ function scrollFunction() {
 
   if (activeTab !== lastActive) {
     setTab(activeTab);
-    if(activeTab>-1)window.history.pushState(null,null,"#"+children[activeTab].id)
+    if(activeTab>=0)window.history.pushState(null,null,"#"+children[activeTab+1].id)
+    else window.history.pushState(null,null,"#")
   }
 }
 

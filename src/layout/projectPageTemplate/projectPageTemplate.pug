@@ -72,7 +72,7 @@ html(lang="ru")
   body.projectPageTemplate
     header
       section.buttonContainer
-        button(onclick="window.history.back();")
+        button(onclick="if(window.history.length>2)window.history.back();else{window.location=\"/\"}")
           img(src="../images/icons/buttonArrow.svg" alt="")
           | Назад
 
