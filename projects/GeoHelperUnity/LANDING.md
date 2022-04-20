@@ -25,6 +25,9 @@ GeoHelper
 - ../data/projects/GeoHelperUnity/images/s2.png
 - ../data/projects/GeoHelperUnity/images/s3.png
 - ../data/projects/GeoHelperUnity/images/s4.png
+- ../data/projects/GeoHelperUnity/images/s5.png
+- ../data/projects/GeoHelperUnity/images/s6.png
+- ../data/projects/GeoHelperUnity/images/s7.png
 
 ---
 
