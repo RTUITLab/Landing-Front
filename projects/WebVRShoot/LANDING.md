@@ -1,6 +1,6 @@
 # Title
 
-BunnyHuntVR - Web VR шутер
+BunnyHuntVR — Web VR шутер
 
 ---
 
