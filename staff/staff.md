@@ -106,7 +106,7 @@
 # Кирилл Шутов
 
 - img: ../data/staff/images/default.webp
-- tags: GameDev, Unity
+- tags: GameDev, Unity, Unreal Engine
 
 # Данила Валяев
 
