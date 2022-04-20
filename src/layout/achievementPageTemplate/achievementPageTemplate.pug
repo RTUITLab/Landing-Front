@@ -34,6 +34,13 @@ html(lang="ru")
 
 		script(defer="defer").
 			window.onload = function() {
+
+				function decodeHtml(html) {
+					var txt = document.createElement("textarea");
+					txt.innerHTML = html;
+					return txt.value;
+				}
+
 				var md = window.markdownit({
 					html: true,
 					xhtmlOut: true,
@@ -41,8 +48,7 @@ html(lang="ru")
 					linkify: true,
 					typographer: true,
 					quotes: '<<>>'})
-				document.getElementById("longdescription").innerHTML=md.render("#{achievementData.longdescription}")
-				console.log(md.render("#{achievementData.longdescription}"))
+				document.getElementById("longdescription").innerHTML=md.render(decodeHtml("#{achievementData.longdescription}"))
 			}
 
 
