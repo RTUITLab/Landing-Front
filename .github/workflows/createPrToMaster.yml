@@ -16,11 +16,11 @@ jobs:
 
       - run: echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
 
-      - name: checkoug Landing-Front to v2_pug
+      - name: checkoug Landing-Front to master
         uses: actions/checkout@v2
         with:
           repository: RTUITLab/Landing-Front
-          ref: v2_pug
+          ref: master
           path: Landing-Front
           lfs: true
 
@@ -39,7 +39,7 @@ jobs:
           author: GitHub <noreply@github.com>
           commit-message: Update information in data branch
           title: Update information in data branch
-          branch: "sync/v2_pug"
+          branch: "sync/master"
           delete-branch: true
 
-      - run: gh pr create --title "Update data" --base v2_pug --head sync/v2_pug --body "" -a baikinkirill,ivlaptev || true
+      - run: gh pr create --title "Update data" --base master --head sync/master --body "" -a baikinkirill,ivlaptev || true
