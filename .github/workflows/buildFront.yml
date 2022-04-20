@@ -2,9 +2,9 @@ name: Build front
 
 on:
   push:
-    branches: [ v2_pug ]
+    branches: [ master ]
   pull_request:
-    branches: [ v2_pug ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -42,7 +42,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-        ref: v2_pug
+        ref: master
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
