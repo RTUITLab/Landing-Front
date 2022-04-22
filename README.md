@@ -47,3 +47,6 @@ which is the landing host.
 To change the **content** of the landing page, you need to push the changes to the `data` branch, after which a pull 
 request will be created to change the submodule in the `master` branch. Next, the project will be 
 assembled (for more information in the previous paragraph).
+
+More information about building a project and adding content 
+[here](https://github.com/RTUITLab/Landing-Front/wiki/%D0%A1%D0%B1%D0%BE%D1%80%D0%BA%D0%B0-%D1%81%D0%B0%D0%B9%D1%82%D0%B0-(RC)).
