@@ -1,42 +1,44 @@
 {
-  "name": "itlab-landing",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "axios": "^0.21.1",
-    "bootstrap": "^4.3.1",
-    "cpr": "^3.0.1",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-notifications": "^1.5.0-beta.0",
-    "react-reveal": "^1.2.2",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
-    "react-scroll": "^1.7.14",
-    "react-slick": "^0.25.2",
-    "rimraf": "^3.0.2",
-    "slick-carousel": "^1.8.1"
-  },
+  "homepage": "https://rtuitlab.github.io/landingTestBuild",
+  "name": "RTUITLab",
+  "version": "2.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "buildToDeploy": "rimraf ./deploy/landing-build && npm run build && cpr build ./deploy/landing-build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./src/index.pug ./src/achievements/*.pug ./src/projects/*.pug --open -p 3000 --out-dir build --no-cache",
+    "predeploy": "npm ci && jake && exit 0",
+    "deploy": "gh-pages -d build -b gh-pages-pr"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "minify": "^6.0.1",
+    "pug": "^3.0.2",
+    "react": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "swiper": "^8.0.7"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "compress-images": "^2.0.5",
+    "cssnano": "^5.1.0",
+    "gh-pages": "^3.2.3",
+    "i": "^0.3.7",
+    "jake": "^10.8.2",
+    "lodash.escaperegexp": "^4.1.2",
+    "node-fetch": "^3.2.3",
+    "npm": "^8.5.4",
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-clean-easy": "^1.0.2",
+    "postcss": "^8.4.7",
+    "prettier": "2.5.1",
+    "replace-in-file": "^6.3.2",
+    "request": "^2.88.2",
+    "sass": "^1.49.9",
+    "sharp": "^0.30.3",
+    "try-to-catch": "^3.0.1",
+    "typescript": "^4.6.2",
+    "xhr2": "^0.2.1"
   }
 }

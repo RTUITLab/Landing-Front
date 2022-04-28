@@ -10,6 +10,8 @@
 
 # production
 /build
+/dist
+/docs
 
 # misc
 .DS_Store
@@ -28,13 +30,22 @@ deploy/landing-build
 # JSON server)
 SERVER.json
 
-
-# Python virtual environment
 venv/
 env/
 .env/
 .venv/
+.idea
+.vs
+.vscode
+.cache
+/src/projects/
+/src/js/data/
+/src/images/projects
+/src/images/achievements
+/src/achievements
+/data/
 
 
 __pycache__
 .pytest_cache
+log/

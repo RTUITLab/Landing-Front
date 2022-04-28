@@ -1,0 +1,35 @@
+doctype html
+
+html(lang="ru")
+	head
+		include ./seo.pug
+		script(async="async").
+			let scripts = [
+				process.env.SWIPER_LINK,
+			]
+			for (let i of scripts) {
+				var js = document.createElement('script');
+				js.src = i;
+				var head = document.getElementsByTagName('head')[0];
+				head.appendChild(js);
+			}
+
+		script(src="./styles.js", defer)
+		script(src="./scripts.js", defer)
+
+
+	body
+		header
+			include ./layout/header/header.pug
+		main#pageContentParent
+			include ./layout/about/about.html
+			include ./layout/projects/projects.pug
+			include ./layout/achievements/achievements.pug
+			include ./layout/equipment/equipment.pug
+			include ./layout/staff/staff.pug
+			include ./layout/footer/footer.pug
+
+
+
+
+
