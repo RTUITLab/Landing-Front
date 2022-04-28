@@ -178,7 +178,7 @@
 - img: ../data/staff/images/default.webp
 - tags: Frontend, ReactJS
 
-# Семён Летягин
+# Семён Пьянков
 
 - img: ../data/staff/images/default.webp
 - tags: Android, Kotlin
