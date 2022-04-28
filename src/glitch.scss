@@ -41,6 +41,10 @@ body{
 	align-items: center;
 	overflow: hidden;
 
+	@media (min-width: 2000px) {
+		max-height: none;
+	}
+
 	.glitch__item{
 		background: url('/images/logo.svg') no-repeat 50% 50% / cover;
 		height: 30vh;
@@ -53,7 +57,10 @@ body{
 			width: 20vh;
 			min-width: 250px;
 		}
-		
+
+		@media (min-width: 2000px) {
+			max-width: none;
+		}
 
 		top: 0;
 		position: absolute;
