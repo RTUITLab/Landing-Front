@@ -68,6 +68,11 @@
 				font-size: 30px;
 				line-height: 0px;
 			}
+
+			@media (min-width: 2000px) {
+				margin-top: 5vh;
+				font-size: 3vw !important;
+			}
 		}
 
 		.about__logo {
