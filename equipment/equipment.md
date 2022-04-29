@@ -1,13 +1,13 @@
 # ZOTAC VR GO 2.0
 
-- count: 1 устройство
+- count: 3 устройство
 - img: ../data/equipment/images/ZOTAC VR GO 2.0.webp
 - style: margin-left: 30%; transform: scale(1.3); bottom: -20%;
 - link: https://www.zotac.com/ru/product/mini_pcs/vr-go-2
 
 # HTC VIVE Cosmos
 
-- count: 1 устройство
+- count: 2 устройство
 - img: ../data/equipment/images/HTC VIVE Cosmos.webp
 - style: transform: scale(1.3); bottom: 5px;
 - link: https://business.vive.com/ru/product/vive-cosmos/
@@ -28,7 +28,7 @@
 
 # HTC Vive Pro
 
-- count: 2 устройства
+- count: 5 устройства
 - img: ../data/equipment/images/HTC Vive Pro.webp
 - style: transform: rotate(-15deg); top: -20px; right: -20%;
 - link: https://business.vive.com/ru/product/vive-pro/
