@@ -26,11 +26,10 @@ GyroBall
 - ../data/projects/GyroBall/images/Снимок4.JPG
 - ../data/projects/GyroBall/images/Снимок5.JPG
 - ../data/projects/GyroBall/images/Снимок22.JPG
-- ![](landing/23.JPG)
-- ![](landing/21.JPG)
-- ![](landing/1.png)
-- ![](landing/2.png)
-- ![](landing/3.png)
+- ../data/projects/GyroBall/images/1.png
+- ../data/projects/GyroBall/images/21.JPG
+- ../data/projects/GyroBall/images/2.png
+- ../data/projects/GyroBall/images/3.png
 
 ---
 
