@@ -12,9 +12,9 @@ Plane crash simulator
 
 # Images
 
-- ../data/projects/PlaneCrashSimulator/1.png
-- ../data/projects/PlaneCrashSimulator/2.png
-- ../data/projects/PlaneCrashSimulator/3.png
+- ../data/projects/PlaneCrashSimulator/images/1.png
+- ../data/projects/PlaneCrashSimulator/images/2.png
+- ../data/projects/PlaneCrashSimulator/images/3.png
 
 ---
 
