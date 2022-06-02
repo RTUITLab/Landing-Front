@@ -28,7 +28,7 @@
     "jake": "^10.8.2",
     "lodash.escaperegexp": "^4.1.2",
     "node-fetch": "^3.2.3",
-    "npm": "^8.5.4",
+    "npm": "^8.11.0",
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-clean-easy": "^1.0.2",
     "postcss": "^8.4.7",
