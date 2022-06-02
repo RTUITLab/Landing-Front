@@ -14,7 +14,7 @@ article#achievemtns.achievements__achievementsParent
 		section
 			.swiper.achievements__swiperParent
 				.swiper-wrapper
-					.swiper-slide
+					.swiper-slide.hidden-slide
 						div(style="width:5vw;")
 					each obj in achievementsData.sort((i,j)=>(Date.parse(i.date))<Date.parse(j.date)?1:-1)
 						.swiper-slide
@@ -24,7 +24,8 @@ article#achievemtns.achievements__achievementsParent
 
 								.linkButton(href="achievements/" + obj.link) Подробнее
 								img(src=obj.images[0] alt='Обложка достижения' loading='lazy')
-					.swiper-slide
+					.swiper-slide.hidden-slide
 						div(style="width:5vw;")
+
 
 			.swiper-pagination.achievements__swiperPagination
