@@ -8,10 +8,10 @@ article(class="staff__parent" id="staff")
 			|  Сегодня RTUITLab – это более 30 IT-специалистов, среди которых backend, frontend-разработчики, ML,
 			| VR/AR, DevOps-специалисты, дизайнеры и системные архитекторы, на счету которых множество реализованных проектов и выигранных хакатонов.
 		.swiper.staff__swiper
-			.swiper-wrapper
-				each obj in staffData
+			.swiper-wrapper#staffSwiperParent
+				each obj, i in staffData
 					.swiper-slide
-						.userscard__parent
+						.userscard__parent(onclick="if(window.innerWidth<800)staffSwiper.slideTo(this.getAttribute('inswiperid'),350)")
 							img(srcset=obj.img loading="lazy" alt="" width="150px" height="429px")
 							.userscard__info
 								.userscard__fio
@@ -20,4 +20,3 @@ article(class="staff__parent" id="staff")
 									each tag in obj.tags.split(", ")
 										div
 											= tag
-

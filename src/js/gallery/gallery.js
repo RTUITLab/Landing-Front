@@ -204,12 +204,16 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange, onClick)
         window.addEventListener('touchend', deleteEventListener, {
           passive: true,
         });
-        lastX = e.touches[0].clientX;
+
+        // lastX и newX делятся на 2 для уменьшения чуствительности
+        // на мобилках
+
+        lastX = e.touches[0].clientX / 2;
         newX = e.touches[0].clientX;
 
         onMouseDown(e);
         elem.ontouchmove = function(e) {
-          newX = e.touches[0].clientX;
+          newX = e.touches[0].clientX / 2;
           onTouchMove();
         };
       };

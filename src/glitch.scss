@@ -44,11 +44,13 @@ body{
 	@media (min-width: 2000px) {
 		max-height: none;
 	}
+	@media (max-width: 500px) {
+		height: 22vh;
+	}
 
 	.glitch__item{
 		background: url('/images/logo.svg') no-repeat 50% 50% / cover;
-		height: 30vh;
-
+		height: 100%;
 		width: 50vw;
 		max-width: 300px;
 		background-size:contain ;

@@ -98,6 +98,7 @@
 	max-width: 150px;
 	display: block;
 	position: relative;
+	padding-left: 10px;
 	flex: 0 0 100%;
 
 	img {
@@ -105,6 +106,9 @@
 		height: 300px;
 		object-fit: cover;
 		border-radius: 15px;
+		background: url("../../images/defaultStaff.webp");
+		background-size: cover;
+		background-position: 50% 50%;
 	}
 
 	.userscard__info {
