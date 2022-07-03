@@ -1,0 +1,31 @@
+include ../../js/data/achievementsData.pug
+
+article#achievemtns.achievements__achievementsParent
+	section.achievements__content
+		h1 Достижения
+		article.achievements__text
+			| За плечами команд из RTUITLab 40+ хакатонов, участие в конференциях и форумах
+			| на протяжении уже 5 лет, регулярные выставки для партнеров и абитуриентов в университете,
+			| школах и на международных мероприятиях.<br/><br/>
+			| Многие сотрудники являются преподавателями образовательных программ, которые Институт
+			| ИТ проводит в сотрудничестве с компаниями Яндекс, Samsung, Huawei и другими, а также пре-
+			| подают на внутренних кафедрах Института.
+
+		section
+			.swiper.achievements__swiperParent
+				.swiper-wrapper
+					.swiper-slide.hidden-slide
+						div(style="width:5vw;")
+					each obj in achievementsData.sort((i,j)=>(Date.parse(i.date))<Date.parse(j.date)?1:-1)
+						.swiper-slide
+							a(href="achievements/" + obj.link).achievementCard__parent
+								h1
+									=obj.title.replaceAll("\\n", "")
+
+								.linkButton(href="achievements/" + obj.link) Подробнее
+								img(src=obj.images[0] alt='Обложка достижения' loading='lazy')
+					.swiper-slide.hidden-slide
+						div(style="width:5vw;")
+
+
+			.swiper-pagination.achievements__swiperPagination

@@ -1,0 +1,45 @@
+include ../../js/data/projectsData.pug
+
+-
+  let tags = ["Все","Backend", "Frontend", "VR", "AR", "ML"]
+
+article#projects.projects__projectsParent
+  div.projects__content
+    h1 Проекты
+    article.projects__text
+      |  Мы создаём информационные системы, специализированное ПО, игры и прочие
+      | программные решения.<br/><br/>
+      | В процессе разработки осваиваем новейшие аппаратные и программные технологии —
+      | поднимаем образовательный процесс на современный уровень и разрабатываем
+      | коммерческие решения.
+    section.projects__tags
+      each obj in tags
+        if(obj==="Все")
+          input(name="projects__tags" type="radio", id=`projects__tags__all`, checked)
+          label(for=`projects__tags__all` onclick=`generateProjects("all")`)
+            =obj
+        else
+          input(name="projects__tags" type="radio", id=`projects__tags__${obj}`)
+          label(for=`projects__tags__${obj}` onclick=`generateProjects("${obj}")`)
+            =obj
+
+    article.galleryContainer
+      div.leftArrow(onclick="globalThis.gallery.back();")
+      section#GalleryParent.gallery__parent
+        each obj in data
+          .gallery__galleryItem.noselect
+            img(draggable='false' srcset=obj.images[0] alt='' loading='lazy')
+      div.rightArrow(onclick="globalThis.gallery.next();")
+
+    section#projectInfoContent.projects__projectsInfo
+      h2
+        b#currentProjectTitle Some text
+      a(href="")#currentProjectLink Подробнее
+    section#projectsStatusBar.statusbar__statusBar
+      each obj in data
+        div
+
+
+
+
+

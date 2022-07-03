@@ -1,59 +1,44 @@
 {
-  "name": "itlab-landing",
+  "homepage": "https://rtuitlab.github.io/landingTestBuild",
+  "name": "RTUITLab",
   "version": "2.0.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.2",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.15",
-    "@types/react": "^17.0.39",
-    "@types/react-dom": "^17.0.11",
-    "@types/react-router": "^5.1.18",
-    "@types/react-router-dom": "^5.3.3",
-    "markdown-it": "^12.3.2",
-    "parallax-js": "^3.1.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-helmet": "^6.1.0",
-    "react-router": "^6.2.1",
-    "react-router-dom": "^6.2.1",
-    "react-scripts": "5.0.0",
-    "react-scroll-parallax": "^3.0.2",
-    "sass": "^1.49.7",
-    "swiper": "^8.0.3",
-    "typescript": "^4.5.5",
-    "web-vitals": "^2.1.4",
-    "xhr2": "^0.2.1"
-  },
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "buildToDeploy": "rimraf ./deploy/landing-build && npm run build && cpr build ./deploy/landing-build"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel ./src/index.pug ./src/achievements/*.pug ./src/projects/*.pug --open -p 3000 --out-dir build --no-cache",
+    "predeploy": "npm ci && jake && exit 0",
+    "deploy": "gh-pages -d build -b gh-pages-pr"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "minify": "^6.0.1",
+    "pug": "^3.0.2",
+    "react": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "swiper": "^8.0.7"
   },
   "devDependencies": {
-    "@types/react-helmet": "^6.1.5",
-    "request": "^2.88.2"
+    "compress-images": "^2.0.5",
+    "cssnano": "^5.1.0",
+    "gh-pages": "^3.2.3",
+    "i": "^0.3.7",
+    "jake": "^10.8.2",
+    "lodash.escaperegexp": "^4.1.2",
+    "node-fetch": "^3.2.3",
+    "npm": "^8.5.4",
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-clean-easy": "^1.0.2",
+    "postcss": "^8.4.7",
+    "prettier": "2.5.1",
+    "replace-in-file": "^6.3.2",
+    "request": "^2.88.2",
+    "sass": "^1.49.9",
+    "sharp": "^0.30.3",
+    "try-to-catch": "^3.0.1",
+    "typescript": "^4.6.2",
+    "xhr2": "^0.2.1"
   }
 }
