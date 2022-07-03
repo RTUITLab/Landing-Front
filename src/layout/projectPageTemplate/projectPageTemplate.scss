@@ -202,11 +202,12 @@
 					border-radius: 15px;
 					height: 300px;
 
-					img, video {
+					img, video, iframe {
 						object-fit: cover;
 						height: 300px;
-						width: 485px;
+						width: 485px !important;
 						border-radius: 15px;
+
 					}
 				}
 

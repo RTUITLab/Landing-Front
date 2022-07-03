@@ -23,7 +23,7 @@ html(lang="ru")
 				head.appendChild(js);
 			}
 
-		meta(name="description" content=achievementData.shortdescription)
+		meta(name="description" content=achievementData.shortdescription.replaceAll("\\n", ""))
 		link(rel="stylesheet" href="../layout/swiper/swiper-bundle.min.css")
 		link(rel="canonical" href="https://rtuitlab.dev")
 		link(rel="stylesheet" href="../layout/achievementPageTemplate/achievementPageTemplate.scss")
@@ -110,9 +110,10 @@ html(lang="ru")
 						strong
 							|Дата проведения: #{(time).toLocaleDateString("ru")}
 
-			section.members
-				h2 Участники
-				section.itemsParent
-					each obj in achievementData.members
-						.item
-							p #{obj}
+			if achievementData.members.length>0
+				section.members
+					h2 Участники
+					section.itemsParent
+						each obj in achievementData.members
+							.item
+								p #{obj}
