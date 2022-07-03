@@ -96,6 +96,9 @@ html(lang="ru")
               each object in obj.images.splice(1,obj.images.length)
                 .swiper-slide
                   img(src="../"+object, alt="" loading='lazy')
+              each object in obj.videos
+                .swiper-slide
+                  video(src=object, alt="" loop autoplay muted)
           .swiper-pagination.projectsSwiperPagination
 
         section.info
