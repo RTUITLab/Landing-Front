@@ -21,7 +21,7 @@
 # Глеб Деревлёв
 
 - img: ../data/staff/images/Derevlev.webp
-- tags: ???
+- tags: QA Specialist
 
 # Дмитрий Снегирев
 
