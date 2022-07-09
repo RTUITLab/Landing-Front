@@ -219,6 +219,7 @@
 		grid-template-columns: 50px auto 50px;
 		.header__hiddenElement{
 			display: grid;
+			align-items: center;
 		}
 	}
 }
@@ -229,4 +230,17 @@
 	width: 0px;
 	height: 0px;
 	background-color: rgba(255, 255, 255, 0.664);
+}
+
+#sectionHeaderTitle{
+	transition: all 150ms ease;
+	display: block;
+	overflow: hidden;
+	position: relative;
+	height: 22px;
+}
+
+.hideElement{
+	height: 0px !important;
+	margin-bottom: 11px !important;
 }

@@ -30,15 +30,15 @@ function findActiveTab(activeTab) {
 	return activeTab - 1;
 }
 
-function scrollFunction() {
+async function scrollFunction() {
 
 	setScrollStatus(obj);
 	let activeTab = lastActive;
 	activeTab = findActiveTab(activeTab);
-	if(activeTab!==lastActive ) {
-    if (activeTab < 0) fx.setText("")
-    else fx.setText(pages[children[activeTab + 1].id])
-  }
+	if (activeTab !== lastActive) {
+		if (activeTab < 0) setText("")
+		else setText(pages[children[activeTab + 1].id])
+	}
 
 	if (activeTab !== lastActive) {
 		setTab(activeTab);
@@ -55,8 +55,22 @@ function setTab(activeTab) {
 
 new Promise((_) => {
 	const newText=pages[window.location.hash.replace("#", "")]
-	if(newText) fx.setText(newText)
+	if(newText) headerTitle.innerText = newText;
+
 	setScrollStatus(obj);
 	setTab(findActiveTab(lastActive));
 	_();
 });
+
+function setText(text){
+	return new Promise((_) => {
+		headerTitle.classList.add("hideElement")
+		setTimeout((_) => {
+			headerTitle.innerText = text;
+			headerTitle.classList.remove("hideElement")
+		},150)
+		setTimeout((_) => {
+			_();
+		},300)
+	})
+}
