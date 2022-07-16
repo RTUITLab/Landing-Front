@@ -191,7 +191,7 @@
 # Александр Запорожских
 
 - img: ../data/staff/images/Zaporojskih.webp
-- tags: Android, Java
+- tags: Android, Java, Kotlin
 
 # Анастасия Карпова
 
