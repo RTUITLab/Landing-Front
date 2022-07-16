@@ -30,7 +30,7 @@ function findActiveTab(activeTab) {
 	return activeTab - 1;
 }
 
-async function scrollFunction() {
+function scrollFunction() {
 
 	setScrollStatus(obj);
 	let activeTab = lastActive;
@@ -63,14 +63,9 @@ new Promise((_) => {
 });
 
 function setText(text){
-	return new Promise((_) => {
-		headerTitle.classList.add("hideElement")
-		setTimeout(() => {
-			headerTitle.innerText = text;
-			headerTitle.classList.remove("hideElement")
-		},150)
-		setTimeout(() => {
-			_();
-		},300)
-	})
+	headerTitle.classList.add("hideElement")
+	setTimeout(() => {
+		headerTitle.innerText = text;
+		headerTitle.classList.remove("hideElement")
+	},150)
 }
