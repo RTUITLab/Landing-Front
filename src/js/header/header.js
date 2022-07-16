@@ -65,11 +65,11 @@ new Promise((_) => {
 function setText(text){
 	return new Promise((_) => {
 		headerTitle.classList.add("hideElement")
-		setTimeout((_) => {
+		setTimeout(() => {
 			headerTitle.innerText = text;
 			headerTitle.classList.remove("hideElement")
 		},150)
-		setTimeout((_) => {
+		setTimeout(() => {
 			_();
 		},300)
 	})
