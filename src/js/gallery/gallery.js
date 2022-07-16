@@ -209,7 +209,7 @@ export default function gallery(elem, onMouseDown, onMouseUp, onChange, onClick)
         // на мобилках
 
         lastX = e.touches[0].clientX / 2;
-        newX = e.touches[0].clientX;
+        newX = e.touches[0].clientX / 2;
 
         onMouseDown(e);
         elem.ontouchmove = function(e) {
