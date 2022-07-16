@@ -57,7 +57,15 @@ module.exports.generateAchievementsFile = function() {
     function generateAchievementTemplates(cmd, resolve) {
       exec(cmd, () => {
         for (let i in result) {
-          fs.writeFileSync(`./src/achievements/${dir[i]}.pug`, 'extends ../layout/achievementPageTemplate/achievementPageTemplate.pug\n\nblock variables\n\t-\n\t\tconst achievementData = ' + JSON.stringify(result[i]), 'utf-8');
+
+          // проверяем, есть ли у нас в папке проекта файл index.pug
+
+          if (fs.existsSync(`./data/achievements/${dir[i]}/index.pug`)) {
+            let content = fs.readFileSync(`./data/achievements/${dir[i]}/index.pug`, 'utf-8');
+            fs.writeFileSync(`./src/achievements/${dir[i]}.pug`, content, 'utf-8');
+          } else {
+            fs.writeFileSync(`./src/achievements/${dir[i]}.pug`, 'extends ../layout/achievementPageTemplate/achievementPageTemplate.pug\n\nblock variables\n\t-\n\t\tconst achievementData = ' + JSON.stringify(result[i]), 'utf-8');
+          }
         }
         resolve();
       });
