@@ -266,7 +266,7 @@
 # Павел Журавлев
 
 - img: ../data/staff/images/Zhuravlev.webp
-- tags: Robotics, Python
+- tags: IoT, Robotics, Python
 
 # Стефания Юрзина
 
