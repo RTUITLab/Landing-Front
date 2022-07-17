@@ -18,11 +18,9 @@ article#achievements.achievements__achievementsParent
 						div(style="width:5vw;")
 					each obj in achievementsData.sort((i,j)=>(Date.parse(i.date))<Date.parse(j.date)?1:-1)
 						.swiper-slide
-
-							// ЧЗХ???
-							// Да я сам в ах...
-							// swiper решил сказать пока и при тыке на ссылку открывает следующий слайд (на мобилках)
-							// поэтому тут такой еб... onlick
+							
+							// Здесь не тег <a/>, так как swiper баганулся и при клике на этот тег свайпает на следующий слайд
+							// поэтому здесь реализовано с помощью div и onclick
 
 							div(href="/achievements/" + obj.link onclick=`window.location='${"achievements/" + obj.link}'`).achievementCard__parent
 								h1
