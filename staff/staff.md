@@ -3,30 +3,35 @@
 - img: ../data/staff/images/Zuev.webp
 - tags: Директор Института ИТ
 
-# Максим Макущенко
-
-- img: ../data/staff/images/Makushenko.webp
-- tags: Директор техноковоркинга, Backend, ASP.NET Core
-
 # Иван Лаптев
 
 - img: ../data/staff/images/Laptev.webp
 - tags: Заведующий лабораторией, Frontend, Backend, VueJS
 
-# Светлана Деревлёва
-
-- img: ../data/staff/images/Derevleva.webp
-- tags: Design
-
-# Глеб Деревлёв
-
-- img: ../data/staff/images/Derevlev.webp
-- tags: QA Specialist
-
 # Дмитрий Снегирев
 
 - img: ../data/staff/images/Snegirev.webp
 - tags: ML, Backend, Python
+
+# Александр Левандровский
+
+- img: ../data/staff/images/Levandrovsky.webp
+- tags: IoT, Python
+
+# Глеб Деревлёв
+
+- img: ../data/staff/images/Derevlev.webp
+- tags: QA, Game design, Text/SMM
+
+# Максим Макущенко
+
+- img: ../data/staff/images/Makushenko.webp
+- tags: Директор техноковоркинга, Backend, ASP.NET Core
+
+# Светлана Деревлёва
+
+- img: ../data/staff/images/Derevleva.webp
+- tags: Design
 
 # Дмитрий Цуканов
 
@@ -52,11 +57,6 @@
 
 - img: ../data/staff/images/Sergeev.webp
 - tags: Python
-
-# Александр Левандровский
-
-- img: ../data/staff/images/Levandrovsky.webp
-- tags: IoT, Python
 
 # Дмитрий Макаров
 
@@ -93,11 +93,6 @@
 - img: ../data/staff/images/Kitanin.webp
 - tags: Frontend, Angular
 
-# Анастас Мисаилиди
-
-- img: ../data/staff/images/default.webp
-- tags: ML, Python
-
 # Александр Шиханов
 
 - img: ../data/staff/images/Shihanov.webp
@@ -107,11 +102,6 @@
 
 - img: ../data/staff/images/Shutov.webp
 - tags: GameDev, Unity, Unreal Engine
-
-# Данила Валяев
-
-- img: ../data/staff/images/default.webp
-- tags: GameDev, Unity
 
 # Никита Егоркин
 
@@ -158,35 +148,15 @@
 - img: ../data/staff/images/Surinov.webp
 - tags: Design
 
-# Юрий Фоменков
-
-- img: ../data/staff/images/default.webp
-- tags: Backend, C#
-
 # Кирилл Баикин
 
 - img: ../data/staff/images/Baikin.webp
-- tags: Frontend, ReactJS
-
-# Александр Ченцов
-
-- img: ../data/staff/images/default.webp
-- tags: Backend, Python
-
-# Кирилл Подольский
-
-- img: ../data/staff/images/default.webp
 - tags: Frontend, ReactJS
 
 # Семён Пьянков
 
 - img: ../data/staff/images/Pyankov.webp
 - tags: Android, Kotlin
-
-# Никита Морошкин
-
-- img: ../data/staff/images/default.webp
-- tags: ML
 
 # Александр Запорожских
 
@@ -238,11 +208,6 @@
 - img: ../data/staff/images/Medvedev.webp
 - tags: Frontend, ReactJS
 
-# Исмаил Гудаев
-
-- img: ../data/staff/images/default.webp
-- tags: Backend, Java
-
 # Константин Суроегин
 
 - img: ../data/staff/images/Suroegin.webp
@@ -277,3 +242,38 @@
 
 - img: ../data/staff/images/Trishina.webp
 - tags: Unity, Graphic Design
+
+# Анастас Мисаилиди
+
+- img: ../data/staff/images/default.webp
+- tags: ML, Python
+
+# Данила Валяев
+
+- img: ../data/staff/images/default.webp
+- tags: GameDev, Unity
+
+# Юрий Фоменков
+
+- img: ../data/staff/images/default.webp
+- tags: Backend, C#
+
+# Александр Ченцов
+
+- img: ../data/staff/images/default.webp
+- tags: Backend, Python
+
+# Кирилл Подольский
+
+- img: ../data/staff/images/default.webp
+- tags: Frontend, ReactJS
+
+# Никита Морошкин
+
+- img: ../data/staff/images/default.webp
+- tags: ML
+
+# Исмаил Гудаев
+
+- img: ../data/staff/images/default.webp
+- tags: Backend, Java
