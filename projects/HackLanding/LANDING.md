@@ -14,9 +14,9 @@
 
 # Images
 
-- ../data/projects/Landing/images/1.png
-- ../data/projects/Landing/images/2.png
-- ../data/projects/Landing/images/3.png
+- ../data/projects/HackLanding/images/1.png
+- ../data/projects/HackLanding/images/2.png
+- ../data/projects/HackLanding/images/3.png
 
 ---
 
