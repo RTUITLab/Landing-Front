@@ -25,7 +25,6 @@
 
 # Tags
 
-- Информационная система
 - Frontend
 
 ---
@@ -45,8 +44,6 @@
 ---
 
 # Site
-
-https://rtuitlab.dev
 
 ---
 
