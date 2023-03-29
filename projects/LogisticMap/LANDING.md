@@ -12,12 +12,12 @@ LogisticMap
 
 # Images
 
-- ../data/projects/LogisticMap/images/s1.png
-- ../data/projects/LogisticMap/images/s2.png
-- ../data/projects/LogisticMap/images/s3.png
-- ../data/projects/LogisticMap/images/s4.png
-- ../data/projects/LogisticMap/images/s5.png
-- ../data/projects/LogisticMap/images/s6.png
+- ../data/projects/LogisticMap/images/s1.jpg
+- ../data/projects/LogisticMap/images/s2.jpg
+- ../data/projects/LogisticMap/images/s3.jpg
+- ../data/projects/LogisticMap/images/s4.jpg
+- ../data/projects/LogisticMap/images/s5.jpg
+- ../data/projects/LogisticMap/images/s6.jpg
 
 ---
 
