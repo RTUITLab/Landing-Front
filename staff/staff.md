@@ -3,20 +3,20 @@
 - img: ../data/staff/images/Zuev.webp
 - tags: Директор Института ИТ
 
-# Иван Лаптев
+# Александр Левандровский
 
-- img: ../data/staff/images/Laptev.webp
-- tags: Заведующий лабораторией, Frontend, Backend, VueJS
+- img: ../data/staff/images/Levandrovsky.webp
+- tags: Заведующий лабораторией, IoT, Python
 
 # Дмитрий Снегирев
 
 - img: ../data/staff/images/Snegirev.webp
 - tags: ML, Backend, Python
 
-# Александр Левандровский
+# Иван Лаптев
 
-- img: ../data/staff/images/Levandrovsky.webp
-- tags: IoT, Python
+- img: ../data/staff/images/Laptev.webp
+- tags: Frontend, Backend, VueJS
 
 # Глеб Деревлёв
 
