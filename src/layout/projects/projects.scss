@@ -46,7 +46,7 @@
 		.projects__tags {
 			display: flex;
 			justify-content: space-between;
-			max-width: 450px;
+			max-width: 650px;
 			width: 100%;
 			flex-wrap: wrap;
 			padding-bottom: 5px;
@@ -180,7 +180,9 @@
 }
 
 .statusbar__statusBar {
+	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 	max-width: min(900px, 80vw);
 	margin: 0 auto;
 
@@ -193,6 +195,7 @@
 		border: 3px #0066cc solid;
 		display: inline-block;
 		margin-right: 15px;
+		margin-bottom: 15px;
 
 		&[active="true"] {
 			background-color: #0066cc;
@@ -202,6 +205,7 @@
 	@media (max-width: 700px) {
 		& div:nth-child(n) {
 			margin-right: 5px;
+			margin-bottom: 5px;
 			width: 5px;
 			height: 5px;
 		}
