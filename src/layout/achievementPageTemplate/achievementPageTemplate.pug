@@ -1,119 +1,120 @@
 block variables
 
 -
-	var time =new Date(Date.parse(achievementData.date))
+    var time = new Date(Date.parse(achievementData.date))
 
 doctype html
 html(lang="ru")
-	head
-		meta(charset="UTF-8")
-		meta(http-equiv="X-UA-Compatible" content="IE=edge")
-		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		title RTUITLab — #{achievementData.title}
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        title RTUITLab — #{achievementData.title}
 
-		script(async="async").
-			let scripts = [
-				process.env.MARKDOWN_IT, process.env.SWIPER_LINK
-			]
-			for (let i of scripts) {
-				var js = document.createElement('script');
-				js.src = i;
-				js.async = "async"
-				var head = document.getElementsByTagName('head')[0];
-				head.appendChild(js);
-			}
+        script(async="async").
+          let scripts = [
+            process.env.MARKDOWN_IT, process.env.SWIPER_LINK
+          ]
+          for (let i of scripts) {
+            var js = document.createElement('script');
+            js.src = i;
+            js.async = "async"
+            var head = document.getElementsByTagName('head')[0];
+            head.appendChild(js);
+          }
 
-		meta(name="description" content=achievementData.shortdescription.replaceAll("\\n", ""))
-		link(rel="stylesheet" href="../layout/swiper/swiper-bundle.min.css")
-		link(rel="canonical" href="https://rtuitlab.dev")
-		link(rel="stylesheet" href="../layout/achievementPageTemplate/achievementPageTemplate.scss")
-		script(src="../js/achievementPageTemplate/achievementPageTemplate.js",defer)
-		link(rel="stylesheet" href="../indexStyles.scss")
-
-
-
-		script(defer="defer").
-			window.onload = function() {
-
-				function decodeHtml(html) {
-					var txt = document.createElement("textarea");
-					txt.innerHTML = html;
-					return txt.value;
-				}
-
-				var md = window.markdownit({
-					html: true,
-					xhtmlOut: true,
-					breaks: true,
-					linkify: true,
-					typographer: true,
-					quotes: '«»'})
-				document.getElementById("longdescription").innerHTML=md.render(decodeHtml("#{achievementData.longdescription}"))
-			}
+        meta(name="description" content=achievementData.shortdescription.replaceAll("\\n", ""))
+        link(rel="stylesheet" href="../layout/swiper/swiper-bundle.min.css")
+        link(rel="canonical" href="https://rtuitlab.dev")
+        link(rel="stylesheet" href="../layout/achievementPageTemplate/achievementPageTemplate.scss")
+        script(src="../js/achievementPageTemplate/achievementPageTemplate.js",defer)
+        link(rel="stylesheet" href="../indexStyles.scss")
 
 
-		script(type='application/ld+json').
-			{
-			"@context": "https://schema.org",
-			"@type": "BlogPosting",
-			"mainEntityOfPage": {
-			"@type": "WebPage",
-			"@id": "https://rtuitlab.dev"
-			},
-			"headline": "#{achievementData.title}",
-			"image": "#{achievementData.images[0]}",
-			"author": {
-			"@type": "Organization",
-			"name": "RTUITLab",
-			"url": "https://rtuitlab.dev"
-			},
-			"publisher": {
-			"@type": "Organization",
-			"name": "RTUITLab",
-			"logo": {
-			"@type": "ImageObject",
-			"url": ""
-			}
-			},
-			"datePublished": ""
-			}
 
-	body.achievementsPageTemplate
-		header
-			section.buttonContainer
-				button(onclick="if(window.history.length>2)window.history.back();else{window.location=\"/\"}")
-					img(src="../images/icons/buttonArrow.svg" alt="")
-					| Назад
+        script(defer="defer").
+          window.onload = function() {
 
-				.titleContainer
-					h1 #{achievementData.title}
+            function decodeHtml(html) {
+              var txt = document.createElement("textarea");
+              txt.innerHTML = html;
+              return txt.value;
+            }
 
-			section.desc #{achievementData.shortdescription}
+            var md = window.markdownit({
+              html: true,
+              xhtmlOut: true,
+              breaks: true,
+              linkify: true,
+              typographer: true,
+              quotes: '«»'
+            })
+            document.getElementById("longdescription").innerHTML = md.render(decodeHtml("#{achievementData.longdescription}"))
+          }
 
-		main
-			section.content
-				.galleryParent
-					.swiper.achievementsSwiperParent
-						.swiper-wrapper
-							each object in achievementData.images
-								.swiper-slide
-									img(src="../"+object, alt="" loading='lazy')
-							each object in achievementData.videos
-								.swiper-slide
-									video(src=object, alt="" loop autoplay muted)
-					.swiper-pagination.achievementsSwiperPagination
 
-				article.info
-					h3 О событии
-					section#longdescription
-					p
-						strong
-							|Дата проведения: #{(time).toLocaleDateString("ru")}
+        script(type='application/ld+json').
+            {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://rtuitlab.dev"
+            },
+            "headline": "#{achievementData.title}",
+            "image": "#{achievementData.images[0]}",
+            "author": {
+            "@type": "Organization",
+            "name": "RTUITLab",
+            "url": "https://rtuitlab.dev"
+            },
+            "publisher": {
+            "@type": "Organization",
+            "name": "RTUITLab",
+            "logo": {
+            "@type": "ImageObject",
+            "url": ""
+            }
+            },
+            "datePublished": ""
+            }
 
-			if achievementData.members.length>0
-				section.members
-					h2 Участники
-					section.itemsParent
-						each obj in achievementData.members
-							.item
-								p #{obj}
+    body.achievementsPageTemplate
+        header
+            section.buttonContainer
+                button(onclick="if(window.history.length>2)window.history.back();else{window.location=\"/\"}")
+                    img(src="../images/icons/buttonArrow.svg" alt="")
+                    | Назад
+
+                .titleContainer
+                    h1 #{achievementData.title}
+
+            section.desc #{achievementData.shortdescription}
+
+        main
+            section.content
+                .galleryParent
+                    .swiper.achievementsSwiperParent
+                        .swiper-wrapper
+                          each object in achievementData.images
+                              .swiper-slide
+                                  img(src="../" + object, alt="" loading='lazy')
+                          each object in achievementData.videos
+                              .swiper-slide
+                                  video(src=object, alt="" loop autoplay muted)
+                    .swiper-pagination.achievementsSwiperPagination
+
+                article.info
+                    h3 О событии
+                    section#longdescription
+                    p
+                        strong
+                            | Дата новости: #{(time).toLocaleDateString("ru")}
+
+            if achievementData.members.length > 0
+                section.members
+                    h2 Участники
+                    section.itemsParent
+                      each obj in achievementData.members
+                          .item
+                              p #{obj}
