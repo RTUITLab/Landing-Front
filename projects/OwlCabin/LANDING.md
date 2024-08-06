@@ -31,7 +31,8 @@ Owl Cabin — Летай-созерцай-собирай-улучшай
 # Tags
 
 - VR
-- Game
+- GameDev
+- Игра
 - Aircraft
 - Relax
 - Easy play

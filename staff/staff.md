@@ -243,6 +243,11 @@
 - img: ../data/staff/images/Trishina.webp
 - tags: Unity, Graphic Design
 
+# Леонид Деев
+
+- img: ../data/staff/images/default.webp
+- tags: Frontend, Design, NextJS
+
 # Анастас Мисаилиди
 
 - img: ../data/staff/images/default.webp

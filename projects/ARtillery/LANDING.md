@@ -20,10 +20,10 @@ ARtillery
 
 # Images
 
-- ![](ReadmeMedia/ARtillery_Moment-min.jpg)
-- ![](ReadmeMedia/ARtillery_Moment3.jpg)
-- ![](ReadmeMedia/ARtillery_Moment2-min.jpg)
-- ![](ReadmeMedia/ARtilleryAction.gif)
+- ../data/projects/ARtillery/images/ARtillery_Moment-min.jpg
+- ../data/projects/ARtillery/images/ARtillery_Moment3.jpg
+- ../data/projects/ARtillery/images/ARtillery_Moment2-min.jpg
+- ../data/projects/ARtillery/images/ARtilleryAction.gif
 
 ---
 
@@ -35,10 +35,12 @@ ARtillery
 
 # Tags
 
+- GameDev
 - Игра
 - AR
 - Unity
 - Android
+- Mobile
 
 ---
 

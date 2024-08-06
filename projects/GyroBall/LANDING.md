@@ -39,6 +39,7 @@ GyroBall
 
 # Tags
 
+- GameDev
 - Игра
 - Аркада
 - Mobile

@@ -33,6 +33,7 @@
 # Tech
 
 - Pug
+- JavaScript
 
 ---
 
