@@ -29,8 +29,6 @@ ARtillery
 
 # Videos
 
-- https://youtu.be/BIoWlE25bD4
-
 ---
 
 # Tags
