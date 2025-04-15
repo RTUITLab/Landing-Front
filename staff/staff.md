@@ -33,7 +33,7 @@
 - img: ../data/staff/images/KomolovNew.webp
 - tags: ML, Python, NLP
 
-# Артемий Шендяпин
+# Артём Шендяпин
 
 - img: ../data/staff/images/ShendyapinNew.webp
 - tags: IoT, Backend
