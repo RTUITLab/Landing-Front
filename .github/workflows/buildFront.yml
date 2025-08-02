@@ -18,7 +18,7 @@ jobs:
 
     steps:
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         ref: gh-pages
@@ -26,7 +26,7 @@ jobs:
     - run: git checkout -b gh-pages-pr || true
     - run: git push --set-upstream origin gh-pages-pr || true
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         ref: gh-pages-pr
@@ -39,13 +39,13 @@ jobs:
     - run: git commit -m "Merge branch gh-pages into gh-pages-pr" 1> /dev/null 2> /dev/null || true
     - run: git push
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         fetch-depth: 0
         ref: master
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
