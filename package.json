@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel ./src/index.pug ./src/achievements/*.pug ./src/projects/*.pug --open -p 3000 --out-dir build --no-cache",
+    "start": "node scripts/dev.js",
     "predeploy": "npm ci && jake && exit 0",
     "deploy": "gh-pages -d build -b gh-pages-pr"
   },

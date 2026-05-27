@@ -22,7 +22,7 @@ article#achievements.achievements__achievementsParent
 							// Здесь не тег <a/>, так как swiper баганулся и при клике на этот тег свайпает на следующий слайд
 							// поэтому здесь реализовано с помощью div и onclick
 
-							div(href="/achievements/" + obj.link onclick=`window.location='${"achievements/" + obj.link}'`).achievementCard__parent
+							div(href="/achievements/" + obj.link + ".html" onclick=`window.location='${"achievements/" + obj.link + ".html"}'`).achievementCard__parent
 								h1
 									=obj.title.replaceAll("\\n", "")
 								.linkButton Подробнее

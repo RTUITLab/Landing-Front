@@ -35,7 +35,7 @@ function onMouseUp(e) {
 function updateProjectsInfo() {
   if (displayedProjects.length === 0) return;
   currentProjectTitle.innerText = displayedProjects[currentActiveTab].title;
-  currentProjectLink.href = 'projects/' + displayedProjects[currentActiveTab].link;
+  currentProjectLink.href = 'projects/' + displayedProjects[currentActiveTab].link + '.html';
   currentProjectLink.style.display = 'block';
 }
 
