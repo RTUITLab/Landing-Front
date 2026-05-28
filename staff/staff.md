@@ -1,17 +1,28 @@
 # Зуев Андрей Сергеевич
 
 - img: ../data/staff/images/Zuev.webp
+<<<<<<< HEAD
 - tags: Директор Института ИТ
+=======
+- tags: Директор ИИТ до 25.12.26, с 2026 года - зав. кафедрой КИТППИ
+>>>>>>> c0fde74 (feat: new data)
 
 # Александр Левандровский
 
 - img: ../data/staff/images/LevandrovskyNew.webp
 - tags: Заведующий лабораторией, IoT, Python
 
+<<<<<<< HEAD
 # Александр Запорожских
 
 - img: ../data/staff/images/ZaporojskihNew.webp
 - tags: Зам. заведующего лабораторией, Android, Java, Kotlin
+=======
+# Артём Шендяпин
+
+- img: ../data/staff/images/ShendyapinNew.webp
+- tags: Зам. заведующего лабораторией, IoT, Backend
+>>>>>>> c0fde74 (feat: new data)
 
 # Леонид Деев
 
@@ -33,11 +44,14 @@
 - img: ../data/staff/images/KomolovNew.webp
 - tags: ML, Python, NLP
 
+<<<<<<< HEAD
 # Артём Шендяпин
 
 - img: ../data/staff/images/ShendyapinNew.webp
 - tags: IoT, Backend
 
+=======
+>>>>>>> c0fde74 (feat: new data)
 # Анастасия Петухова
 
 - img: ../data/staff/images/PetukhovaNew.webp
@@ -73,6 +87,14 @@
 - img: ../data/staff/images/GlukhovNew.webp
 - tags: 3D Modeling, Blender, Motion Capture
 
+<<<<<<< HEAD
+=======
+# Александр Запорожских
+
+- img: ../data/staff/images/ZaporojskihNew.webp
+- tags: Android, Java, Kotlin
+
+>>>>>>> c0fde74 (feat: new data)
 # Григорий Собин
 
 - img: ../data/staff/images/SobinNew.webp
