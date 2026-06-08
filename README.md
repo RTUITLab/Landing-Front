@@ -28,7 +28,7 @@ $ npm install
 $ npm start
 ```
 
-And then look main page in [http://localhost:3000/index.html](http://localhost:3000/index.html)
+And then look main page in [http://localhost:3000/](http://localhost:3000/)
 
 ## Production
 
