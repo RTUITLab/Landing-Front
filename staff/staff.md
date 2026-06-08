@@ -1,57 +1,53 @@
 # Зуев Андрей Сергеевич
 
 - img: ../data/staff/images/Zuev.webp
-<<<<<<< HEAD
-- tags: Директор Института ИТ
-=======
-- tags: Директор ИИТ до 25.12.26, с 2026 года - зав. кафедрой КИТППИ
->>>>>>> c0fde74 (feat: new data)
+- tags: Директор ИИТ до 25.12.26, C 2026 года - зав. кафедрой КИТППИ
 
 # Александр Левандровский
 
 - img: ../data/staff/images/LevandrovskyNew.webp
 - tags: Заведующий лабораторией, IoT, Python
 
-<<<<<<< HEAD
-# Александр Запорожских
-
-- img: ../data/staff/images/ZaporojskihNew.webp
-- tags: Зам. заведующего лабораторией, Android, Java, Kotlin
-=======
 # Артём Шендяпин
 
 - img: ../data/staff/images/ShendyapinNew.webp
 - tags: Зам. заведующего лабораторией, IoT, Backend
->>>>>>> c0fde74 (feat: new data)
+
+# Александр Митницкий
+
+- img: ../data/staff/images/MitnitskyNew.webp
+- tags: IoT, Robotics
 
 # Леонид Деев
 
-- img: ../data/staff/images/Deev2.webp
+- img: ../data/staff/images/Deev3.webp
 - tags: Frontend, NextJS, UX/UI Design, Backend
 
-# Александр Ясанкин
+# Софья Тренина
 
-- img: ../data/staff/images/YasankinNew.webp
-- tags: UX/UI Design, Graphics Design
+- img: ../data/staff/images/TreninaNew.webp
+- tags: Backend, Python, Express
 
-# Георгий Шерри
+# Иван Быков
 
-- img: ../data/staff/images/SherryNew.webp
-- tags: ML, Python, CV
+- img: ../data/staff/images/BykovNew.webp
+- tags: 3D Modeling, Blender
+
+# Марк Козырев
+
+- img: ../data/staff/images/KozyrevNew.webp
+- tags: GameDev, Unity, VR
 
 # Тимур Комолов
 
 - img: ../data/staff/images/KomolovNew.webp
 - tags: ML, Python, NLP
 
-<<<<<<< HEAD
-# Артём Шендяпин
+# Георгий Шерри
 
-- img: ../data/staff/images/ShendyapinNew.webp
-- tags: IoT, Backend
+- img: ../data/staff/images/SherryNew.webp
+- tags: ML, Python, CV
 
-=======
->>>>>>> c0fde74 (feat: new data)
 # Анастасия Петухова
 
 - img: ../data/staff/images/PetukhovaNew.webp
@@ -62,19 +58,9 @@
 - img: ../data/staff/images/DrakonevaNew.webp
 - tags: Backend, IoT
 
-# Александр Митницкий
-
-- img: ../data/staff/images/MitnitskyNew.webp
-- tags: IoT, Robotics
-
 # Павел Макаренко
 
 - img: ../data/staff/images/MakarenkoNew.webp
-- tags: 3D Modeling, Blender
-
-# Иван Быков
-
-- img: ../data/staff/images/BykovNew.webp
 - tags: 3D Modeling, Blender
 
 # Владислав Денисенко
@@ -87,14 +73,16 @@
 - img: ../data/staff/images/GlukhovNew.webp
 - tags: 3D Modeling, Blender, Motion Capture
 
-<<<<<<< HEAD
-=======
 # Александр Запорожских
 
 - img: ../data/staff/images/ZaporojskihNew.webp
 - tags: Android, Java, Kotlin
 
->>>>>>> c0fde74 (feat: new data)
+# Александр Ясанкин
+
+- img: ../data/staff/images/YasankinNew.webp
+- tags: UX/UI Design, Graphics Design
+
 # Григорий Собин
 
 - img: ../data/staff/images/SobinNew.webp
@@ -109,11 +97,6 @@
 
 - img: ../data/staff/images/PetrenkoNew.webp
 - tags: GameDev, Unity, Game Design
-
-# Марк Козырев
-
-- img: ../data/staff/images/KozyrevNew.webp
-- tags: GameDev, Unity, VR
 
 # Дмитрий Орлов
 
@@ -369,6 +352,16 @@
 
 - img: ../data/staff/images/default.webp
 - tags: GameDev, Unreal Engine
+
+# Алексей Немеш
+
+- img: ../data/staff/images/default.webp
+- tags: Frontend, React, NextJS, Backend
+
+# Ульяна Соловьёва
+
+- img: ../data/staff/images/default.webp
+- tags: Frontend, React, Graphic Design
 
 # Антон Лазарев
 
